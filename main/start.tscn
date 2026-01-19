@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgjpyp64ooiss"]
+
+[ext_resource type="Script" uid="uid://cfturempj36s7" path="res://main/start.gd" id="1_8blt0"]
+[ext_resource type="Resource" uid="uid://cnjdwwtoybmm3" path="res://dreams/01-flight/01flightdream.tres" id="2_tfodg"]
+
+[node name="Start" type="Node"]
+script = ExtResource("1_8blt0")
+first_dream = ExtResource("2_tfodg")

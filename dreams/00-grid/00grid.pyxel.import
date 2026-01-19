@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://dowljpjcau02c"
+path="res://.godot/imported/00grid.pyxel-bca3ada508f57e561945630b5f919619.res"
+
+[deps]
+
+source_file="res://dreams/00-grid/00grid.pyxel"
+dest_files=["res://.godot/imported/00grid.pyxel-bca3ada508f57e561945630b5f919619.res"]
+
+[params]
+
