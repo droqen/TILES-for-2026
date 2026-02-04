@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4fw4etr1bvmi"]
+
+[ext_resource type="AudioStream" uid="uid://ccq7am13u57d0" path="res://dreams/02-scenewalker/waowaowaow2.mp3" id="1_u7fq6"]
+
+[node name="02Nightmare" type="Node2D"]
+
+[node name="waowaowao" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_u7fq6")
+autoplay = true
