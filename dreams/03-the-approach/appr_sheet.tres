@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Sheet" load_steps=3 format=3 uid="uid://bg3um6nqnrk4b"]
+
+[ext_resource type="Script" uid="uid://byun6mt7c4fun" path="res://navdi/navdisheet.gd" id="1_s7uh8"]
+[ext_resource type="Texture2D" uid="uid://r0kfqkl14jln" path="res://dreams/03-the-approach/approach.pyxel" id="2_ufgcp"]
+
+[resource]
+script = ExtResource("1_s7uh8")
+texture = ExtResource("2_ufgcp")
+hframes = 10
+vframes = 10
+metadata/_custom_type_script = "uid://byun6mt7c4fun"
