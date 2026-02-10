@@ -1,11 +1,21 @@
 extends Node
 class_name NavdiDreamer
 
+@export var cam : CameraForDreaming
+
 var initialized : bool = false
 var dream_stack : Array[NavdiDream] = []
 var dream_depth : int = -1
 
 var _memory_stack : Array[Dictionary]
+
+func _process(_delta: float) -> void:
+	if !cam:
+		cam = CameraForDreaming.new()
+	if !cam.is_inside_tree():
+		if !is_instance_valid(cam):
+			cam = CameraForDreaming.new()
+		self.add_child(cam)
 
 func w(k,v,d:NavdiDream=null):
 	prints("w",k,v,d)

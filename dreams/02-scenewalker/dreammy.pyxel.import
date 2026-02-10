@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://c3t733bdjpulg"
+path="res://.godot/imported/dreammy.pyxel-92ad4bb04d2b908b2cfdb49b58d58552.res"
+
+[deps]
+
+source_file="res://dreams/02-scenewalker/dreammy.pyxel"
+dest_files=["res://.godot/imported/dreammy.pyxel-92ad4bb04d2b908b2cfdb49b58d58552.res"]
+
+[params]
+
