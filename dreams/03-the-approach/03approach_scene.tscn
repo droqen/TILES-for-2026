@@ -75,7 +75,6 @@ vframes = 20
 frame = 4
 script = ExtResource("5_wy5da")
 sheet = ExtResource("11_pl1rc")
-playing = true
 frames = PackedInt32Array(4, 5)
 ani_period = 6
 metadata/_custom_type_script = "uid://di2t14yakk4ot"

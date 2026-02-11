@@ -15,6 +15,18 @@ func _ready() -> void:
 func random_cell() -> Vector2i:
 	return allcells[randi()%len(allcells)]
 func goto_random_target() -> void:
+	var currentcell = targetcell
+	var currcelltid = maze.get_cell_tid(currentcell)
+	match currcelltid:
+		11,12,41,42:
+			var newbot = (load("res://dreams/03-the-approach/crawler_awakebot.tscn") as PackedScene).instantiate()
+			newbot.frm_ground = currcelltid
+			newbot.position = maze.map_to_local(currentcell)
+			var p = get_parent()
+			p.add_child(newbot)
+			newbot.owner = p.owner if p.owner else p
+			maze.set_cell_tid(currentcell, 0)
+	
 	targetcell = random_cell()
 	target = maze.map_to_local(targetcell) + Vector2(
 		randf_range(-2.5,2.5),
