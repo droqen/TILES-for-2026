@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://um3bpl5jlmk8"]
+[gd_scene load_steps=12 format=4 uid="uid://um3bpl5jlmk8"]
 
 [ext_resource type="TileSet" uid="uid://dljmnkrefpbje" path="res://dreams/03-the-approach/appr_tiles.tres" id="1_m3xiq"]
 [ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_atecq"]
@@ -9,8 +9,7 @@
 [ext_resource type="Script" uid="uid://b64hu8yvkwfop" path="res://dreams/03-the-approach/player.gd" id="4_wy5da"]
 [ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="5_wy5da"]
 [ext_resource type="Resource" uid="uid://bg3um6nqnrk4b" path="res://dreams/03-the-approach/appr_sheet.tres" id="6_dhref"]
-[ext_resource type="Script" uid="uid://kijmcci6fc54" path="res://dreams/03-the-approach/fly.gd" id="10_yayr7"]
-[ext_resource type="Resource" uid="uid://drm4wqi2n8wei" path="res://dreams/03-the-approach/appr_sheet_mini.tres" id="11_pl1rc"]
+[ext_resource type="Script" uid="uid://cehclkbq1nk40" path="res://dreams/03-the-approach/spawn_flies.gd" id="10_6ughl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tcl3"]
 size = Vector2(7.9, 7.9)
@@ -64,59 +63,7 @@ metadata/_custom_type_script = "uid://tt1ag5ksilr0"
 enabled = false
 shape = SubResource("RectangleShape2D_7tcl3")
 target_position = Vector2(0, 0)
+collision_mask = 3
 
-[node name="fly" type="Node2D" parent="."]
-script = ExtResource("10_yayr7")
-
-[node name="spr" type="Sprite2D" parent="fly"]
-texture = ExtResource("4_bv42t")
-hframes = 20
-vframes = 20
-frame = 4
-script = ExtResource("5_wy5da")
-sheet = ExtResource("11_pl1rc")
-frames = PackedInt32Array(4, 5)
-ani_period = 6
-metadata/_custom_type_script = "uid://di2t14yakk4ot"
-
-[node name="fly2" type="Node2D" parent="."]
-script = ExtResource("10_yayr7")
-
-[node name="spr" type="Sprite2D" parent="fly2"]
-texture = ExtResource("4_bv42t")
-hframes = 20
-vframes = 20
-frame = 4
-script = ExtResource("5_wy5da")
-sheet = ExtResource("11_pl1rc")
-frames = PackedInt32Array(4, 5)
-ani_period = 6
-metadata/_custom_type_script = "uid://di2t14yakk4ot"
-
-[node name="fly3" type="Node2D" parent="."]
-script = ExtResource("10_yayr7")
-
-[node name="spr" type="Sprite2D" parent="fly3"]
-texture = ExtResource("4_bv42t")
-hframes = 20
-vframes = 20
-frame = 4
-script = ExtResource("5_wy5da")
-sheet = ExtResource("11_pl1rc")
-frames = PackedInt32Array(4, 5)
-ani_period = 6
-metadata/_custom_type_script = "uid://di2t14yakk4ot"
-
-[node name="fly4" type="Node2D" parent="."]
-script = ExtResource("10_yayr7")
-
-[node name="spr" type="Sprite2D" parent="fly4"]
-texture = ExtResource("4_bv42t")
-hframes = 20
-vframes = 20
-frame = 4
-script = ExtResource("5_wy5da")
-sheet = ExtResource("11_pl1rc")
-frames = PackedInt32Array(4, 5)
-ani_period = 6
-metadata/_custom_type_script = "uid://di2t14yakk4ot"
+[node name="spawn_flies" type="Node" parent="."]
+script = ExtResource("10_6ughl")

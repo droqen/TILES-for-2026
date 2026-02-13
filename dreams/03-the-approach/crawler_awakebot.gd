@@ -28,6 +28,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if awake:
 		spr.setup(FRMS_WALK)
+		position.x += -1 if faceleft else 1
 	elif wakestep < LAST_WAKE_STEP:
 		wakeness += 0.2 * randf()
 		if randf() < 0.1: wakeness = 0

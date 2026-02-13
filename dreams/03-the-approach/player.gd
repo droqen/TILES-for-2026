@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 	var celltid : int = maze.get_cell_tid(cell)
 	var tomidcell : Vector2 = maze.map_to_center(cell) - position
 	var onflor : bool = vy>=0 and mover.cast_fraction(
-		self,solidcast,VERTICAL,1)<1
+		self,solidcast,VERTICAL,0.5)<1
 	var onladderbod : bool = celltid in [25,35]
 	var onladdertop : bool = celltid == 15
 	
@@ -39,10 +39,14 @@ func _physics_process(_delta: float) -> void:
 		#var tomidx = maze.map_to_center(cell).x - position.x
 		#if tomidx < -3 and dpad.x > 0: dpad.x = 0
 		#if tomidx >  3 and dpad.x < 0: dpad.x = 0
-		if abs(tomidcell.x) > 1 and dpad.x == 0:
-			dpad.x = sign(tomidcell.x)
+		if dpad.y:
+			if abs(tomidcell.x) > 1:
+				dpad.x = sign(tomidcell.x)
 		vx = move_toward(vx,dpad.x*0.25,0.1)
 		vy = move_toward(vy,dpad.y*0.5,0.25)
+		if onladdertop and mover.cast_fraction(self, solidcast, VERTICAL, 2)<1 and dpad.y < 0:
+			onladder_and_climbing = false
+			vy = 0.1
 	elif onflor:
 		vx = move_toward(vx,dpad.x*0.5,0.15)
 		vy = 0
@@ -61,7 +65,8 @@ func _physics_process(_delta: float) -> void:
 		vx = 0; vy = 0;
 	if vx or vy<0:
 		if duck: duck = false; vy = -0.8; # hop up
-	if dpad.x:spr.flip_h=dpad.x<0
+	
+	if dpad.x and !onladder_and_climbing:spr.flip_h=dpad.x<0
 	
 	if!mover.try_slip_move(self,solidcast,HORIZONTAL,vx):
 		vx = 0

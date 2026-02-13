@@ -90,3 +90,45 @@ func wake_to(d:NavdiDream):
 		_goto_current_dream_packed()
 	else:
 		push_error("can't wake up to undreamt dream %s" % d); return false;
+
+func spawn(node_or_packed, parent : Node = null) -> HandledNodeSpawn:
+	var hns = HandledNodeSpawn.new(node_or_packed)
+	if !parent: parent = get_tree().current_scene
+	if hns.n and parent:
+		_add_to_and_own.call_deferred(hns.n, parent)
+	else:
+		push_error("spawning %s to parent %s failed"
+			% [node_or_packed, parent])
+	return hns
+
+func _add_to_and_own(ch:Node, par:Node) -> void:
+	par.add_child(ch)
+	ch.owner = par.owner if par.owner else par
+
+class HandledNodeSpawn:
+	var n : Node
+	func _init(obj_or_packed):
+		var obj = obj_or_packed
+		if obj is PackedScene:
+			obj = obj_or_packed.instantiate()
+		if obj is Node:
+			n = obj
+		else:
+			n = null # remain null
+			push_error(
+				"HandledNodeSpawn n failed ; "+
+					"%s (%s) is not Node or PackedScene"
+				% [obj, obj_or_packed] )
+	func setup_pos(pos:Vector2) -> HandledNodeSpawn:
+		if n and n is Node2D:
+			n.position = pos
+		else:
+			push_error("setup_pos failed ; n %s is not Node2D" % n)
+		return self
+	func setup_varvals(varvals:Array) -> HandledNodeSpawn:
+		if n and n is Object:
+			for i in range(0, len(varvals)-1, 2):
+				n[varvals[i]] = varvals[i+1]
+		else:
+			push_error("setup_varvals failed ; n %s is not Object" % n)
+		return self

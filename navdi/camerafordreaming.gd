@@ -2,7 +2,7 @@ extends Camera2D
 class_name CameraForDreaming
 
 var realposition : Vector2
-@export var pixelsnap : bool = false
+@export var pixelsnap : bool = true
 @export var subpixelsnap : bool = true
 
 @export var sloppiness : float = 0.5
