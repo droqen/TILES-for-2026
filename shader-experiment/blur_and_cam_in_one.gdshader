@@ -21,11 +21,13 @@ void fragment() {
 	vec2 dreamsize_uv = dreamsize * SCREEN_PIXEL_SIZE;
 	vec2 top_left_corner_of_dream = (vec2(1.,1.) - dreamsize_uv * zoom)*0.5;
 	vec2 screen_x1_uv = (SCREEN_UV - top_left_corner_of_dream) / zoom;
+	vec2 screen_x1 = screen_x1_uv / SCREEN_PIXEL_SIZE;
+	vec2 screen_x1_int = vec2(floor(screen_x1.x)+0.5, floor(screen_x1.y)+0.5);
 	 
 	COLOR.rgb = valueInsideRect(
 		screen_x1_uv,
 		vec4(0.0, 0.0, dreamsize_uv),
-		texture(SCREEN_TEXTURE, screen_x1_uv).rgb
+		texture(SCREEN_TEXTURE, screen_x1_int * SCREEN_PIXEL_SIZE).rgb
 	);
 	
 	

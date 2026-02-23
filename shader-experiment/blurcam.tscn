@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1ovglsecpdrk"]
+[gd_scene load_steps=10 format=3 uid="uid://c1ovglsecpdrk"]
 
 [ext_resource type="Texture2D" uid="uid://bvrb62m5e1pve" path="res://icon.svg" id="1_ue42q"]
 [ext_resource type="Texture2D" uid="uid://bkaaf6l2tii0h" path="res://dreams/04-starrysky/stars.pyxel" id="1_wlvc2"]
 [ext_resource type="Script" uid="uid://deqo50der2us2" path="res://shader-experiment/destroy_effects.gd" id="2_i28n7"]
+[ext_resource type="Script" uid="uid://4pnvju1132ns" path="res://shader-experiment/traveller.gd" id="3_rccqv"]
 [ext_resource type="Shader" uid="uid://b00x6e1ygrtta" path="res://shader-experiment/blur_and_cam_in_one.gdshader" id="3_txx2p"]
 [ext_resource type="Script" uid="uid://mldx7ig2perd" path="res://shader-experiment/^show_on_ready.gd" id="5_avtof"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ue42q"]
 shader = ExtResource("3_txx2p")
 shader_parameter/blur_amount = 5.0
-shader_parameter/zoom = 4.00000016625
+shader_parameter/zoom = 10.0
 shader_parameter/dreamsize = Vector2(100, 100)
 
 [sub_resource type="Gradient" id="Gradient_ue42q"]
@@ -22,6 +23,7 @@ height = 100
 fill_to = Vector2(1, 1)
 
 [node name="Blurcam" type="Node2D"]
+texture_filter = 1
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(5, 32)
@@ -35,6 +37,7 @@ centered = false
 position = Vector2(100.81503, 80.81503)
 scale = Vector2(0.13773492, 0.13773492)
 texture = ExtResource("1_ue42q")
+script = ExtResource("3_rccqv")
 
 [node name="Icon3" type="Sprite2D" parent="."]
 position = Vector2(100.81503, 98.81503)
