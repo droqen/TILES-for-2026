@@ -2,8 +2,16 @@ shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 uniform float blur_amount : hint_range(0.0, 5.0) = 1.5;
-uniform float zoom : hint_range(0.5, 10.0) = 4.0;
+uniform float zoom : hint_range(0.5, 100.0) = 4.0;
 uniform vec2 dreamsize = vec2(100.0, 100.0);
+
+vec3 blend(vec3[4] colours, float xw, float yw) {
+	return mix(
+		mix(colours[0], colours[1], xw),
+		mix(colours[2], colours[3], xw),
+		yw
+	);
+}
 
 vec3 valueInsideRect(vec2 p, vec4 rect, vec3 insideColor)
 {
@@ -15,6 +23,9 @@ vec3 valueInsideRect(vec2 p, vec4 rect, vec3 insideColor)
     return mix(vec3(1.0,1.0,1.0), insideColor, inside); // custom outside: white (1,1,1)
 }
 
+const vec2 OFFSET_RIGHT = vec2(1.0, 0.0);
+const vec2 OFFSET_DOWN = vec2(0.0, 1.0);
+
 void fragment() {
 	//COLOR.rgb = vec3(SCREEN_UV.x, SCREEN_UV.y, 0.0);
 	//vec4 dreamrect = vec4(0.0, 0.0, dreamsize);
@@ -22,12 +33,25 @@ void fragment() {
 	vec2 top_left_corner_of_dream = (vec2(1.,1.) - dreamsize_uv * zoom)*0.5;
 	vec2 screen_x1_uv = (SCREEN_UV - top_left_corner_of_dream) / zoom;
 	vec2 screen_x1 = screen_x1_uv / SCREEN_PIXEL_SIZE;
-	vec2 screen_x1_int = vec2(floor(screen_x1.x)+0.5, floor(screen_x1.y)+0.5);
-	 
+	vec2 screen_x1_int = vec2(floor(screen_x1.x-0.5)+0.5, floor(screen_x1.y-0.5)+0.5); // rounded
+	vec2 screen_x1_int_uv = screen_x1_int * SCREEN_PIXEL_SIZE;
+	vec2 or_uv = OFFSET_RIGHT * SCREEN_PIXEL_SIZE;
+	vec2 od_uv = OFFSET_DOWN * SCREEN_PIXEL_SIZE;
+	
+	vec3[4] colours = {
+		texture(SCREEN_TEXTURE, screen_x1_int_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv + or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv + od_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv + or_uv + od_uv).rgb   };
+	
 	COLOR.rgb = valueInsideRect(
 		screen_x1_uv,
 		vec4(0.0, 0.0, dreamsize_uv),
-		texture(SCREEN_TEXTURE, screen_x1_int * SCREEN_PIXEL_SIZE).rgb
+		blend(colours,
+			smoothstep(0.0, SCREEN_PIXEL_SIZE.x, screen_x1_uv.x - screen_x1_int_uv.x),
+			smoothstep(0.0, SCREEN_PIXEL_SIZE.y, screen_x1_uv.y - screen_x1_int_uv.y)
+		)
+		//texture(SCREEN_TEXTURE, screen_x1_int * SCREEN_PIXEL_SIZE).rgb
 	);
 	
 	

@@ -10,8 +10,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ue42q"]
 shader = ExtResource("3_txx2p")
 shader_parameter/blur_amount = 5.0
-shader_parameter/zoom = 10.0
-shader_parameter/dreamsize = Vector2(100, 100)
+shader_parameter/zoom = 100.0
+shader_parameter/dreamsize = Vector2(10, 10)
 
 [sub_resource type="Gradient" id="Gradient_ue42q"]
 colors = PackedColorArray(0, 1, 0, 1, 1, 0, 0, 1)
