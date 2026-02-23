@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Dreamer="*res://navdi/navdidreamer.gd"
 Pin="*res://navdi/navdipin.gd"
+Effects="*res://navdi/effects.tscn"
 
 [editor_plugins]
 

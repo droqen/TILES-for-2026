@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://bkaaf6l2tii0h"
+path="res://.godot/imported/stars.pyxel-24b218c74bde0c4f346bf9528b71df27.res"
+
+[deps]
+
+source_file="res://dreams/04-starrysky/stars.pyxel"
+dest_files=["res://.godot/imported/stars.pyxel-24b218c74bde0c4f346bf9528b71df27.res"]
+
+[params]
+

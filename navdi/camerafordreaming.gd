@@ -1,29 +1,36 @@
 extends Camera2D
 class_name CameraForDreaming
 
-var realposition : Vector2
-@export var pixelsnap : bool = true
+@export var pixelsnap : bool = false
 @export var subpixelsnap : bool = true
 
-@export var sloppiness : float = 0.5
-@export var accsloppiness : float = 0.2
-@export var sloppyfriction : float = 0.8
-@export var unsloppy_flat_pos : float = 0.01
-@export var unsloppy_flat_zoom : float = 0.003
+@export var posease_params : NavdiEaseParams = NavdiEaseParams.new(
+	).setup(0.5, 0.2, 0.8, 0.01)
+@export var zoomease_params : NavdiEaseParams = NavdiEaseParams.new(
+	).setup(0.5, 0.2, 0.8, 0.003)
 
-@export var zoom_int_snap : bool = false
+@onready var posease : NavdiEase2D = NavdiEase2D.new(
+).setup_params(posease_params).setup_value(Vector2(50, 50)).setup_intsnap()
+@onready var zoomease : NavdiEase = NavdiEase.new(
+).setup_params(zoomease_params).setup_value(3.0)
+
+@export var zoom_levels_int_only : bool = true
 @export var zoom_minimum : float = 1.0
 @export var view_padding_absolute : Vector2 = Vector2(10, 10)
 @export var dreamview_rect : Rect2 = Rect2(0, 0, 100, 100)
 var _last_known_dreamview_rect : Rect2
 var _last_known_viewport_size : Vector2
 var _last_known_viewport_size_padded : Vector2
-var _target_pos : Vector2 = Vector2(50, 50)
-var _target_zoom : float = 3.0
-var velocity : Vector2
-var zvelocity : float
 
 func _ready() -> void:
+	posease.value_changed.connect(func(pos):
+		if pixelsnap: position = posease.intvalue
+		elif subpixelsnap: position = Vector2(Vector2i(pos*zoom.x))/zoom.x
+		else: position = pos
+	)
+	zoomease.value_changed.connect(func(z):
+		zoom = Vector2(z,z)
+	)
 	get_viewport().size_changed.connect(_force_update_viewport_size)
 	_force_update_viewport_size()
 	_force_update_viewport_size.call_deferred()
@@ -37,12 +44,12 @@ func _force_update_targets() -> void:
 		#min()
 	#)
 	var dreamsize : Vector2 = dreamview_rect.size
-	_target_pos = dreamview_rect.position + dreamsize * 0.5
-	_target_zoom = max(zoom_minimum,min(
+	posease.target = dreamview_rect.position + dreamsize * 0.5
+	zoomease.target = max(1,zoom_minimum,min(
 		_last_known_viewport_size_padded.x / dreamsize.x,
 		_last_known_viewport_size_padded.y / dreamsize.y
 	))
-	if zoom_int_snap: _target_zoom = int(_target_zoom)
+	if zoom_levels_int_only: zoomease.target = int(zoomease.target)
 
 func set_dreamview_size(size:Vector2) -> void:
 	if dreamview_rect.size != size:
@@ -54,28 +61,12 @@ func set_dreamview_focus(focus:Vector2) -> void:
 
 func snap_to_target() -> void:
 	_force_update_targets()
-	realposition = _target_pos; velocity *= 0;
-	zoom = Vector2.ONE * _target_zoom; zvelocity *= 0;
-	
-	if pixelsnap: position = Vector2(Vector2i(realposition))
-	elif subpixelsnap: position = Vector2(Vector2i(realposition*zoom.x))/zoom.x
-	else: position = realposition
-	
+	posease.setup_value(posease.target)
+	zoomease.setup_value(zoomease.target)
+
 func _physics_process(_delta: float) -> void:
 	if _last_known_dreamview_rect != dreamview_rect:
 		_force_update_targets()
 	
-	var vel2 : Vector2 = (_target_pos - realposition) * sloppiness
-	velocity = lerp(velocity,vel2,accsloppiness) * (1-sloppyfriction)
-	realposition += velocity
-	realposition += (_target_pos - realposition).limit_length(unsloppy_flat_pos)
-	
-	if pixelsnap: position = Vector2(Vector2i(realposition))
-	elif subpixelsnap: position = Vector2(Vector2i(realposition*zoom.x))/zoom.x
-	else: position = realposition
-	
-	var zvel2 : float = (_target_zoom - zoom.x) * sloppiness
-	zvelocity = lerp(zvelocity,zvel2,accsloppiness) * (1-sloppyfriction)
-	zoom.x += zvelocity
-	zoom.x = move_toward(zoom.x, _target_zoom, unsloppy_flat_zoom)
-	zoom.y = zoom.x
+	posease.update()
+	zoomease.update()
