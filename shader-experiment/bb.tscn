@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://efc56pvcds62"]
+
+[ext_resource type="Texture2D" uid="uid://bvrb62m5e1pve" path="res://icon.svg" id="1_wy823"]
+
+[node name="Bb" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(110, 113)
+texture = ExtResource("1_wy823")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]

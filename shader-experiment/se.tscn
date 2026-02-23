@@ -1,16 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://d32k7iru3u0sf"]
+[gd_scene load_steps=7 format=3 uid="uid://d32k7iru3u0sf"]
 
 [ext_resource type="Texture2D" uid="uid://bvrb62m5e1pve" path="res://icon.svg" id="1_7serv"]
 [ext_resource type="Shader" uid="uid://b8g32w0ybbbqh" path="res://shader-experiment/sepass-1.gdshader" id="2_kstqu"]
 [ext_resource type="Shader" uid="uid://cvkyl2rsrfb5p" path="res://shader-experiment/sepass-2.gdshader" id="3_kstqu"]
+[ext_resource type="Texture2D" uid="uid://bkaaf6l2tii0h" path="res://dreams/04-starrysky/stars.pyxel" id="4_wov7j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wov7j"]
 shader = ExtResource("2_kstqu")
-shader_parameter/blur_amount = 1.5
+shader_parameter/blur_amount = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d73ur"]
 shader = ExtResource("3_kstqu")
-shader_parameter/blur_amount = 1.5
+shader_parameter/blur_amount = 5.0
 
 [node name="Se" type="Node2D"]
 
@@ -23,17 +24,22 @@ layer = 2
 
 [node name="pass-1" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_wov7j")
-offset_left = 62.0
-offset_top = 36.0
-offset_right = 187.0
-offset_bottom = 163.0
+offset_left = 19.0
+offset_top = 82.0
+offset_right = 107.0
+offset_bottom = 141.0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
-layer = 2
 
 [node name="pass-2" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_d73ur")
-offset_left = 28.0
-offset_top = 64.0
-offset_right = 153.0
-offset_bottom = 191.0
+offset_left = 17.0
+offset_top = 111.0
+offset_right = 105.0
+offset_bottom = 171.0
+
+[node name="Stars" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(137, 170)
+scale = Vector2(3, 3)
+texture = ExtResource("4_wov7j")

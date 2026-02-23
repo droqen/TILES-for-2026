@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://cx27qi1f5l8t3"]
+
+[ext_resource type="Shader" uid="uid://b8gphl77fmc77" path="res://shader-experiment/psx_lit_viewport_independent.tres" id="1_8xjeq"]
+
+[sub_resource type="Gradient" id="Gradient_eoxhw"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3eeo3"]
+gradient = SubResource("Gradient_eoxhw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcryu"]
+render_priority = 0
+shader = ExtResource("1_8xjeq")
+shader_parameter/albedo = SubResource("GradientTexture1D_3eeo3")
+shader_parameter/jitter = 20.0
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/texture_size = Vector2(1, 1)
+shader_parameter/mip_map_far = 60.0
+shader_parameter/mip_map_final_level = 6
+shader_parameter/material_type = Color(0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_q77jb"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2dekc"]
+gradient = SubResource("Gradient_q77jb")
+
+[sub_resource type="Gradient" id="Gradient_dbn02"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kqxix"]
+gradient = SubResource("Gradient_dbn02")
+
+[sub_resource type="Gradient" id="Gradient_td6nm"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8iyf8"]
+gradient = SubResource("Gradient_td6nm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sj2wi"]
+render_priority = 0
+shader = ExtResource("1_8xjeq")
+shader_parameter/albedo = SubResource("GradientTexture1D_2dekc")
+shader_parameter/specular = SubResource("GradientTexture1D_8iyf8")
+shader_parameter/emission = SubResource("GradientTexture1D_kqxix")
+shader_parameter/jitter = 20.0
+shader_parameter/jitter_z_coordinate = true
+shader_parameter/jitter_depth_independent = true
+shader_parameter/affine_texture_mapping = true
+shader_parameter/alpha_scissor = 1.0
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/emission_color = Color(1, 1, 1, 1)
+shader_parameter/texture_size = Vector2(1, 1)
+shader_parameter/mip_map_far = 60.0
+shader_parameter/mip_map_final_level = 6
+shader_parameter/material_type = Color(0, 0, 0, 0)
+
+[node name="Alex3d" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material = SubResource("ShaderMaterial_tcryu")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5671387, 0.4219522, -0.84632254)
+material = SubResource("ShaderMaterial_sj2wi")

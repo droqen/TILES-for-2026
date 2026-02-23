@@ -3,6 +3,31 @@ shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
 uniform float blur_amount : hint_range(0.0, 5.0) = 1.5;
 
+const int samples = 35;
+const int LOD = 2;
+const int sLOD = 1 << LOD;
+const float sigma = float(samples) * .25;
+
+// thanks https://www.shadertoy.com/view/ltScRG
+
+float gaussian(vec2 i) {
+	return exp( -.5 * dot(i/=sigma,i)) / (6.28*sigma*sigma);
+}
+
+vec4 blur(sampler2D sp, vec2 U, vec2 scale) {
+	vec4 O = vec4(0);
+	int s = samples/sLOD;
+	for ( int i = 0; i < s*s; i++ ) {
+		vec2 d = vec2(float(i%s),float(i/s))*float(sLOD) - float(samples)/2.;
+		O += gaussian(d) * textureLod( sp, U + scale * d, float(LOD) );
+	}
+	return O / O.a;
+}
+
+void mainImage(out vec4 O, vec2 U) {
+	O = blur( iChannel0, U/iResolution.xy, 1./iChannelResolution[0].xy );
+}
+
 void fragment() {
 	
 	float w[9];
@@ -20,8 +45,7 @@ void fragment() {
 	//vec3 result = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount).rgb;
 	vec4 tex_sum = texture(SCREEN_TEXTURE, SCREEN_UV) * w[0];
 	float weight_sum = w[0];
-	vec2 texel = SCREEN_PIXEL_SIZE * max(1.0, blur_amount*0.025);
-	int range = min(40,int(floor(blur_amount*5.0)));
+	vec2 texel = SCREEN_PIXEL_SIZE;
 	for (int x = 1; x <= 8; x++) {
 		tex_sum += texture(SCREEN_TEXTURE, SCREEN_UV + vec2(float(x),0.0) * texel) * w[x];
 		tex_sum += texture(SCREEN_TEXTURE, SCREEN_UV - vec2(float(x),0.0) * texel) * w[x];

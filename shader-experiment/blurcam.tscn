@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1ovglsecpdrk"]
+
+[ext_resource type="Texture2D" uid="uid://bvrb62m5e1pve" path="res://icon.svg" id="1_ue42q"]
+[ext_resource type="Texture2D" uid="uid://bkaaf6l2tii0h" path="res://dreams/04-starrysky/stars.pyxel" id="1_wlvc2"]
+[ext_resource type="Script" uid="uid://deqo50der2us2" path="res://shader-experiment/destroy_effects.gd" id="2_i28n7"]
+[ext_resource type="Shader" uid="uid://b00x6e1ygrtta" path="res://shader-experiment/blur_and_cam_in_one.gdshader" id="3_txx2p"]
+[ext_resource type="Script" uid="uid://mldx7ig2perd" path="res://shader-experiment/^show_on_ready.gd" id="5_avtof"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ue42q"]
+shader = ExtResource("3_txx2p")
+shader_parameter/blur_amount = 5.0
+shader_parameter/zoom = 4.00000016625
+shader_parameter/dreamsize = Vector2(100, 100)
+
+[sub_resource type="Gradient" id="Gradient_ue42q"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_avtof"]
+gradient = SubResource("Gradient_ue42q")
+width = 100
+height = 100
+fill_to = Vector2(1, 1)
+
+[node name="Blurcam" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(5, 32)
+texture = ExtResource("1_ue42q")
+
+[node name="Stars" type="Sprite2D" parent="."]
+texture = ExtResource("1_wlvc2")
+centered = false
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(100.81503, 80.81503)
+scale = Vector2(0.13773492, 0.13773492)
+texture = ExtResource("1_ue42q")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(100.81503, 98.81503)
+scale = Vector2(0.13773492, 0.13773492)
+texture = ExtResource("1_ue42q")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="destroy_effects" type="Node" parent="."]
+script = ExtResource("2_i28n7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="blur_and_cam_in_one" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ue42q")
+use_parent_material = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="^show_on_ready" type="Node" parent="CanvasLayer"]
+script = ExtResource("5_avtof")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.3987929, 0.39879292, 0.3987929, 1)
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 200.0
+texture = SubResource("GradientTexture2D_avtof")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture2D_avtof")

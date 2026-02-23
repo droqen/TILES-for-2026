@@ -28,5 +28,4 @@ void fragment() {
 		weight_sum += w[x] * 2.0;
 	}
 	COLOR.rgb = (tex_sum/weight_sum).rgb;
-	COLOR.b *= 0.5;
 }
