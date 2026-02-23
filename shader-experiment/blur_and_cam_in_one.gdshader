@@ -1,16 +1,62 @@
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
-uniform float blur_amount : hint_range(0.0, 5.0) = 1.5;
+uniform float blur_amount : hint_range(0.01, 1.0) = 0.2;
 uniform float zoom : hint_range(0.5, 100.0) = 4.0;
 uniform vec2 dreamsize = vec2(100.0, 100.0);
 
-vec3 blend(vec3[4] colours, float xw, float yw) {
+
+
+float triangle_height_at_point(float Brad, float H, float M, float X) {
+	float slope = abs(H/Brad); // if Brad is 0, this is infinite. do not let Brad = 0
+	float drop = slope * abs(X-M);
+	return max(0.0,H-drop*slope);
+}
+float triradleft(float Brad, float H, float M, float X, float half_triangle_area) {
+	return clamp(
+		(X - (M-Brad)) * triangle_height_at_point(Brad,H,M,X) * 0.5,
+		0.0, half_triangle_area);
+}
+float triradright(float Brad, float H, float M, float X, float half_triangle_area) {
+	return clamp(
+		((M+Brad) - X) * triangle_height_at_point(Brad,H,M,X) * 0.5,
+		0.0, half_triangle_area);
+}
+float triangle_section_area(float Brad, float H, float M, float SA, float SB, float half_triangle_area) {
+	return
+		(triradleft(Brad,H,M,SB,half_triangle_area)-triradleft(Brad,H,M,SA,half_triangle_area))
+		+
+		(triradright(Brad,H,M,SA,half_triangle_area)-triradright(Brad,H,M,SB,half_triangle_area))
+	;
+}
+
+
+vec3 blend4(vec3[4] colours, float xw, float yw) {
 	return mix(
 		mix(colours[0], colours[1], xw),
 		mix(colours[2], colours[3], xw),
 		yw
 	);
+}
+const float[4] ifloats = {0.,1.,2.,3.};
+
+vec3 blend16(vec3[16] colours, float xw, float yw) {
+	float Brad = max(0.01, blur_amount);
+	float H = 0.5 / Brad;
+	int i=0;
+	
+	vec3 colsum=vec3(0.,0.,0.);
+	float colw=0.0;
+	for(int y=0;y<3;y++)
+	for(int x=0;x<3;x++) {
+		float w =
+		triangle_section_area(Brad, H, xw, ifloats[x], ifloats[x+1], 0.5) +
+		triangle_section_area(Brad, H, yw, ifloats[y], ifloats[y+1], 0.5) ;
+		colsum += colours[i] * w;
+		colw += w;
+		i++;
+	}
+	return colsum/colw;
 }
 
 vec3 valueInsideRect(vec2 p, vec4 rect, vec3 insideColor)
@@ -33,24 +79,41 @@ void fragment() {
 	vec2 top_left_corner_of_dream = (vec2(1.,1.) - dreamsize_uv * zoom)*0.5;
 	vec2 screen_x1_uv = (SCREEN_UV - top_left_corner_of_dream) / zoom;
 	vec2 screen_x1 = screen_x1_uv / SCREEN_PIXEL_SIZE;
-	vec2 screen_x1_int = vec2(floor(screen_x1.x-0.5)+0.5, floor(screen_x1.y-0.5)+0.5); // rounded
+	vec2 screen_x1_int = vec2(floor(screen_x1.x-1.5)+0.5, floor(screen_x1.y-1.5)+0.5); // rounded
 	vec2 screen_x1_int_uv = screen_x1_int * SCREEN_PIXEL_SIZE;
 	vec2 or_uv = OFFSET_RIGHT * SCREEN_PIXEL_SIZE;
 	vec2 od_uv = OFFSET_DOWN * SCREEN_PIXEL_SIZE;
 	
-	vec3[4] colours = {
+	vec3[16] colours = {
 		texture(SCREEN_TEXTURE, screen_x1_int_uv).rgb ,
-		texture(SCREEN_TEXTURE, screen_x1_int_uv + or_uv).rgb ,
-		texture(SCREEN_TEXTURE, screen_x1_int_uv + od_uv).rgb ,
-		texture(SCREEN_TEXTURE, screen_x1_int_uv + or_uv + od_uv).rgb   };
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+or_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+or_uv+or_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+or_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+or_uv+or_uv+or_uv).rgb , 
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+od_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+od_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+od_uv+or_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+od_uv+or_uv+or_uv+or_uv).rgb , 
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+od_uv+od_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+od_uv+od_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+od_uv+od_uv+or_uv+or_uv).rgb ,
+		texture(SCREEN_TEXTURE, screen_x1_int_uv+od_uv+od_uv+od_uv+or_uv+or_uv+or_uv).rgb };
 	
 	COLOR.rgb = valueInsideRect(
 		screen_x1_uv,
 		vec4(0.0, 0.0, dreamsize_uv),
-		blend(colours,
-			smoothstep(0.0, SCREEN_PIXEL_SIZE.x, screen_x1_uv.x - screen_x1_int_uv.x),
-			smoothstep(0.0, SCREEN_PIXEL_SIZE.y, screen_x1_uv.y - screen_x1_int_uv.y)
-		)
+		blend16(colours,
+			screen_x1.x - screen_x1_int.x,
+			screen_x1.y - screen_x1_int.y)
+		//blend(colours,
+			//smoothstep(0.0, SCREEN_PIXEL_SIZE.x, screen_x1_uv.x - screen_x1_int_uv.x),
+			//smoothstep(0.0, SCREEN_PIXEL_SIZE.y, screen_x1_uv.y - screen_x1_int_uv.y)
+			////screen_x1.x - screen_x1_int.x,
+			////screen_x1.y - screen_x1_int.y
+		//)
 		//texture(SCREEN_TEXTURE, screen_x1_int * SCREEN_PIXEL_SIZE).rgb
 	);
 	
