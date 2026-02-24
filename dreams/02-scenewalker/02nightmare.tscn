@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://d4fw4etr1bvmi"]
+[gd_scene load_steps=12 format=4 uid="uid://d4fw4etr1bvmi"]
 
 [ext_resource type="AudioStream" uid="uid://ccq7am13u57d0" path="res://dreams/02-scenewalker/waowaowaow2.mp3" id="1_u7fq6"]
 [ext_resource type="TileSet" uid="uid://bssdq752rabd1" path="res://dreams/02-scenewalker/dreammy_tiles.tres" id="2_pibmh"]
 [ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="3_op6rm"]
+[ext_resource type="Script" uid="uid://dvl2md8dotkr7" path="res://dreams/02-scenewalker/view_rect_follows_player.gd" id="4_nwk74"]
 [ext_resource type="Script" uid="uid://dl7amw4ru5j14" path="res://dreams/02-scenewalker/player.gd" id="4_unth7"]
 [ext_resource type="Texture2D" uid="uid://c3t733bdjpulg" path="res://dreams/02-scenewalker/dreammy.pyxel" id="5_ius41"]
 [ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="6_nwk74"]
 [ext_resource type="Resource" uid="uid://bhnt5j2wcui83" path="res://dreams/02-scenewalker/dreammy_sheet.tres" id="7_41b20"]
 [ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="8_fyrh5"]
-[ext_resource type="Script" uid="uid://cofapyqha4lce" path="res://dreams/02-scenewalker/^camerizer.gd" id="9_ius41"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="9_ius41"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwfbj"]
 size = Vector2(5, 5.5)
@@ -25,6 +26,17 @@ tile_set = ExtResource("2_pibmh")
 navigation_enabled = false
 script = ExtResource("3_op6rm")
 metadata/_custom_type_script = "uid://bqd058komyl30"
+
+[node name="ViewRectFollowsPlayer" type="Node" parent="."]
+script = ExtResource("4_nwk74")
+
+[node name="NavdiViewRect" type="ReferenceRect" parent="ViewRectFollowsPlayer"]
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+script = ExtResource("9_ius41")
+metadata/_custom_type_script = "uid://bluc574m7qci"
 
 [node name="player" type="Node2D" parent="."]
 script = ExtResource("4_unth7")
@@ -49,6 +61,3 @@ metadata/_custom_type_script = "uid://tt1ag5ksilr0"
 enabled = false
 shape = SubResource("RectangleShape2D_lwfbj")
 target_position = Vector2(0, 0)
-
-[node name="^camerizer" type="Node" parent="player"]
-script = ExtResource("9_ius41")

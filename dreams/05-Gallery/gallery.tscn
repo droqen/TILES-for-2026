@@ -1,19 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dylv1runyop2k"]
+[gd_scene load_steps=5 format=3 uid="uid://dylv1runyop2k"]
 
-[ext_resource type="Script" uid="uid://cbxo881dfuc5h" path="res://navdi/dreamycamerarect.gd" id="1_67fp3"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="2_67fp3"]
 [ext_resource type="Texture2D" uid="uid://c0v2j5i2upg3x" path="res://dreams/05-Gallery/00-NoPointZero.pyxel" id="2_fkl8b"]
+[ext_resource type="Texture2D" uid="uid://bpyec25it3ixr" path="res://dreams/05-Gallery/pg09.pyxel" id="3_fkl8b"]
+[ext_resource type="Texture2D" uid="uid://dbgdq02grykd4" path="res://dreams/05-Gallery/pg05.pyxel" id="4_oj6uv"]
 
 [node name="Gallery" type="Node2D"]
 texture_filter = 1
 
-[node name="DreamyCameraRect" type="ReferenceRect" parent="."]
-offset_left = 117.0
-offset_top = 89.0
-offset_right = 194.0
-offset_bottom = 167.0
-script = ExtResource("1_67fp3")
-metadata/_custom_type_script = "uid://cbxo881dfuc5h"
-
 [node name="00NoPointZero" type="Sprite2D" parent="."]
 position = Vector2(155, 133)
 texture = ExtResource("2_fkl8b")
+
+[node name="NavdiViewRect" type="ReferenceRect" parent="."]
+offset_left = 309.0
+offset_top = 86.0
+offset_right = 453.0
+offset_bottom = 228.0
+script = ExtResource("2_67fp3")
+metadata/_custom_type_script = "uid://bluc574m7qci"
+
+[node name="Pg09" type="Sprite2D" parent="."]
+position = Vector2(256, 93)
+texture = ExtResource("3_fkl8b")
+
+[node name="Pg05" type="Sprite2D" parent="."]
+position = Vector2(378, 157)
+texture = ExtResource("4_oj6uv")

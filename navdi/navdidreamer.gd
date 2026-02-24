@@ -6,10 +6,6 @@ var dream_depth : int = -1
 
 var _memory_stack : Array[Dictionary]
 
-@onready var viewer : NavdiViewer = spawn(
-	preload("res://navdi/navdiviewer_default.tscn"),
-	self).n
-
 func w(k,v,d:NavdiDream=null):
 	prints("w",k,v,d)
 	if dream_depth < 0:

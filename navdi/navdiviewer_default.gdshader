@@ -1,8 +1,9 @@
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
-uniform float zoom : hint_range(0.5, 100.0) = 4.0;
+uniform float zoom : hint_range(0.1, 100.0) = 4.0;
 uniform vec2 dreamsize = vec2(100.0, 100.0);
+uniform float smoothness : hint_range(-1.0, 1.0) = 0.0;
 
 vec3 valueInsideRect(vec2 p, vec4 rect, vec3 insideColor)
 {
@@ -49,8 +50,8 @@ void fragment() {
 	vec2 screen_x1_int = vec2(floor(screen_x1.x-0.5)+0.5, floor(screen_x1.y-0.5)+0.5); // rounded
 	vec2 screen_x1_int_uv = screen_x1_int * SCREEN_PIXEL_SIZE;
 	
-	float xw = screen_x1.x - screen_x1_int.x;
-	float yw = screen_x1.y - screen_x1_int.y;
+	float xw = mix(screen_x1.x - screen_x1_int.x, smoothstep(0., 1., screen_x1.x - screen_x1_int.x), smoothness);
+	float yw = mix(screen_x1.y - screen_x1_int.y, smoothstep(0., 1., screen_x1.y - screen_x1_int.y), smoothness);
 	vec4 dreamrect_uv = vec4(0.0, 0.0, dreamsize_uv);
 	
 	COLOR.rgb = get_uncached_blended_xy_pixelcol(

@@ -2,8 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://dljmnkrefpbje" path="res://dreams/03-the-approach/appr_tiles.tres" id="1_m3xiq"]
 [ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_atecq"]
-[ext_resource type="Script" uid="uid://cbxo881dfuc5h" path="res://navdi/dreamycamerarect.gd" id="3_7tcl3"]
 [ext_resource type="Script" uid="uid://ch4qajxa11man" path="res://dreams/03-the-approach/^robots_twitching.gd" id="3_dhref"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="4_6ughl"]
 [ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="4_atecq"]
 [ext_resource type="Texture2D" uid="uid://r0kfqkl14jln" path="res://dreams/03-the-approach/approach.pyxel" id="4_bv42t"]
 [ext_resource type="Script" uid="uid://b64hu8yvkwfop" path="res://dreams/03-the-approach/player.gd" id="4_wy5da"]
@@ -39,7 +39,7 @@ script = ExtResource("3_dhref")
 offset_top = -100.0
 offset_right = 230.0
 offset_bottom = 110.0
-script = ExtResource("3_7tcl3")
+script = ExtResource("4_6ughl")
 
 [node name="player" type="Node2D" parent="."]
 position = Vector2(36, 95)

@@ -7,18 +7,33 @@
 shader = ExtResource("2_bnhc7")
 shader_parameter/zoom = 4.0
 shader_parameter/dreamsize = Vector2(100, 100)
+shader_parameter/smoothness = 0.0
 
 [node name="NavdiViewer" type="Node"]
 script = ExtResource("1_5ree7")
 metadata/_custom_type_script = "uid://cj0dqrn1iwa8n"
+
+[node name="ViewCamera" type="Camera2D" parent="."]
+anchor_mode = 0
 
 [node name="ViewShaderLayer" type="CanvasLayer" parent="."]
 layer = 5
 
 [node name="ViewShaderRect" type="ColorRect" parent="ViewShaderLayer"]
 material = SubResource("ShaderMaterial_mgv8c")
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ViewCamera" type="Camera2D" parent="ViewShaderLayer"]
-anchor_mode = 0
+[node name="BgLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="BgRect" type="ColorRect" parent="BgLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
