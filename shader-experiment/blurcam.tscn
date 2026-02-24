@@ -9,8 +9,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ue42q"]
 shader = ExtResource("5_rccqv")
-shader_parameter/blur_amount = 1.93200009107148
-shader_parameter/zoom = 10.3410004674475
+shader_parameter/blur_amount = 1.81700008560898
+shader_parameter/zoom = 9.24800041553
 shader_parameter/dreamsize = Vector2(100, 100)
 
 [sub_resource type="Gradient" id="Gradient_ue42q"]
