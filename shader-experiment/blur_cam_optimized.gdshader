@@ -1,7 +1,6 @@
 shader_type canvas_item;
 
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
-uniform float blur_amount : hint_range(0.01, 3.0) = 0.2;
 uniform float zoom : hint_range(0.5, 100.0) = 4.0;
 uniform vec2 dreamsize = vec2(100.0, 100.0);
 
@@ -10,9 +9,7 @@ vec3 valueInsideRect(vec2 p, vec4 rect, vec3 insideColor)
     float inX = step(rect.x, p.x) * step(p.x, rect.z);
     float inY = step(rect.y, p.y) * step(p.y, rect.w);
     float inside = inX * inY;   // 1.0 if inside, 0.0 if outside
-	
 	return inside * insideColor; // black (0,0,0) outside
-    return mix(vec3(1.0,1.0,1.0), insideColor, inside); // custom outside: white (1,1,1)
 }
 
 vec3 blend4(vec3[4] colours, float xw, float yw) {
@@ -21,15 +18,6 @@ vec3 blend4(vec3[4] colours, float xw, float yw) {
 		mix(colours[2], colours[3], xw),
 		yw
 	);
-}
-int get_idx(int x, int y) { return y*10 + x; }
-vec3 get_blended_pixel_xy(vec3[100] colours, int x, int y, float xw, float yw) {
-	return blend4({
-		colours[get_idx(x-4,y-4)],
-		colours[get_idx(x-3,y-4)],
-		colours[get_idx(x-4,y-3)],
-		colours[get_idx(x-3,y-3)]},
-	xw,yw);
 }
 vec3 get_uncached_blended_xy_pixelcol(
 	sampler2D screen_texture,
@@ -67,20 +55,7 @@ void fragment() {
 	float yw = smoothstep(0., 1., screen_x1.y - screen_x1_int.y);
 	vec4 dreamrect_uv = vec4(0.0, 0.0, dreamsize_uv);
 	
-	vec3 colsum;
-	float wtotal;
-	
-	for(int x = -3; x <= 3; x++)
-	for(int y = -3; y <= 3; y++) {
-		float xdist = abs(float(x));
-		float ydist = abs(float(y));
-		//float w = 0.1 / (0.1 + max(xdist,ydist) * blur_amount);
-		float w = step(max(xdist,ydist),0.);
-		colsum += get_uncached_blended_xy_pixelcol(
-			SCREEN_TEXTURE, screen_x1_int_uv + vec2(float(x),float(y)) * SCREEN_PIXEL_SIZE, dreamrect_uv,
-			SCREEN_PIXEL_SIZE, xw, yw) * w;
-		wtotal += w;
-	}
-	
-	COLOR.rgb = colsum / wtotal;
+	COLOR.rgb = get_uncached_blended_xy_pixelcol(
+		SCREEN_TEXTURE, screen_x1_int_uv, dreamrect_uv,
+		SCREEN_PIXEL_SIZE, xw, yw);
 }
