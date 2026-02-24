@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://bkaaf6l2tii0h" path="res://dreams/04-starrysky/stars.pyxel" id="1_wlvc2"]
 [ext_resource type="Script" uid="uid://deqo50der2us2" path="res://shader-experiment/destroy_effects.gd" id="2_i28n7"]
 [ext_resource type="Script" uid="uid://4pnvju1132ns" path="res://shader-experiment/traveller.gd" id="3_rccqv"]
-[ext_resource type="Shader" uid="uid://b00x6e1ygrtta" path="res://shader-experiment/blur_and_cam_in_one.gdshader" id="3_txx2p"]
 [ext_resource type="Script" uid="uid://mldx7ig2perd" path="res://shader-experiment/^show_on_ready.gd" id="5_avtof"]
+[ext_resource type="Shader" uid="uid://bl4w6msv1ysb7" path="res://shader-experiment/blur_cam_2.gdshader" id="5_rccqv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ue42q"]
-shader = ExtResource("3_txx2p")
-shader_parameter/blur_amount = 1.0
-shader_parameter/zoom = 75.126003544735
-shader_parameter/dreamsize = Vector2(50, 50)
+shader = ExtResource("5_rccqv")
+shader_parameter/blur_amount = 1.93200009107148
+shader_parameter/zoom = 10.3410004674475
+shader_parameter/dreamsize = Vector2(100, 100)
 
 [sub_resource type="Gradient" id="Gradient_ue42q"]
 colors = PackedColorArray(0, 1, 0, 1, 1, 0, 0, 1)
@@ -26,6 +26,7 @@ fill_to = Vector2(1, 1)
 texture_filter = 1
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(5, 32)
 texture = ExtResource("1_ue42q")
 
@@ -51,7 +52,6 @@ anchor_mode = 0
 script = ExtResource("2_i28n7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="blur_and_cam_in_one" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_ue42q")
