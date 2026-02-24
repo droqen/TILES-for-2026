@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfy80ijyf5q36"]
+
+[ext_resource type="Script" uid="uid://cj0dqrn1iwa8n" path="res://navdi/navdiviewer.gd" id="1_5ree7"]
+[ext_resource type="Shader" uid="uid://b3r8p6pj81br3" path="res://navdi/navdiviewer_default.gdshader" id="2_bnhc7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgv8c"]
+shader = ExtResource("2_bnhc7")
+shader_parameter/zoom = 4.0
+shader_parameter/dreamsize = Vector2(100, 100)
+
+[node name="NavdiViewer" type="Node"]
+script = ExtResource("1_5ree7")
+metadata/_custom_type_script = "uid://cj0dqrn1iwa8n"
+
+[node name="ViewShaderLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="ViewShaderRect" type="ColorRect" parent="ViewShaderLayer"]
+material = SubResource("ShaderMaterial_mgv8c")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ViewCamera" type="Camera2D" parent="ViewShaderLayer"]
+anchor_mode = 0

@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://c1ovglsecpdrk"]
+[gd_scene load_steps=14 format=4 uid="uid://c1ovglsecpdrk"]
 
 [ext_resource type="Texture2D" uid="uid://bvrb62m5e1pve" path="res://icon.svg" id="1_ue42q"]
 [ext_resource type="Texture2D" uid="uid://bkaaf6l2tii0h" path="res://dreams/04-starrysky/stars.pyxel" id="1_wlvc2"]
-[ext_resource type="Script" uid="uid://deqo50der2us2" path="res://shader-experiment/destroy_effects.gd" id="2_i28n7"]
 [ext_resource type="Script" uid="uid://4pnvju1132ns" path="res://shader-experiment/traveller.gd" id="3_rccqv"]
 [ext_resource type="Script" uid="uid://mldx7ig2perd" path="res://shader-experiment/^show_on_ready.gd" id="5_avtof"]
 [ext_resource type="TileSet" uid="uid://taux3hdvou7p" path="res://dreams/00-grid/00grid_tiles.tres" id="5_dyli2"]
@@ -14,7 +13,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ue42q"]
 shader = ExtResource("6_f0lba")
-shader_parameter/zoom = 2.00000007125
+shader_parameter/zoom = 4.00000016625
 shader_parameter/dreamsize = Vector2(100, 100)
 
 [sub_resource type="Gradient" id="Gradient_ue42q"]
@@ -60,10 +59,8 @@ texture = ExtResource("1_ue42q")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="destroy_effects" type="Node" parent="."]
-script = ExtResource("2_i28n7")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="blur_and_cam_in_one" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_ue42q")

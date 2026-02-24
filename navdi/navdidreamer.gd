@@ -1,25 +1,14 @@
 extends Node
 class_name NavdiDreamer
 
-signal zoom_changed(z)
-@export var cam : CameraForDreaming
-
-var initialized : bool = false
 var dream_stack : Array[NavdiDream] = []
 var dream_depth : int = -1
 
 var _memory_stack : Array[Dictionary]
 
-func _process(_delta: float) -> void:
-	if !initialized:
-		if !cam:
-			cam = CameraForDreaming.new()
-		if !cam.is_inside_tree():
-			if !is_instance_valid(cam):
-				cam = CameraForDreaming.new()
-			self.add_child(cam)
-		cam.zoomease.value_changed.connect(zoom_changed.emit)
-		initialized = true
+@onready var viewer : NavdiViewer = spawn(
+	preload("res://navdi/navdiviewer_default.tscn"),
+	self).n
 
 func w(k,v,d:NavdiDream=null):
 	prints("w",k,v,d)
