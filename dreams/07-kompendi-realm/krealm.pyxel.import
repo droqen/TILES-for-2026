@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://dbw5i2wqw1nal"
+path="res://.godot/imported/krealm.pyxel-d65da9ca1be927acded5980cbd253327.res"
+
+[deps]
+
+source_file="res://dreams/07-kompendi-realm/krealm.pyxel"
+dest_files=["res://.godot/imported/krealm.pyxel-d65da9ca1be927acded5980cbd253327.res"]
+
+[params]
+

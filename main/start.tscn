@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgjpyp64ooiss"]
+[gd_scene load_steps=4 format=3 uid="uid://dgjpyp64ooiss"]
 
 [ext_resource type="Script" uid="uid://cfturempj36s7" path="res://main/start.gd" id="1_8blt0"]
-[ext_resource type="Resource" uid="uid://bj81gl1vu137h" path="res://dreams/05-Gallery/05GalleryDream.tres" id="2_tfodg"]
+[ext_resource type="Resource" uid="uid://dmwhq0850il5u" path="res://dreams/06-brightgreenmenu/06-brightgreenmenu_Dream.tres" id="2_tfodg"]
+[ext_resource type="Resource" uid="uid://dqj6ld78ndcob" path="res://dreams/07-kompendi-realm/07-kompendi-realm_Dream.tres" id="3_c8l3o"]
 
 [node name="Start" type="Node"]
 script = ExtResource("1_8blt0")
-first_dream = ExtResource("2_tfodg")
+editor_dream = ExtResource("2_tfodg")
+first_dream = ExtResource("3_c8l3o")

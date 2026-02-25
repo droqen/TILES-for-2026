@@ -1,22 +1,27 @@
 extends Node
 
+const DIR_R = &"right"
+const DIR_L = &"left"
+const DIR_D = &"down"
+const DIR_U = &"up"
+
 func _ready() -> void:
 	setup_defaults()
 
 func get_dpad() -> Vector2i:
 	return Vector2i(
-		(1 if Input.is_action_pressed("right") else 0)-
-		(1 if Input.is_action_pressed("left") else 0),
-		(1 if Input.is_action_pressed("down") else 0)-
-		(1 if Input.is_action_pressed("up") else 0)
+		(1 if Input.is_action_pressed(DIR_R) else 0)-
+		(1 if Input.is_action_pressed(DIR_L) else 0),
+		(1 if Input.is_action_pressed(DIR_D) else 0)-
+		(1 if Input.is_action_pressed(DIR_U) else 0)
 	)
 
 func get_dpad_tap() -> Vector2i:
 	return Vector2i(
-		(1 if Input.is_action_just_pressed("right") else 0)-
-		(1 if Input.is_action_just_pressed("left") else 0),
-		(1 if Input.is_action_just_pressed("down") else 0)-
-		(1 if Input.is_action_just_pressed("up") else 0)
+		(1 if Input.is_action_just_pressed(DIR_R) else 0)-
+		(1 if Input.is_action_just_pressed(DIR_L) else 0),
+		(1 if Input.is_action_just_pressed(DIR_D) else 0)-
+		(1 if Input.is_action_just_pressed(DIR_U) else 0)
 	)
 
 func get_action_hit() -> bool: return Input.is_action_just_pressed("action")
@@ -31,10 +36,10 @@ func get_cancel_held() -> bool: return Input.is_action_pressed("cancel")
 
 
 func setup_defaults():
-	setup_action_button("up",    [KEY_UP, KEY_W], [JOY_BUTTON_DPAD_UP], [JOY_AXIS_LEFT_Y], [-1])
-	setup_action_button("left",  [KEY_LEFT, KEY_A], [JOY_BUTTON_DPAD_LEFT], [JOY_AXIS_LEFT_X], [-1])
-	setup_action_button("down",  [KEY_DOWN, KEY_S], [JOY_BUTTON_DPAD_DOWN], [JOY_AXIS_LEFT_Y], [1])
-	setup_action_button("right", [KEY_RIGHT, KEY_D], [JOY_BUTTON_DPAD_RIGHT], [JOY_AXIS_LEFT_X], [1])
+	setup_action_button(DIR_U,    [KEY_UP, KEY_W], [JOY_BUTTON_DPAD_UP], [JOY_AXIS_LEFT_Y], [-1])
+	setup_action_button(DIR_L,  [KEY_LEFT, KEY_A], [JOY_BUTTON_DPAD_LEFT], [JOY_AXIS_LEFT_X], [-1])
+	setup_action_button(DIR_D,  [KEY_DOWN, KEY_S], [JOY_BUTTON_DPAD_DOWN], [JOY_AXIS_LEFT_Y], [1])
+	setup_action_button(DIR_R, [KEY_RIGHT, KEY_D], [JOY_BUTTON_DPAD_RIGHT], [JOY_AXIS_LEFT_X], [1])
 	
 	setup_action_button("jump", [KEY_UP, KEY_W, KEY_Z, KEY_SPACE, KEY_ENTER],
 		[JOY_BUTTON_A], [JOY_AXIS_LEFT_Y], [-1])

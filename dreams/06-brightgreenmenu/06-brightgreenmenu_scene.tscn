@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://vx3uwrubfjuy"]
+
+[ext_resource type="Script" uid="uid://bi3oo5ma8rr87" path="res://dreams/06-brightgreenmenu/menu.gd" id="2_il7p1"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_21mrn"]
+
+[node name="06-brightgreenmenu" type="Node2D"]
+
+[node name="View" type="ReferenceRect" parent="."]
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("5_21mrn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.53333336, 0.8666667, 0.8, 1)
+bbcode_enabled = true
+text = "test
+test"
+fit_content = true
+script = ExtResource("2_il7p1")

@@ -121,3 +121,9 @@ class HandledNodeSpawn:
 		else:
 			push_error("setup_varvals failed ; n %s is not Object" % n)
 		return self
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed:
+		if (event as InputEventKey).keycode == KEY_ESCAPE:
+			if OS.has_feature("editor"):
+				wake()

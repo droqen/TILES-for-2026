@@ -23,7 +23,7 @@ Viewer="*res://navdi/navdiviewer_default.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/pyxel_import/plugin.cfg")
+enabled=PackedStringArray("res://addons/navdi_dreamweaver/plugin.cfg", "res://addons/pyxel_import/plugin.cfg")
 
 [rendering]
 

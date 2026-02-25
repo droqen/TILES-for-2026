@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=4 uid="uid://b3g46jr1mjqyw"]
+
+[ext_resource type="TileSet" uid="uid://1nf2tmyriaxa" path="res://dreams/07-kompendi-realm/krealm_tiles.tres" id="1_tkdq1"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_hqvee"]
+[ext_resource type="Texture2D" uid="uid://dbw5i2wqw1nal" path="res://dreams/07-kompendi-realm/krealm.pyxel" id="3_hqvee"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_qmh35"]
+[ext_resource type="Script" uid="uid://bdcc61sclmaw" path="res://dreams/07-kompendi-realm/selector.gd" id="3_ssiyk"]
+[ext_resource type="Resource" uid="uid://b3d1wqildictq" path="res://dreams/07-kompendi-realm/krealm_sheet.tres" id="4_ssiyk"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_e73ct"]
+[ext_resource type="AudioStream" uid="uid://bin4g7j3pc7n3" path="res://dreams/07-kompendi-realm/ping.mp3" id="8_ssiyk"]
+
+[node name="07-kompendi-realm" type="Node2D"]
+
+[node name="Maze" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAAAAAQAAAABAAAAAAAAAAUAAAACAAAAAAAAAAYAAAABAAAAAAAAAAgAAAACAAAAAAAAAAkAAAAAAAAAAAABAAAAAAABAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAABAAMAAAABAAAAAAABAAQAAAABAAAAAAABAAUAAAABAAAAAAABAAYAAAABAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAACAAEAAAACAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAYAAAACAAAAAAACAAcAAAAAAAAAAAACAAgAAAABAAAAAAACAAkAAAACAAAAAAADAAAAAAAAAAAAAAADAAIAAAACAAAAAAADAAMAAAAAAAAAAAADAAQAAAACAAAAAAADAAUAAAACAAAAAAADAAYAAAABAAAAAAADAAcAAAACAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAAAAAAEAAAAAAABAAAAAAAEAAEAAAACAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAABAAAAAAAEAAYAAAACAAAAAAAEAAcAAAAAAAAAAAAEAAkAAAACAAAAAAAFAAMAAAABAAAAAAAFAAYAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAIAAAABAAAAAAAGAAQAAAAAAAAAAAAGAAcAAAACAAAAAAAGAAkAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAACAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAACAAAAAAAHAAUAAAACAAAAAAAHAAYAAAABAAAAAAAHAAcAAAABAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAABAAAAAAAIAAIAAAACAAAAAAAIAAMAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAkAAAACAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAABAAAAAAAJAAIAAAABAAAAAAAJAAMAAAACAAAAAAAJAAUAAAACAAAAAAAJAAgAAAACAAAAAAAJAAkAAAACAAAAAAAAAAEAAAABAAAAAAAAAAcAAAACAAAAAAABAAcAAAACAAAAAAACAAAAAAAAAAAAAAACAAIAAAABAAAAAAACAAUAAAABAAAAAAADAAEAAAABAAAAAAAEAAIAAAABAAAAAAAEAAgAAAAAAAAAAAAFAAAAAAABAAAAAAAFAAEAAAACAAAAAAAFAAIAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAACAAAAAAAFAAcAAAACAAAAAAAFAAkAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAABAAAAAAAGAAMAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAYAAAACAAAAAAAGAAgAAAAAAAAAAAAIAAAAAAABAAAAAAAIAAEAAAAAAAAAAAAIAAQAAAACAAAAAAAIAAYAAAACAAAAAAAIAAgAAAACAAAAAAAJAAQAAAABAAAAAAAJAAYAAAABAAAAAAAJAAcAAAACAAAAAAA=")
+tile_set = ExtResource("1_tkdq1")
+navigation_enabled = false
+script = ExtResource("2_hqvee")
+
+[node name="FlashLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_tkdq1")
+navigation_enabled = false
+script = ExtResource("2_hqvee")
+
+[node name="selector" type="Node2D" parent="."]
+position = Vector2(50, 50)
+script = ExtResource("3_ssiyk")
+
+[node name="Spr" type="Sprite2D" parent="selector"]
+texture = ExtResource("3_hqvee")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_qmh35")
+sheet = ExtResource("4_ssiyk")
+frames = PackedInt32Array(10, 11, 12)
+ani_period = 10
+
+[node name="pings" type="Node" parent="selector"]
+
+[node name="ping" type="AudioStreamPlayer" parent="selector/pings"]
+stream = ExtResource("8_ssiyk")
+
+[node name="ping2" type="AudioStreamPlayer" parent="selector/pings"]
+stream = ExtResource("8_ssiyk")
+
+[node name="ping3" type="AudioStreamPlayer" parent="selector/pings"]
+stream = ExtResource("8_ssiyk")
+
+[node name="ping4" type="AudioStreamPlayer" parent="selector/pings"]
+stream = ExtResource("8_ssiyk")
+
+[node name="View" type="ReferenceRect" parent="."]
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("5_e73ct")

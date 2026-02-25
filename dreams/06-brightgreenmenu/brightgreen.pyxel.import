@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://cfmvvbejv6hpt"
+path="res://.godot/imported/brightgreen.pyxel-dd3d3fcfe73a9b2781444a36660a6b3d.res"
+
+[deps]
+
+source_file="res://dreams/06-brightgreenmenu/brightgreen.pyxel"
+dest_files=["res://.godot/imported/brightgreen.pyxel-dd3d3fcfe73a9b2781444a36660a6b3d.res"]
+
+[params]
+
