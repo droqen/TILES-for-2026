@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://dyu82vax2oyt1"
+path="res://.godot/imported/hellscraper.pyxel-1fd068cf23aeba1e6cb7ce61ad0138fb.res"
+
+[deps]
+
+source_file="res://dreams/08-hell-skyscraper/hellscraper.pyxel"
+dest_files=["res://.godot/imported/hellscraper.pyxel-1fd068cf23aeba1e6cb7ce61ad0138fb.res"]
+
+[params]
+
