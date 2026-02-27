@@ -107,8 +107,8 @@ func submenu_string(items:Array[MenuItem],c:int,window:int,use_bbcodename:bool=f
 	var s:String = ''
 	@warning_ignore("integer_division")
 	var mi = c - window/2 # floor
-	if mi + window >= len(items):
-		mi = len(items) - window - 1
+	if mi + window - 1 >= len(items):
+		mi = len(items) - window
 	if mi < 0: mi = 0
 	for i in range(mi,mi+window):
 		s += "\n"
@@ -124,7 +124,7 @@ func submenu_string(items:Array[MenuItem],c:int,window:int,use_bbcodename:bool=f
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		var key_char: String = char(event.unicode) if event.unicode else ''
-		if key_char.length() == 1:
+		if key_char.length() == 1 and key_char != ' ':
 			if !event.shift_pressed: key_char = key_char.to_lower()
 			searchstring += key_char
 		else:
@@ -139,9 +139,9 @@ func _input(event: InputEvent) -> void:
 				KEY_RIGHT, KEY_PAGEDOWN: dy = 5
 				KEY_ENTER:
 					if searchstring:
-						if searchresults:
+						if searchresults and searchcursor >= 0:
 							Dreamer.dream(searchresults[searchcursor].dream)
-					else:
+					elif cursor >= 0:
 						Dreamer.dream(menu[cursor].dream)
 			if dy:
 				if searchstring:

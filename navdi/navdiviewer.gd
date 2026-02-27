@@ -21,10 +21,12 @@ func _follow(r:NavdiViewRect) -> void:
 	if following_viewrect != r:
 		if following_viewrect:
 			close_eyes()
-			following_viewrect = null
+			following_viewrect.moved.disconnect(update_following)
 			following_viewrect.tree_exiting.disconnect(close_eyes)
+			following_viewrect = null
 		following_viewrect = r
 		if is_instance_valid(following_viewrect):
+			following_viewrect.moved.connect(update_following)
 			following_viewrect.tree_exiting.connect(close_eyes)
 	if is_instance_valid(following_viewrect):
 		update_following()
