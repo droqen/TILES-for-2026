@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://0u463j5ahmjm"]
+[gd_scene load_steps=11 format=4 uid="uid://0u463j5ahmjm"]
 
 [ext_resource type="TileSet" uid="uid://eb8etddu8pqs" path="res://dreams/08-hell-skyscraper/hellscraper_tiles.tres" id="1_2hvrm"]
 [ext_resource type="Script" uid="uid://e22cphi0ub30" path="res://dreams/08-hell-skyscraper/08_hell_skyscraper_scene.gd" id="1_ytuvg"]
@@ -8,7 +8,6 @@
 [ext_resource type="Resource" uid="uid://rhgwh42phdvm" path="res://dreams/08-hell-skyscraper/hellscraper_sheet.tres" id="4_kqlmn"]
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_2v85a"]
 [ext_resource type="Script" uid="uid://dr14xx4nmv4xp" path="res://dreams/08-hell-skyscraper/hellplayer.gd" id="6_ytuvg"]
-[ext_resource type="AudioStream" uid="uid://bujut2nts4ibq" path="res://dreams/08-hell-skyscraper/hellscraper.ogg" id="7_7b3e8"]
 [ext_resource type="FontVariation" uid="uid://dxacsefvd7ebq" path="res://fonts/44_shortvariation.tres" id="9_2v85a"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ytuvg"]
@@ -54,7 +53,3 @@ offset_right = 81.0
 offset_bottom = 28.0
 text = "40122"
 label_settings = SubResource("LabelSettings_ytuvg")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_7b3e8")
-autoplay = true
