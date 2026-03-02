@@ -7,6 +7,13 @@ const HEADERS : PackedStringArray = ["Content-Type: application/json"]
 
 var last_played_url:String = ''
 
+func _ready() -> void:
+	print("clientside NavdiBeeper initialized!")
+	if OS.has_feature("editor"):
+		print("remember to launch the local beepbox puppet!")
+		print("> cd ~/beepboxpuppet")
+		print("> HEADFUL=1 node server2.mjs")
+
 func _physics_process(_delta: float) -> void:
 	var topbeep = get_tree().get_first_node_in_group(BEEPER_BEEP_GROUP)
 	if topbeep: play(topbeep.get_beepbox_url())
@@ -35,8 +42,8 @@ func _send_request(url : String, keys : Dictionary = {}) -> void:
 		push_error("NavdiBeeper error %s = %s" % [url, err])
 
 func _on_request_completed(
-	_result: int,
+	result: int,
 	_response_code: int,
 	_headers: PackedStringArray,
 	_body: PackedByteArray) -> void:
-	pass
+	print(result)
