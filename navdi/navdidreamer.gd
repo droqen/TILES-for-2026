@@ -90,9 +90,8 @@ func spawn(node_or_packed, parent : Node = null) -> HandledNodeSpawn:
 			% [node_or_packed, parent])
 	return hns
 
-func log(logmessage:String) -> void:
-	print(logmessage)
-	NavdiViewer.log(self,logmessage)
+func navdilog(key:String,value:String) -> void:
+	NavdiViewer.navdilog(self,key,value)
 
 func _add_to_and_own(ch:Node, par:Node) -> void:
 	par.add_child(ch)
