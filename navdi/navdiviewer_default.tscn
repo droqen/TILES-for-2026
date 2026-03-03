@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfy80ijyf5q36"]
+[gd_scene load_steps=6 format=3 uid="uid://bfy80ijyf5q36"]
 
 [ext_resource type="Script" uid="uid://cj0dqrn1iwa8n" path="res://navdi/navdiviewer.gd" id="1_5ree7"]
 [ext_resource type="Shader" uid="uid://b3r8p6pj81br3" path="res://navdi/navdiviewer_default.gdshader" id="2_bnhc7"]
 [ext_resource type="Script" uid="uid://c2yvtniw1b2pr" path="res://navdi/navdibeeper.gd" id="3_kp0i0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mr1v1"]
+line_spacing = -8.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mgv8c"]
 shader = ExtResource("2_bnhc7")
 shader_parameter/zoom = 4.0
 shader_parameter/dreamsize = Vector2(100, 100)
 shader_parameter/smoothness = 0.0
+shader_parameter/read_offset = Vector2(0, 0)
 
 [node name="NavdiViewer" type="Node"]
 script = ExtResource("1_5ree7")
@@ -20,6 +24,15 @@ metadata/_custom_type_script = "uid://c2yvtniw1b2pr"
 
 [node name="ViewCamera" type="Camera2D" parent="."]
 anchor_mode = 0
+
+[node name="UiLayer" type="CanvasLayer" parent="."]
+layer = 15
+
+[node name="Log" type="Label" parent="UiLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "(debug log messages go here)"
+label_settings = SubResource("LabelSettings_mr1v1")
 
 [node name="ViewShaderLayer" type="CanvasLayer" parent="."]
 layer = 5

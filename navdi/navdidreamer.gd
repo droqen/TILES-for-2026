@@ -90,6 +90,10 @@ func spawn(node_or_packed, parent : Node = null) -> HandledNodeSpawn:
 			% [node_or_packed, parent])
 	return hns
 
+func log(logmessage:String) -> void:
+	print(logmessage)
+	NavdiViewer.log(self,logmessage)
+
 func _add_to_and_own(ch:Node, par:Node) -> void:
 	par.add_child(ch)
 	ch.owner = par.owner if par.owner else par

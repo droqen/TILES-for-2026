@@ -13,6 +13,10 @@ var following_viewrect:NavdiViewRect = null
 var view_shader : ShaderMaterial :
 	get : return $ViewShaderLayer/ViewShaderRect.material as ShaderMaterial
 
+static func log(n:Node,s:String) -> void:
+	var viewer:NavdiViewer = n.get_tree(
+	).get_first_node_in_group(GROUP)
+	if viewer: viewer._log(s)
 static func follow(r:NavdiViewRect) -> void:
 	var viewer:NavdiViewer = r.get_tree(
 	).get_first_node_in_group(GROUP)
@@ -59,3 +63,9 @@ func close_eyes() -> void:
 func calculate_fitscale(pondsize:Vector2,fishsize:Vector2) -> float:
 	#print( min(pondsize.x/fishsize.x,pondsize.y/fishsize.y,) )
 	return min(pondsize.x/fishsize.x,pondsize.y/fishsize.y,)
+
+var _logarray:Array[String]
+func _log(s:String) -> void:
+	_logarray.append(s)
+	if len(_logarray) >= 10: _logarray.pop_front()
+	$UiLayer/Log.text = "\n".join(_logarray)

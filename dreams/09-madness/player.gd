@@ -6,6 +6,7 @@ func _ready() -> void:
 	)
 
 func _physics_process(_delta: float) -> void:
+	Dreamer.log(str(position))
 	var dpad := Pin.get_dpad()
 	facedir = dpad.x
 	if Pin.get_jump_hit(): bufs.on(JUMPBUF)
