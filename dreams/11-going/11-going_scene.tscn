@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://r0dpp1jmmsqj"]
+
+[ext_resource type="TileSet" uid="uid://b8lnbpam46iyv" path="res://dreams/11-going/going_tiles.tres" id="1_ck6sj"]
+[ext_resource type="Texture2D" uid="uid://bdmj4d8wg0juq" path="res://dreams/11-going/going.pyxel" id="1_yd7kr"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_yd7kr"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_b3aoh"]
+[ext_resource type="Resource" uid="uid://dbyccy4h8vcut" path="res://dreams/11-going/going_sheet.tres" id="4_ekijx"]
+[ext_resource type="Script" uid="uid://dqxvqgtwnre4i" path="res://dreams/11-going/^some_flickering.gd" id="4_vcmgq"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_vcmgq"]
+[ext_resource type="FontFile" uid="uid://box70xu60paqv" path="res://fonts/font44mono.ttf" id="7_b3aoh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekijx"]
+line_spacing = -7.0
+font = ExtResource("7_b3aoh")
+
+[node name="11-going" type="Node2D"]
+
+[node name="Going" type="Sprite2D" parent="."]
+texture = ExtResource("1_yd7kr")
+centered = false
+
+[node name="Maze" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 14, 0, 9, 0, 0, 0, 0, 0, 4, 0, 0, 0, 15, 0, 9, 0, 0, 0, 0, 0, 4, 0, 0, 0)
+tile_set = ExtResource("1_ck6sj")
+navigation_enabled = false
+script = ExtResource("2_yd7kr")
+
+[node name="^some_flickering" type="Node" parent="Maze"]
+script = ExtResource("4_vcmgq")
+
+[node name="Spr" type="Sprite2D" parent="."]
+position = Vector2(188, 95)
+texture = ExtResource("1_yd7kr")
+hframes = 19
+vframes = 15
+frame = 185
+script = ExtResource("3_b3aoh")
+sheet = ExtResource("4_ekijx")
+frames = PackedInt32Array(185, 186)
+ani_period = 10
+
+[node name="View" type="ReferenceRect" parent="."]
+offset_right = 190.0
+offset_bottom = 150.0
+script = ExtResource("5_vcmgq")
+
+[node name="Label" type="Label" parent="."]
+offset_top = 24.0
+offset_right = 195.0
+offset_bottom = 47.0
+text = "            longing."
+label_settings = SubResource("LabelSettings_ekijx")

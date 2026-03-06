@@ -51,7 +51,7 @@ func _on_pyxel_selected(path:String) -> void:
 			new_atlas.texture_region_size = Vector2i(10,10)
 			var grid_size = new_atlas.get_atlas_grid_size()
 			if grid_size != Vector2i(10,10):
-				push_warning("atlas is not 10x10 tiles; ",pyxel_resource," should be 100x100 and it's not.")
+				push_warning("atlas is not 10x10 tiles; ",pyxel_resource," usually expects 100x100.")
 			for y in range(grid_size.y):
 				for x in range(grid_size.x):
 					new_atlas.create_tile(Vector2i(x,y))

@@ -7,7 +7,8 @@ var dream_depth : int = -1
 var _memory_stack : Array[Dictionary]
 
 func w(k,v,d:NavdiDream=null):
-	prints("w",k,v,d)
+	#prints("w",k,v,d)
+	navdilog(k,str(v))
 	if dream_depth < 0:
 		push_error("dream depth is -1, meaning Dreamer has not been initiated - w (write) does not work")
 	elif d == null:
@@ -20,11 +21,13 @@ func w(k,v,d:NavdiDream=null):
 		else:
 			push_error("dream %s is undreamt - w (write) does not work on dreams not currently in the dream stack")
 func r(k,d=null):
-	print("r",k)
+	#print("r",k)
 	for i in range(0,dream_depth+1):
 		if _memory_stack[i].has(k):
 			prints("hello i has:", _memory_stack[i][k])
+			navdilog(k, str(_memory_stack[i][k]) + " (read)")
 			return _memory_stack[i][k]
+	navdilog(k,str(d) + " (default)")
 	return d
 func first(k)->bool:
 	if r(k)==null: w(k,1); return true;

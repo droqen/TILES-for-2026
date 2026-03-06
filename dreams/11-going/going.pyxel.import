@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://bdmj4d8wg0juq"
+path="res://.godot/imported/going.pyxel-8c34c398098fb5a6a33c32aa75cee84e.res"
+
+[deps]
+
+source_file="res://dreams/11-going/going.pyxel"
+dest_files=["res://.godot/imported/going.pyxel-8c34c398098fb5a6a33c32aa75cee84e.res"]
+
+[params]
+
