@@ -31,10 +31,8 @@ func setup_basic_child_nodes(
 	return self
 
 func _ready() -> void:
-	push_error("Hey you should override _ready; call setup_basic_child_nodes() manually")
-	setup_basic_child_nodes(
-		#"spr","mover","mover/solidcast"
-	)
+	super._ready()
+	setup_basic_child_nodes()
 
 func tow_vx(
 	dir:int,

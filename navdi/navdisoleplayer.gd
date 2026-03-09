@@ -1,9 +1,10 @@
 extends Node2D
 class_name NavdiSolePlayer
 const GROUP_NAME : String = "__NSP"
-static func GetPlayer(node_in_tree:Node):
+static func GetPlayer(node_in_tree:Node) -> NavdiSolePlayer:
 	var player = node_in_tree.get_tree().get_first_node_in_group(GROUP_NAME)
 	if is_instance_valid(player): return player # else null
+	return null
 static var player_position_set_to = null
 static func SetPosition(node_in_tree:Node, pos:Vector2):
 	var player = GetPlayer(node_in_tree)

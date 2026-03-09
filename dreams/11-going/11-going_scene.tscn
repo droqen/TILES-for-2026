@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://r0dpp1jmmsqj"]
+[gd_scene load_steps=15 format=3 uid="uid://r0dpp1jmmsqj"]
 
 [ext_resource type="TileSet" uid="uid://b8lnbpam46iyv" path="res://dreams/11-going/going_tiles.tres" id="1_ck6sj"]
 [ext_resource type="Texture2D" uid="uid://bdmj4d8wg0juq" path="res://dreams/11-going/going.pyxel" id="1_yd7kr"]
@@ -6,8 +6,15 @@
 [ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_b3aoh"]
 [ext_resource type="Resource" uid="uid://dbyccy4h8vcut" path="res://dreams/11-going/going_sheet.tres" id="4_ekijx"]
 [ext_resource type="Script" uid="uid://dqxvqgtwnre4i" path="res://dreams/11-going/^some_flickering.gd" id="4_vcmgq"]
+[ext_resource type="Script" uid="uid://dxfe7hfsfsq63" path="res://dreams/11-going/player_movely.gd" id="5_n46js"]
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_vcmgq"]
 [ext_resource type="FontFile" uid="uid://box70xu60paqv" path="res://fonts/font44mono.ttf" id="7_b3aoh"]
+[ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="8_tv4c8"]
+[ext_resource type="Script" uid="uid://b8sfp6pekabji" path="res://navdi/navdiareaptrigger.gd" id="9_vcmgq"]
+[ext_resource type="Script" uid="uid://dgo1f4r74grpk" path="res://navdi/trapshow.gd" id="10_1kut7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8qwy"]
+size = Vector2(10, 10)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ekijx"]
 line_spacing = -7.0
@@ -27,6 +34,28 @@ script = ExtResource("2_yd7kr")
 
 [node name="^some_flickering" type="Node" parent="Maze"]
 script = ExtResource("4_vcmgq")
+
+[node name="player_movely" type="Node2D" parent="."]
+position = Vector2(24, 75)
+script = ExtResource("5_n46js")
+
+[node name="spr" type="Sprite2D" parent="player_movely"]
+texture = ExtResource("1_yd7kr")
+hframes = 19
+vframes = 15
+frame = 185
+script = ExtResource("3_b3aoh")
+sheet = ExtResource("4_ekijx")
+frames = PackedInt32Array(185, 186)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="player_movely"]
+script = ExtResource("8_tv4c8")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="player_movely/mover"]
+shape = SubResource("RectangleShape2D_p8qwy")
+target_position = Vector2(0, 0)
 
 [node name="Spr" type="Sprite2D" parent="."]
 position = Vector2(188, 95)
@@ -50,3 +79,20 @@ offset_right = 195.0
 offset_bottom = 47.0
 text = "            longing."
 label_settings = SubResource("LabelSettings_ekijx")
+
+[node name="NavdiAreaPTrigger" type="ReferenceRect" parent="."]
+offset_left = 37.0
+offset_top = 39.0
+offset_right = 112.0
+offset_bottom = 104.0
+border_color = Color(1, 1, 1, 0.5372549)
+script = ExtResource("9_vcmgq")
+metadata/_custom_type_script = "uid://b8sfp6pekabji"
+
+[node name="Label" type="Label" parent="NavdiAreaPTrigger"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "hello"
+label_settings = SubResource("LabelSettings_ekijx")
+script = ExtResource("10_1kut7")
