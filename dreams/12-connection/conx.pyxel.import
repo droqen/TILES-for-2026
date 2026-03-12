@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://tghxg3kyooom"
+path="res://.godot/imported/conx.pyxel-6715c5e69500c154558dab7a8c0b4721.res"
+
+[deps]
+
+source_file="res://dreams/12-connection/conx.pyxel"
+dest_files=["res://.godot/imported/conx.pyxel-6715c5e69500c154558dab7a8c0b4721.res"]
+
+[params]
+
