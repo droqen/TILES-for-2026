@@ -35,8 +35,16 @@ func _on_pyxel_selected(path:String) -> void:
 		
 		var SHEET_PATHNAME = dir+filename+"_sheet.tres"
 		var TILES_PATHNAME = dir+filename+"_tiles.tres"
+		var NOTES_PATHNAME = dir+filename+"_notes.txt"
 		var SCENE_PATHNAME = dir+dirname+"_scene.tscn"
 		var DREAM_PATHNAME = dir+dirname+"_Dream.tres"
+		
+		var notes = FileAccess.open(NOTES_PATHNAME, FileAccess.WRITE)
+		if notes:
+			notes.store_string(NavdiGenUtil.gen_dreamnotes(filename))
+			notes.close()
+		else:
+			push_error("failed to create notes @ %s, err code %s" % [NOTES_PATHNAME, FileAccess.get_open_error()])
 		
 		var err
 		err = save_if_new(SHEET_PATHNAME, func():
@@ -85,7 +93,6 @@ func _on_pyxel_selected(path:String) -> void:
 			if result != OK:
 				push_error("SCENE CREATION FAILED err ",result)
 			return new_scene)
-		
 		err = save_if_new(DREAM_PATHNAME,func():
 			var new_dream = NavdiDream.new()
 			new_dream.packed_scene = ResourceLoader.load(SCENE_PATHNAME)
