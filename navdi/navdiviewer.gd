@@ -5,6 +5,8 @@ const VIEWRECTGROUPNAME : StringName = &"ViewRectGrp"
 
 signal navdilogged(k:String, v:String)
 
+const VIEWER_CAPTURES_FOLDER_PATH : String = "res://viewer_captures/"
+
 var _smoothness : float = 1.0
 @export_range(-10, 10, 0.1) var smoothness : float :
 	get : return _smoothness
@@ -66,3 +68,62 @@ func close_eyes() -> void:
 func calculate_fitscale(pondsize:Vector2,fishsize:Vector2) -> float:
 	#print( min(pondsize.x/fishsize.x,pondsize.y/fishsize.y,) )
 	return min(pondsize.x/fishsize.x,pondsize.y/fishsize.y,)
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	var keyevent := event as InputEventKey
+	if (keyevent.pressed and keyevent.get_modifiers_mask() & (
+		KeyModifierMask.KEY_MASK_META
+		)):
+		match keyevent.keycode:
+			KEY_1:
+				screenshot(true,true)
+				get_viewport().set_input_as_handled()
+			KEY_2:
+				screenshot(true)
+				get_viewport().set_input_as_handled()
+
+func timestamp() -> String:
+	var now = Time.get_datetime_dict_from_system(true)
+	return "%04d%02d%02dT%02d%02d%02dZ" % [now.year,now.month,now.day,now.hour,now.minute,now.second]
+
+func screenshot(hideui:bool=true,hidefilter:bool=false) -> void:
+	var hide_layers : Array[CanvasLayer] = []
+	if hideui and $UiLayer.visible: hide_layers.append($UiLayer)
+	if hidefilter and $ViewShaderLayer.visible: hide_layers.append($ViewShaderLayer)
+	var screenshot_filename = "%s%s_%s.png"%[
+		get_tree().current_scene.name,
+		"x1" if hidefilter else "",
+		timestamp(),
+	]
+	for layer in hide_layers: layer.hide()
+	RenderingServer.force_draw()
+	var image = get_viewport().get_texture().get_image()
+	for layer in hide_layers: layer.show()
+	RenderingServer.force_draw()
+	
+	if hidefilter:
+		image.crop(
+		int(ceil(following_viewrect.size.x)),
+		int(ceil(following_viewrect.size.y)))
+	
+	if DirAccess.open(VIEWER_CAPTURES_FOLDER_PATH) == null:
+		var err := DirAccess.make_dir_recursive_absolute(VIEWER_CAPTURES_FOLDER_PATH)
+		if err == OK:
+			var ignorefile := FileAccess.open(VIEWER_CAPTURES_FOLDER_PATH
+				.path_join(".gdignore"),FileAccess.WRITE)
+			ignorefile.close()
+			var gitignorefile := FileAccess.open(VIEWER_CAPTURES_FOLDER_PATH
+				.path_join(".gitignore"),FileAccess.WRITE)
+			gitignorefile.store_string("*")
+			gitignorefile.close()
+		else:
+			push_error("Problem making dir %s, err code: %s" % [VIEWER_CAPTURES_FOLDER_PATH, err])
+			return
+	
+	var pngpath := VIEWER_CAPTURES_FOLDER_PATH.path_join(screenshot_filename)
+	
+	var err = image.save_png(pngpath)
+	if err == OK:
+		print("pic saved @ %s" % pngpath)
+	else:
+		push_error("Problem saving pic @ %s, err code: %s" % [pngpath, err])

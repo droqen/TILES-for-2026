@@ -121,15 +121,20 @@ func submenu_string(items:Array[MenuItem],c:int,window:int,use_bbcodename:bool=f
 			else: s += "[color=#176][i]    -[/i][/color]"
 	return s
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed:
-		var key_char: String = char(event.unicode) if event.unicode else ''
+func _unhandled_key_input(event: InputEvent) -> void:
+	var keyevent := event as InputEventKey
+	if keyevent.pressed and not (keyevent.get_modifiers_mask() &
+	(KeyModifierMask.KEY_MASK_CMD_OR_CTRL |
+			KeyModifierMask.KEY_MASK_META | 
+			KeyModifierMask.KEY_MASK_CTRL |
+			KeyModifierMask.KEY_MASK_ALT)):
+		var key_char: String = char(keyevent.unicode) if keyevent.unicode else ''
 		if key_char.length() == 1 and key_char != ' ':
-			if !event.shift_pressed: key_char = key_char.to_lower()
+			if !keyevent.shift_pressed: key_char = key_char.to_lower()
 			searchstring += key_char
 		else:
 			var dy : int = 0
-			match event.keycode:
+			match keyevent.keycode:
 				KEY_BACKSPACE:
 					if searchstring:
 						searchstring = searchstring.substr(0, len(searchstring)-1)
