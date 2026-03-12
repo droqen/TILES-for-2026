@@ -9,15 +9,55 @@ class_name SheetSprite
 @export var ani_index : int = 0
 var ani_subindex : int = 0
 
-func setup(newframes : PackedInt32Array = [], newperiod : int = -1):
+func _try_change(newframes : PackedInt32Array = [], newperiod : int = -1) -> bool:
+	var changed : bool = false
 	if !newframes.is_empty() and newframes != frames:
 		frames = newframes
 		ani_index = 0
 		ani_subindex = 0
+		changed = true
 	if newperiod >= 0 and newperiod != ani_period:
 		ani_period = newperiod
 		ani_subindex = 0
+		changed = true
 	playing = (ani_period > 0 and len(frames) > 1)
+	return changed
+
+func setup(newframes : PackedInt32Array = [], newperiod : int = -1):
+	_try_change(newframes, newperiod)
+	return self
+
+func setup_forcechangeindex(newframes : PackedInt32Array = [], newperiod : int = -1,
+	change_frame_to_ani_index_dict : Dictionary = {}):
+	var next_ani : int = change_frame_to_ani_index_dict.get(frame, -1)
+	if next_ani >= 0:
+		pass
+	elif newframes[0] != frame:
+		next_ani = 0
+	elif len(newframes)>1:
+		for i in range(1, len(newframes)):
+			if newframes[i] != frame:
+				next_ani = i
+	
+	if next_ani >= 0:
+		if _try_change(newframes, newperiod):
+			ani_index = next_ani
+			frame = frames[ani_index]
+	return self
+
+func setup_trywaitformatch(newframes : PackedInt32Array = [], newperiod : int = -1,
+	frames_to_match : PackedInt32Array = []):
+	if !frames_to_match: frames_to_match = [newframes[0]]
+	if frame in frames_to_match:
+		_try_change(newframes, newperiod)
+	else:
+		var will_match : bool = false
+		for f in frames:
+			if f in frames_to_match:
+				will_match = true
+				break # if i will match in future, then wait for it
+		if !will_match:
+			_try_change(newframes, newperiod)
 	return self
 
 func _ready():
