@@ -2,12 +2,22 @@ extends Node
 class_name NavdiDreamDropper
 
 func _ready() -> void:
-	print("hello")
+	print("dropper setup success")
 	get_window().files_dropped.connect(_on_files_dropped)
+	var ecb = JavaScriptBridge.create_callback(_example_callback)
+	# TODO: pass this callback to javascript! via  some object:
+	var link = JavaScriptBridge.get_interface("navdilink")
+	if ecb and link:
+		print("link: ",link)
+		link.testCallback(ecb);
+		print("ecb: ",ecb)
+		link.setDropCallback(ecb);
+
+func _example_callback(a) -> void:
+	Dreamer.navdilog("dropper","example callback received! %d" % randi())
+	print(a)
 
 func _on_files_dropped(files:PackedStringArray) -> void:
-	print("files dropped")
-	print(files)
 	for file in files:
 		if file.ends_with(".pck"):
 			Dreamer.load_packed_dream(file)
