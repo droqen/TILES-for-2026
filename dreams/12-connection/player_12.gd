@@ -2,6 +2,8 @@ extends NavdiSolePlayerBasics
 
 enum { PLANTHIT_BUF, }
 
+const DIG_PFB = preload("res://dreams/12-connection/player_dig_flash.tscn")
+
 var pinheld_plant : bool = false
 var pintap_plant : bool = false
 var duck : bool = false
@@ -49,9 +51,7 @@ func planthit() -> void:
 	bufs.on(PLANTHIT_BUF)
 	print("boop! @ ",duck_targetcell)
 	for i in range(2):
-		var flash = Dreamer.spawn(
-			load("res://dreams/12-connection/player_dig_flash.tscn"),
-		).setup_pos(duck_targetcellpos)
+		var flash = Dreamer.spawn(DIG_PFB).setup_pos(duck_targetcellpos)
 		if i == 0:
 			await get_tree().create_timer(0.075).timeout
 		else:

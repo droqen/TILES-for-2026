@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Template</title>
+		<meta charset="UTF-8">
+		<style>
+			html, body { margin: 0; }
+			#canvas {
+				width: 100vw; height: 100vh; background: #888;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+		<script type="text/javascript" src="beepbox_synth.js"></script>
+		<script>
+			const navdilink = {
+				onDrop(files){
+					console.log("navdilink default onDrop has not been overridden yet")
+				},
+				setDropCallback(cb){
+					console.log("navdilink setDropCallback disabled; Godot web builds handle it fine themselves")
+					// this.onDrop=cb;
+				},
+				bgm_synth : null,
+				play_bgm_string(bgm_string){
+					this.stop_bgm();
+					this.bgm_synth = new beepbox.Synth(bgm_string);
+					this.bgm_synth.play();
+				},
+				stop_bgm(){
+					if(this.bgm_synth!=null) {
+						this.bgm_synth.pause();
+						this.bgm_synth = null;
+					}
+				},
+			};
+			window.navdilink = navdilink;
+		</script>
+		<script>
+			document.addEventListener('dragover', (e)=>{
+				e.preventDefault()
+			});
+			document.addEventListener('drop', (e) => {
+				console.log(e.dataTransfer.files);
+				// document.getElementById('file').files = e.dataTransfer.files;
+				navdilink.onDrop(e.dataTransfer.files);
+				e.preventDefault();
+			});
+		</script>
+		<script src="$GODOT_URL"></script>
+		<script>
+			var engine = new Engine($GODOT_CONFIG);
+			engine.startGame();
+		</script>
+	</body>
+</html>

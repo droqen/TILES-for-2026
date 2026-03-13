@@ -2,15 +2,15 @@ extends Node
 class_name NavdiDreamDropper
 
 func _ready() -> void:
-	print("dropper setup success")
+	#print("dropper setup success")
 	get_window().files_dropped.connect(_on_files_dropped)
 	var ecb = JavaScriptBridge.create_callback(_example_callback)
 	# TODO: pass this callback to javascript! via  some object:
 	var link = JavaScriptBridge.get_interface("navdilink")
 	if ecb and link:
-		print("link: ",link)
-		link.testCallback(ecb);
-		print("ecb: ",ecb)
+		#print("link: ",link)
+		#link.testCallback(ecb);
+		#print("ecb: ",ecb)
 		link.setDropCallback(ecb);
 
 func _example_callback(a) -> void:

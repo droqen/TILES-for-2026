@@ -7,12 +7,19 @@ const HEADERS : PackedStringArray = ["Content-Type: application/json"]
 
 var last_played_url:String = ''
 
+var navdilink:JavaScriptObject
+
 func _ready() -> void:
 	print("clientside NavdiBeeper initialized!")
 	if OS.has_feature("editor"):
 		print("remember to launch the local beepbox puppet!")
 		print("> cd ~/beepboxpuppet")
 		print("> HEADFUL=1 node server2.mjs")
+	else:
+		navdilink = JavaScriptBridge.get_interface("navdilink")
+		if navdilink == null:
+			push_warning("No navdilink js bridge found.")
+		# we're hitting da browser
 
 func _physics_process(_delta: float) -> void:
 	var topbeep = get_tree().get_first_node_in_group(BEEPER_BEEP_GROUP)
@@ -28,13 +35,19 @@ func play(url:String) -> void:
 	if last_played_url != url:
 		last_played_url = url
 		if url:
-			print(URL_PLAY)
-			_send_request.call_deferred(URL_PLAY, {
-				"restart": true,
-				"song": url.split('#',false,1)[1]
-			})
+			if navdilink:
+				navdilink.play_bgm_string(url.split('#',false,1)[1])
+			else:
+				print(URL_PLAY)
+				_send_request.call_deferred(URL_PLAY, {
+					"restart": true,
+					"song": url.split('#',false,1)[1]
+				})
 		else:
-			_send_request.call_deferred(URL_PAUSE)
+			if navdilink:
+				navdilink.stop_bgm()
+			else:
+				_send_request.call_deferred(URL_PAUSE)
 
 func _send_request(url : String, keys : Dictionary = {}) -> void:
 	var err = request(url, HEADERS, HTTPClient.METHOD_POST, JSON.stringify(keys))
