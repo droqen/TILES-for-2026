@@ -74,7 +74,7 @@ func _physics_process(_delta: float) -> void:
 		texture = sheet.texture
 		hframes = sheet.hframes
 		vframes = sheet.vframes
-		if ani_subindex >= ani_period:
+		if playing and ani_subindex >= ani_period:
 			ani_subindex -= ani_period
 			ani_index += 1
 		ani_index = posmod(ani_index, len(frames))
