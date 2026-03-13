@@ -48,6 +48,7 @@ func play(url:String) -> void:
 				navdilink.stop_bgm()
 			else:
 				_send_request.call_deferred(URL_PAUSE)
+		print("changed to ",last_played_url)
 
 func _send_request(url : String, keys : Dictionary = {}) -> void:
 	var err = request(url, HEADERS, HTTPClient.METHOD_POST, JSON.stringify(keys))

@@ -52,6 +52,7 @@ func _goto_current_dream_packed():
 			var err = get_tree().change_scene_to_packed(ps)
 			if err != OK:
 				push_error("failed to change scene to packed %s of dream %s : reason %s" % [ps, d , err])
+
 func dream(d:NavdiDream) -> void:
 	if d in dream_stack:
 		push_error("already inside dream %s" % d)
@@ -60,6 +61,12 @@ func dream(d:NavdiDream) -> void:
 		_memory_stack.append(Dictionary())
 		dream_depth += 1
 		_goto_current_dream_packed()
+
+func dreamfresh(d:NavdiDream) -> void:
+	dream_stack=[d]
+	_memory_stack=[Dictionary()]
+	dream_depth=0
+	_goto_current_dream_packed()
 
 func reset():
 	_goto_current_dream_packed()
@@ -114,8 +121,7 @@ func load_packed_dream(dream_pck_filepath: String) -> void:
 		var expected_dream = ResourceLoader.load(expected_dream_file_path)
 		if expected_dream:
 			if expected_dream is NavdiDream:
-				wake_to(dream_stack[0])
-				dream(expected_dream)
+				dreamfresh(expected_dream)
 				navdilog("lpck", "Dreaming... %s" % extracted_dream_name)
 			else:
 				navdilog("lpck", "Corrupted dream found at %s" % expected_dream_file_path)
