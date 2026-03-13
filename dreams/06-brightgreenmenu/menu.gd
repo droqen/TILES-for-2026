@@ -128,7 +128,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			KeyModifierMask.KEY_MASK_CTRL |
 			KeyModifierMask.KEY_MASK_ALT)):
 		var key_char: String = char(keyevent.unicode) if keyevent.unicode else ''
-		if key_char.length() == 1 and key_char != ' ':
+		if key_char.length() == 1 and key_char != ' ' and key_char != "`":
 			if !keyevent.shift_pressed: key_char = key_char.to_lower()
 			searchstring += key_char
 		else:

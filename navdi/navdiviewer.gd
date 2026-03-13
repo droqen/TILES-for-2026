@@ -44,6 +44,7 @@ func _follow(r:NavdiViewRect) -> void:
 
 func _ready() -> void:
 	add_to_group(GROUP)
+	$UiLayer.hide()
 
 func _physics_process(_delta: float) -> void:
 	if is_instance_valid(following_viewrect):
@@ -71,19 +72,25 @@ func calculate_fitscale(pondsize:Vector2,fishsize:Vector2) -> float:
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	var keyevent := event as InputEventKey
-	if (keyevent.pressed and keyevent.get_modifiers_mask() & (
+	if keyevent.pressed:
+		if OS.has_feature("editor") and keyevent.get_modifiers_mask() & (
 		KeyModifierMask.KEY_MASK_META
-		)):
-		match keyevent.keycode:
-			KEY_1:
-				screenshot(true,true,"png")
-				get_viewport().set_input_as_handled()
-			KEY_2:
-				screenshot(true,false,"png")
-				get_viewport().set_input_as_handled()
-			KEY_3:
-				screenshot(true)
-				get_viewport().set_input_as_handled()
+		):
+			match keyevent.keycode:
+				KEY_1:
+					screenshot(true,true,"png")
+					get_viewport().set_input_as_handled()
+				KEY_2:
+					screenshot(true,false,"png")
+					get_viewport().set_input_as_handled()
+				KEY_3:
+					screenshot(true)
+					get_viewport().set_input_as_handled()
+		else:
+			match keyevent.keycode:
+				KEY_QUOTELEFT:
+					$UiLayer.visible = not $UiLayer.visible
+					get_viewport().set_input_as_handled()
 
 func timestamp() -> String:
 	var now = Time.get_datetime_dict_from_system(true)

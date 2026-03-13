@@ -129,16 +129,28 @@ func _on_dream_selected_to_bundle(dreampath:String) -> void:
 		var pckpath := "res://dreambundles/%s.pck" % dreamname
 		packer.pck_start(pckpath)
 		for file in DirAccess.get_files_at(dir):
-			repack_resource(packer, dir, file)
+			repack_resource(packer, dir.path_join(file))
 		var err = packer.flush()
 		if err == OK:
 			print("Successfully bundled dream @ `%s`" % pckpath)
 		else:
 			print("Dream bundling failed, err %s" % err)
 
-func repack_resource(packer:PCKPacker, dir:String, file:String) -> void:
+func repack_resource(packer:PCKPacker, filepath:String) -> void:
 	#packer.add_file_removal(dir.path_join(file))
-	packer.add_file(dir.path_join(file),dir.path_join(file))
+	var importpath = filepath+'.import'
+	if FileAccess.file_exists(importpath):
+		var importconfig = ConfigFile.new()
+		var err = importconfig.load(importpath)
+		if err == OK:
+			var remappath = importconfig.get_value("remap","path")
+			if remappath:
+				packer.add_file(remappath, remappath)
+				print("packed: ",remappath)
+		else:
+			push_error("repack .import exists but couldn't be read @ %s - err=%s" % [importpath,err])
+	packer.add_file(filepath, filepath)
+	print("packed: ",filepath)
 
 func save_if_new(fullfilepath:String, generate:Callable) -> Error:
 	if FileAccess.file_exists(fullfilepath):

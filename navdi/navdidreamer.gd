@@ -15,7 +15,7 @@ func w(k,v,d:NavdiDream=null):
 		_memory_stack[dream_depth][k] = v
 	else:
 		var i = dream_stack.find(d)
-		print(i)
+		#print(i)
 		if i >= 0:
 			_memory_stack[i][k] = v
 		else:
@@ -24,7 +24,7 @@ func r(k,d=null):
 	#print("r",k)
 	for i in range(0,dream_depth+1):
 		if _memory_stack[i].has(k):
-			prints("hello i has:", _memory_stack[i][k])
+			#prints("hello i has:", _memory_stack[i][k])
 			navdilog(k, str(_memory_stack[i][k]) + " (read)")
 			return _memory_stack[i][k]
 	navdilog(k,str(d) + " (default)")
@@ -40,10 +40,10 @@ func _goto_current_dream_packed():
 	else:
 		var d : NavdiDream = dream_stack[dream_depth]
 		if d == null:
-			print(dream_stack)
-			print(dream_depth)
-			print(dream_stack[dream_depth])
-			push_error("goto current dream packed failed - current dream is null")
+			#print(dream_stack)
+			#print(dream_depth)
+			#print(dream_stack[dream_depth])
+			push_error("goto current dream packed failed - current dream is null.")
 		elif d.packed_scene == null:
 			push_error("goto current dream packed failed - dream %s has no packed scene" % dream_stack[dream_depth])
 		else:
@@ -101,12 +101,16 @@ func _add_to_and_own(ch:Node, par:Node) -> void:
 	ch.owner = par.owner if par.owner else par
 
 func load_packed_dream(dream_pck_filepath: String) -> void:
+	#print("*** load packed dream (%s)" % dream_pck_filepath)
 	if dream_pck_filepath.ends_with(".pck"):
 		var extracted_dream_name : String = dream_pck_filepath.replace(".pck","").rsplit("/",false,1)[-1]
-		ProjectSettings.load_resource_pack(dream_pck_filepath)
+		#print("*** about to load resource pack..")
+		var success = ProjectSettings.load_resource_pack(dream_pck_filepath)
+		#print("*** load resource pack success? ",success)
 		var expected_dream_file_path = "res://dreams/%s/%s_Dream.tres" % [
 			extracted_dream_name,
 			extracted_dream_name]
+		#print("*** expected path: ",expected_dream_file_path)
 		var expected_dream = ResourceLoader.load(expected_dream_file_path)
 		if expected_dream:
 			if expected_dream is NavdiDream:
