@@ -76,9 +76,12 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		)):
 		match keyevent.keycode:
 			KEY_1:
-				screenshot(true,true)
+				screenshot(true,true,"png")
 				get_viewport().set_input_as_handled()
 			KEY_2:
+				screenshot(true,false,"png")
+				get_viewport().set_input_as_handled()
+			KEY_3:
 				screenshot(true)
 				get_viewport().set_input_as_handled()
 
@@ -86,14 +89,15 @@ func timestamp() -> String:
 	var now = Time.get_datetime_dict_from_system(true)
 	return "%04d%02d%02dT%02d%02d%02dZ" % [now.year,now.month,now.day,now.hour,now.minute,now.second]
 
-func screenshot(hideui:bool=true,hidefilter:bool=false) -> void:
+func screenshot(hideui:bool=true,hidefilter:bool=false,ext:String="jpg") -> void:
 	var hide_layers : Array[CanvasLayer] = []
 	if hideui and $UiLayer.visible: hide_layers.append($UiLayer)
 	if hidefilter and $ViewShaderLayer.visible: hide_layers.append($ViewShaderLayer)
-	var screenshot_filename = "%s%s_%s.png"%[
+	var screenshot_filename = "%s%s_%s.%s"%[
 		get_tree().current_scene.name,
 		"x1" if hidefilter else "",
 		timestamp(),
+		ext
 	]
 	for layer in hide_layers: layer.hide()
 	RenderingServer.force_draw()
@@ -106,8 +110,10 @@ func screenshot(hideui:bool=true,hidefilter:bool=false) -> void:
 		int(ceil(following_viewrect.size.x)),
 		int(ceil(following_viewrect.size.y)))
 	
+	var err
+	
 	if DirAccess.open(VIEWER_CAPTURES_FOLDER_PATH) == null:
-		var err := DirAccess.make_dir_recursive_absolute(VIEWER_CAPTURES_FOLDER_PATH)
+		err = DirAccess.make_dir_recursive_absolute(VIEWER_CAPTURES_FOLDER_PATH)
 		if err == OK:
 			var ignorefile := FileAccess.open(VIEWER_CAPTURES_FOLDER_PATH
 				.path_join(".gdignore"),FileAccess.WRITE)
@@ -122,7 +128,10 @@ func screenshot(hideui:bool=true,hidefilter:bool=false) -> void:
 	
 	var pngpath := VIEWER_CAPTURES_FOLDER_PATH.path_join(screenshot_filename)
 	
-	var err = image.save_png(pngpath)
+	match ext:
+		"png": err = image.save_png(pngpath)
+		"jpg": err = image.save_jpg(pngpath,.25)
+		_: push_error("Unknown extension *.%s" % ext)
 	if err == OK:
 		print("pic saved @ %s" % pngpath)
 	else:
