@@ -69,7 +69,6 @@ func _ready() -> void:
 	])
 func _physics_process(_delta: float) -> void:
 	var dpad = Pin.get_dpad()
-	var dpad_tap = Pin.get_dpad_tap()
 	if Pin.get_jump_hit(): bufs.on(JUMPBUF)
 	if Pin.get_plant_hit(): pinheld_plant = true
 	if !Pin.get_plant_held(): pinheld_plant = false
@@ -87,7 +86,7 @@ func _physics_process(_delta: float) -> void:
 		if bufs.has(PLANTHIT_BUF):
 			pass # we're stuck here
 		else:
-			if((dpad_tap.x != 0 and not pinheld_plant)
+			if((dpad.x != 0 and not pinheld_plant)
 			or (not onfloor)): exit_duck()
 			elif planting_progress == 0 and not pinheld_plant:
 				exit_duck()
