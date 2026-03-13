@@ -100,6 +100,25 @@ func _add_to_and_own(ch:Node, par:Node) -> void:
 	par.add_child(ch)
 	ch.owner = par.owner if par.owner else par
 
+func load_packed_dream(dream_pck_filepath: String) -> void:
+	if dream_pck_filepath.ends_with(".pck"):
+		var extracted_dream_name : String = dream_pck_filepath.replace(".pck","").rsplit("/",false,1)[-1]
+		ProjectSettings.load_resource_pack(dream_pck_filepath)
+		var expected_dream_file_path = "res://dreams/%s/%s_Dream.tres" % [
+			extracted_dream_name,
+			extracted_dream_name]
+		var expected_dream = ResourceLoader.load(expected_dream_file_path)
+		if expected_dream:
+			if expected_dream is NavdiDream:
+				wake_to(dream_stack[0])
+				dream(expected_dream)
+				navdilog("lpck", "Dreaming... %s" % extracted_dream_name)
+			else:
+				navdilog("lpck", "Corrupted dream found at %s" % expected_dream_file_path)
+		else:
+			navdilog("lpck", "Expected dream not found at %s" % expected_dream_file_path)
+			#dream()
+
 class HandledNodeSpawn:
 	var n : Node
 	func _init(obj_or_packed):

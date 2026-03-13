@@ -3,6 +3,7 @@ extends NavdiSolePlayerBasics
 enum { PLANTHIT_BUF, }
 
 var pinheld_plant : bool = false
+var pintap_plant : bool = false
 var duck : bool = false
 var duck_targetcell : Vector2i
 var duck_targetcellpos : Vector2
@@ -63,17 +64,18 @@ func _ready() -> void:
 	super._ready()
 	bufs.setup_bufons([
 		TURNBUF,10,
-		FLORBUF,8,
+		FLORBUF,10,
 		LANDBUF,8,
 		PLANTHIT_BUF,8,
 	])
 func _physics_process(_delta: float) -> void:
 	var dpad = Pin.get_dpad()
 	if Pin.get_jump_hit(): bufs.on(JUMPBUF)
-	if Pin.get_plant_hit(): pinheld_plant = true
+	if Pin.get_plant_hit(): pinheld_plant = true; pintap_plant = true;
 	if !Pin.get_plant_held(): pinheld_plant = false
 	var onfloor := is_on_floor()
-	if pinheld_plant and onfloor:
+	if !onfloor or dpad.x or duck: pintap_plant = false
+	if (pinheld_plant or pintap_plant) and onfloor:
 		var to_aligned_x : float = get_maze_aligned_floor_x() - position.x
 		if abs(to_aligned_x) < 1:
 			enter_duck()
@@ -101,6 +103,7 @@ func _physics_process(_delta: float) -> void:
 	tow_vx(dpad.x, 1.0, 0.1 if onfloor else 0.03)
 	if duck: vx = 0
 	if !onfloor: tow_gravity(3.0, 0.015, Pin.get_jump_held(), 0.03)
+	else: vy = 0.1
 	apply_velocities()
 	if !onfloor:
 		spr.setup([11])

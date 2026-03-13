@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="NavdiDream" load_steps=3 format=3 uid="uid://dvmqs24b4mser"]
+[gd_resource type="Resource" script_class="NavdiDream" format=3 uid="uid://dvmqs24b4mser"]
 
 [ext_resource type="Script" uid="uid://dmknyp6uhnvkf" path="res://navdi/navdidream.gd" id="1_714dj"]
 [ext_resource type="PackedScene" uid="uid://dg26la41b2q0m" path="res://dreams/00-grid/00grid_start.tscn" id="1_lk2qc"]

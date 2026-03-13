@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://c1ovglsecpdrk"]
+[gd_scene format=4 uid="uid://c1ovglsecpdrk"]
 
 [ext_resource type="Texture2D" uid="uid://bvrb62m5e1pve" path="res://icon.svg" id="1_ue42q"]
 [ext_resource type="Texture2D" uid="uid://bkaaf6l2tii0h" path="res://dreams/04-starrysky/stars.pyxel" id="1_wlvc2"]

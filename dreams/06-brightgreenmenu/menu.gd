@@ -1,6 +1,5 @@
 extends RichTextLabel
 
-
 class MenuItem:
 	var name : String
 	var dream : NavdiDream

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://1nf2tmyriaxa"]
+[gd_resource type="TileSet" format=3 uid="uid://1nf2tmyriaxa"]
 
 [ext_resource type="Texture2D" uid="uid://dbw5i2wqw1nal" path="res://dreams/07-kompendi-realm/krealm.pyxel" id="1_sg4f7"]
 

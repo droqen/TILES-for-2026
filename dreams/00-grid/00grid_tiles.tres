@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://taux3hdvou7p"]
+[gd_resource type="TileSet" format=3 uid="uid://taux3hdvou7p"]
 
 [ext_resource type="Texture2D" uid="uid://dowljpjcau02c" path="res://dreams/00-grid/00grid.pyxel" id="1_666ko"]
 

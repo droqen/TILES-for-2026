@@ -1,26 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://vx3uwrubfjuy"]
+[gd_scene format=3 uid="uid://vx3uwrubfjuy"]
 
 [ext_resource type="Script" uid="uid://bi3oo5ma8rr87" path="res://dreams/06-brightgreenmenu/menu.gd" id="2_il7p1"]
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_21mrn"]
 
-[node name="06-brightgreenmenu" type="Node2D"]
+[node name="06-brightgreenmenu" type="Node2D" unique_id=1473442127]
 
-[node name="View" type="ReferenceRect" parent="."]
+[node name="View" type="ReferenceRect" parent="." unique_id=1632500828]
 offset_right = 100.0
 offset_bottom = 100.0
 script = ExtResource("5_21mrn")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1296249315]
 layer = 10
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=547671128]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MenuLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer"]
+[node name="MenuLabel" type="RichTextLabel" parent="CanvasLayer/CenterContainer" unique_id=951943707]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.53333336, 0.8666667, 0.8, 1)

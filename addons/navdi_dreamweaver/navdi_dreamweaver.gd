@@ -2,26 +2,43 @@
 extends EditorPlugin
 
 const DREAMWEAVER_MESSAGE = &"Create Dream from pyxel"
+const DREAMBUNDLER_MESSAGE = &"Bundle Dream"
 
-var dialog : EditorFileDialog
+var dialog_create_dream : EditorFileDialog
+var dialog_bundle_dream : EditorFileDialog
 
 func _enter_tree() -> void:
-	dialog = EditorFileDialog.new()
-	dialog.file_mode = EditorFileDialog.FILE_MODE_OPEN_FILE
-	dialog.title = "Create Dream from pyxel"
-	dialog.filters = ["*.pyxel"]
-	dialog.current_dir = "res://dreams/"
-	get_editor_interface().get_base_control().add_child(dialog)
-	add_tool_menu_item(DREAMWEAVER_MESSAGE, _on_menu_pressed)
-	dialog.file_selected.connect(_on_pyxel_selected)
+	dialog_create_dream = EditorFileDialog.new()
+	dialog_create_dream.file_mode = EditorFileDialog.FILE_MODE_OPEN_FILE
+	dialog_create_dream.title = DREAMWEAVER_MESSAGE
+	dialog_create_dream.filters = ["*.pyxel"]
+	dialog_create_dream.current_dir = "res://dreams/"
+	get_editor_interface().get_base_control().add_child(dialog_create_dream)
+	add_tool_menu_item(DREAMWEAVER_MESSAGE, _on_create_dream_menu_pressed)
+	dialog_create_dream.file_selected.connect(_on_pyxel_selected)
+	
+	dialog_bundle_dream = EditorFileDialog.new()
+	dialog_bundle_dream.file_mode = EditorFileDialog.FILE_MODE_OPEN_FILE
+	dialog_bundle_dream.title = DREAMBUNDLER_MESSAGE
+	dialog_bundle_dream.filters = ["*_Dream.tres"]
+	dialog_bundle_dream.current_dir = "res://dreams/"
+	get_editor_interface().get_base_control().add_child(dialog_bundle_dream)
+	add_tool_menu_item(DREAMBUNDLER_MESSAGE, _on_bundle_dream_menu_pressed)
+	dialog_bundle_dream.file_selected.connect(_on_dream_selected_to_bundle)
 
 func _exit_tree() -> void:
-	if dialog:
+	if dialog_create_dream:
 		remove_tool_menu_item(DREAMWEAVER_MESSAGE)
-		dialog.queue_free() # disconnect incl.
+		dialog_create_dream.queue_free() # disconnect incl.
+	if dialog_bundle_dream:
+		remove_tool_menu_item(DREAMBUNDLER_MESSAGE)
+		dialog_bundle_dream.queue_free() # disconnect incl.
 	
-func _on_menu_pressed() -> void:
-	dialog.popup_centered(Vector2i(800,600))
+func _on_create_dream_menu_pressed() -> void:
+	dialog_create_dream.popup_centered(Vector2i(800,600))
+	
+func _on_bundle_dream_menu_pressed() -> void:
+	dialog_bundle_dream.popup_centered(Vector2i(800,600))
 
 func _on_pyxel_selected(path:String) -> void:
 	if path.ends_with(".pyxel"):
@@ -99,7 +116,30 @@ func _on_pyxel_selected(path:String) -> void:
 			return new_dream)
 	else:
 		push_error("dreamweaver cannot use non-pyxel file: ",path)
-	
+
+func _on_dream_selected_to_bundle(dreampath:String) -> void:
+	var maybe_dream = ResourceLoader.load(dreampath)
+	if maybe_dream and maybe_dream is NavdiDream:
+		var dream := maybe_dream as NavdiDream
+		var pathsplit := dreampath.rsplit("/",false,1)
+		var dir := pathsplit[0]
+		var dreamname := dir.rsplit("/",false,1)[-1]
+		print("Selected dream `%s`" % dreamname)
+		var packer := PCKPacker.new()
+		var pckpath := "res://dreambundles/%s.pck" % dreamname
+		packer.pck_start(pckpath)
+		for file in DirAccess.get_files_at(dir):
+			repack_resource(packer, dir, file)
+		var err = packer.flush()
+		if err == OK:
+			print("Successfully bundled dream @ `%s`" % pckpath)
+		else:
+			print("Dream bundling failed, err %s" % err)
+
+func repack_resource(packer:PCKPacker, dir:String, file:String) -> void:
+	#packer.add_file_removal(dir.path_join(file))
+	packer.add_file(dir.path_join(file),dir.path_join(file))
+
 func save_if_new(fullfilepath:String, generate:Callable) -> Error:
 	if FileAccess.file_exists(fullfilepath):
 		#push_warning("File already exists at ",fullfilepath)

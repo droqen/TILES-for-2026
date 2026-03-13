@@ -55,10 +55,13 @@ func tow_gravity(
 
 func is_on_floor() -> bool:
 	var on_floor : bool = false
-	if vy >= 0 and mover.cast_fraction(self, solidcast, VERTICAL, 1) < 1:
-		on_floor = true
-		if not bufs.has(FLORBUF): bufs.on(LANDBUF)
-		bufs.on(FLORBUF)
+	if vy >= 0:
+		var cast_to_floor := mover.cast_fraction(self, solidcast, VERTICAL, 1)
+		if cast_to_floor < 1:
+			position.y += cast_to_floor
+			on_floor = true
+			if not bufs.has(FLORBUF): bufs.on(LANDBUF)
+			bufs.on(FLORBUF)
 	return on_floor
 
 func apply_velocities() -> void:

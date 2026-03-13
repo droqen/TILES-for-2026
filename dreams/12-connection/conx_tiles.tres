@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cdhcl5fs78uuw"]
+[gd_resource type="TileSet" format=3 uid="uid://cdhcl5fs78uuw"]
 
 [ext_resource type="Texture2D" uid="uid://tghxg3kyooom" path="res://dreams/12-connection/conx.pyxel" id="1_sicmi"]
 
