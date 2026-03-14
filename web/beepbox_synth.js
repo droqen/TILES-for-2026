@@ -5287,7 +5287,8 @@ var beepbox = (function (exports) {
                 bars += this.song.barCount - (this.song.loopStart + this.song.loopLength);
             return bars;
         }
-        constructor(song = null) {
+        constructor(song = null, persistentAudioCtx = null) {
+                                        // persistent audio context, avoid recreating/reresuming -droqen, '26 mar 13
             this.samplesPerSecond = 44100;
             this.song = null;
             this.preferLowerLatency = false;
@@ -5327,6 +5328,7 @@ var beepbox = (function (exports) {
             this.limit = 0.0;
             this.tempMonoInstrumentSampleBuffer = null;
             this.audioCtx = null;
+            this.persistentAudioCtx = persistentAudioCtx; // persistent audio context, avoid recreating/reresuming -droqen, '26 mar 13
             this.scriptNode = null;
             this.audioProcessCallback = (audioProcessingEvent) => {
                 const outputBuffer = audioProcessingEvent.outputBuffer;
@@ -5374,7 +5376,8 @@ var beepbox = (function (exports) {
                 if (this.scriptNode != null)
                     this.deactivateAudio();
                 const latencyHint = this.anticipatePoorPerformance ? (this.preferLowerLatency ? "balanced" : "playback") : (this.preferLowerLatency ? "interactive" : "balanced");
-                this.audioCtx = this.audioCtx || new (window.AudioContext || window.webkitAudioContext)({ latencyHint: latencyHint });
+                this.audioCtx = this.audioCtx || this.persistentAudioCtx || new (window.AudioContext || window.webkitAudioContext)({ latencyHint: latencyHint });
+                                        // use `persistentAudioCtx` if present. -droqen, '26 mar 13
                 this.samplesPerSecond = this.audioCtx.sampleRate;
                 this.scriptNode = this.audioCtx.createScriptProcessor ? this.audioCtx.createScriptProcessor(bufferSize, 0, 2) : this.audioCtx.createJavaScriptNode(bufferSize, 0, 2);
                 this.scriptNode.onaudioprocess = this.audioProcessCallback;
@@ -5383,13 +5386,16 @@ var beepbox = (function (exports) {
                 this.scriptNode.connect(this.audioCtx.destination);
                 this.computeDelayBufferSizes();
             }
-            this.audioCtx.resume();
+            if (this.audioCtx.state != "running") {
+                this.audioCtx.resume(); // only resume if not running. maybe this is causing issues? -droqen, '26 mar 13
+            }
         }
         deactivateAudio() {
             if (this.audioCtx != null && this.scriptNode != null) {
                 this.scriptNode.disconnect(this.audioCtx.destination);
                 this.scriptNode = null;
-                if (this.audioCtx.close)
+                if (this.audioCtx.close && this.audioCtx != this.persistentAudioCtx)
+                    // added audio context persistence! avoid closing it! -droqen, '26 mar 13
                     this.audioCtx.close();
                 this.audioCtx = null;
             }
