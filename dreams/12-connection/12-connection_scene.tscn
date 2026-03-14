@@ -52,6 +52,30 @@ text = "
         one else's."
 label_settings = SubResource("LabelSettings_vns8e")
 
+[node name="Label2" type="Label" parent="." unique_id=1983174306]
+offset_left = -1.0
+offset_top = 110.0
+offset_right = 269.0
+offset_bottom = 187.0
+text = "test"
+label_settings = SubResource("LabelSettings_vns8e")
+
+[node name="Label3" type="Label" parent="." unique_id=1785131218]
+offset_left = -6.0
+offset_top = 114.0
+offset_right = 264.0
+offset_bottom = 191.0
+text = "test"
+label_settings = SubResource("LabelSettings_vns8e")
+
+[node name="Label4" type="Label" parent="." unique_id=1790979393]
+offset_left = -12.0
+offset_top = 124.0
+offset_right = 258.0
+offset_bottom = 201.0
+text = "test"
+label_settings = SubResource("LabelSettings_vns8e")
+
 [node name="Player12" type="Node2D" parent="." unique_id=751828540]
 position = Vector2(42, 66)
 script = ExtResource("4_ddnbx")

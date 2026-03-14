@@ -44,7 +44,8 @@ func _follow(r:NavdiViewRect) -> void:
 
 func _ready() -> void:
 	add_to_group(GROUP)
-	$UiLayer.hide()
+	if !OS.has_feature('editor'):
+		$UiLayer.hide()
 
 func _physics_process(_delta: float) -> void:
 	if is_instance_valid(following_viewrect):

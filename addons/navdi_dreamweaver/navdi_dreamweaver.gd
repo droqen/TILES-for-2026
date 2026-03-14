@@ -137,7 +137,7 @@ func _on_dream_selected_to_bundle(dreampath:String) -> void:
 			print("Dream bundling failed, err %s" % err)
 
 func repack_resource(packer:PCKPacker, filepath:String) -> void:
-	#packer.add_file_removal(dir.path_join(file))
+	packer.add_file_removal(filepath)
 	var importpath = filepath+'.import'
 	if FileAccess.file_exists(importpath):
 		var importconfig = ConfigFile.new()

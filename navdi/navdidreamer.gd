@@ -110,10 +110,16 @@ func _add_to_and_own(ch:Node, par:Node) -> void:
 func load_packed_dream(dream_pck_filepath: String) -> void:
 	#print("*** load packed dream (%s)" % dream_pck_filepath)
 	if dream_pck_filepath.ends_with(".pck"):
-		var extracted_dream_name : String = dream_pck_filepath.replace(".pck","").rsplit("/",false,1)[-1]
+		var dream_broken := (dream_pck_filepath
+			.rsplit("/",false,1)[-1]
+			.split('.',false)
+		)
+		var extracted_dream_name : String = dream_broken[-1]
+		if len(dream_broken) > 1 and dream_broken[-1] == "pck":
+			extracted_dream_name = dream_broken[-2]
 		#print("*** about to load resource pack..")
-		#var success = ProjectSettings.load_resource_pack(dream_pck_filepath)
-		#print("*** load resource pack success? ",success)
+		var _success = ProjectSettings.load_resource_pack(dream_pck_filepath, true)
+		#print("*** load resource pack success? ",_success)
 		var expected_dream_file_path = "res://dreams/%s/%s_Dream.tres" % [
 			extracted_dream_name,
 			extracted_dream_name]

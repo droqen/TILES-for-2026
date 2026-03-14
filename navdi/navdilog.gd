@@ -37,11 +37,18 @@ func display_keys_messages(keysLabel:RichTextLabel, msgsLabel:RichTextLabel, max
 			later = true
 			keysLabel.text += "[color=#fff3]"
 			msgsLabel.text += "[color=#fff3]"
-		keysLabel.text += "%s:\n" % [elist[i].name]
+		keysLabel.text += "%s::\n" % [elist[i].name]
 		msgsLabel.text += "%s\n" % [elist[i].last_message]
 
 func _ready() -> void:
 	$"../..".navdilogged.connect(navdilog)
+	var mhd = NavdiGenUtil.gen_megahexdate()
+	var prd = NavdiGenUtil.gen_prettydate().split(',')[0].split(' ')
+	navdilog("today [[%s]]"%mhd, "%s:'%s' + %s:'%s' + %s:'%s'" % [
+		mhd.substr(0,2), prd[0],
+		mhd.substr(2,1), prd[1],
+		mhd.substr(3,1), prd[2],
+	])
 
 func _physics_process(_delta: float) -> void:
 	if reprint_ticker <= 0 or reprint_queued:
