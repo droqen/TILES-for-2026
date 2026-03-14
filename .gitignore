@@ -4,3 +4,7 @@
 
 # mac ignore
 .DS_Store
+
+# sublime
+# .env/
+*.sublime-workspace
