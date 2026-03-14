@@ -50,6 +50,12 @@ func play(url:String) -> void:
 				_send_request.call_deferred(URL_PAUSE)
 		print("changed to ",last_played_url)
 
+func play_sfx(url:String) -> void:
+	if navdilink:
+		navdilink.play_sfx_string(url.split('#',false,1)[1])
+	else:
+		push_warning("sfx unsupported except on navdilink for now. couldn't play sfx %s" % url)
+
 func _send_request(url : String, keys : Dictionary = {}) -> void:
 	var err = request(url, HEADERS, HTTPClient.METHOD_POST, JSON.stringify(keys))
 	if err != OK:

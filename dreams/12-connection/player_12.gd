@@ -50,6 +50,7 @@ func planthit() -> void:
 	planting_progress = 0
 	bufs.on(PLANTHIT_BUF)
 	print("boop! @ ",duck_targetcell)
+	Beeper.play_sfx("https://www.beepbox.co/#9n11s0k0l00e00t43a7g00j00r1i0o1T1v1u9af0q0z10t531d08AcF8BeQ0259PffffE6b160861562463378T2v1u02f10w4qw123d03w0E0bMp17k_E9v1g")
 	for i in range(2):
 		var flash = Dreamer.spawn(DIG_PFB).setup_pos(duck_targetcellpos)
 		if i == 0:

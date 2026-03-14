@@ -112,7 +112,7 @@ func load_packed_dream(dream_pck_filepath: String) -> void:
 	if dream_pck_filepath.ends_with(".pck"):
 		var extracted_dream_name : String = dream_pck_filepath.replace(".pck","").rsplit("/",false,1)[-1]
 		#print("*** about to load resource pack..")
-		var success = ProjectSettings.load_resource_pack(dream_pck_filepath)
+		#var success = ProjectSettings.load_resource_pack(dream_pck_filepath)
 		#print("*** load resource pack success? ",success)
 		var expected_dream_file_path = "res://dreams/%s/%s_Dream.tres" % [
 			extracted_dream_name,

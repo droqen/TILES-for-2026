@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cj0dqrn1iwa8n" path="res://navdi/navdiviewer.gd" id="1_5ree7"]
 [ext_resource type="Shader" uid="uid://b3r8p6pj81br3" path="res://navdi/navdiviewer_default.gdshader" id="2_bnhc7"]
 [ext_resource type="Script" uid="uid://b0a2567qf76nk" path="res://navdi/navdilog.gd" id="3_1aule"]
-[ext_resource type="Script" uid="uid://c2yvtniw1b2pr" path="res://navdi/navdibeeper.gd" id="3_kp0i0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mgv8c"]
 shader = ExtResource("2_bnhc7")
@@ -15,10 +14,6 @@ shader_parameter/read_offset = Vector2(0, 0)
 [node name="NavdiViewer" type="Node" unique_id=2188653]
 script = ExtResource("1_5ree7")
 metadata/_custom_type_script = "uid://cj0dqrn1iwa8n"
-
-[node name="NavdiBeeper" type="HTTPRequest" parent="." unique_id=1004435532]
-script = ExtResource("3_kp0i0")
-metadata/_custom_type_script = "uid://c2yvtniw1b2pr"
 
 [node name="ViewCamera" type="Camera2D" parent="." unique_id=273114849]
 anchor_mode = 0

@@ -28,6 +28,7 @@ Dreamer="*res://navdi/navdidreamer.gd"
 Pin="*res://navdi/navdipin.gd"
 Viewer="*res://navdi/navdiviewer_default.tscn"
 Dropper="*uid://b7mdiuqsbrppa"
+Beeper="*uid://c2yvtniw1b2pr"
 
 [editor_plugins]
 
