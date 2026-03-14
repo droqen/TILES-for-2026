@@ -19,7 +19,10 @@ func _example_callback(a) -> void:
 
 func _on_files_dropped(files:PackedStringArray) -> void:
 	var delay : float = 1.0
-	for file in files:
+	var file_order := range(len(files))
+	file_order.shuffle()
+	for i in file_order:
+		var file := files[i]
 		if file.ends_with(".pck"):
 			Dreamer.load_packed_dream(file)
 			await get_tree().create_timer(randf_range(0.5,1.5)*delay).timeout
