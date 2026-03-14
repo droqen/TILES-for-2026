@@ -44,6 +44,9 @@
 			document.addEventListener('click', ()=>{
 				if (globalAudioCtx.state != "running") { globalAudioCtx.resume(); }
 			});
+			document.addEventListener('keydown', (e) => {
+				if (globalAudioCtx.state != "running") { globalAudioCtx.resume(); }
+			});
 			document.addEventListener('dragover', (e)=>{
 				e.preventDefault()
 			});
