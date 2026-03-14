@@ -124,7 +124,7 @@ func load_packed_dream(dream_pck_filepath: String) -> void:
 			extracted_dream_name,
 			extracted_dream_name]
 		#print("*** expected path: ",expected_dream_file_path)
-		var expected_dream = ResourceLoader.load(expected_dream_file_path)
+		var expected_dream = ResourceLoader.load(expected_dream_file_path, "NavdiDream", ResourceLoader.CACHE_MODE_REPLACE_DEEP)
 		if expected_dream:
 			if expected_dream is NavdiDream:
 				dreamfresh(expected_dream)
