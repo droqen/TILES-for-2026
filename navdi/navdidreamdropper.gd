@@ -18,9 +18,12 @@ func _example_callback(a) -> void:
 	print(a)
 
 func _on_files_dropped(files:PackedStringArray) -> void:
+	var delay : float = 1.0
 	for file in files:
 		if file.ends_with(".pck"):
 			Dreamer.load_packed_dream(file)
+			await get_tree().create_timer(randf_range(0.5,1.5)*delay).timeout
+			delay *= 0.8
 			#var success = ProjectSettings.load_resource_pack(file)
 			#if success:
 				#print("success! (dreamdropper)")
