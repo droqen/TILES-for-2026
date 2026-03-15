@@ -1,9 +1,9 @@
 @tool
-extends EditorScript
+extends Object
 class_name NavdiGenUtil
 
-func _run() -> void:
-	print(gen_dreamnotes("test"))
+#func _run() -> void:
+	#print(gen_dreamnotes("test"))
 
 static func gen_dreamnotes(dreamname:String) -> String:
 	seed(dreamname.hash())
