@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cdbge8xqqgtgu"]
+
+[ext_resource type="Script" uid="uid://du0byuujsro33" path="res://dreams/1a3e-birdhomes/bubble_spawned.gd" id="1_hbdhu"]
+[ext_resource type="Texture2D" uid="uid://blbifgbbl3td5" path="res://dreams/1a3e-birdhomes/birdhomes.pyxel" id="2_vdsk4"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_ddvcv"]
+[ext_resource type="Resource" uid="uid://cvg8a7jfqaolu" path="res://dreams/1a3e-birdhomes/birdhomes_sheet.tres" id="4_mh02y"]
+
+[node name="bubble_spawned" type="Node2D" unique_id=1810867767]
+script = ExtResource("1_hbdhu")
+
+[node name="SheetSprite" type="Sprite2D" parent="." unique_id=515106874]
+texture = ExtResource("2_vdsk4")
+hframes = 10
+vframes = 10
+frame = 18
+script = ExtResource("3_ddvcv")
+sheet = ExtResource("4_mh02y")
+frames = PackedInt32Array(18, 28, 38)
+ani_period = 15
+metadata/_custom_type_script = "uid://di2t14yakk4ot"

@@ -71,7 +71,7 @@ func is_cell_solid(maze_coords:Vector2i, physlayer_index:int = 0) -> bool:
 func map_to_center(maze_coords:Vector2i) -> Vector2:
 	return map_to_local(maze_coords) #+ (tile_set.tile_size as Vector2 * 0.5)
 
-func get_used_cells_by_tids(tids : Array[int]) -> Array[Vector2i]:
+func get_used_cells_by_tids(tids : PackedInt32Array) -> Array[Vector2i]:
 	var used_cells : Array[Vector2i] = []
 	for tid in tids:
 		used_cells.append_array(get_used_cells_by_id(0, tid2coord(tid)))
