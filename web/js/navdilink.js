@@ -1,7 +1,10 @@
 // general purpose API for usage by navdi
 
 const navdilink = {
-			globalAudioCtx : new (window.AudioContext || window.webkitAudioContext)({ latencyHint: "balanced" });
+			globalAudioCtx : new (window.AudioContext || window.webkitAudioContext)({ latencyHint: "balanced" }),
+			_resume_ctx(){
+				if (this.globalAudioCtx.state != "running") { this.globalAudioCtx.resume(); }
+			},
 			onDrop(files){
 				console.log("navdilink default onDrop has not been overridden yet")
 			},
@@ -48,5 +51,24 @@ const navdilink = {
 				this.sfxs_playing.filter(sfx => !sfx.ended);
 			},
 };
+
+document.addEventListener('click', ()=>{
+	navdilink._resume_ctx();
+	// don't prevent default
+});
+document.addEventListener('keydown', (e) => {
+	navdilink._resume_ctx();
+	// don't prevent default
+});
+document.addEventListener('dragover', (e)=>{
+	e.preventDefault()
+});
+document.addEventListener('drop', (e) => {
+	navdilink._resume_ctx();
+	console.log(e.dataTransfer.files);
+	// document.getElementById('file').files = e.dataTransfer.files;
+	navdilink.onDrop(e.dataTransfer.files);
+	e.preventDefault();
+});
 
 window.navdilink = navdilink;
