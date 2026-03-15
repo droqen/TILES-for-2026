@@ -101,6 +101,7 @@ func _on_pyxel_selected(path:String) -> void:
 			var view = NavdiViewRect.new(); view.name = "View"
 			view.size = Vector2i(100, 100)
 			
+			node.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST;
 			node.add_child(maze); maze.owner = node;
 			node.add_child( spr);  spr.owner = node;
 			node.add_child(view); view.owner = node;
