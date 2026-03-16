@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NavdiDream" format=3 uid="uid://lthllipji82u"]
+
+[ext_resource type="PackedScene" uid="uid://dryulqf6npx4m" path="res://dreams/1a3f-fashions/1a3f-fashions_scene.tscn" id="1_q4srv"]
+[ext_resource type="Script" uid="uid://dmknyp6uhnvkf" path="res://navdi/navdidream.gd" id="2_0bcqh"]
+
+[resource]
+script = ExtResource("2_0bcqh")
+packed_scene = ExtResource("1_q4srv")
+beepbox_url = "https://www.beepbox.co/#9n31sbk0l00e05t1va7g0fj07r1i0o422T0v3u00f0qsg1e163d04w2h0E19dT0v3u00f0qsg1e163d04w2h0E19dT1v1u3af0qwx10p511d08A9F4B0Q07e0Pc436E3b662663cT2v4u02f12v4qw02d33w0E0b4icQ0000000h4yc000000000000000004h4z0000000p21wFEZ8hQAthUnE4rd7O6hFE_PMLg8U8zwjMLm8YN4zO3MIarQsirCh009uyL9bXiZ9BA4qaYKnI6Lj9TYLhnB5ZhuAOO2d9ug0"
