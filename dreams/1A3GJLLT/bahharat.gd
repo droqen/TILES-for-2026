@@ -105,7 +105,11 @@ func _physics_process(_delta: float) -> void:
 		if __injured == 0:
 			spr.flip_h = false
 			vel.y = -1.0
-		
+			
+		if spr.frame in [51,52,53]:
+			spr.position.y = 4
+		else:
+			spr.position.y = 0
 	else:
 		if __invinc > 0:
 			__invinc -= 1
@@ -151,9 +155,13 @@ func _physics_process(_delta: float) -> void:
 			if position.y > 86:
 				if vel.y > 0:
 					vel.y *= -1
-					if randf() < 0.01:
-						vel.y = randf_range(-0.5,-0.7)
+					if randf() < 0.015:
+						vel.y = randf_range(-0.2,-0.7)
 			elif position.y > 83:
 				if vel.y > 0:
 					vel.y *= 0.8
+					if randf() < 0.002:
+						vel.y = randf_range(-0.2,-0.7)
 			spr.setup([20,21,22,23],15)
+		
+		spr.position.y = 0
