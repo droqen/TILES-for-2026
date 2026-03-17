@@ -24,16 +24,22 @@ func _physics_process(_delta: float) -> void:
 		if chasing: __wandering_to_x = randf_range(5,185)
 		chasing = false
 	elif partner.ducky:
-		__lost += 1
-		if __lost > 100:
+		if __lost < 100:
+			__lost += 1
+		else:
 			if chasing: __wandering_to_x = randf_range(5,185)
 			chasing = false
 	else:
+		if __lost > 40:
+			vel.x *= 0.5
+			vel.y = -1.25
 		__lost = 0
 	
-	if chasing and partner.ducky:
+	if chasing:
 		if (position - partner.position).length_squared() < 100:
 			__avoiding = 100 + randi() % 25 # careful !!!
+			if partner.ducky:
+				__avoiding /= 2
 			__spindir = 0
 			__spindir_target = 0
 	
@@ -54,6 +60,7 @@ func _physics_process(_delta: float) -> void:
 		else:
 			__injured = 200 + randi() % 200 # oof, got too close
 			__ouchflash = 3
+			$crash.play()
 			if position.x < partner.position.x:
 				partner.vx = 2.0
 				vel.x -= 2.0

@@ -50,3 +50,11 @@ func play(set_volume : float = -1) -> void:
 			else play_volume)
 	else:
 		push_warning("failed to play beep %s, no synth id" % name)
+
+func pause() -> void:
+	_initialize_synth()
+	if _synthid: Beeper.synth_pause(_synthid)
+	
+func stop() -> void:
+	_initialize_synth()
+	if _synthid: Beeper.synth_stop(_synthid)

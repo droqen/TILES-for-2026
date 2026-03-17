@@ -68,7 +68,13 @@ func synth_create(song_data:String, looping:bool = false) -> int:
 	if navdilink: return (navdilink
 		.synthCreate(song_data, looping))
 	return 0
+func synth_pause(id:int) -> void:
+	if navdilink: navdilink.synthPause(id)
+func synth_stop(id:int) -> void:
+	# the same as kill except non-permanent
+	if navdilink: navdilink.synthStop(id)
 func synth_kill(id:int) -> void:
+	# stops, then deletes permanently?
 	if navdilink: navdilink.synthKill(id)
 func synth_play(id:int, volume:float = -1) -> void:
 	if volume>=0: synth_set_volume(id, volume)
