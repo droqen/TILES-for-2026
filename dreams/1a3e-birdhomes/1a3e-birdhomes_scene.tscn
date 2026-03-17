@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="8_wudlj"]
 [ext_resource type="FontFile" uid="uid://box70xu60paqv" path="res://fonts/font44mono.ttf" id="9_m7jfs"]
 [ext_resource type="Script" uid="uid://baluxa0df1ahl" path="res://dreams/1a3e-birdhomes/bubbla.gd" id="10_b0c3q"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="12_ac4mw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kyfun"]
 line_spacing = -7.0
@@ -102,3 +103,20 @@ metadata/_custom_type_script = "uid://tt1ag5ksilr0"
 enabled = false
 shape = SubResource("RectangleShape2D_m7jfs")
 target_position = Vector2(0, 0)
+
+[node name="hopsound" type="Node" parent="birdplayer" unique_id=41699834]
+script = ExtResource("12_ac4mw")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j01r1i0o5T5v1u05f0qwx10n512d06H-IHyiih9999998h0E1b6T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bkp18Fli08uww"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="popsound" type="Node" parent="birdplayer" unique_id=1697669952]
+script = ExtResource("12_ac4mw")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j07r1i0o5T0v4u00f0qM012d04w1h0E0T2v1u02f10w4qw02d03w2E0b4gp1hIWXdVifgg54FMZ100"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bgm" type="Node" parent="." unique_id=1826499421]
+script = ExtResource("12_ac4mw")
+url = "https://www.beepbox.co/#9n31sbk0l01e05t1La7g0ej07r1i0o442T5v2u05f0qwx10n513d08H-IHyiih9999998h0E1b6T5v1u05f0qwx10n511d08H-rrAArrp999998h0E1b6T1v1uc8f10e8q011d23A1F0B2Q2070Pb660E1629T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4z8Q8000000i4Q00000000000000000000000000p21EFJv3larBvjxVjnZGWQQvp7BRRVp7Nh1lo2hVttumhYRrlwh6CWvIarzYB9EZ6NdHW4zSmNkCO_ILxeCUf69H_-fV_dSs-LRztWERM000"
+autoplay = true
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"

@@ -1,13 +1,13 @@
 extends NavdiSolePlayerBasics
 
-const BIRDHOP_BEEP : String = &"https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j01r1i0o5T5v1u05f0qwx10n512d06H-IHyiih9999998h0E1b6T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bkp18Fli08uww"
-const POPSOUND_BEEP : String = &"https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j07r1i0o5T0v4u00f0qM012d04w1h0E0T2v1u02f10w4qw02d03w2E0b4gp1hIWXdVifgg54FMZ100"
+#const BIRDHOP_BEEP : String = &"https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j01r1i0o5T5v1u05f0qwx10n512d06H-IHyiih9999998h0E1b6T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bkp18Fli08uww"
+#const POPSOUND_BEEP : String = &"https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j07r1i0o5T0v4u00f0qM012d04w1h0E0T2v1u02f10w4qw02d03w2E0b4gp1hIWXdVifgg54FMZ100"
 @onready var maze = $"../Maze"
 
 enum {RESPAWNBUF}
 
 func play_pop_sound() -> void:
-	Beeper.play_sfx(POPSOUND_BEEP)
+	$popsound.play()
 	
 	if is_instance_valid(maze):
 		var empty_cells = maze.get_used_cells_by_tids([0])
@@ -58,7 +58,8 @@ func _physics_process(_delta: float) -> void:
 	if position.x >= 230-3 and vx > 0:
 		position.x -= 230-6
 	if bufs.try_eat([JUMPBUF, FLORBUF]):
-		Beeper.play_sfx(BIRDHOP_BEEP)
+		$hopsound.play()
+		#Beeper.play_sfx(BIRDHOP_BEEP)
 		vy = -1.3
 	
 	if !onfloor:

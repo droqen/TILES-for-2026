@@ -51,3 +51,4 @@ static func gen_az() -> String:
 	return ALPHABET[randi()%len(ALPHABET)]
 static func gen_simpletarot() -> String:
 	return TAROT[randi()%len(TAROT)]
+	

@@ -1,7 +1,7 @@
 // general purpose API for usage by navdi
 
 const navdilink = {
-			globalAudioCtx : new (window.AudioContext || window.webkitAudioContext)({ latencyHint: "balanced" }),
+			globalAudioCtx : new (window.AudioContext || window.webkitAudioContext)({ latencyHint: "interactive" }),
 			_resume_ctx(){
 				if (this.globalAudioCtx.state != "running") { this.globalAudioCtx.resume(); }
 			},
@@ -13,47 +13,60 @@ const navdilink = {
 				// this.onDrop=cb;
 			},
 
-			bgm_synth : null,
+			_deadSynths : [],
+			synthsKillAll(){
+				for (const [id, synth] of this._synths) {
+					this.synthsKill(id);
+				}
+				this._synths = {}; // double check.
+			},
+			_synths : {},
+			_synthNextCreateId : 1,
+			synthCreate(songData, looping=false, custom_id=null){
+				const id = custom_id || this._synthNextCreateId++;
+				const s = new beepbox.Synth(songData, this.globalAudioCtx);
+				if (!looping) s.loopRepeatCount = 0;
+				this._synths[id] = s;
+				return id;
+			},
+			synthKill(id){
+				const s = this._synths[id];
+				if(s.playing) {
+					this._deadSynths.push(s);
+					// wait until no longer playing, custom code needed
+					s.pause();
+				}
+				delete this._synths[id];
+
+			},
+			synthPlay(id) { const s=this._synths[id]; if(s) { if (s.loopRepeatCount==0) {s.snapToStart();} s.play(); } },
+			synthPause(id) { const s=this._synths[id]; if(s) s.pause(); },
+			synthGetPlayhead(id) { const s=this._synths[id]; return s ? s.playhead : 0.0; },
+			synthSetVolume(id,v) { const s=this._synths[id]; if (s) s.volume=v; },
+
+			_bgm_synth_id : null,
 			play_bgm_string(bgm_string){
-				console.log("play",bgm_string);
 				this.stop_bgm();
-				this.bgm_synth = new beepbox.Synth(bgm_string, this.globalAudioCtx);
-				this.bgm_synth.play();
+				this._bgm_synth_id = this.synthCreate(bgm_string,true);
+				this.synthPlay(this._bgm_synth_id);
 			},
-
-			// TODO: rather than 'cutting off' the synth,
-			// devise code for stopping all playback but
-			// allow synth to continue playing.
-
 			stop_bgm(){
-				if(this.bgm_synth!=null) {
-					this.bgm_synth.pause();
-					this.bgm_synth = null;
+				if(this._bgm_synth_id!=null) {
+					this.synthKill(this._bgm_synth_id);
+					this._bgm_synth_id = null;
 				}
 			},
-
 			play_sfx_string(sfx_string){
-				let sfx_synth = new beepbox.Synth(sfx_string, this.globalAudioCtx);
-				sfx_synth.loopRepeatCount = 0; // no looping!
-				sfx_synth.play();
-				this._track_sfx(sfx_synth);
-			},
-
-			sfxs_playing : [],
-			_track_sfx(sfx){
-				if(sfx.loopRepeatCount<0) {
-					throw new Error("navdilink should only track_sfx on a nonlooping beepbox synth");
-				} else {
-					this.sfxs_playing.push(sfx);
+				if (!(sfx_string in this._synths)) {
+					this.synthCreate(this._synths[sfx_string],false,sfx_string);
 				}
-			},
-			_cleanup_sfxs(){
-				this.sfxs_playing.filter(sfx => !sfx.ended);
+				this.synthPlay(sfx_string);
 			},
 };
 
 document.addEventListener('click', ()=>{
 	navdilink._resume_ctx();
+	console.log(navdilink._synths);
 	// don't prevent default
 });
 document.addEventListener('keydown', (e) => {
