@@ -83,7 +83,59 @@ target_position = Vector2(0, 0)
 
 [node name="crash" type="Node" parent="bahharat" unique_id=329575198]
 script = ExtResource("11_hyhck")
-url = "https://www.beepbox.co/#9n31sbk0l00e00t2ma7g00j07r1i0o555T0v1u00f10s4q103bd03w2h2E0T7v3u07f10p5q116b3d08HU7E290q6_6000Eh0I9E0T1v4u01f10m4qsj3920231d9aA9FfB5Q290dP8424E2769hT2v5u02f10w4qw02d03w1E0bk04p22XFBQ0I6b1yMhUXBMJoI8b12MhTd8JgKUbsbmbob0CzibioJ1EW0J8JgJ8J8JEJ8J8JEIwbub92MpEQWV1UZ14RQOV4qc8t3F6ziqbcK19QeyxOGpt4n44jEpHVpQd1ExjunV4bY2bYCbY2bMJfBHMI01UnQOw8FEdSYl9HD9Bcaq2CF5DE8wG9pQ9aw0"
+url = "https://www.beepbox.co/#9n21sbk0l00e00t4Ia7g00j00r1i0o55T0v1u00f10s4qF02400d00w2h2E0T0v6u00f10p5qx12000d07w2h0E0T2v5u02f10w4qw02d03w1E0bUp1jFUYGj7DtQQvn9gfg7CE"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bounce" type="Node" parent="bahharat" unique_id=287154166]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n21sbk0l00e00t4Ia7g00j00r1i0o55T0v1u00f10s4qF02400d00w2h2E0T0v6u00f10p5qx12000d07w2h0E0T2v5u02f10w4qw02d03w1E0bUp1hFROt0uwTeKwCEwfgg"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="songs" type="Node" parent="bahharat" unique_id=531044705]
+
+[node name="question" type="Node" parent="bahharat/songs" unique_id=593260860]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp1kGpuKjw6tt0aQYvdQw7zE"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="q2" type="Node" parent="bahharat/songs" unique_id=615215716]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp1iFRYgcOWo2KnHBMrfag"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="excited" type="Node" parent="bahharat/songs" unique_id=842297058]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp1fFU_4gHjNVvkHf8M"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="soft_startle" type="Node" parent="bahharat/songs" unique_id=1016837928]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp1fIYujm0pBM4rM3OY"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="sing5" type="Node" parent="bahharat/songs" unique_id=657429008]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp1iGWfNWDaZcOWl9BWf4g"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="chirrup" type="Node" parent="bahharat/songs" unique_id=99792639]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp18IQul8zPI"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="query" type="Node" parent="bahharat/songs" unique_id=1723833002]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp1jIQuiwxkOU60kPbww7zE"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="whine" type="Node" parent="bahharat/songs" unique_id=1215161830]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp1bGWfGUOQwxVi"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="thrill" type="Node" parent="bahharat/songs" unique_id=997107842]
+script = ExtResource("11_hyhck")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10s4qF02400d00w2h2E0T2v5u02f10w4qw02d03w1E0bMp1aJeKNuQJ7Ao"
 metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=729043742]
@@ -113,6 +165,7 @@ label_settings = ExtResource("10_5sr7h")
 script = ExtResource("11_hyhck")
 url = "https://www.beepbox.co/#9n31sbk0l01e03t2ma7g04j07r1i0o555T0v1u00f10s4q103bd03w2h2E0T7v3u07f10p5q116b3d08HU7E290q6_6000Eh0I9E0T1v4u01f10m4qsj3920231d9aA9FfB5Q290dP8424E2769hT2v5u02f10w4qw02d03w1E0bkid0001h8Q0000p23aEBk0GhoclcK6b17zKn2RyMwI4b17sQyR2XwJMJoJwI2qd8J9yQ6zE2QyR2QyQySyQyQySyO0JUIAb1CzSxER6zmsjJ58CKCn8zhx3Et8QqjhpBM9exQkeljbEyUwyt3dvbexEd4ajO_8FvjunU8LOoLM8LEfhWoFB0xjgkFf5N3AyCwTrhkCKoCkIFEaqAmuwy2EBDgAG0"
 autoplay = true
+play_volume = 0.5
 looping = true
 metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 

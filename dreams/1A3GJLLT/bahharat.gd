@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var spr : SheetSprite = $spr
 
-var __lost : int = 0
+var __lost : int = 100
 var __avoiding : int = 0
 var __injured : int = 0
 var __ouchflash : int = 0
@@ -29,14 +29,22 @@ func _physics_process(_delta: float) -> void:
 		else:
 			if chasing: __wandering_to_x = randf_range(5,185)
 			chasing = false
-	else:
+	elif position.distance_to(partner.position) < 70:
 		if __lost > 40:
 			vel.x *= 0.5
 			vel.y = -1.25
+			$songs/thrill.play()
+			# jump up when it thought player was gone
 		__lost = 0
+	else:
+		chasing = false
+		# player too far, i can't notice
 	
-	if chasing:
+	if chasing and __injured <= 0:
 		if (position - partner.position).length_squared() < 100:
+			if __avoiding <= 0:
+				# avoid
+				$songs/soft_startle.play()
 			__avoiding = 100 + randi() % 25 # careful !!!
 			if partner.ducky:
 				__avoiding /= 2
@@ -60,6 +68,8 @@ func _physics_process(_delta: float) -> void:
 		else:
 			__injured = 200 + randi() % 200 # oof, got too close
 			__ouchflash = 3
+			for node in $songs.get_children():
+				node.stop()
 			$crash.play()
 			if position.x < partner.position.x:
 				partner.vx = 2.0
@@ -85,6 +95,7 @@ func _physics_process(_delta: float) -> void:
 		if position.y > 86 and vel.y >= 0:
 			if vel.y > 0.5:
 				vel.y *= -0.5
+				$bounce.play() # bounce up
 			else:
 				vel.y = 0
 				position.y = 86
@@ -105,12 +116,15 @@ func _physics_process(_delta: float) -> void:
 		if __injured == 0:
 			spr.flip_h = false
 			vel.y = -1.0
+			# awake from being injured
+			$songs/chirrup.play()
 			
 		if spr.frame in [51,52,53]:
 			spr.position.y = 4
 		else:
 			spr.position.y = 0
 	else:
+		
 		if __invinc > 0:
 			__invinc -= 1
 			if __invinc % 5 > 2: spr.hide()
@@ -118,6 +132,8 @@ func _physics_process(_delta: float) -> void:
 		spr.flip_h = false
 		
 		if chasing:
+			if randf() < 0.01:
+				sing()
 			if __avoiding > 0:
 				dancedir = (position - partner.position).normalized()
 				__avoiding -= 1
@@ -143,6 +159,8 @@ func _physics_process(_delta: float) -> void:
 					vel.y *= 0.8
 			spr.setup([20,21,22,23],10)
 		else:
+			if randf() < 0.003: # rarer to sing when not chasing
+				sing()
 			vel *= 0.98
 			if vel.y < 0:
 				vel.x = move_toward(vel.x, sign(__wandering_to_x - position.x) * 0.15, 0.015)
@@ -165,3 +183,7 @@ func _physics_process(_delta: float) -> void:
 			spr.setup([20,21,22,23],15)
 		
 		spr.position.y = 0
+
+func sing() -> void:
+	var song : NavdiBeep = $songs.get_child(randi()%$songs.get_child_count())
+	song.play()
