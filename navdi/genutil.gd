@@ -51,4 +51,26 @@ static func gen_az() -> String:
 	return ALPHABET[randi()%len(ALPHABET)]
 static func gen_simpletarot() -> String:
 	return TAROT[randi()%len(TAROT)]
-	
+static func gen_oobdir(pos:Vector2,rect:Rect2i,margin:float=0.0) -> Vector2i:
+	var x0:int = rect.position.x
+	var x1:int = x0 + rect.size.x
+	var y0:int = rect.position.y
+	var y1:int = y0 + rect.size.y
+	return Vector2i(
+		(-1 if pos.x < x0+margin else 0)
+		+(1 if pos.x > x1-margin else 0),
+		(-1 if pos.y < y0+margin else 0)
+		+(1 if pos.y > y1-margin else 0)
+	)
+static func shrink_rect2(rect:Rect2,shrink:float) -> Rect2:
+	return Rect2(
+		rect.position
+			+ Vector2(shrink,shrink),
+		rect.size
+			- Vector2(shrink+shrink,shrink+shrink))
+static func shrink_rect2i(rect:Rect2i,shrink:int) -> Rect2i:
+	return Rect2i(
+		rect.position
+			+ Vector2i(shrink,shrink),
+		rect.size
+			- Vector2i(shrink+shrink,shrink+shrink))

@@ -79,6 +79,19 @@ func get_used_cells_by_tids(tids : PackedInt32Array) -> Array[Vector2i]:
 
 const DIRS = [Vector2i.RIGHT,Vector2i.UP,Vector2i.LEFT,Vector2i.DOWN,]
 
+func copy_from(
+source_maze : Maze,
+source_region : Rect2i,
+paste_topleft : Vector2i = Vector2.ZERO,
+paste_blanks : bool = true) -> void:
+	var srcp0 := source_region.position
+	var srcp1 := source_region.position + source_region.size
+	for x in range(srcp0.x, srcp1.x):
+		for y in range(srcp0.y, srcp1.y):
+			var srctid := source_maze.get_cell_tid(Vector2i(x,y))
+			if paste_blanks or srctid >= 0:
+				set_cell_tid(Vector2i(x,y)-srcp0+paste_topleft,srctid)
+
 func magic_wand(start : Vector2i, verifier : Callable) -> Array[Vector2i]:
 	var cells : Array[Vector2i] = [start]
 	var excluded_cells : Array[Vector2i] = []
