@@ -5,9 +5,10 @@ extends Node2D
 @export var roomcoords := Vector2i(1,0)
 const ROOMSIZE := Vector2i(10,10)
 func loadroom() -> void:
-		maze.copy_from(
-		vessel.get_maze(),
-		Rect2i(roomcoords*ROOMSIZE,ROOMSIZE))
+	maze.copy_from(
+	vessel.get_maze(),
+	Rect2i(roomcoords*ROOMSIZE,ROOMSIZE))
+	vessel.spawn_exiles_by_roomcoords(roomcoords, $Spawned, true)
 func _ready() -> void:
 	loadroom.call_deferred()
 func _physics_process(_delta: float) -> void:
