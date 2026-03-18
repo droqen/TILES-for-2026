@@ -6,6 +6,10 @@ var _synthid : int = 0
 @export var autoplay : bool = false
 @export var play_volume : float = 1
 @export var looping : bool = false
+@export var tempo : int = -1 :
+	set(v): if tempo != v:
+		tempo = v
+		if _synthid: Beeper.synth_set_tempo(_synthid, tempo)
 var destroyed : bool = false
 var _volume : float = 1.0
 var volume :
@@ -19,7 +23,10 @@ func _initialize_synth() -> void:
 	if destroyed: push_error("initialized after destroy"); return;
 	if !_synthid:
 		_synthid = Beeper.synth_create(get_beepbox_song_code(), looping)
-		if _synthid: Beeper.synth_set_volume(_synthid, _volume)
+		if _synthid:
+			Beeper.synth_set_volume(_synthid, _volume)
+			if tempo >= 0: Beeper.synth_set_tempo(_synthid, tempo)
+			else: tempo = -1 #? ??
 
 func _destroy_synth() -> void:
 	if _synthid and not destroyed: Beeper.synth_kill(_synthid)

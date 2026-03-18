@@ -64,6 +64,8 @@ func play_sfx(url:String) -> void:
 
 func synth_set_volume(id:int, volume:float) -> void:
 	if navdilink: navdilink.synthSetVolume(id, volume)
+func synth_set_tempo(id:int, bpm:int) -> void:
+	if navdilink: navdilink.synthSetSongTempo(id, bpm)
 func synth_create(song_data:String, looping:bool = false) -> int:
 	if navdilink: return (navdilink
 		.synthCreate(song_data, looping))
@@ -81,6 +83,9 @@ func synth_play(id:int, volume:float = -1) -> void:
 	if navdilink:
 		print("synth_play:#%d" % [id])
 		navdilink.synthPlay(id)
+func synth_killall() -> void:
+	# detonate all synths byebye
+	if navdilink: navdilink.synthKillAll()
 
 func _send_request(url : String, keys : Dictionary = {}) -> void:
 	var err = request(url, HEADERS, HTTPClient.METHOD_POST, JSON.stringify(keys))

@@ -14,11 +14,11 @@ const navdilink = {
 			},
 
 			_deadSynths : [],
-			synthsKillAll(){
+			synthKillAll(){
 				for (const [id, synth] of this._synths) {
-					this.synthsKill(id);
+					this.synthKill(id);
 				}
-				this._synths = {}; // double check.
+				this._synths = {}; // clear all.
 			},
 			_synths : {},
 			_synthNextCreateId : 1,
@@ -30,6 +30,7 @@ const navdilink = {
 				return id;
 			},
 			synthKill(id){
+				this.synthStop(id);
 				const s = this._synths[id];
 				if(s.playing) {
 					this._deadSynths.push(s);
@@ -39,10 +40,12 @@ const navdilink = {
 				delete this._synths[id];
 
 			},
-			synthPlay(id) { const s=this._synths[id]; if(s) { if (s.loopRepeatCount==0) {s.snapToStart();} s.play(); } },
+			synthPlay(id) { const s=this._synths[id]; if(s) { if (s.loopRepeatCount==0 || s.suppressNewTones) { s.snapToStart(); } s.suppressNewTones = false; s.play(); } },
 			synthPause(id) { const s=this._synths[id]; if(s) s.pause(); },
+			synthStop(id) { const s=this._synths[id]; if(s) { s.freeAllTones(); s.suppressNewTones = true; } },
 			synthGetPlayhead(id) { const s=this._synths[id]; return s ? s.playhead : 0.0; },
 			synthSetVolume(id,v) { const s=this._synths[id]; if (s) s.volume=v; },
+			synthSetSongTempo(id,bpm) { const s=this._synths[id]; if (s) s.song.tempo=Math.max(15,bpm); },
 
 			_bgm_synth_id : null,
 			play_bgm_string(bgm_string){
