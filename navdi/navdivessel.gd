@@ -2,13 +2,11 @@
 extends Node2D
 class_name NavdiVessel
 @export var vessel_room_size : Vector2i = Vector2i(100, 100)
-const GRID_PFB = preload("res://navdi/navdivesselgrid.gd")
-var _grid : GRID_PFB
 func _enter_tree() -> void:
-	self._grid = GRID_PFB.new()
-	self._grid.vessel = self
-	#self._grid.owner = get_tree().root
-	add_child(self._grid, false, Node.INTERNAL_MODE_BACK)
+	if Engine.is_editor_hint():
+		var grid = load("res://navdi/navdivesselgrid.gd").new()
+		grid.vessel = self
+		add_child(grid, false, Node.INTERNAL_MODE_BACK)
 
 var exiled_maze : Maze
 var exiles_by_name : Dictionary
