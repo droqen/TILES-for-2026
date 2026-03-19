@@ -68,15 +68,16 @@ enum TileTransform {
 }
 
 func set_cell_tid_transformed(maze_coords:Vector2i, tid:int,
-rotated_ccw90s:int = 0, xflipped:bool = false, yflipped:bool = false):
+rotated_ccw90s:int = 0, xflip:bool = false, yflip:bool = false, transpose:bool = false):
 	_require_tidkey()
 	var tile_transform_flags := 0
 	if rotated_ccw90s: match posmod(rotated_ccw90s,4):
-		1: tile_transform_flags = TileTransform.ROTATE_90
+		1: tile_transform_flags = TileTransform.ROTATE_270
 		2: tile_transform_flags = TileTransform.ROTATE_180
-		3: tile_transform_flags = TileTransform.ROTATE_270
-	if xflipped: tile_transform_flags ^= TileSetAtlasSource.TRANSFORM_FLIP_H
-	if yflipped: tile_transform_flags ^= TileSetAtlasSource.TRANSFORM_FLIP_V
+		3: tile_transform_flags = TileTransform.ROTATE_90
+	if xflip: tile_transform_flags ^= TileSetAtlasSource.TRANSFORM_FLIP_H
+	if yflip: tile_transform_flags ^= TileSetAtlasSource.TRANSFORM_FLIP_V
+	if transpose: tile_transform_flags ^= TileSetAtlasSource.TRANSFORM_TRANSPOSE
 	set_cell(maze_coords, SOLE_SOURCE_ID, tid2coord(tid), tile_transform_flags)
 	if !Engine.is_editor_hint():
 		changed.emit()
