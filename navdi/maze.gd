@@ -60,6 +60,27 @@ func set_cell_tid(maze_coords:Vector2i, tid:int):
 	if !Engine.is_editor_hint():
 		changed.emit()
 
+enum TileTransform {
+	ROTATE_0 = 0,
+	ROTATE_90 = TileSetAtlasSource.TRANSFORM_TRANSPOSE | TileSetAtlasSource.TRANSFORM_FLIP_H,
+	ROTATE_180 = TileSetAtlasSource.TRANSFORM_FLIP_H | TileSetAtlasSource.TRANSFORM_FLIP_V,
+	ROTATE_270 = TileSetAtlasSource.TRANSFORM_TRANSPOSE | TileSetAtlasSource.TRANSFORM_FLIP_V,
+}
+
+func set_cell_tid_transformed(maze_coords:Vector2i, tid:int,
+rotated_ccw90s:int = 0, xflipped:bool = false, yflipped:bool = false):
+	_require_tidkey()
+	var tile_transform_flags := 0
+	if rotated_ccw90s: match posmod(rotated_ccw90s,4):
+		1: tile_transform_flags = TileTransform.ROTATE_90
+		2: tile_transform_flags = TileTransform.ROTATE_180
+		3: tile_transform_flags = TileTransform.ROTATE_270
+	if xflipped: tile_transform_flags ^= TileSetAtlasSource.TRANSFORM_FLIP_H
+	if yflipped: tile_transform_flags ^= TileSetAtlasSource.TRANSFORM_FLIP_V
+	set_cell(maze_coords, SOLE_SOURCE_ID, tid2coord(tid), tile_transform_flags)
+	if !Engine.is_editor_hint():
+		changed.emit()
+
 func get_cell_tid(maze_coords:Vector2i) -> int:
 	_require_tidkey()
 	return coord2tid(get_cell_atlas_coords(maze_coords))
