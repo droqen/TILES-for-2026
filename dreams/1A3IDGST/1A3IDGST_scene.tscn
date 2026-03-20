@@ -192,7 +192,27 @@ enabled = false
 shape = SubResource("RectangleShape2D_evmar")
 target_position = Vector2(0, 0)
 
-[node name="paku" type="Node" parent="Stage" unique_id=1486573510]
+[node name="paku1" type="Node" parent="Stage" unique_id=1027323746]
 script = ExtResource("12_tqba6")
-url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o1T0v1u00f12taq0y10r53d18w8h0E4b8080g08T2v4u02f10w4qwM10u4253d23w2E0bMp19mufA54utw"
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o4T0v1u00f12taq1y10r503bd12w0h0E4b8080g08T2v4u02f10w4qwM10u4253d23w2E0bMp17FEYB7Do"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="paku2" type="Node" parent="Stage" unique_id=86714774]
+script = ExtResource("12_tqba6")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o4T0v1u00f12taq1y10r503bd12w0h0E4b8080g08T2v4u02f10w4qwM10u4253d23w2E0bMp17FEYD7Do"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="paku3" type="Node" parent="Stage" unique_id=902453421]
+script = ExtResource("12_tqba6")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o4T0v1u00f12taq1y10r503bd12w0h0E4b8080g08T2v4u02f10w4qwM10u4253d23w2E0bMp17FEYE7Do"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="paku4" type="Node" parent="Stage" unique_id=1486573510]
+script = ExtResource("12_tqba6")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o4T0v1u00f12taq1y10r503bd12w0h0E4b8080g08T2v4u02f10w4qwM10u4253d23w2E0bMp17FEYH7Do"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="paku5" type="Node" parent="Stage" unique_id=1638777822]
+script = ExtResource("12_tqba6")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f12taq1y10r503bd12w0h0E4b8080g08T2v4u02f10w4qwM10u4253d23w2E0bMp1bFBO50gc0unw"
 metadata/_custom_type_script = "uid://b24ikpjqx8lqn"

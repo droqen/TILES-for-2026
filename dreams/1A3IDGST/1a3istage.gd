@@ -9,7 +9,10 @@ var camera_paws := 0
 
 func _physics_process(_delta: float) -> void:
 	
-	if !is_instance_valid(player): return
+	if pakubuf > 0: pakubuf -= 1
+	
+	if !is_instance_valid(player):
+		return
 	
 	if player.onfloor and player.jumps:
 		target_y = floori(clamp(player.position.y - 100,0,bottom_y)/5.0)*5
@@ -28,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 		0:
 			maze.set_cell_tid(pcell, 40)
 			player.freeze()
-			$paku.play()
+			playpaku()
 		30:
 			maze.set_cell_tid_transformed(pcell, 31, 0,
 				maze.is_cell_flipped_h(pcell),
@@ -36,6 +39,29 @@ func _physics_process(_delta: float) -> void:
 				maze.is_cell_transposed(pcell)
 			)
 			player.freeze()
-			$paku.play()
+			playpaku()
 		99:
 			player.queue_free()
+			playpaku()
+			maze.set_cell_tid(pcell, 40)
+
+@onready var pakus = [
+	$paku1,
+	$paku2,
+	$paku3,
+	$paku4,
+	$paku5,
+]
+
+var lastplayedpaku := -1
+var pakubuf := 0
+
+func playpaku() -> void:
+	if pakubuf <= 0: lastplayedpaku = -1
+	match lastplayedpaku:
+		-1: pakus[0].play(); lastplayedpaku = 0;
+		0: pakus[1].play(); lastplayedpaku = 1;
+		1: pakus[2].play(); lastplayedpaku = 2;
+		2: pakus[3].play(); lastplayedpaku = 3;
+		3: pakus[4].play();
+	pakubuf = 20
