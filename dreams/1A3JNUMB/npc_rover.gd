@@ -2,10 +2,15 @@ extends Node2D
 
 const IS_ROVER = true
 
+signal opened
+signal hidestarted
+signal hidestopped
+
 @onready var label : Label = $Label
 #var label_bottom_y : int = -1
 @onready var labelcolour : Color = label.modulate
 
+var justflashed : bool = false
 var typing : bool = false
 var untyping : bool = true
 
@@ -19,11 +24,15 @@ func _ready() -> void:
 		typing = false;
 	)
 	$playernear.area_exited.connect(func(_plr):
-		typing = false; untyping = true;
+		typing = false;
+		if label.visible_characters > 0 and not untyping:
+			hidestarted.emit()
+		untyping = true
 	)
 func _physics_process(_delta: float) -> void:
 	if typing:
 		if not label.visible or label.visible_characters != len(label.text):
+			opened.emit()
 			label.show()
 			label.modulate = Color.WHITE
 			label.visible_characters = len(label.text)
@@ -33,3 +42,5 @@ func _physics_process(_delta: float) -> void:
 	elif untyping:
 		if label.visible_characters > 0:
 			label.visible_characters -= 1
+			if label.visible_characters == 0:
+				hidestopped.emit()

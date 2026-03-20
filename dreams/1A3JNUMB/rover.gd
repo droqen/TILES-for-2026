@@ -1,10 +1,18 @@
 extends NavdiSolePlayerBasics
 
+var flashing = 0
+
 func _ready() -> void:
 	super._ready()
 	bufs.setup_bufons([FLORBUF,8,])
 
 func _physics_process(_delta: float) -> void:
+	if flashing > 0:
+		vx *= 0.5
+		flashing -= 1
+		spr.visible = flashing % 5 < 3
+	else:
+		flashing = 0
 	if Pin.get_jump_hit(): bufs.on(JUMPBUF)
 	var dpad = Pin.get_dpad()
 	var onfloor := is_on_floor()
