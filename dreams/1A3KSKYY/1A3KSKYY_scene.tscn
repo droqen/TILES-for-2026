@@ -1,0 +1,122 @@
+[gd_scene format=4 uid="uid://cmv5g2mqgp3gi"]
+
+[ext_resource type="TileSet" uid="uid://bcxkx74pplpmy" path="res://dreams/1A3KSKYY/sky_tiles.tres" id="1_hvseq"]
+[ext_resource type="Script" uid="uid://ys5uhj5fjd8l" path="res://dreams/1A3KSKYY/duplitimes.gd" id="1_i1igj"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_qofby"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_oxold"]
+[ext_resource type="Texture2D" uid="uid://rce73rq5y14a" path="res://dreams/1A3KSKYY/sky.pyxel" id="3_qofby"]
+[ext_resource type="Script" uid="uid://7lqyi2i25wvb" path="res://dreams/1A3KSKYY/^skyscroller.gd" id="3_wvbmn"]
+[ext_resource type="Resource" uid="uid://cclc20xpr7j6d" path="res://dreams/1A3KSKYY/sky_sheet.tres" id="4_wvbmn"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_i1igj"]
+[ext_resource type="Script" uid="uid://c7k0erv152h56" path="res://dreams/1A3KSKYY/bird.gd" id="6_qvhvu"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="8_wvbmn"]
+[ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="10_n2gm0"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="12_wewx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wewx5"]
+size = Vector2(2, 2)
+
+[node name="1A3KSKYY" type="Node2D" unique_id=1008496947]
+texture_filter = 1
+
+[node name="mazeskycontainer" type="Node2D" parent="." unique_id=2122771802]
+
+[node name="Maze" type="TileMapLayer" parent="mazeskycontainer" unique_id=1648175549]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAJAAgAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAA=")
+tile_set = ExtResource("1_hvseq")
+navigation_enabled = false
+script = ExtResource("2_qofby")
+
+[node name="^skyscroller" type="Node" parent="mazeskycontainer/Maze" unique_id=302380266]
+script = ExtResource("3_wvbmn")
+
+[node name="(buffer_maze)" type="TileMapLayer" parent="mazeskycontainer/Maze/^skyscroller" unique_id=2098577537]
+tile_set = ExtResource("1_hvseq")
+navigation_enabled = false
+script = ExtResource("2_qofby")
+
+[node name="duplitimes" type="Node" parent="." unique_id=255418591 node_paths=PackedStringArray("original")]
+script = ExtResource("1_i1igj")
+original = NodePath("../mazeskycontainer/Maze")
+
+[node name="View" type="ReferenceRect" parent="." unique_id=296645299]
+offset_right = 180.0
+offset_bottom = 190.0
+script = ExtResource("5_i1igj")
+
+[node name="bird" type="Node2D" parent="." unique_id=2118406741 node_paths=PackedStringArray("target")]
+position = Vector2(90, 166)
+script = ExtResource("6_qvhvu")
+target = NodePath("../pink")
+
+[node name="spr" type="Sprite2D" parent="bird" unique_id=848924315]
+texture = ExtResource("3_qofby")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_oxold")
+sheet = ExtResource("4_wvbmn")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="bird" unique_id=359370529]
+script = ExtResource("10_n2gm0")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="bird/mover" unique_id=1475563823]
+enabled = false
+shape = SubResource("RectangleShape2D_wewx5")
+target_position = Vector2(0, 0)
+
+[node name="birdbg" type="Node" parent="bird" unique_id=1326152014]
+script = ExtResource("12_wewx5")
+url = "https://www.beepbox.co/#9n11sbk0l00e08t1Da7g0fj07r1i0o5T1v1u01f0q2x10h5c0d29AbF8B7Q0471Peb9aE2b676T2v6u02f10w4qE1243d03w1E0b5i0Mgw0000000000000000p21sGpuLqgzFAYbwp8WCnNUBznkySC0heJDxul9ERcLnShSs5hMsXeSjzNk5WYz0x7l6LbRSp0zDaG3hn7LllvbRUKhY0yc0"
+autoplay = true
+play_volume = 0.5
+looping = true
+tempo = 103
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="pink" type="Node2D" parent="." unique_id=780900658]
+position = Vector2(90, 20)
+
+[node name="spr" type="Sprite2D" parent="pink" unique_id=1930260168]
+texture = ExtResource("3_qofby")
+hframes = 10
+vframes = 10
+frame = 99
+script = ExtResource("3_oxold")
+sheet = ExtResource("4_wvbmn")
+frames = PackedInt32Array(99)
+ani_period = 10
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1776976115]
+offset_left = 60.0
+offset_top = 175.0
+offset_right = 90.0
+offset_bottom = 180.0
+color = Color(0.6117647, 0.89411765, 0.8392157, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=422058396]
+offset_left = 115.0
+offset_top = 175.0
+offset_right = 120.0
+offset_bottom = 180.0
+color = Color(0.6117647, 0.89411765, 0.8392157, 1)
+
+[node name="score" type="Label" parent="." unique_id=540902464]
+offset_left = 60.0
+offset_top = 175.0
+offset_right = 120.0
+offset_bottom = 198.0
+text = "score:     0"
+label_settings = ExtResource("8_wvbmn")
+
+[node name="windbg" type="Node" parent="." unique_id=449276818]
+script = ExtResource("12_wewx5")
+url = "https://www.beepbox.co/#9n11sbk0l00e08t1Da7g0fj07r1i0o5T1v1u01f0q2x10h5c0d29AbF8B7Q0471Peb9aE2b676T2v6u02f10w4qE1243d03w1E0b00000000000i4Q9hk00000p21sGpuLqgzFAYbwp8WCnNUBznkySC0heJDxul9ERcLnShSs5hMsXeSjzNk5WYz0x7l6LbRSp0zDaG3hn7LllvbRUKhY0yc0"
+autoplay = true
+play_volume = 0.5
+looping = true
+tempo = 103
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"

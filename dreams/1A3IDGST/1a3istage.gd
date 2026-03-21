@@ -43,7 +43,9 @@ func _physics_process(_delta: float) -> void:
 		99:
 			player.queue_free()
 			playpaku()
-			maze.set_cell_tid(pcell, 40)
+			await get_tree().create_timer(0.4).timeout
+			if is_instance_valid(maze):
+				maze.set_cell_tid(pcell, 40)
 
 @onready var pakus = [
 	$paku1,
