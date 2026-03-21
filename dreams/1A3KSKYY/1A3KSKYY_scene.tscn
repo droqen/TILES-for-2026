@@ -105,6 +105,7 @@ offset_bottom = 180.0
 color = Color(0.6117647, 0.89411765, 0.8392157, 1)
 
 [node name="score" type="Label" parent="." unique_id=540902464]
+modulate = Color(0.94509804, 0.90588236, 0.8745098, 1)
 offset_left = 60.0
 offset_top = 175.0
 offset_right = 120.0
