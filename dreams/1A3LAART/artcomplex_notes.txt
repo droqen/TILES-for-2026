@@ -12,3 +12,9 @@
 	is the eight of coins the one that's like... labour?
 	yeah, that's the one.
 	it's tetris!
+	
+	---
+	
+	as with many of these no-score games,
+	this one is trivial to beat but fun to mess around with...
+	i'm happy with this one's development.
