@@ -1,24 +1,69 @@
 [gd_scene format=4 uid="uid://ctxxobadiadot"]
 
+[ext_resource type="Script" uid="uid://cg5p1lbco6ofc" path="res://dreams/1A3LAART/stage.gd" id="1_ognqb"]
 [ext_resource type="TileSet" uid="uid://cdo1jhwlrbk" path="res://dreams/1A3LAART/artcomplex_tiles.tres" id="1_umx66"]
 [ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_2ndff"]
 [ext_resource type="Texture2D" uid="uid://defqgo5rra7dj" path="res://dreams/1A3LAART/artcomplex.pyxel" id="3_2ndff"]
+[ext_resource type="Script" uid="uid://o1gq16kqaa2t" path="res://dreams/1A3LAART/artplayer.gd" id="3_t2whj"]
 [ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_u8lxk"]
 [ext_resource type="Resource" uid="uid://drwmm2ievv1hh" path="res://dreams/1A3LAART/artcomplex_sheet.tres" id="4_csbd5"]
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_e8clb"]
+[ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="7_pd80e"]
 [ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="7_u8lxk"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="8_csbd5"]
+[ext_resource type="Script" uid="uid://djlh1vfxd3ita" path="res://dreams/1A3LAART/arrow.gd" id="11_pd80e"]
+[ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="12_gsonr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vk8pj"]
+size = Vector2(5.9, 5.9)
 
 [node name="1A3LAART" type="Node2D" unique_id=1880688227]
 texture_filter = 1
 
-[node name="Maze" type="TileMapLayer" parent="." unique_id=1399518153]
-tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAABAAAAAAAAAAMAAAABAAAAAAAAAAgAAAACAAAAAAAAAAkAAAABAAAAAAABAAAAAAACAAAAAAABAAEAAAABAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAgAAAABAAAAAAABAAkAAAABAAAAAAACAAAAAAABAAAAAAACAAUAAAABAAAAAAACAAYAAAABAAAAAAACAAkAAAACAAAAAAADAAAAAAABAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAACAAAAAAAEAAgAAAABAAAAAAAFAAEAAAABAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAgAAAABAAAAAAAGAAMAAAABAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAIAAAABAAAAAAAHAAQAAAABAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAABAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAABAAAAAAAIAAIAAAABAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAABAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAEAAAABAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAABAAAAAAAJAAkAAAABAAAAAAAAAAIAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAJAAAAAAACAAAAAAAJAAIAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAIAAkAAAACAAAAAAAHAAkAAAACAAAAAAAGAAkAAAACAAAAAAAFAAkAAAACAAAAAAAEAAkAAAACAAAAAAAAAAcAAAACAAAAAAAAAAYAAAACAAAAAAAAAAUAAAACAAAAAAAAAAQAAAACAAAAAAAHAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAA=")
+[node name="Stage" type="Node2D" parent="." unique_id=354681731]
+script = ExtResource("1_ognqb")
+
+[node name="Maze" type="TileMapLayer" parent="Stage" unique_id=1399518153]
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAABAAAAAAAAAAMAAAABAAAAAAAAAAgAAAACAAAAAAAAAAkAAAABAAAAAAABAAAAAAACAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAgAAAABAAAAAAABAAkAAAABAAAAAAACAAAAAAABAAAAAAACAAUAAAABAAAAAAACAAYAAAABAAAAAAACAAkAAAACAAAAAAADAAAAAAABAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAcAAAAAAAAAAAADAAgAAAABAAAAAAADAAkAAAACAAAAAAAEAAgAAAABAAAAAAAFAAEAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAAAAAAAAAAFAAgAAAABAAAAAAAGAAMAAAABAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAAAAAABAAAAAAAHAAIAAAABAAAAAAAHAAQAAAABAAAAAAAHAAcAAAAAAAAAAAAHAAgAAAABAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAABAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAABAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAEAAAABAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAABAAAAAAAJAAkAAAABAAAAAAAAAAIAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAJAAAAAAACAAAAAAAJAAIAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAIAAkAAAACAAAAAAAHAAkAAAACAAAAAAAGAAkAAAACAAAAAAAFAAkAAAACAAAAAAAEAAkAAAACAAAAAAAAAAcAAAACAAAAAAAAAAYAAAACAAAAAAAAAAUAAAACAAAAAAAAAAQAAAACAAAAAAAHAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAgAAAAJAAkAAAA=")
 tile_set = ExtResource("1_umx66")
 navigation_enabled = false
 script = ExtResource("2_2ndff")
 
-[node name="Spr" type="Sprite2D" parent="." unique_id=672229387]
-position = Vector2(25, 46)
+[node name="View" type="ReferenceRect" parent="Stage" unique_id=1127234458]
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("5_e8clb")
+
+[node name="ColorRect" type="ColorRect" parent="Stage" unique_id=1089619898]
+offset_left = 35.0
+offset_top = 15.0
+offset_right = 60.0
+offset_bottom = 20.0
+color = Color(0.57254905, 0.6784314, 0.7529412, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Stage" unique_id=1733267102]
+offset_left = 80.0
+offset_top = 15.0
+offset_right = 85.0
+offset_bottom = 20.0
+color = Color(0.57254905, 0.6784314, 0.7529412, 1)
+
+[node name="Label" type="Label" parent="Stage" unique_id=182921842]
+modulate = Color(0.9098039, 0.98039216, 0.96862745, 1)
+offset_left = 35.0
+offset_top = 15.0
+offset_right = 85.0
+offset_bottom = 38.0
+text = "score    0"
+label_settings = ExtResource("7_u8lxk")
+
+[node name="artplayer" type="Node2D" parent="Stage" unique_id=457935189]
+position = Vector2(15, 76)
+script = ExtResource("3_t2whj")
+metadata/_custom_type_script = "uid://crerl807nynkw"
+
+[node name="spr" type="Sprite2D" parent="Stage/artplayer" unique_id=672229387]
+position = Vector2(0, -1)
 texture = ExtResource("3_2ndff")
 hframes = 10
 vframes = 10
@@ -28,30 +73,63 @@ sheet = ExtResource("4_csbd5")
 frames = PackedInt32Array(10, 11)
 ani_period = 10
 
-[node name="View" type="ReferenceRect" parent="." unique_id=1127234458]
-offset_right = 100.0
-offset_bottom = 100.0
-script = ExtResource("5_e8clb")
+[node name="mover" type="Node2D" parent="Stage/artplayer" unique_id=812822545]
+script = ExtResource("7_pd80e")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1089619898]
-offset_left = 45.0
-offset_top = 90.0
-offset_right = 70.0
-offset_bottom = 95.0
-color = Color(0.68235296, 0.6039216, 0.7019608, 1)
+[node name="solidcast" type="ShapeCast2D" parent="Stage/artplayer/mover" unique_id=2033948618]
+enabled = false
+shape = SubResource("RectangleShape2D_vk8pj")
+target_position = Vector2(0, 0)
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1733267102]
-offset_left = 90.0
-offset_top = 90.0
-offset_right = 95.0
-offset_bottom = 95.0
-color = Color(0.68235296, 0.6039216, 0.7019608, 1)
+[node name="Arrows" type="Node2D" parent="Stage" unique_id=525324163]
 
-[node name="Label" type="Label" parent="." unique_id=182921842]
-modulate = Color(0.8666667, 0.06666667, 0.827451, 1)
-offset_left = 45.0
-offset_top = 90.0
-offset_right = 95.0
-offset_bottom = 113.0
-text = "score    0"
-label_settings = ExtResource("7_u8lxk")
+[node name="bgm" type="Node" parent="Stage" unique_id=1129714829]
+script = ExtResource("8_csbd5")
+url = "https://www.beepbox.co/#9n31sbk0l00e0dt2za7g0fj07r1i0o452T1v1u01f0q00d33A0F0B0Q0000Pf600E1617T1v1u01f10k8q1337i2d4aAcF8BcQ4200P6789E179T1v0u01f62f02k00v02pb2d02h0q0g25d02A0F0B8Q9000Pf000E250617T2v1u02f10w4qwg225d04w0E0b4h4y4h4P4g004Og0kCs00000014Qk00000064jhg000p25KIQugx4Qu7ARBplpmlmlBlBplpmlml0kYigpmlmlBlBplpmlmlBlBplpmrmlMf6rBlBplpmlmlBlBplpmlmlnq2Cn91W3AhUz8CzG6z17yeIuwWhj17BewuwV4uwGqfwhFBOAFOiZ97gnEES2dCLOn9d9UMhYWkVd6ikIQuEynXmndcyWhQyZFxdhhhhhAQphjKWnXmndcyXJ8JdjQEUxdQ-IqUFHS16Ck2EPmqd2QzjnCcQo2whFHOCqAKxlduQ8_3GcXLJ8TdiPfljHSzqHKpJuOWqeAVE-vN56nUVgCLvpETL8SCnamCaCmAzp8OdqqfhAQPnC9RcLkPwGCnNAOPhQiQQvYb8WVTWpqyewzE8W2c"
+autoplay = true
+play_volume = 0.5
+looping = true
+tempo = 163
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bgmdull" type="Node" parent="Stage" unique_id=447906412]
+script = ExtResource("8_csbd5")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t2za7g00j00r1i0o4T1v1u01f0q00d33A0F0B0Q0000Pf600E1617T2v1u02f10w4qwg225d04w0E0bwp212IQugx4Qu7ARBplpmlmlBlBplpmlmlBlBkRX0zja1kpHd6xqhFHP6qc1g8QRVjdingE"
+play_volume = 0.5
+looping = true
+tempo = 163
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="ahfuck" type="Node" parent="Stage" unique_id=766459170]
+script = ExtResource("8_csbd5")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t2ma7g00j00r1i0o4T7v1u07f10s4q0951d08H_--D---ZBLRS-Sh8IbE0T2v1u02f40u32ae2sb1e7qx0275d03w0E0bMp1cITE_j8ITE_Sw"
+play_volume = 0.7
+
+[node name="ahfuck2" type="Node" parent="Stage" unique_id=132533496]
+script = ExtResource("8_csbd5")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t43a7g01j00r1i0o4T1v1u01f0q00d33A0F0B0Q0000Pf600E1617T2v1u02f10w4qwg225d04w0E0bwp21IIOV24w_AIwl86XQV06hKTkOUjSnhIg3gkU7p5eg1ArJTgIhK0iwrK-g1ArJT0IhK0iwrK-g1ArFHS16Ck2EPmqd2QzjnCcQo2whFHOCqAKxg"
+play_volume = 0.7
+
+[node name="descend" type="Node" parent="Stage" unique_id=1348718716]
+script = ExtResource("8_csbd5")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t3Ma7g00j00r1i0o4T1v1u83f0q8z10q5231d03AbF6B2Q0572P9995E2b273T2v1u02f10w4qx024bd33w0E0bgp17kBa2fdg"
+play_volume = 0.7
+
+[node name="NavdiVessel" type="Node2D" parent="." unique_id=1703352845]
+script = ExtResource("12_gsonr")
+metadata/_custom_type_script = "uid://cmcadvi8j44y0"
+
+[node name="ARROW" type="Node2D" parent="NavdiVessel" unique_id=1456500152]
+position = Vector2(100, 50)
+script = ExtResource("11_pd80e")
+
+[node name="spr" type="Sprite2D" parent="NavdiVessel/ARROW" unique_id=1963637377]
+texture = ExtResource("3_2ndff")
+hframes = 10
+vframes = 10
+frame = 20
+script = ExtResource("3_u8lxk")
+sheet = ExtResource("4_csbd5")
+frames = PackedInt32Array(20, 21, 22, 23, 24, 25, 26, 27)
+ani_period = 5

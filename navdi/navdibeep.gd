@@ -52,6 +52,7 @@ func play(set_volume : float = -1) -> void:
 	_initialize_synth()
 	if _synthid:
 		print("play beep %s, i'm looping? %s" % [name, looping])
+		volume = set_volume if set_volume >= 0 else play_volume
 		Beeper.synth_play(_synthid, set_volume
 			if set_volume >= 0
 			else play_volume)

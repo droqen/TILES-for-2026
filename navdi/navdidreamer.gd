@@ -142,7 +142,7 @@ class HandledNodeSpawn:
 		if obj is PackedScene:
 			obj = obj_or_packed.instantiate()
 		if obj is Node:
-			n = obj
+			n = obj # TODO: to duplicate or not to duplicate...
 		else:
 			n = null # remain null
 			push_error(

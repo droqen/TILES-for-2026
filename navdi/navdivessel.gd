@@ -43,6 +43,16 @@ func get_maze() -> Maze:
 	return exiled_maze
 func get_exile_by_name(exile_name : String) -> Node:
 	return exiles_by_name.get(exile_name, null) as Node
+func spawn_exile_by_name(exile_name : String, parent : Node) -> Node:
+	var exile : Node = get_exile_by_name(exile_name)
+	if exile:
+		var new_owner = parent.owner if parent.owner else parent
+		var x = exile.duplicate()
+		parent.add_child(x)
+		x.owner = new_owner
+		return x
+	else:
+		return null
 func get_exiles_by_roomcoords(roomcoords : Vector2i) -> Array:
 	return exiles_by_roomcoords.get(roomcoords, []) as Array
 func spawn_exiles_by_roomcoords(roomcoords : Vector2i, parent : Node, wipe_existing_children : bool = true) -> void:
