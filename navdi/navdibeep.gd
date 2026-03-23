@@ -46,7 +46,8 @@ func get_beepbox_url() -> String:
 	return url
 
 func get_beepbox_song_code() -> String:
-	return url.split('#',false,1)[1]
+	if url: return url.split('#',false,1)[1]
+	else: return ''
 
 func play(set_volume : float = -1) -> void:
 	_initialize_synth()
