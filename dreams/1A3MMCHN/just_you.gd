@@ -2,6 +2,8 @@ extends NavdiSolePlayerBasics
 
 @onready var maze = $"../Maze"
 @onready var descend_sfx = $"../descend"
+@onready var surface_bgm = $"../surface_bgm"
+var surface_volume : int = 50
 
 enum { HEADBONKBUF, KILLFREEZBUF, }
 
@@ -11,6 +13,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if bufs.has(KILLFREEZBUF): return
+	var v : int = 100 * clamp(remap(position.y, 20, 100, 0.5, 0.0), 0.0, 0.5)
+	if v != surface_volume:
+		surface_volume = v
+		surface_bgm.volume = v * 0.01
 	var dpad := Pin.get_dpad()
 	var onfloor := is_on_floor()
 	if Pin.get_jump_hit(): bufs.on(JUMPBUF)

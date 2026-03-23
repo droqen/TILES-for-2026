@@ -212,4 +212,12 @@ script = ExtResource("11_gl85d")
 url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j00r1i0o4T0v1ue6f0q0y10ob3d4aw5h2E1b5T3v1u03f0qxx10n613b1d08SLXtHrrsksrzrrrrE1b6bMp1akQpG0w80Yn"
 metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 
+[node name="surface_bgm" type="Node" parent="." unique_id=1049203338]
+script = ExtResource("11_gl85d")
+url = "https://www.beepbox.co/#9n11sbk0l00e03t2ma7g03j03r1i0o4T1v1u01f10qaqw3201d58AcF8B7Q047bPf422E176T3v1u03f0qxx10n613b1d08SLXtHrrsksrzrrrrE1b6bas99p22aFBQMJ8I8bkbkbkbkbkbkbkbkaCUcHyEm15G5J5H5H5H5H5H5H5HakSKnjbW5J5wxr1r1r1r1r1r1r1r1r1r1r1r1r1t8mEmQmUmh5Axp0mUmUmUmUnzGpjxiAk3e9OiD02CwFE5wxg"
+autoplay = true
+play_volume = 0.5
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
 [connection signal="area_entered" from="just_you/otherkiller" to="just_you" method="_on_otherkiller_area_entered"]
