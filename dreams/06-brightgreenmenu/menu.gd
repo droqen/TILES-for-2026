@@ -69,7 +69,7 @@ func fetch_all_dreams_to_menu():
 
 func _ready() -> void:
 	fetch_all_dreams_to_menu()
-	searchstring = Dreamer.r("searchstring", "")
+	searchstring = Dreamer.r("searchstring", NavdiGenUtil.gen_megahexdate())
 	if searchstring:
 		searchcursor = Dreamer.r("cursor", 0)
 	else:
