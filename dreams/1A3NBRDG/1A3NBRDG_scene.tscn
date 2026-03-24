@@ -1,0 +1,84 @@
+[gd_scene format=4 uid="uid://c5asxn1b63e5a"]
+
+[ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="1_lbjrs"]
+[ext_resource type="TileSet" uid="uid://bcj3453oy4woo" path="res://dreams/1A3NBRDG/bridgeraven_tiles.tres" id="1_y32c2"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_l8tn4"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_lbjrs"]
+[ext_resource type="Resource" uid="uid://ca03slvt8r304" path="res://dreams/1A3NBRDG/bridgeraven_sheet.tres" id="4_33yjl"]
+[ext_resource type="Script" uid="uid://cn683ydouft6p" path="res://dreams/1A3NBRDG/stage.gd" id="4_oflyj"]
+[ext_resource type="Texture2D" uid="uid://vait2q6sthrt" path="res://dreams/1A3NBRDG/bridgeraven.pyxel" id="4_qu6b2"]
+[ext_resource type="Script" uid="uid://cdcf6w13fb08o" path="res://dreams/1A3NBRDG/pair.gd" id="5_33yjl"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_qu6b2"]
+[ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="9_qu6b2"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="10_et77b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_et77b"]
+size = Vector2(9.9, 9.9)
+
+[node name="1A3NBRDG" type="Node2D" unique_id=915283905]
+texture_filter = 1
+
+[node name="Stage" type="Node2D" parent="." unique_id=499047811]
+script = ExtResource("4_oflyj")
+
+[node name="Bg" type="ColorRect" parent="Stage" unique_id=118843664]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 160.0
+offset_bottom = 110.0
+color = Color(0.34509805, 0.4509804, 0.7137255, 1)
+
+[node name="View" type="ReferenceRect" parent="Stage" unique_id=128352635]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 155.0
+offset_bottom = 105.0
+script = ExtResource("5_qu6b2")
+
+[node name="pair" type="Node2D" parent="Stage" unique_id=1977362090]
+position = Vector2(5, 55)
+script = ExtResource("5_33yjl")
+metadata/_custom_type_script = "uid://crerl807nynkw"
+
+[node name="spr" type="Sprite2D" parent="Stage/pair" unique_id=2125135710]
+texture = ExtResource("4_qu6b2")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_lbjrs")
+sheet = ExtResource("4_33yjl")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Stage/pair" unique_id=290442711]
+visible = false
+script = ExtResource("9_qu6b2")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Stage/pair/mover" unique_id=243846930]
+enabled = false
+shape = SubResource("RectangleShape2D_et77b")
+target_position = Vector2(0, 0)
+
+[node name="Maze" type="TileMapLayer" parent="Stage" unique_id=1972515972]
+tile_set = ExtResource("1_y32c2")
+navigation_enabled = false
+script = ExtResource("2_l8tn4")
+
+[node name="Label" type="Label" parent="Stage" unique_id=2016363520]
+modulate = Color(0.9137255, 0.9137255, 0.33333334, 1)
+offset_right = 40.0
+offset_bottom = 23.0
+text = "P1 SCORE     0  P2 SCORE     0"
+label_settings = ExtResource("10_et77b")
+
+[node name="NavdiVessel" type="Node2D" parent="." unique_id=1102640300]
+script = ExtResource("1_lbjrs")
+vessel_room_size = Vector2i(150, 100)
+metadata/_custom_type_script = "uid://cmcadvi8j44y0"
+
+[node name="Maze" type="TileMapLayer" parent="NavdiVessel" unique_id=1808504510]
+tile_map_data = PackedByteArray("AAAAAAYAAAABAAAAAAABAAYAAAABAAAAAAACAAYAAAABAAAAAAADAAYAAAABAAAAAAAEAAYAAAABAAAAAAAFAAYAAAABAAAAAAAGAAYAAAABAAAAAAAHAAYAAAABAAAAAAAIAAYAAAABAAAAAAAJAAYAAAABAAAAAAAKAAYAAAABAAAAAAALAAYAAAABAAAAAAAMAAYAAAABAAAAAAANAAYAAAABAAAAAAAOAAYAAAABAAAAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAABAAcAAAAAAAIAAAABAAgAAAAAAAIAAAABAAkAAAAAAAIAAAACAAcAAAAAAAIAAAACAAgAAAAAAAIAAAACAAkAAAAAAAIAAAADAAcAAAAAAAIAAAADAAgAAAAAAAIAAAADAAkAAAAAAAIAAAAEAAcAAAAAAAIAAAAEAAgAAAAAAAIAAAAEAAkAAAAAAAIAAAAFAAcAAAAAAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAAAAAIAAAAGAAcAAAAAAAIAAAAGAAgAAAAAAAIAAAAGAAkAAAAAAAIAAAAHAAcAAAACAAIAAAAHAAgAAAAAAAIAAAAHAAkAAAAAAAIAAAAIAAcAAAACAAIAAAAIAAgAAAAAAAIAAAAIAAkAAAAAAAIAAAAJAAcAAAACAAIAAAAJAAgAAAACAAIAAAAJAAkAAAAAAAIAAAAKAAcAAAACAAIAAAAKAAgAAAACAAIAAAAKAAkAAAAAAAIAAAALAAcAAAACAAIAAAALAAgAAAACAAIAAAALAAkAAAACAAIAAAAMAAcAAAACAAIAAAAMAAgAAAACAAIAAAAMAAkAAAACAAIAAAANAAcAAAACAAIAAAANAAgAAAACAAIAAAANAAkAAAACAAIAAAAOAAcAAAACAAIAAAAOAAgAAAACAAIAAAAOAAkAAAACAAIAAAAEAAUAAAAEAAAAAAAFAAUAAAAEAAAAAAAGAAUAAAAEAAAAAAAHAAUAAAAEAAAAAAAIAAUAAAAEAAAAAAAJAAUAAAAEAAAAAAA=")
+tile_set = ExtResource("1_y32c2")
+navigation_enabled = false
+script = ExtResource("2_l8tn4")
