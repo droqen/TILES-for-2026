@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://864at8g276q5"]
+
+[ext_resource type="TileSet" uid="uid://cbdxud128auva" path="res://dreams/1A3OFIZZ/falloing_tiles.tres" id="1_5lyfd"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_0t571"]
+[ext_resource type="Texture2D" uid="uid://bkad6aog6wrja" path="res://dreams/1A3OFIZZ/falloing.pyxel" id="3_0t571"]
+[ext_resource type="Script" uid="uid://ck7e2y44acf8j" path="res://dreams/1A3OFIZZ/faller.gd" id="3_2ljym"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_l7ixu"]
+[ext_resource type="Script" uid="uid://c5m87wajonx2e" path="res://dreams/1A3OFIZZ/^fallingmaze_animator.gd" id="3_mit57"]
+[ext_resource type="Resource" uid="uid://d24l4v28xj7r6" path="res://dreams/1A3OFIZZ/falloing_sheet.tres" id="4_2ljym"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_mit57"]
+[ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="7_mit57"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="10_is7kb"]
+[ext_resource type="Script" uid="uid://bo5oivrcwi6gi" path="res://dreams/1A3OFIZZ/killer.gd" id="11_ubklp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubklp"]
+size = Vector2(5, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_is7kb"]
+size = Vector2(5, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t571"]
+size = Vector2(5, 5)
+
+[node name="1A3OFIZZ" type="Node2D" unique_id=1297360937]
+texture_filter = 1
+
+[node name="Maze" type="TileMapLayer" parent="." unique_id=1145817657]
+tile_set = ExtResource("1_5lyfd")
+navigation_enabled = false
+script = ExtResource("2_0t571")
+
+[node name="^fallingmaze_animator" type="Node" parent="Maze" unique_id=1288086429]
+script = ExtResource("3_mit57")
+
+[node name="ExitSpr" type="Sprite2D" parent="." unique_id=1572847577]
+position = Vector2(35, 55)
+texture = ExtResource("3_0t571")
+hframes = 10
+vframes = 10
+frame = 99
+script = ExtResource("3_l7ixu")
+sheet = ExtResource("4_2ljym")
+frames = PackedInt32Array(99)
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="exit_touched" type="Area2D" parent="ExitSpr" unique_id=1395967161]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitSpr/exit_touched" unique_id=1499565217]
+shape = SubResource("RectangleShape2D_ubklp")
+
+[node name="points" type="Node2D" parent="." unique_id=1974081306]
+position = Vector2(-85, -65)
+
+[node name="ColorRect" type="ColorRect" parent="points" unique_id=795481441]
+offset_right = 5.0
+offset_bottom = 5.0
+color = Color(0.06666667, 0.0627451, 0.0627451, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="points" unique_id=558745421]
+offset_left = 10.0
+offset_right = 40.0
+offset_bottom = 5.0
+color = Color(0.06666667, 0.0627451, 0.0627451, 1)
+
+[node name="Label" type="Label" parent="points" unique_id=15070583]
+offset_right = 50.0
+offset_bottom = 23.0
+text = "0 POINTS"
+label_settings = ExtResource("10_is7kb")
+
+[node name="faller" type="Node2D" parent="." unique_id=403733112]
+position = Vector2(-25, -35)
+script = ExtResource("3_2ljym")
+metadata/_custom_type_script = "uid://crerl807nynkw"
+
+[node name="spr" type="Sprite2D" parent="faller" unique_id=658360112]
+texture = ExtResource("3_0t571")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_l7ixu")
+sheet = ExtResource("4_2ljym")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="faller" unique_id=1655433015]
+script = ExtResource("7_mit57")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="faller/mover" unique_id=1104796868]
+enabled = false
+shape = SubResource("RectangleShape2D_is7kb")
+target_position = Vector2(0, 0)
+
+[node name="exit_toucher" type="Area2D" parent="faller" unique_id=1331288296]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="faller/exit_toucher" unique_id=765503354]
+shape = SubResource("RectangleShape2D_0t571")
+
+[node name="View" type="ReferenceRect" parent="." unique_id=778190010]
+offset_left = -100.0
+offset_top = -80.0
+offset_right = 100.0
+offset_bottom = 80.0
+script = ExtResource("5_mit57")
+
+[node name="killer" type="Node2D" parent="." unique_id=1048746043]
+position = Vector2(114, 92)
+script = ExtResource("11_ubklp")
+
+[node name="bonk_touch" type="Area2D" parent="killer" unique_id=491180376]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killer/bonk_touch" unique_id=1710202011]
+shape = SubResource("RectangleShape2D_0t571")
+
+[node name="spr" type="Sprite2D" parent="killer" unique_id=784094882]
+texture = ExtResource("3_0t571")
+hframes = 10
+vframes = 10
+frame = 20
+script = ExtResource("3_l7ixu")
+sheet = ExtResource("4_2ljym")
+frames = PackedInt32Array(20, 21, 22, 23)
+ani_period = 4
+
+[node name="killer2" type="Node2D" parent="." unique_id=1123353333]
+position = Vector2(114, 92)
+script = ExtResource("11_ubklp")
+
+[node name="bonk_touch" type="Area2D" parent="killer2" unique_id=2059312429]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killer2/bonk_touch" unique_id=965692526]
+shape = SubResource("RectangleShape2D_0t571")
+
+[node name="spr" type="Sprite2D" parent="killer2" unique_id=645617028]
+texture = ExtResource("3_0t571")
+hframes = 10
+vframes = 10
+frame = 20
+script = ExtResource("3_l7ixu")
+sheet = ExtResource("4_2ljym")
+frames = PackedInt32Array(20, 21, 22, 23)
+ani_period = 4
+
+[connection signal="area_entered" from="faller/exit_toucher" to="faller" method="_on_exit_toucher_area_entered"]
