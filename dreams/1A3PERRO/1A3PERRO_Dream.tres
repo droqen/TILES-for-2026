@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="NavdiDream" format=3 uid="uid://ddoxjoih2am7m"]
+
+[ext_resource type="PackedScene" uid="uid://bsr0avcbiopb1" path="res://dreams/1A3PERRO/1A3PERRO_scene.tscn" id="1_urlk3"]
+[ext_resource type="Script" uid="uid://dmknyp6uhnvkf" path="res://navdi/navdidream.gd" id="2_kd7lw"]
+
+[resource]
+script = ExtResource("2_kd7lw")
+packed_scene = ExtResource("1_urlk3")

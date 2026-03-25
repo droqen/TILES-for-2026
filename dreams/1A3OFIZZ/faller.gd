@@ -4,6 +4,10 @@ var bonk : int = 0
 
 func _physics_process(_delta: float) -> void:
 	
+	$lo_noise.volume = remap(position.y,-65,65,0.15,0.0)
+	$mid_noise.volume = 0.05
+	$hi_noise.volume = remap(position.y,65,-65,0.0,0.15)
+	
 	if bonk > 0: bonk -= 1
 	
 	var dpad := Pin.get_dpad()

@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="7_mit57"]
 [ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="10_is7kb"]
 [ext_resource type="Script" uid="uid://bo5oivrcwi6gi" path="res://dreams/1A3OFIZZ/killer.gd" id="11_ubklp"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="12_5b3tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubklp"]
 size = Vector2(5, 1)
@@ -103,6 +104,30 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="faller/exit_toucher" unique_id=765503354]
 shape = SubResource("RectangleShape2D_0t571")
 
+[node name="lo_noise" type="Node" parent="faller" unique_id=1300464563]
+script = ExtResource("12_5b3tm")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j00r1i0o4T1v1u3df0qwx10p511d08AcFbBfQ269cP969bE2bi7iT2v6u02f21i40x3qxg2546bd03w1E0bMp15kTE_M"
+autoplay = true
+play_volume = 0.1
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="mid_noise" type="Node" parent="faller" unique_id=1632908207]
+script = ExtResource("12_5b3tm")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j00r1i0o4T1v1u3df0qwx10p511d08AcFbBfQ269cP969bE2bi7iT2v6u02f21i40x3qxg2546bd03w1E0bMp15kTE_c"
+autoplay = true
+play_volume = 0.1
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="hi_noise" type="Node" parent="faller" unique_id=1979167790]
+script = ExtResource("12_5b3tm")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j00r1i0o4T1v1u3df0qwx10p511d08AcFbBfQ269cP969bE2bi7iT2v6u02f21i40x3qxg2546bd03w1E0bMp15kTE-4"
+autoplay = true
+play_volume = 0.1
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
 [node name="View" type="ReferenceRect" parent="." unique_id=778190010]
 offset_left = -100.0
 offset_top = -80.0
@@ -153,5 +178,13 @@ script = ExtResource("3_l7ixu")
 sheet = ExtResource("4_2ljym")
 frames = PackedInt32Array(20, 21, 22, 23)
 ani_period = 4
+
+[node name="fallbgm" type="Node" parent="." unique_id=1557355473]
+script = ExtResource("12_5b3tm")
+url = "https://www.beepbox.co/#9n31sbk0l01e03t2ma7g04j02r1i0o332T1v1ud4f10r8q011d23A5F3BfQ0031Pfa35E362263276T1v1u01f0q023d00A0F0B0Q0000Pff00E1617T1v1u73f10o9q011d03A3F0B2Q5d01Pc52cE3619622636T2v6u02f10i6qw02d03w0E0bBsmlkBQp22VJzq_RRHTnNagHr0RTHHnKLNlkJzqXRZHHnWA3pBS05jdcQOnMilcQPjdlQPjdcBZcQPjdcAtcyQOkTcK7maaGGGG2ELMj92qpFiGWyqpFDaY4FGB4FGR4FGhMF2CkNhhhobjhikQQkk7dQyPCQiA6aAkwNtwNtiyyxd7wpwGpuHcMFE5Eaqqaaajh"
+autoplay = true
+play_volume = 0.5
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 
 [connection signal="area_entered" from="faller/exit_toucher" to="faller" method="_on_exit_toucher_area_entered"]
