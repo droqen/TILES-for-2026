@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_8w5sr"]
 [ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="7_8pnao"]
 [ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="9_q3nj0"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="10_c1dhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uhvn1"]
 size = Vector2(5.9, 7.9)
@@ -69,3 +70,11 @@ offset_right = 221.0
 offset_bottom = 199.0
 text = "SCORE N/A :)"
 label_settings = ExtResource("9_q3nj0")
+
+[node name="allgoodbgm" type="Node" parent="." unique_id=485936809]
+script = ExtResource("10_c1dhb")
+url = "https://www.beepbox.co/#9n31sbk0l00e03t22a7g0fj07r1i0o432T5v1u50f0qwx10p511d08H-JJAArrqiih999h0E1b6T1v1uaaf0q0x10kb1d35A2F0BcQ2d00Pc550E2bg7eT5v1ua2f50le2dc2j02e02feq83432d38HK_Sziiirrqih99h0E0T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4zgg0000000h4g000000014h000000004h400000000p21lISLAihdBUGhp8lCU_i1jnUZCnKNiCnEFpILJ5cK2bRGai__AEJYFpJvR9dHWdPq_Z8D9HS8-OqY3Gjnww0000"
+autoplay = true
+play_volume = 0.5
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
