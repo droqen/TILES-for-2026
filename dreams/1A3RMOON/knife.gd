@@ -3,6 +3,7 @@ extends Node2D
 @export var velocity : Vector2
 
 var deadtimer := 0
+var diesound : NavdiBeep = null
 
 func _ready() -> void:
 	$spr.ani_period = randi_range(4,7)
@@ -19,6 +20,7 @@ func _physics_process(_delta: float) -> void:
 			queue_free()
 		elif position.y > randi_range(105,110):
 			struck()
+			if diesound: diesound.play()
 	
 func struck() -> void:
 	$hurtbox.queue_free()

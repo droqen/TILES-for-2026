@@ -23,6 +23,7 @@ func _physics_process(_delta: float) -> void:
 		knife_right_spawn_timer = 200
 		var _knife = vessel.spawn_exile_by_name("KnifeRight", $Knives)
 		#knife.position = Vector2(-6,105)
+		playrandomfrom($knifethrowright)
 	
 	if knife_down_right_spawn_timer > 0:
 		knife_down_right_spawn_timer -= 1
@@ -33,3 +34,10 @@ func _physics_process(_delta: float) -> void:
 		var targetx = randi_range(40,215)
 		var targety = 105
 		knife.position = Vector2(targetx,targety) - Vector2.ONE * (min(targetx,targety)+6)
+		knife.diesound = $knifehit
+		playrandomfrom($knifethrowsounds)
+
+func playrandomfrom(soundparent:Node) -> void:
+	#for sound in soundparent.get_children():
+		#sound.stop()
+	soundparent.get_child(randi()%soundparent.get_child_count()).play()

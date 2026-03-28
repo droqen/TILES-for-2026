@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="7_sj6pa"]
 [ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="11_kot6g"]
 [ext_resource type="Script" uid="uid://cjqmhph8niean" path="res://dreams/1A3RMOON/knife.gd" id="12_j880o"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="13_woow1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kot6g"]
 size = Vector2(5.9, 5.9)
@@ -69,6 +70,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stage/moongazer/hitbox" unique_id=1523942995]
 shape = SubResource("RectangleShape2D_j880o")
 
+[node name="sfx_sit" type="Node" parent="Stage/moongazer" unique_id=582141587]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o4T1v1u34f0q0x10n51d08AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bgp17kOC90YX"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="sfx_ouch" type="Node" parent="Stage/moongazer" unique_id=1167565367]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o1T1v1ufbf0q00d02A0F0B0Q9000Pf000E250617T2v1u02f10w4qx0200d03w0E0bMp1fIQuwKfeXf68lwYX"
+play_volume = 0.4
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
 [node name="Knives" type="Node2D" parent="Stage" unique_id=1794804743]
 
 [node name="View" type="ReferenceRect" parent="Stage" unique_id=583299701]
@@ -78,13 +91,6 @@ offset_right = 221.0
 offset_bottom = 131.0
 script = ExtResource("5_a8xrg")
 
-[node name="ColorRect" type="ColorRect" parent="Stage" unique_id=1086709333]
-offset_left = 175.0
-offset_top = 5.0
-offset_right = 200.0
-offset_bottom = 15.0
-color = Color(0.43529412, 0.36078432, 0.4117647, 1)
-
 [node name="Label" type="Label" parent="Stage" unique_id=803739595]
 offset_left = 175.0
 offset_top = 5.0
@@ -93,6 +99,70 @@ offset_bottom = 28.0
 text = "score
     0"
 label_settings = ExtResource("7_3wy3o")
+
+[node name="knifethrowsounds" type="Node" parent="Stage" unique_id=1385150497]
+
+[node name="NavdiBeep" type="Node" parent="Stage/knifethrowsounds" unique_id=533402196]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q1x10n5371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1fIWVmxMZ1FBci1VS"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="NavdiBeep2" type="Node" parent="Stage/knifethrowsounds" unique_id=1728441305]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q3x10n5e371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1fIWVmxMZ1FBci1VS"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="NavdiBeep3" type="Node" parent="Stage/knifethrowsounds" unique_id=1558097155]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q3x10n5g371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1fIWVmxMZ1FBci1VS"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="NavdiBeep4" type="Node" parent="Stage/knifethrowsounds" unique_id=140517864]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q3x10n5h371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1gKtsHghYuwQOC90YX"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="NavdiBeep5" type="Node" parent="Stage/knifethrowsounds" unique_id=1122632996]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q3x10n5f371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1gKtsHghYuwQOC90YX"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="NavdiBeep6" type="Node" parent="Stage/knifethrowsounds" unique_id=1309127842]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q3x10n5f371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1gKpsHi07EdcFygfeM"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="knifethrowright" type="Node" parent="Stage" unique_id=419072627]
+
+[node name="NavdiBeep" type="Node" parent="Stage/knifethrowright" unique_id=1590852306]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q3x10n5f371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1hJeKn9w4xVTjaoA3PI"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="NavdiBeep2" type="Node" parent="Stage/knifethrowright" unique_id=641320442]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q3x10n5c371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1hJeKn9AkhVTjaoA3PI"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="NavdiBeep3" type="Node" parent="Stage/knifethrowright" unique_id=1099323069]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o5T1v1u01f0q3x10n5c371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx023bd03w0E0bwp1gIYukEqfeWpj4wutw"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="knifehit" type="Node" parent="Stage" unique_id=1605902456]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Ua7g00j00r1i0o3T1v1u01f0qzx10n52c371d18AcFhB3Q01a5P9939E2b776T2v1u02f10w4qx0200d03w0E0bgp17kWy7zQ4"
+play_volume = 0.3
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 
 [node name="NavdiVessel" type="Node2D" parent="." unique_id=2128123956]
 script = ExtResource("11_kot6g")
@@ -143,3 +213,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavdiVessel/KnifeDownRight/hurtbox" unique_id=212524184]
 shape = SubResource("RectangleShape2D_woow1")
+
+[node name="bgm_breathing" type="Node" parent="." unique_id=335485133]
+script = ExtResource("13_woow1")
+url = "https://www.beepbox.co/#9n11sbk0l00e0dt2ma7g0dj07r1i0o3T1v1u01f0qp141481d90AcF4B5Q2600Pdc00E21174T3v1u03f0q1x10l53b1d08S9aiiqjriHSDSSKIE1bab4x8Qlx8is3gil18Q4B0p21SFHY8sv8D7V0sv8D7WNHRMFN-16L9O1N-MqZJVN-YsvgsvAhVuFEPkwnQ6njjsnQ5-wnQ5Z17ghQ4t16yLUVMLFI8W3bG8WiewzBZdlltFBR6nghQRUwfbM"
+play_volume = 0.5
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"

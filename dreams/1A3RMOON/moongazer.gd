@@ -1,7 +1,13 @@
 extends NavdiSolePlayerBasics
 
 enum {RESPAWNBUF}
-var sitting : bool = false
+var _sitting : bool = false
+var sitting : bool :
+	get : return _sitting
+	set (v) : if _sitting != v:
+		_sitting = v
+		if v: $sfx_sit.play()
+		else: $sfx_sit.stop()
 
 @onready var startpos := position
 @onready var hitbox : Area2D = $hitbox
@@ -30,7 +36,9 @@ func _physics_process(_delta: float) -> void:
 	else:
 		show()
 		if Pin.get_jump_hit(): bufs.on(JUMPBUF)
-		if onfloor and Pin.get_plant_hit(): sitting = true
+		if onfloor and Pin.get_plant_hit() and not bufs.has(RESPAWNBUF):
+			sitting = true
+			$sfx_sit.play(0.4)
 	tow_vx(dpad.x, 0.6666, 0.1)
 	tow_gravity(1.0, 0.06, Pin.get_jump_held(), 0.04)
 	apply_velocities()
@@ -55,3 +63,4 @@ func _on_hurtbox_entered(hurtbox : Area2D) -> void:
 	bufs.setmin(RESPAWNBUF,10)
 	vy = -1.0
 	facedir = sign(175-position.x)
+	$sfx_ouch.play()
