@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sheet" format=3 uid="uid://d2kdvrtncvqt4"]
+
+[ext_resource type="Script" uid="uid://byun6mt7c4fun" path="res://navdi/navdisheet.gd" id="1_ue1k2"]
+[ext_resource type="Texture2D" uid="uid://bvfl0uf7h5nmf" path="res://dreams/1A3RMOON/bloodless.pyxel" id="2_lfwgl"]
+
+[resource]
+script = ExtResource("1_ue1k2")
+texture = ExtResource("2_lfwgl")
+hframes = 10
+vframes = 10
