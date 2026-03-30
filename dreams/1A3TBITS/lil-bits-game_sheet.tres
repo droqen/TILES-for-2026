@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sheet" format=3 uid="uid://dtcyuy7pfr05g"]
+
+[ext_resource type="Script" uid="uid://byun6mt7c4fun" path="res://navdi/navdisheet.gd" id="1_5i2dq"]
+[ext_resource type="Texture2D" uid="uid://dtdqwe5g37b84" path="res://dreams/1A3TBITS/lil-bits-game.pyxel" id="2_wuuwb"]
+
+[resource]
+script = ExtResource("1_5i2dq")
+texture = ExtResource("2_wuuwb")
+hframes = 10
+vframes = 10
