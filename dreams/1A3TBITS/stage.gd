@@ -14,6 +14,7 @@ func _ready() -> void:
 	astar.cell_size = maze.tile_set.tile_size
 	astar.update()
 	reset_world(true)
+	eyephelia.dug.connect(func(cell): astar.set_point_solid(cell,false))
 func reset_world(skipblink:bool=false) -> void:
 	eyephelia.position.y = -5
 	for x in range(-1,20+1):
@@ -34,7 +35,7 @@ func reset_world(skipblink:bool=false) -> void:
 			maze.set_cell_tid(c, 0)
 		for y in range(2, 16+1, 2):
 			c.y = y
-			maze.set_cell_tid(c, 1)
+			maze.set_cell_tid(c, 4+randi()%3)
 			if randf() < 0.07 + y * 0.002:
 				maze.set_cell_tid(c, 0)
 				if y < 16:
@@ -48,7 +49,9 @@ func reset_world(skipblink:bool=false) -> void:
 			if (maze.get_cell_tid(c+Vector2i.UP)!=0
 			and maze.get_cell_tid(c+Vector2i.DOWN)!=0
 			and randf() < 0.05 + y * 0.002):
-				maze.set_cell_tid(c, 1)
+				maze.set_cell_tid(c, 3)
+				if maze.get_cell_tid(c+Vector2i(0,-2)) == 3:
+					maze.set_cell_tid(c+Vector2i(0,-1), 3)
 			else:
 				maze.set_cell_tid(c, 0)
 	
@@ -62,7 +65,7 @@ func reset_world(skipblink:bool=false) -> void:
 	for i in range(3):
 		maze.set_cell_tid(possiblefiretiles[i], 18)
 		maze.set_cell_tid(possiblefiretiles[i]+Vector2i.UP, 0)
-		maze.set_cell_tid(possiblefiretiles[i]+Vector2i.DOWN, 1)
+		maze.set_cell_tid(possiblefiretiles[i]+Vector2i.DOWN, 4+randi()%3)
 	
 	astar.fill_solid_region(maze.get_used_rect(), false)
 	astar.set_point_solid(Vector2i(9,17), false) # fire (left)
@@ -77,7 +80,11 @@ func reset_world(skipblink:bool=false) -> void:
 	astar.update()
 	#loadsmokes.call_deferred()
 	#maze.changed.connect(func(): astar.update())
-	$Eyephelia.dug.connect(func(cell): astar.set_point_solid(cell,false))
+	
+	maze.set_cell_tid(Vector2i( 0, 0), 32)
+	maze.set_cell_tid(Vector2i(19, 0), 33)
+	maze.set_cell_tid(Vector2i( 0,17), 34)
+	maze.set_cell_tid(Vector2i(19,17), 35)
 #func loadsmokes() -> void:
 	#for x in 20:
 		#for _i in 3:
@@ -133,7 +140,7 @@ func _physics_process(_delta: float) -> void:
 		match maze.get_cell_tid(firecell):
 			18:
 				if smokedensities.get(firecell,0)==0:
-					maze.set_cell_tid_transformed(firecell, 18, 0, maze.is_cell_flipped_h(firecell))
+					maze.set_cell_tid_transformed(firecell, 18, 0, !maze.is_cell_flipped_h(firecell))
 					(vessel
 					.spawn_exile_by_name("Smoke", walkers)
 					.setup(maze.map_to_local(firecell) + Vector2.UP * randf() * 5)

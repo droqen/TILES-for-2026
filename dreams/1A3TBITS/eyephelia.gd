@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 		vx *= 0.8
 	else:
 		tow_vx(dpad.x,0.75,0.1)
-	tow_gravity(1.00, 0.03,
+	tow_gravity(1.00, 0.0275,
 		jumped and Pin.get_jump_held(), 0.04)
 	apply_velocities()
 	if vy < 0 and position.y < 5:
