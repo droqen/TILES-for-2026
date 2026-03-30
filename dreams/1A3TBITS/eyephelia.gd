@@ -14,7 +14,13 @@ func _ready() -> void:
 	bufs.setup_bufons([DIGGINGBUF, 20, ])
 
 func _physics_process(_delta: float) -> void:
-	if maze.get_cell_tid(maze.local_to_map(position))==99: queue_free(); return;
+	if position.x < -5 or position.x > 205: queue_free(); return;
+	var pcell = maze.local_to_map(position)
+	if maze.get_cell_tid(pcell) == 18:
+		dig(pcell)
+		for dir in [Vector2i.DOWN,Vector2i.UP,Vector2i.LEFT,Vector2i.RIGHT]:
+			if maze.get_cell_tid(pcell+dir) == 0:
+				dig(pcell+dir)
 	var dpad := Pin.get_dpad()
 	var onfloor := is_on_floor()
 	if onfloor: jumped = false
@@ -32,6 +38,8 @@ func _physics_process(_delta: float) -> void:
 	tow_gravity(1.00, 0.03,
 		jumped and Pin.get_jump_held(), 0.04)
 	apply_velocities()
+	if vy < 0 and position.y < 5:
+		vy = 0; position.y = 5
 	if bufs.has(DIGGINGBUF):
 		spr.setup([13,14,15,14,15],4,)
 		if bufs.read(DIGGINGBUF) == 1:
@@ -50,9 +58,10 @@ func _physics_process(_delta: float) -> void:
 		# get to diggin'
 		# maybe center on the cell?
 
-func dig() -> void:
-	var pcell := maze.local_to_map(position)
-	var dcell := pcell + Vector2i(0,1)
+func dig(dcell : Vector2i = Vector2i(-1,-1)) -> void:
+	if dcell.x < 0 and dcell.y < 0:
+		var pcell := maze.local_to_map(position)
+		dcell = pcell + Vector2i(0,1)
 	var tid := maze.get_cell_tid(dcell)
 	dug.emit(dcell)
 	maze.set_cell_tid(dcell, 24)
