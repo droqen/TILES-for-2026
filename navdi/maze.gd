@@ -110,9 +110,14 @@ paste_blanks : bool = true) -> void:
 	var srcp1 := source_region.position + source_region.size
 	for x in range(srcp0.x, srcp1.x):
 		for y in range(srcp0.y, srcp1.y):
-			var srctid := source_maze.get_cell_tid(Vector2i(x,y))
+			var c := Vector2i(x,y)
+			var srctid := source_maze.get_cell_tid(c)
 			if paste_blanks or srctid >= 0:
-				set_cell_tid(Vector2i(x,y)-srcp0+paste_topleft,srctid)
+				set_cell_tid_transformed(c-srcp0+paste_topleft,srctid,
+				0,
+				source_maze.is_cell_flipped_h(c),
+				source_maze.is_cell_flipped_v(c),
+				source_maze.is_cell_transposed(c))
 
 func magic_wand(start : Vector2i, verifier : Callable) -> Array[Vector2i]:
 	var cells : Array[Vector2i] = [start]
