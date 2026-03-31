@@ -74,6 +74,27 @@ script = ExtResource("2_0ji33")
 
 [node name="Exiles" type="Node2D" parent="Stage" unique_id=1650807561]
 
+[node name="zero_score" type="Node2D" parent="Stage" unique_id=92943784]
+visible = false
+position = Vector2(85, 25)
+
+[node name="ColorRect" type="ColorRect" parent="Stage/zero_score" unique_id=592724146]
+offset_left = -45.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = -15.0
+color = Color(0.8901961, 0.8627451, 0.2784314, 1)
+
+[node name="Label" type="Label" parent="Stage/zero_score" unique_id=887976776]
+modulate = Color(0.47058824, 0.7137255, 0.039215688, 1)
+offset_left = -45.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = -2.0
+text = "your score is
+           0."
+label_settings = ExtResource("4_bgu8c")
+
 [node name="tinyguy" type="Node2D" parent="Stage" unique_id=2085532331]
 position = Vector2(18, 56)
 script = ExtResource("5_qw5vn")
@@ -105,24 +126,3 @@ offset_top = -5.0
 offset_right = 115.0
 offset_bottom = 75.0
 script = ExtResource("5_7hgwg")
-
-[node name="zero_score" type="Node2D" parent="Stage" unique_id=92943784]
-visible = false
-position = Vector2(85, 25)
-
-[node name="ColorRect" type="ColorRect" parent="Stage/zero_score" unique_id=592724146]
-offset_left = -45.0
-offset_top = -25.0
-offset_right = 20.0
-offset_bottom = -15.0
-color = Color(0.8901961, 0.8627451, 0.2784314, 1)
-
-[node name="Label" type="Label" parent="Stage/zero_score" unique_id=887976776]
-modulate = Color(0.47058824, 0.7137255, 0.039215688, 1)
-offset_left = -45.0
-offset_top = -25.0
-offset_right = 20.0
-offset_bottom = -2.0
-text = "your score is
-           0."
-label_settings = ExtResource("4_bgu8c")
