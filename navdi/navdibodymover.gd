@@ -82,7 +82,7 @@ func move(body : Node2D, axis, movement_amount : float = 0.0, snap_dir : int = 0
 				body.position.y += movement_amount
 			if snap_dir: body.position.x = snapp(body.position.x, snap_dir)
 
-func try_slip_move(body : Node2D, caster : ShapeCast2D, axis, movement_amount : float) -> bool:
+func try_slip_move(body : Node2D, caster : ShapeCast2D, axis, movement_amount : float, slip_mask : int = 0) -> bool:
 	body.position -= Vector2(
 		1 if (axis == HORIZONTAL) else 0,
 		1 if (axis == VERTICAL) else 0
@@ -90,6 +90,7 @@ func try_slip_move(body : Node2D, caster : ShapeCast2D, axis, movement_amount : 
 	movement_amount += sign(movement_amount)
 	
 	var snap_dir = cast_best_snap_dir(body, caster, axis, movement_amount)
+	if snap_dir * slip_mask < 0: snap_dir = 0
 	var fraction = cast_fraction(body, caster, axis, movement_amount, snap_dir)
 	if fraction > 0.001:
 		if fraction < 1.0:

@@ -65,7 +65,7 @@ func is_on_floor() -> bool:
 	return on_floor
 
 func apply_velocities() -> void:
-	if!mover.try_slip_move(self,solidcast,HORIZONTAL,vx):
+	if!mover.try_slip_move(self,solidcast,HORIZONTAL,vx,sign(vy)):
 		vx=0
-	if!mover.try_slip_move(self,solidcast,VERTICAL,vy):
+	if!mover.try_slip_move(self,solidcast,VERTICAL,vy,sign(vx)):
 		vy=0
