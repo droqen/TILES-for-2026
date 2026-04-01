@@ -16,8 +16,6 @@ func _physics_process(_delta: float) -> void:
 	else:
 		maze.set_cell_tid(Vector2i(1,5), 0)
 	
-	print(raininess)
-	
 	raininess += 1
 	if randf() * 10000 < raininess:
 		releasingrain = true
