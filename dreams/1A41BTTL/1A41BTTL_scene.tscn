@@ -1,0 +1,184 @@
+[gd_scene format=4 uid="uid://cqpklqyihdg14"]
+
+[ext_resource type="TileSet" uid="uid://dil2xfrqhbx56" path="res://dreams/1A41BTTL/now_fight_tiles.tres" id="1_kg6nh"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_m6gsf"]
+[ext_resource type="Script" uid="uid://c36eafdl68xjq" path="res://dreams/1A41BTTL/battle.gd" id="2_y2nei"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_3vowl"]
+[ext_resource type="Texture2D" uid="uid://bl44maar01aoq" path="res://dreams/1A41BTTL/now_fight.pyxel" id="3_e8ejh"]
+[ext_resource type="Resource" uid="uid://riq1b3fil182" path="res://dreams/1A41BTTL/now_fight_sheet.tres" id="4_e8ejh"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_ismgp"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="7_ismgp"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="8_e8ejh"]
+[ext_resource type="Script" uid="uid://cy7wv2rox2hpo" path="res://dreams/1A41BTTL/choice.gd" id="9_ismgp"]
+[ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="10_cqh5x"]
+[ext_resource type="Script" uid="uid://1mbjb1qlgq7r" path="res://dreams/1A41BTTL/hitstar.gd" id="12_ld10w"]
+
+[node name="1A41BTTL" type="Node2D" unique_id=1822607245]
+texture_filter = 1
+
+[node name="View" type="ReferenceRect" parent="." unique_id=1469230691]
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("5_ismgp")
+
+[node name="Battle" type="Node2D" parent="." unique_id=1527863827]
+script = ExtResource("2_y2nei")
+
+[node name="Arena" type="Node2D" parent="Battle" unique_id=1624569386]
+
+[node name="Maze" type="TileMapLayer" parent="Battle/Arena" unique_id=1984848212]
+tile_map_data = PackedByteArray("AAABAAEAAAABAAIAAAABAAIAAAACAAIAAAABAAMAAAABAAIAAAABAAQAAAABAAIAAAABAAUAAAACAAIAAAABAAYAAAACAAIAAAABAAcAAAACAAIAAAACAAEAAAACAAIAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAQAAAACAAIAAAACAAUAAAACAAIAAAACAAYAAAACAAIAAAACAAcAAAABAAIAAAADAAEAAAABAAIAAAADAAIAAAACAAIAAAADAAMAAAABAAIAAAADAAQAAAACAAIAAAADAAUAAAACAAIAAAADAAYAAAACAAIAAAADAAcAAAACAAIAAAAEAAEAAAABAAIAAAAEAAIAAAACAAIAAAAEAAMAAAACAAIAAAAEAAQAAAABAAIAAAAEAAUAAAABAAIAAAAEAAYAAAABAAIAAAAEAAcAAAABAAIAAAAEAAgAAAACAAIAAAAFAAIAAAABAAIAAAAFAAMAAAACAAIAAAAFAAQAAAACAAIAAAAFAAUAAAACAAIAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAABAAIAAAAGAAIAAAACAAIAAAAGAAMAAAABAAIAAAAGAAQAAAABAAIAAAAGAAUAAAACAAIAAAAGAAYAAAACAAIAAAAGAAcAAAACAAIAAAAGAAgAAAABAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAQAAAABAAIAAAAHAAUAAAABAAIAAAAHAAYAAAACAAIAAAAHAAcAAAACAAIAAAAHAAgAAAACAAIAAAAIAAIAAAABAAIAAAAIAAMAAAACAAIAAAAIAAQAAAABAAIAAAAIAAUAAAACAAIAAAAIAAYAAAACAAIAAAAIAAcAAAACAAIAAAAIAAgAAAABAAIAAAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAJAAAAAAACAAAAAAAJAAEAAAACAAAAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAJAAUAAAACAAAAAAAJAAYAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAACAAAAAAAJAAkAAAACAAAAAAAIAAkAAAACAAAAAAAHAAkAAAACAAAAAAAGAAkAAAACAAAAAAAFAAkAAAACAAAAAAAEAAkAAAACAAAAAAADAAkAAAACAAAAAAACAAkAAAACAAAAAAABAAkAAAACAAAAAAAAAAkAAAACAAAAAAAAAAgAAAACAAAAAAAAAAcAAAACAAAAAAAAAAYAAAACAAAAAAAAAAUAAAACAAAAAAAAAAQAAAACAAAAAAAAAAMAAAACAAAAAAAAAAIAAAACAAAAAAAAAAEAAAACAAAAAAABAAgAAAABAAIAAAACAAgAAAACAAIAAAADAAgAAAACAAIAAAAFAAEAAAABAAIAAAAGAAEAAAACAAIAAAAHAAEAAAACAAIAAAAIAAEAAAABAAIAAAA=")
+tile_set = ExtResource("1_kg6nh")
+navigation_enabled = false
+script = ExtResource("2_m6gsf")
+
+[node name="Enemy" type="Sprite2D" parent="Battle/Arena" unique_id=45347620]
+position = Vector2(50, 50)
+texture = ExtResource("3_e8ejh")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_3vowl")
+sheet = ExtResource("4_e8ejh")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="fx" type="Node2D" parent="Battle/Arena" unique_id=2013601174]
+
+[node name="UI" type="Node2D" parent="Battle" unique_id=1555518868]
+
+[node name="playerstats" type="Node2D" parent="Battle/UI" unique_id=1211928952]
+
+[node name="blk" type="ColorRect" parent="Battle/UI/playerstats" unique_id=573449589]
+offset_left = 50.0
+offset_top = 5.0
+offset_right = 90.0
+offset_bottom = 20.0
+color = Color(0, 0, 0, 1)
+
+[node name="Stats" type="Label" parent="Battle/UI/playerstats" unique_id=497571609]
+offset_left = 51.0
+offset_top = 5.0
+offset_right = 91.0
+offset_bottom = 28.0
+text = "HP     0
+XP     0
+LV     )"
+label_settings = ExtResource("8_e8ejh")
+
+[node name="playerturn" type="Node2D" parent="Battle/UI" unique_id=279585557]
+
+[node name="blk2" type="ColorRect" parent="Battle/UI/playerturn" unique_id=1648558260]
+offset_left = 10.0
+offset_top = 80.0
+offset_right = 40.0
+offset_bottom = 95.0
+color = Color(0, 0, 0, 1)
+
+[node name="Choice" type="Label" parent="Battle/UI/playerturn" unique_id=1609526872]
+offset_left = 10.0
+offset_top = 81.0
+offset_right = 50.0
+offset_bottom = 104.0
+text = ">PUNCH
+ MAGIC
+ LEAVE"
+label_settings = ExtResource("8_e8ejh")
+script = ExtResource("9_ismgp")
+
+[node name="leave_wht" type="ColorRect" parent="Battle/UI/playerturn" unique_id=379853811]
+offset_left = 40.0
+offset_top = 91.0
+offset_right = 44.0
+offset_bottom = 95.0
+
+[node name="purple1label" type="Node2D" parent="Battle/UI" unique_id=42327119]
+
+[node name="ColorRect2" type="ColorRect" parent="Battle/UI/purple1label" unique_id=460566936]
+offset_left = 30.0
+offset_top = 35.0
+offset_right = 70.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Battle/UI/purple1label" unique_id=863252877]
+modulate = Color(0.5764706, 0.34901962, 0.9254902, 1)
+offset_left = 30.0
+offset_top = 35.0
+offset_right = 70.0
+offset_bottom = 58.0
+text = "PURPLE 1"
+label_settings = ExtResource("8_e8ejh")
+
+[node name="outcomebox" type="Node2D" parent="Battle/UI" unique_id=1788814138]
+
+[node name="ColorRect" type="ColorRect" parent="Battle/UI/outcomebox" unique_id=1314087023]
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 90.0
+offset_bottom = 85.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Battle/UI/outcomebox" unique_id=1748068285]
+offset_left = 5.0
+offset_top = 75.0
+offset_right = 95.0
+offset_bottom = 97.0
+text = "123456789012345678 "
+label_settings = ExtResource("8_e8ejh")
+autowrap_mode = 1
+
+[node name="V" type="Node2D" parent="Battle" unique_id=1326389267]
+script = ExtResource("10_cqh5x")
+metadata/_custom_type_script = "uid://cmcadvi8j44y0"
+
+[node name="Hitstar" type="Sprite2D" parent="Battle/V" unique_id=1363664672]
+position = Vector2(50, 50)
+texture = ExtResource("3_e8ejh")
+centered = false
+hframes = 20
+vframes = 20
+frame = 46
+script = ExtResource("12_ld10w")
+
+[node name="Cry" type="Node" parent="Battle" unique_id=1448034938]
+script = ExtResource("7_ismgp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t2ma7g00j00r1i0o532T1v1ub0f10m8q011d23A0F0B9Q0000Pe850E262479T1v1u62f0qwx10s811d08A0F0B0Q00adPfe39E4b761862863bT1v0u01f0qx8251bd02A0F0B0Q9000Pf000E250617T2v0u02f10w4qx0000d03w0E0bYp1wFROb3eKPAz0utHjN-c1Iwh7BZCLeEunw"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="Miss" type="Node" parent="Battle" unique_id=1272677148]
+script = ExtResource("7_ismgp")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t2ma7g00j00r1i0o5T1v3ub0f10m8q011d23A0F0B9Q0000Pe850E262479T2v1u02f10w4qx020bd03w1E0bgp1lFROb3eKPAz0utR1iBa7BU"
+play_volume = 1.5
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="NoMP" type="Node" parent="Battle" unique_id=278384502]
+script = ExtResource("7_ismgp")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j00r1i0o2T0v0u00f0qEF10n52370d04w4h0E2b706T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bMp18FBNgJ1VG"
+play_volume = 1.5
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="Left" type="Node" parent="Battle" unique_id=215436372]
+script = ExtResource("7_ismgp")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j00r1i0o4T0v1u11f0qg01d04w1h0E0T2v1u02f10w4qx022bd03w0E0bMp1ekyU8l8H0G9i3OA"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="Phit" type="Node" parent="Battle" unique_id=1092104562]
+script = ExtResource("7_ismgp")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j00r1i0o4T5v1u05f10l7qw121d20HK-LBJrttAAAyqhh0E0T3v1u03f0q011d04S-_________SSSSiE0bMp1kArfjUMqukQ4q2pEObfbM"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="combat_bgm" type="Node" parent="Battle" unique_id=789499240]
+script = ExtResource("7_ismgp")
+url = "https://www.beepbox.co/#9n31sbk0l01e09t3Ma7g0fj07r1i0o541T1v1ud7f10qaq0331d35AcF8B7Q047bPf422E176T5v1u05f10i8q9143b1d23HYr901i8ah00000h0E0T1v1ufbf0q00d02A0F0B0Q9000Pf000E250617T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4yd28Qlw000000000100024h4h4g00008j51cklw000p251IQug3F0mg2A0ndULE0HQR-yxbEtcLoGqfzrPrUaSPnUa9d7R8VGaq_ZCz-XzHHASLXTtrJJJJS90ozG3dHWqBdBU2NdvXws3wdcKw5jhY4rdBUyipuxtwzqXb-zBWE6yL5puARO2Z5BA6mDjI6LO8PhUOrCzQkwU18f0-0mq_9hiq_kdtd7Rgsvf5VDEjbNhhg1jai5E5E5E5jny2pihq1sBd6jAVejf5QSKrVEbgbgbgaCLaWAmwlPhCjXd6lmjdplpcRBlAPmlnC0J0J0J0LdYObgaCOU1fMrTkTEZiCOOiqcULOsAzWwzihA2EGi1g"
+autoplay = true
+play_volume = 0.5
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="gone_bgm" type="Node" parent="Battle" unique_id=1388180086]
+script = ExtResource("7_ismgp")
+url = "https://www.beepbox.co/#9n11sbk0l02e08t1Ua7g0aj07r1i0o5T1v1u01f10qaq133581d35AcF8B7Q047bPf422E176T4v1u04f0q113b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b1x8j4Mhg1N0zi5op22XFIng2FEYa2cL51sGEO-a1sO3f2-k5OE8l4Gki9jHkbKgoKAYGkZpMKV1CnyEKjshRAtdWe0Gr5V2FE-E4YbEHMenFdswLhpp1BGqY27pEcLBdupG6L8FBce9OthdBy1BYOCUYGCL9kkBZxNZCL9AnFHOy-AzY95O2_KkbYALpbO9bQlV9vF7BZdWe0w"
+play_volume = 0.4
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
