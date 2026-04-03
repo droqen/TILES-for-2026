@@ -35,7 +35,7 @@ const MONTHS = ['Invalid Zero Month',
 static func gen_megahexdate() -> String:
 	var now = Time.get_datetime_dict_from_system()
 	return "%X%X%s" % [
-		now.year-2000,
+		now.year-1991,
 		now.month,
 		"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"[now.day]
 	]

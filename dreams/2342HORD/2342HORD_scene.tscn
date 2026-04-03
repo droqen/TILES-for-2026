@@ -1,0 +1,223 @@
+[gd_scene format=4 uid="uid://c3oa5ohbtenti"]
+
+[ext_resource type="Script" uid="uid://ci1tl6i5g4tjq" path="res://dreams/2342HORD/battle.gd" id="1_ijdju"]
+[ext_resource type="TileSet" uid="uid://bsx8puc6e1e5j" path="res://dreams/2342HORD/a_bright_horde_tiles.tres" id="1_jag6w"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_i6hv6"]
+[ext_resource type="Texture2D" uid="uid://du6dtrpx28mbp" path="res://dreams/2342HORD/a_bright_horde.pyxel" id="3_mebck"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_xityi"]
+[ext_resource type="Resource" uid="uid://b1duicyeculcb" path="res://dreams/2342HORD/a_bright_horde_sheet.tres" id="4_3r3ra"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_supt6"]
+[ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="7_32b1i"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="7_fq4gb"]
+[ext_resource type="Script" uid="uid://casgali1ce72h" path="res://dreams/2342HORD/glba.gd" id="8_ijdju"]
+[ext_resource type="Script" uid="uid://c5spf8475hw22" path="res://dreams/2342HORD/sworder.gd" id="11_4oej4"]
+[ext_resource type="Script" uid="uid://dfnc7cqma5a2i" path="res://dreams/2342HORD/playermenu.gd" id="11_lik37"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="13_6bhiu"]
+
+[node name="2342HORD" type="Node2D" unique_id=1950256610]
+texture_filter = 1
+
+[node name="Battle" type="Node2D" parent="." unique_id=1785341020]
+script = ExtResource("1_ijdju")
+
+[node name="Maze(bg)" type="TileMapLayer" parent="Battle" unique_id=954172486]
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAAAAkAAAACAAAAAAABAAAAAAACAAAAAAABAAIAAAAAAAIAAAABAAMAAAACAAIAAAABAAQAAAAAAAIAAAABAAUAAAAAAAIAAAABAAcAAAACAAIAAAABAAgAAAACAAIAAAACAAAAAAACAAAAAAACAAEAAAACAAIAAAACAAIAAAACAAIAAAACAAMAAAACAAIAAAACAAUAAAACAAIAAAACAAYAAAAAAAIAAAACAAcAAAACAAIAAAACAAkAAAACAAIAAAADAAAAAAACAAAAAAADAAIAAAACAAIAAAADAAQAAAAAAAIAAAADAAUAAAACAAIAAAADAAYAAAACAAIAAAADAAcAAAAAAAIAAAADAAgAAAAAAAIAAAADAAkAAAAAAAIAAAAEAAAAAAACAAAAAAAEAAEAAAACAAIAAAAEAAMAAAAAAAIAAAAEAAUAAAACAAIAAAAEAAYAAAAAAAIAAAAEAAcAAAAAAAIAAAAFAAAAAAACAAAAAAAFAAEAAAAAAAIAAAAFAAIAAAAAAAIAAAAFAAMAAAAAAAIAAAAFAAQAAAAAAAIAAAAFAAUAAAACAAIAAAAFAAgAAAAAAAIAAAAFAAkAAAACAAIAAAAGAAEAAAACAAIAAAAGAAMAAAAAAAIAAAAGAAQAAAACAAIAAAAGAAUAAAAAAAIAAAAGAAYAAAACAAIAAAAGAAgAAAAAAAIAAAAGAAkAAAAAAAIAAAAHAAAAAAACAAAAAAAHAAEAAAAAAAIAAAAHAAIAAAACAAIAAAAHAAMAAAACAAIAAAAHAAUAAAACAAIAAAAHAAgAAAAAAAIAAAAIAAIAAAAAAAIAAAAIAAMAAAACAAIAAAAIAAQAAAAAAAIAAAAIAAcAAAACAAIAAAAIAAgAAAAAAAIAAAAIAAkAAAAAAAIAAAAJAAAAAAACAAAAAAAJAAEAAAAAAAIAAAAJAAIAAAAAAAIAAAAJAAMAAAAAAAIAAAAJAAQAAAAAAAIAAAAJAAYAAAAAAAIAAAAJAAkAAAAAAAIAAAAAAAIAAAACAAAAAAAAAAcAAAACAAAAAAAAAAgAAAACAAAAAAABAAEAAAACAAIAAAABAAYAAAACAAIAAAABAAkAAAAAAAIAAAACAAQAAAAAAAIAAAACAAgAAAAAAAIAAAADAAEAAAACAAIAAAADAAMAAAACAAIAAAAEAAIAAAACAAIAAAAEAAQAAAACAAIAAAAEAAgAAAAAAAIAAAAEAAkAAAACAAIAAAAFAAYAAAAAAAIAAAAFAAcAAAACAAIAAAAGAAAAAAACAAAAAAAGAAIAAAAAAAIAAAAGAAcAAAACAAIAAAAHAAQAAAAAAAIAAAAHAAYAAAACAAIAAAAHAAcAAAAAAAIAAAAHAAkAAAAAAAIAAAAIAAAAAAACAAAAAAAIAAEAAAAAAAIAAAAIAAUAAAAAAAIAAAAIAAYAAAACAAIAAAAJAAUAAAACAAIAAAAJAAcAAAAAAAIAAAAJAAgAAAAAAAIAAAAKAAAAAAACAAAAAAAKAAEAAAACAAIAAAAKAAIAAAAAAAIAAAAKAAMAAAAAAAIAAAAKAAQAAAAAAAIAAAAKAAUAAAAAAAIAAAAKAAYAAAAAAAIAAAAKAAcAAAACAAIAAAAKAAgAAAACAAIAAAAKAAkAAAACAAIAAAALAAAAAAACAAAAAAAMAAAAAAACAAAAAAAMAAEAAAACAAAAAAAMAAIAAAACAAAAAAAMAAMAAAACAAAAAAAMAAQAAAACAAAAAAAMAAUAAAACAAAAAAAMAAYAAAACAAAAAAAMAAcAAAACAAAAAAAMAAgAAAACAAAAAAAMAAkAAAACAAAAAAAMAAoAAAACAAAAAAAMAAsAAAACAAAAAAALAAsAAAACAAAAAAAKAAsAAAACAAAAAAAJAAsAAAACAAAAAAAIAAsAAAACAAAAAAAHAAsAAAACAAAAAAAGAAsAAAACAAAAAAAFAAsAAAACAAAAAAAEAAsAAAACAAAAAAADAAsAAAACAAAAAAACAAsAAAACAAAAAAABAAsAAAACAAAAAAAAAAsAAAACAAAAAAAAAAoAAAACAAAAAAAGAAoAAAACAAIAAAAFAAoAAAACAAIAAAAEAAoAAAAAAAIAAAADAAoAAAACAAIAAAACAAoAAAAAAAIAAAABAAoAAAACAAIAAAAHAAoAAAACAAIAAAAIAAoAAAAAAAIAAAAJAAoAAAACAAIAAAAKAAoAAAAAAAIAAAALAAoAAAACAAIAAAALAAkAAAACAAIAAAALAAgAAAACAAIAAAALAAcAAAAAAAIAAAALAAYAAAAAAAIAAAALAAUAAAAAAAIAAAALAAQAAAAAAAIAAAALAAMAAAAAAAIAAAALAAIAAAACAAIAAAALAAEAAAAAAAIAAAA=")
+tile_set = ExtResource("1_jag6w")
+navigation_enabled = false
+script = ExtResource("2_i6hv6")
+
+[node name="View" type="ReferenceRect" parent="Battle" unique_id=797585458]
+offset_right = 130.0
+offset_bottom = 120.0
+script = ExtResource("5_supt6")
+
+[node name="GLBstarts" type="Node2D" parent="Battle" unique_id=1134607785]
+
+[node name="1" type="Marker2D" parent="Battle/GLBstarts" unique_id=1125598684]
+position = Vector2(21, 64)
+
+[node name="2" type="Marker2D" parent="Battle/GLBstarts" unique_id=1090134212]
+position = Vector2(38, 35)
+
+[node name="3" type="Marker2D" parent="Battle/GLBstarts" unique_id=592705569]
+position = Vector2(67, 42)
+
+[node name="4" type="Marker2D" parent="Battle/GLBstarts" unique_id=1300456013]
+position = Vector2(91, 26)
+
+[node name="GLBS" type="Node2D" parent="Battle" unique_id=141657165]
+y_sort_enabled = true
+
+[node name="V" type="Node2D" parent="Battle" unique_id=23939902]
+script = ExtResource("7_32b1i")
+vessel_room_size = Vector2i(130, 120)
+metadata/_custom_type_script = "uid://cmcadvi8j44y0"
+
+[node name="GLBA" type="Node2D" parent="Battle/V" unique_id=130114990]
+position = Vector2(27, 43)
+script = ExtResource("8_ijdju")
+metadata/_edit_group_ = true
+
+[node name="spr" type="Sprite2D" parent="Battle/V/GLBA" unique_id=6212116]
+texture = ExtResource("3_mebck")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_xityi")
+sheet = ExtResource("4_3r3ra")
+frames = PackedInt32Array(10, 11, 12, 13)
+ani_period = 10
+
+[node name="nmBack" type="ColorRect" parent="Battle/V/GLBA" unique_id=933387801]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -10.0
+color = Color(0.7647059, 0.9372549, 0.84705883, 1)
+
+[node name="nmLine" type="ColorRect" parent="Battle/V/GLBA" unique_id=456761086]
+offset_left = -3.0
+offset_top = -12.0
+offset_right = -1.0
+offset_bottom = -11.0
+color = Color(0, 0, 0, 1)
+
+[node name="nmLabel" type="Label" parent="Battle/V/GLBA" unique_id=646423805]
+modulate = Color(0, 0, 0, 1)
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 11.0
+offset_bottom = -10.0
+text = "glbA"
+label_settings = ExtResource("7_fq4gb")
+
+[node name="SWORDER" type="Node2D" parent="Battle" unique_id=343326066]
+position = Vector2(109, 99)
+script = ExtResource("11_4oej4")
+
+[node name="spr" type="Sprite2D" parent="Battle/SWORDER" unique_id=445819914]
+texture = ExtResource("3_mebck")
+hframes = 10
+vframes = 10
+frame = 14
+script = ExtResource("3_xityi")
+sheet = ExtResource("4_3r3ra")
+frames = PackedInt32Array(14, 15)
+ani_period = 30
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="nmBack" type="ColorRect" parent="Battle/SWORDER" unique_id=1405447933]
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -10.0
+color = Color(0.9490196, 0.93333334, 0.7882353, 1)
+
+[node name="nmLabel" type="Label" parent="Battle/SWORDER" unique_id=114168652]
+modulate = Color(0.9019608, 0.17254902, 0.6862745, 1)
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 11.0
+offset_bottom = -10.0
+text = "swd0"
+label_settings = ExtResource("7_fq4gb")
+
+[node name="PLAYERMENU" type="Node2D" parent="Battle" unique_id=654881741]
+script = ExtResource("11_lik37")
+
+[node name="Menu1" type="Node2D" parent="Battle/PLAYERMENU" unique_id=9764381]
+position = Vector2(15, 80)
+
+[node name="ColorRect" type="ColorRect" parent="Battle/PLAYERMENU/Menu1" unique_id=1604366460]
+offset_right = 35.0
+offset_bottom = 30.0
+color = Color(0.7490196, 0.7529412, 0.74509805, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Battle/PLAYERMENU/Menu1" unique_id=1254071815]
+offset_left = 30.0
+offset_top = 21.0
+offset_right = 34.0
+offset_bottom = 25.0
+
+[node name="Label" type="Label" parent="Battle/PLAYERMENU/Menu1" unique_id=879506162]
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 31.0
+text = ">CUT
+ DODGE
+ WAIT
+ WISH
+>LEAVE"
+label_settings = ExtResource("7_fq4gb")
+
+[node name="Menu2" type="Node2D" parent="Battle/PLAYERMENU" unique_id=1663768495]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Battle/PLAYERMENU/Menu2" unique_id=1003121739]
+offset_left = 25.0
+offset_top = 85.0
+offset_right = 60.0
+offset_bottom = 115.0
+color = Color(0.7490196, 0.7529412, 0.74509805, 1)
+
+[node name="Label" type="Label" parent="Battle/PLAYERMENU/Menu2" unique_id=1591200928]
+offset_left = 30.0
+offset_top = 91.0
+offset_right = 70.0
+offset_bottom = 121.0
+text = ">A
+ B
+ C
+ D"
+label_settings = ExtResource("7_fq4gb")
+
+[node name="OUTCOME" type="Node2D" parent="Battle" unique_id=340504146]
+visible = false
+position = Vector2(0, 50)
+
+[node name="ColorRect" type="ColorRect" parent="Battle/OUTCOME" unique_id=678165095]
+offset_right = 130.0
+offset_bottom = 20.0
+color = Color(0.7490196, 0.7529412, 0.74509805, 1)
+
+[node name="Label" type="Label" parent="Battle/OUTCOME" unique_id=553129771]
+offset_left = 15.0
+offset_top = 5.0
+offset_right = 145.0
+offset_bottom = 28.0
+text = "swing! 
+swish!"
+label_settings = ExtResource("7_fq4gb")
+
+[node name="bgm" type="Node" parent="Battle" unique_id=1551715493]
+script = ExtResource("13_6bhiu")
+url = "https://www.beepbox.co/#9n31sbk0l01e07t2-a7g08j07r1i0o443T5v1ua6f10i8q8141d23HYr901i8ah00000h0E0T5v1u51f0qwx10n511d08H-IHyiih9999998h0E1b6T3v1uf3f12rcq2x10x5f1d08SU0M51pr2qiqqrrrE2b686T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4000000i4N4A4y8Ohm000000p24dI7E-iG05CzQ5jcKxaps7kWR2tIYnXJdStLtHtDrQ7GpA9F-2HdOGOIGGpFCCkQvczPku8hjk_WwzNva6lAO8KFEk8poJ0LaG0K0mpG43v2IbMxyA6b8YTy758AtcAt297j96Pq_cxjnUEzjbMbA4ugbgaCzUO1sxCn2AmChq95pE_4LaFdBUfeki7lyFGuWaWdhIR_lEj-XJCO-XOXHLxkzEWkEEEEEDjFJvCzT3v8YD98-9FF8XiegA9ahJdv-rA2pxddvK3FE00"
+autoplay = true
+play_volume = 0.5
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="player_hurt" type="Node" parent="Battle" unique_id=531463563]
+script = ExtResource("13_6bhiu")
+url = "https://www.beepbox.co/#9n21sbk0l00e00t2ma7g00j00r1i0o23T5v1uc9f10j5q011d23HXQRRJJHJAAArq8h0E0T1v1u9bf0q8z10x5231d19AcF8BeQ0245PceceE1biT4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bUp1fFROxH7EaPhC-feM"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="player_attk" type="Node" parent="Battle" unique_id=1945009388]
+script = ExtResource("13_6bhiu")
+url = "https://www.beepbox.co/#9n21sbk0l00e00t2ma7g00j00r1i0o53T5v1u05f10j5qx123b1d23HXQRRJJHJAAArq8h0E0T1v1u9bf0q8z10x5231d19AcF8BeQ0245PceceE1biT2v1u15f10w4qw02d03w0E0bUp1jyJeLn9kwAPPlpEU71VS"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="player_esc" type="Node" parent="Battle" unique_id=769640674]
+script = ExtResource("13_6bhiu")
+url = "https://www.beepbox.co/#9n21sbk0l00e00t1Ua7g00j00r1i0o53T5v1u05f10j5q113b1d23HXQRRJJHJAAArq8h0E0T1v1u9bf0q8z10x5231d19AcF8BeQ0245PceceE1biT2v1u02f10w4qx024bd03w0E0b8p1sH7nHBWVkAx8YLlIhFsGF2Nl6qf1g"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="player_dodge" type="Node" parent="Battle" unique_id=1098179039]
+script = ExtResource("13_6bhiu")
+url = "https://www.beepbox.co/#9n21sbk0l00e00t2ma7g00j00r1i0o53T5v1u05f10j5qx123b1d23HXQRRJJHJAAArq8h0E0T1v1u9bf0q8z10x5231d19AcF8BeQ0245PceceE1biT2v1u15f10w4qw02d03w0E0bMp1eFROzhW2IQs3wYX"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="glb_revive" type="Node" parent="Battle" unique_id=396345786]
+script = ExtResource("13_6bhiu")
+url = "https://www.beepbox.co/#9n21sbk0l00e00t2ma7g00j00r1i0o43T5v1u05f10j5qx123b1d23HXQRRJJHJAAArq8h0E0T1v1u9bf0q8z10x5231d19AcF8BeQ0245PceceE1biT2v1u15f10w4qw02d03w0E0bUp1qIZ-I5hDnN40m12wYtiBghVjPOc"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
