@@ -3,13 +3,15 @@ extends Node2D
 @onready var vessel : NavdiVessel = $V
 @onready var maze : Maze = $"Maze(bg)"
 
+const PEACE : bool = true
+
 enum {NAME, POS, FRMPRD}
 enum {BS_START, BS_PLAYERCHOOSE, BS_ANIMATING, BS_PLAYERGONE}
 var battlestate = BS_START
 var battlestate_age := 0
 var player_dodging := false
 var player_wishing := false
-enum {AE_PLAYERCUT,AE_GLB_ATTACK,AE_PLAYERLEAVE,AE_GLB_REVIVE,AE_NOTHING}
+enum {AE_PLAYERCUT,AE_GLB_ATTACK,AE_PLAYERLEAVE,AE_GLB_REVIVE,AE_NOTHING,AE_PLAYERSILLYDODGE}
 var anims = []
 
 class BattleAnim:
@@ -39,6 +41,11 @@ class BattleAnim:
 			[AE_PLAYERCUT, 1]:
 				if age >= 25: phase += 1
 			#done.
+			
+			[AE_PLAYERSILLYDODGE, 0]:
+				if age >= 43 and age < 54: actor.q_dodge()
+				if age == 48: p.get_node("player_dodge").play()
+				if age >= 90: done = true;
 			
 			[AE_GLB_ATTACK, 0]:
 				if actor.visible:
@@ -100,10 +107,13 @@ func _ready() -> void:
 		if action_stack[0] == "LEAVE":
 			$player_esc.play()
 			anims.append(BattleAnim.new($SWORDER,null,AE_PLAYERLEAVE))
-		else:
+		elif not PEACE:
 			for glb in $GLBS.get_children():
 				anims.append(BattleAnim.new(glb, $SWORDER, AE_GLB_ATTACK))
 			anims.shuffle()
+		elif player_dodging:
+			anims.push_front(BattleAnim.new($SWORDER, null, AE_PLAYERSILLYDODGE))
+			
 		if player_wishing or action_stack[0] == "WAIT":
 			anims.push_front(BattleAnim.new(null, null, AE_NOTHING))
 		if player_wishing:
@@ -148,4 +158,5 @@ func _physics_process(_delta: float) -> void:
 				#$bgm_drumsolo.play()
 		BS_PLAYERGONE:
 			$PLAYERMENU.update_reset()
+
 		
