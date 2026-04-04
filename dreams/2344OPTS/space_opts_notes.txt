@@ -1,0 +1,22 @@
+
+	Notes for dream 'space_opts'
+	created 2026 April 4, at 10:02
+	
+	---
+	
+	Tarot card for this project:
+	w. five of coins
+	
+	---
+	
+	oh, the five of coins.
+	this is gonna be a bad oubliette, i think.
+	another 'stupid lost starman'.
+		
+		plan haiku
+		
+		* menu with options like
+		* climb down 1 space
+		* and climb all the way down
+		* and tooltips for each menu
+			* item.
