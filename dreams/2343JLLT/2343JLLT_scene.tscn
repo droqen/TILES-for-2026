@@ -1,0 +1,249 @@
+[gd_scene format=4 uid="uid://dxqeg8gole6rp"]
+
+[ext_resource type="Script" uid="uid://bb3vc6iapid3" path="res://dreams/2343JLLT/battle.gd" id="1_ghohv"]
+[ext_resource type="TileSet" uid="uid://buuxd0g7njy6d" path="res://dreams/2343JLLT/vs_jallet_tiles.tres" id="1_yfnel"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_jo7mw"]
+[ext_resource type="Script" uid="uid://8smeadkllyxf" path="res://dreams/2343JLLT/jallet.gd" id="3_jqs1x"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="3_lu5vp"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_nqk1k"]
+[ext_resource type="Texture2D" uid="uid://dym4vl12c0wfk" path="res://dreams/2343JLLT/vs_jallet.pyxel" id="3_sstch"]
+[ext_resource type="Resource" uid="uid://duqekj52ek3v8" path="res://dreams/2343JLLT/vs_jallet_sheet.tres" id="4_8r84n"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_671bx"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="7_cbp2f"]
+[ext_resource type="Script" uid="uid://esg1oo8riytt" path="res://dreams/2343JLLT/bahha.gd" id="9_mmkem"]
+[ext_resource type="Script" uid="uid://krklmdodylt2" path="res://dreams/2343JLLT/pick_menu.gd" id="10_2pnt8"]
+[ext_resource type="Script" uid="uid://cswck10qhisjm" path="res://dreams/2343JLLT/text_log_jallet_responder.gd" id="12_k6kqm"]
+
+[node name="2345JLLT" type="Node2D" unique_id=1295495045]
+texture_filter = 1
+
+[node name="Battle" type="Node2D" parent="." unique_id=2022641868]
+script = ExtResource("1_ghohv")
+
+[node name="Stage" type="Node2D" parent="Battle" unique_id=1211112182]
+
+[node name="bg_sky" type="ColorRect" parent="Battle/Stage" unique_id=324926457]
+offset_top = -900.0
+offset_right = 140.0
+offset_bottom = 100.0
+color = Color(0.06666667, 0.33333334, 0.69803923, 1)
+
+[node name="Maze" type="TileMapLayer" parent="Battle/Stage" unique_id=1734826082]
+tile_map_data = PackedByteArray("AAAAAAcAAAAAAAMAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAcAAAAAAAMAAAADAAUAAAAAAAAAAAADAAcAAAAAAAMAAAAEAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAcAAAAAAAMAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAEAAAAIAAYAAAAAAAEAAAAIAAcAAAAAAAMAAAAJAAYAAAAAAAEAAAAAAAUAAAABAAAAAAAAAAYAAAAAAAEAAAABAAYAAAAAAAEAAAABAAcAAAAAAAMAAAACAAYAAAAAAAEAAAADAAYAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAMAAAAFAAUAAAAAAAAAAAAFAAYAAAAAAAEAAAAFAAcAAAAAAAMAAAAGAAYAAAAAAAEAAAAHAAcAAAAAAAMAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAcAAAAAAAMAAAD//wUAAAAAAAAAAAD//wYAAAAAAAEAAAD//wcAAAAAAAMAAAAKAAUAAAAAAAAAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAMAAAALAAUAAAAAAAAAAAALAAYAAAAAAAEAAAALAAcAAAAAAAMAAAAMAAUAAAAAAAAAAAAMAAYAAAAAAAEAAAAMAAcAAAAAAAMAAAANAAUAAAAAAAAAAAANAAYAAAAAAAEAAAANAAcAAAAAAAMAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAEAAAAOAAcAAAAAAAMAAAABAAQAAAABAAAAAAACAAEAAAABAAAAAAA=")
+tile_set = ExtResource("1_yfnel")
+navigation_enabled = false
+script = ExtResource("2_jo7mw")
+
+[node name="bgm" type="Node" parent="Battle/Stage" unique_id=1339227246]
+script = ExtResource("3_lu5vp")
+url = "https://www.beepbox.co/#9n31sbk0l01e05t1ta7g06j07r1i0o432T0v1u11f0qg01d04w1h0E0T0v1u11f0qg01d04w1h0E0T1v1u01f0q8o34a6d02A0F0B0Q9000Pf000E250617T2v1u02f0qwg276d03w0E0bgh8hc00g0g4h8z8h4h0p23XFE-NuCniAsCkbYIn88YGL9Mcnb8ZozHOrYQzL8Vj8wIL8JE5K5FEEEU8bYhHOV4LE8YwmygPzbT2_eKPHy_d5OswnaO1qNszc52FH_vAq0RV90RM5d7FAOZ4t58J0Ii2V97hx6b1yR2Q2RyV97wmmhIO-VyEKhEKkaPnYiPhYnJ2Yo6hVCB2LamljCzVAiWrFTQVlkQMkRVNcE2oGqcT9amrb9gOxq6pjvVPr5D7QCbgaDOPGjaobv0g400"
+play_volume = 0.3
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bg_lnd" type="ColorRect" parent="Battle/Stage" unique_id=1903671330]
+offset_top = 80.0
+offset_right = 140.0
+offset_bottom = 1080.0
+color = Color(0.96862745, 0.53333336, 0.53333336, 1)
+
+[node name="Entities" type="Node2D" parent="Battle" unique_id=696758694]
+
+[node name="Jallet" type="Node2D" parent="Battle/Entities" unique_id=962388573]
+position = Vector2(106, 54)
+script = ExtResource("3_jqs1x")
+
+[node name="r" type="ColorRect" parent="Battle/Entities/Jallet" unique_id=1007677189]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 21.0
+offset_bottom = 21.0
+color = Color(0.9764706, 0.6509804, 0.6509804, 1)
+
+[node name="legs" type="Sprite2D" parent="Battle/Entities/Jallet" unique_id=1432419440]
+position = Vector2(5, 10)
+texture = ExtResource("3_sstch")
+centered = false
+hframes = 10
+vframes = 10
+frame = 26
+script = ExtResource("3_nqk1k")
+sheet = ExtResource("4_8r84n")
+frames = PackedInt32Array(26)
+ani_period = 10
+
+[node name="arms" type="Sprite2D" parent="Battle/Entities/Jallet" unique_id=1879710163]
+position = Vector2(0, 5)
+texture = ExtResource("3_sstch")
+centered = false
+hframes = 10
+vframes = 10
+frame = 25
+script = ExtResource("3_nqk1k")
+sheet = ExtResource("4_8r84n")
+frames = PackedInt32Array(25)
+ani_period = 10
+
+[node name="shoulder" type="Sprite2D" parent="Battle/Entities/Jallet" unique_id=856506226]
+position = Vector2(10, 0)
+texture = ExtResource("3_sstch")
+centered = false
+hframes = 10
+vframes = 10
+frame = 16
+script = ExtResource("3_nqk1k")
+sheet = ExtResource("4_8r84n")
+frames = PackedInt32Array(16)
+ani_period = 10
+
+[node name="head" type="Sprite2D" parent="Battle/Entities/Jallet" unique_id=739813109]
+position = Vector2(2, 1)
+texture = ExtResource("3_sstch")
+centered = false
+hframes = 10
+vframes = 10
+frame = 15
+script = ExtResource("3_nqk1k")
+sheet = ExtResource("4_8r84n")
+frames = PackedInt32Array(15)
+ani_period = 10
+
+[node name="nametag" type="Node2D" parent="Battle/Entities/Jallet" unique_id=1907714718]
+position = Vector2(0, -10)
+
+[node name="r" type="ColorRect" parent="Battle/Entities/Jallet/nametag" unique_id=244546392]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 30.0
+offset_bottom = 4.0
+color = Color(0.9764706, 0.6509804, 0.6509804, 1)
+
+[node name="Label" type="Label" parent="Battle/Entities/Jallet/nametag" unique_id=87478062]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Jallet"
+label_settings = ExtResource("7_cbp2f")
+
+[node name="Bahha" type="Node2D" parent="Battle/Entities" unique_id=433397901]
+position = Vector2(5, 125)
+script = ExtResource("9_mmkem")
+
+[node name="Score0" type="Node2D" parent="Battle/Entities/Bahha" unique_id=56741545]
+position = Vector2(70, -5)
+
+[node name="ColorRect" type="ColorRect" parent="Battle/Entities/Bahha/Score0" unique_id=1681821564]
+offset_right = 60.0
+offset_bottom = 5.0
+color = Color(0.87058824, 0.90588236, 0.69803923, 1)
+
+[node name="Content" type="Label" parent="Battle/Entities/Bahha/Score0" unique_id=84044453]
+modulate = Color(0.61960787, 0.3647059, 0.3647059, 1)
+offset_left = 5.0
+offset_right = 55.0
+offset_bottom = 23.0
+text = "SCORE    0"
+label_settings = ExtResource("7_cbp2f")
+
+[node name="SheetSprite" type="Sprite2D" parent="Battle/Entities/Bahha" unique_id=1905127313]
+scale = Vector2(10, 10)
+texture = ExtResource("3_sstch")
+hframes = 10
+vframes = 10
+frame = 65
+script = ExtResource("3_nqk1k")
+sheet = ExtResource("4_8r84n")
+frames = PackedInt32Array(65)
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="PickMenu" type="Node2D" parent="Battle/Entities/Bahha" unique_id=1058344483]
+position = Vector2(0, -90)
+script = ExtResource("10_2pnt8")
+
+[node name="ColorRect" type="ColorRect" parent="Battle/Entities/Bahha/PickMenu" unique_id=762524884]
+offset_right = 60.0
+offset_bottom = 25.0
+color = Color(0.87058824, 0.90588236, 0.69803923, 1)
+
+[node name="LeaveSQuare" type="ColorRect" parent="Battle/Entities/Bahha/PickMenu/ColorRect" unique_id=283270960]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 15.0
+offset_right = 34.0
+offset_bottom = 19.0
+color = Color(0.61960787, 0.3647059, 0.3647059, 1)
+
+[node name="Content" type="Label" parent="Battle/Entities/Bahha/PickMenu" unique_id=423456505]
+modulate = Color(0.61960787, 0.3647059, 0.3647059, 1)
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 55.0
+offset_bottom = 28.0
+text = "TELL
+JALLET TO
+LEAVE"
+label_settings = ExtResource("7_cbp2f")
+
+[node name="ArrowLeft" type="Label" parent="Battle/Entities/Bahha/PickMenu" unique_id=492609320]
+modulate = Color(0.61960787, 0.3647059, 0.3647059, 1)
+offset_top = 20.0
+offset_right = 50.0
+offset_bottom = 43.0
+text = "<          "
+label_settings = ExtResource("7_cbp2f")
+
+[node name="ArrowRight" type="Label" parent="Battle/Entities/Bahha/PickMenu" unique_id=2010309199]
+modulate = Color(0.61960787, 0.3647059, 0.3647059, 1)
+offset_top = 20.0
+offset_right = 50.0
+offset_bottom = 43.0
+text = "           >"
+label_settings = ExtResource("7_cbp2f")
+
+[node name="picked" type="Node" parent="Battle/Entities/Bahha/PickMenu" unique_id=2097977028]
+script = ExtResource("3_lu5vp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t2-a7g00j07r1i0o531T0v1u00f0qh013bd20w1h0E0T0v1u11f0qg01d04w1h0E0T1v3u01f0q8o34a6d02A0F0B0Q9000Pf000E250617T2v1u02f0qwg276d03w0E0b410p233IWV664jbwDDtd7IwzwsCX4yeh8Vj8wIL8JE5K5FEEEUabYhHOV4LE8YwmygPzbT2_eKPHy_d5OswnaO1qNszc52FH_vAq0RV90RM5cKl3Q6CzS5xahIO_1oGbA9yVgHdvNbd7NuQbNwp7CqkaYFpleqfChbFKDvjBljjYHzQ4aph0uwPzX35E5jVpg6obrv0g00"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="nomove" type="Node" parent="Battle/Entities/Bahha/PickMenu" unique_id=1039605211]
+script = ExtResource("3_lu5vp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t2-a7g00j07r1i0o531T0v1u00f0qh013bd20w1h0E0T0v1u11f0qg01d04w1h0E0T1v3u01f0q8o34a6d02A0F0B0Q9000Pf000E250617T2v1u02f0qwg276d03w0E0b010p22UkQu28U5cLdm94syhOCh1puhrgbsbjhhhMgnUznBO9vghV0J4xD6nK5-ttDn5-qbAV0KlA2RyV6oa5jn-_8Q1HOi1HwaqfohVTyACn9ydCnUf5hsxcna5pH-9pE-bSxuc38YPiBnBbaFPhYO9tdQXWsGGqvBsuwxja83Q6svooJ0Gvba0P1rrU200"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="yesmoveR" type="Node" parent="Battle/Entities/Bahha/PickMenu" unique_id=112392918]
+script = ExtResource("3_lu5vp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t2-a7g00j00r1i0o531T0v1u00f0qh010bd20w1h0E0T0v1u11f0qg01d04w1h0E0T1v3u01f0q8o34a6d02A0F0B0Q9000Pf000E250617T2v1u02f0qwg276d03w0E0b8p1pldvXYzg6L986LjbA0Z1FB41W2"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="yesmoveL" type="Node" parent="Battle/Entities/Bahha/PickMenu" unique_id=1795935841]
+script = ExtResource("3_lu5vp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t2-a7g00j00r1i0o531T0v1u00f0qh010bd20w1h0E0T0v1u11f0qg01d04w1h0E0T1v3u01f0q8o34a6d02A0F0B0Q9000Pf000E250617T2v1u02f0qwg276d03w0E0b8p1pldvXYzg6L986LjbA0Z1FB41W2"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="TextLog" type="Node2D" parent="Battle/Entities" unique_id=1552535588]
+position = Vector2(70, 80)
+script = ExtResource("12_k6kqm")
+
+[node name="Label" type="Label" parent="Battle/Entities/TextLog" unique_id=162886287]
+offset_right = 67.0
+offset_bottom = 23.0
+text = "Hello
+(Hello)"
+label_settings = ExtResource("7_cbp2f")
+autowrap_mode = 2
+visible_characters_behavior = 1
+
+[node name="speakbeep" type="Node" parent="Battle/Entities/TextLog" unique_id=899894648]
+script = ExtResource("3_lu5vp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t2-a7g00j07r1i0o532T0v1u00f0qg01d20w1h0E0T0v1u11f0qg01d04w1h0E0T1v1u01f0q8o34a6d02A0F0B0Q9000Pf000E250617T2v1u02f0qwg276d03w0E0b400p22XFROFguwQQuNye1jbPpyh78AsFAgmnAmQ2T2QQkks55-8RVsynQ4ugbh8pNBXxvDnpRNvCyVegbBp0JoKhC2xkR_LOd0qYAwqU2Cng7Edd7Ec9idCnMf5hsx4na5pH-9pE-bSxuc38YPixnBbaFPhYO9tdQXWsGGqoaph0uwPzX35E5jVpg6obrv0g00"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="advance" type="Node" parent="Battle/Entities/TextLog" unique_id=261773040]
+script = ExtResource("3_lu5vp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t2-a7g00j07r1i0o531T0v1u00f0qg01d20w1h0E0T0v1u11f0qg01d04w1h0E0T1v1u01f0q8o34a6d02A0F0B0Q9000Pf000E250617T2v1u02f0qwg276d03w0E0b04cp233IWV664jbwDDtd7IwzwsCX4yeh8Vj8wIL8JE5K5FEEEUabYhHOV4LE8YwmygPzbT2_eKPHy_d5OswnaO1qNszc52FH_vAq0RV90RM5cKgzQ6CzQ64F6PbY7yEKgAbB2IR_4IQv5XgL61AupFgHOBBkVE-p4KCWtZelldfOKfggFB41W3efIcmwlfBB0pwJJY1000"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="View" type="ReferenceRect" parent="." unique_id=1149357568]
+offset_top = -30.0
+offset_right = 140.0
+offset_bottom = 130.0
+script = ExtResource("5_671bx")
