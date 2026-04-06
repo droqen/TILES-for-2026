@@ -1,0 +1,178 @@
+[gd_scene format=4 uid="uid://biilry0rsase4"]
+
+[ext_resource type="TileSet" uid="uid://4ffaljk5o1jb" path="res://dreams/2345DARK/darkened_rooms_tiles.tres" id="1_qyslw"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_iyc1i"]
+[ext_resource type="Texture2D" uid="uid://cggwxgfhj8ywm" path="res://dreams/2345DARK/darkened_rooms.pyxel" id="3_2d58s"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_6roq0"]
+[ext_resource type="Resource" uid="uid://c6uik37a38tix" path="res://dreams/2345DARK/darkened_rooms_sheet.tres" id="4_2d58s"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_hlw8u"]
+[ext_resource type="Script" uid="uid://dp2aevvrfl43q" path="res://dreams/2345DARK/game.gd" id="7_hlw8u"]
+[ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="8_cp3mn"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="9_hlw8u"]
+[ext_resource type="Script" uid="uid://cyjbu6un41c2v" path="res://dreams/2345DARK/speaking.gd" id="9_l5psx"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="10_cp3mn"]
+[ext_resource type="Script" uid="uid://bthyklb7pif4w" path="res://dreams/2345DARK/guessing.gd" id="11_yef0h"]
+
+[node name="2345DARK" type="Node2D" unique_id=481125826]
+texture_filter = 1
+
+[node name="Game" type="Node2D" parent="." unique_id=139773696]
+script = ExtResource("7_hlw8u")
+
+[node name="View" type="ReferenceRect" parent="Game" unique_id=833130249]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 101.0
+offset_bottom = 166.0
+script = ExtResource("5_hlw8u")
+
+[node name="Stage" type="Node2D" parent="Game" unique_id=1167014698]
+
+[node name="Maze" type="TileMapLayer" parent="Game/Stage" unique_id=2040671947]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAEAAAAAAAIAAAABAAIAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAkAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAUAAAAAAAEAAAAFAAYAAAABAAAAAAAFAAcAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAABAAAAAAAHAAMAAAABAAEAAAAHAAQAAAADAAAAAAAHAAYAAAABAAEAAAAHAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAABAAAAAAAJAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAYAAAABAAAAAAAJAAcAAAAAAAAAAAAJAAkAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAABAAAAAAAAAAAAAAABAAMAAAAAAAAAAAABAAgAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAABAAIAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAcAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAoAAAAAAAAAAAAEAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAQAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAoAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAFAA0AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAMAAAAAAAEAAAAGAAQAAAABAAAAAAAGAAUAAAABAAEAAAAGAAYAAAABAAEAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAAAAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAAUAAAADAAEAAAAHAAkAAAAAAAAAAAAHAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAkAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAIAA4AAAAAAAAAAAAJAA4AAAAAAAAAAAAJAA0AAAAAAAAAAAAJAAwAAAAAAAAAAAAJAAsAAAAAAAAAAAAJAAoAAAAAAAAAAAAJAAgAAAAAAAAAAAAAAA8AAAAAAAAAAAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAJAA8AAAAAAAAAAAA=")
+tile_set = ExtResource("1_qyslw")
+navigation_enabled = false
+script = ExtResource("2_iyc1i")
+
+[node name="Flickeringlight" type="Sprite2D" parent="Game/Stage" unique_id=1177045539]
+position = Vector2(55, 55)
+texture = ExtResource("3_2d58s")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_6roq0")
+sheet = ExtResource("4_2d58s")
+frames = PackedInt32Array(10, 11)
+ani_period = 13
+
+[node name="V" type="Node2D" parent="Game" unique_id=1861888196]
+script = ExtResource("8_cp3mn")
+vessel_room_size = Vector2i(100, 160)
+metadata/_custom_type_script = "uid://cmcadvi8j44y0"
+
+[node name="Speaking" type="Node2D" parent="Game" unique_id=730807464]
+position = Vector2(5, 75)
+script = ExtResource("9_l5psx")
+
+[node name="Head" type="Sprite2D" parent="Game/Speaking" unique_id=2136124077]
+position = Vector2(70, -30)
+texture = ExtResource("3_2d58s")
+hframes = 10
+vframes = 10
+frame = 4
+script = ExtResource("3_6roq0")
+sheet = ExtResource("4_2d58s")
+frames = PackedInt32Array(4)
+ani_period = 10
+
+[node name="Mouth" type="Sprite2D" parent="Game/Speaking" unique_id=1101064608]
+position = Vector2(70, -20)
+texture = ExtResource("3_2d58s")
+hframes = 10
+vframes = 10
+frame = 14
+script = ExtResource("3_6roq0")
+sheet = ExtResource("4_2d58s")
+frames = PackedInt32Array(14)
+ani_period = 10
+
+[node name="Speechbox" type="Label" parent="Game/Speaking" unique_id=2085410329]
+modulate = Color(0.6745098, 0.6784314, 0.7294118, 1)
+offset_top = -5.0
+offset_right = 90.0
+offset_bottom = 18.0
+text = "
+GXXXX TXX PXXXXXXX
+TO ENTER MY SECRET
+ROOM."
+label_settings = ExtResource("10_cp3mn")
+
+[node name="type1" type="Node" parent="Game/Speaking" unique_id=1949999841]
+script = ExtResource("9_hlw8u")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t2ma7g00j00r1i0o5T7v1u07f0qwx10n510d03HU70U0000000000h0IaE2b708T2v1u02f10f6qwg2b5d03w0E0bMp16kOw8Z1"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="thinking" type="Node" parent="Game/Speaking" unique_id=1040948253]
+script = ExtResource("9_hlw8u")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j00r1i0o2T7v1u07f0qEx10n5140d03HU70U0000000000h0IaE2b708T2v1u02f10f6qwg2b5d03w0E0bMp15FLh-w"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="Guessing" type="Node2D" parent="Game" unique_id=179852031]
+position = Vector2(10, 95)
+script = ExtResource("11_yef0h")
+
+[node name="Guess" type="Label" parent="Game/Guessing" unique_id=1869032584]
+modulate = Color(0.6745098, 0.6784314, 0.7294118, 1)
+offset_left = 25.0
+offset_right = 115.0
+offset_bottom = 7.0
+text = "\"|   \""
+label_settings = ExtResource("10_cp3mn")
+
+[node name="Keyboard" type="Label" parent="Game/Guessing" unique_id=606634580]
+modulate = Color(0.6745098, 0.6784314, 0.7294118, 1)
+offset_left = -5.0
+offset_top = 15.0
+offset_right = 85.0
+offset_bottom = 60.0
+text = "[A] B  C  D  E  F 
+
+ G  H  I  J  K  L 
+
+ M  N  O  P  Q  R
+
+ S  T  U  V  W  X
+
+ Y  Z  BKSP  NVM"
+label_settings = ExtResource("10_cp3mn")
+
+[node name="ColorRect" type="ColorRect" parent="Game/Guessing/Keyboard" unique_id=1804408785]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 84.0
+offset_bottom = 44.0
+
+[node name="pick" type="Node" parent="Game/Guessing" unique_id=1256938141]
+script = ExtResource("9_hlw8u")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t2ma7g00j00r1i0o5T7v1u07f0qwx10n510d03HU70U0000000000h0IaE2b708T2v1u02f10f6qwg2b5d03w0E0bMp17IOYz3Q4"
+play_volume = 0.7
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="move" type="Node" parent="Game/Guessing" unique_id=377864282]
+script = ExtResource("9_hlw8u")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t2ma7g00j00r1i0o5T7v1u07f0qwx10n510d03HU70U0000000000h0IaE2b708T2v1u02f10f6qwg2b5d03w0E0bMp16FBghW2"
+play_volume = 0.6
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bksp" type="Node" parent="Game/Guessing" unique_id=89088679]
+script = ExtResource("9_hlw8u")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j00r1i0o5T7v1u07f0qwx10n510d03HU70U0000000000h0IaE2b708T2v1u02f10f6qwg2b5d03w0E0bMp18FBMQIutw"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bkspfail" type="Node" parent="Game/Guessing" unique_id=349265833]
+script = ExtResource("9_hlw8u")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j00r1i0o5T7v1u07f0qwx10n510d03HU70U0000000000h0IaE2b708T2v1u02f10f6qwg2b5d03w0E0bMp16FBR1W2"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="leav" type="Node" parent="Game/Guessing" unique_id=231444889]
+script = ExtResource("9_hlw8u")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j00r1i0o4T7v1u07f0qwx10n510d03HU70U0000000000h0IaE2b708T2v1u02f10f6qwg2b5d03w0E0bMp1cFBM2hq4R_1V6"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="Score" type="Label" parent="Game" unique_id=1343570502]
+modulate = Color(0.6745098, 0.6784314, 0.7294118, 1)
+offset_top = 161.0
+offset_right = 90.0
+offset_bottom = 184.0
+text = "     score    0
+12345678900987654321"
+label_settings = ExtResource("10_cp3mn")
+
+[node name="solmroom" type="Node" parent="." unique_id=1458340564]
+script = ExtResource("9_hlw8u")
+url = "https://www.beepbox.co/#9n31sbk0l01e09t1Ua7g0fj07r1i0o435T0v1u00f0qg01d16w0h1E0T1v1ufbf0q00d02A0F0B0Q9000Pf000E250617T0v4u00f0q00d04w1h0E0T2v4u15f10w4qw02d03w0E0btO8QlTog00004i8M400000004i8z0000004i0000000p23QEbY0CzWjqU0hXuxXujjn-cGP0sGGKSSPcOGKoOqXrGWXbHHbrqW-qOqYXaGjkV99O4zysxjsTEAQvWrCN0zFHZw9EYa1M59vgyLoefXjzbsXyckTrcPomqDR0aCnicl8J1iNaNgL4kaCFR2Dy2Dya5YhjpVIn8aswn85Uyhu8Eld7TBkbNgLc2IyQkbpH-acBZcIlXcEHS3FMkTjVgjq_AzFlkQQTEVg4Uddu1lCKPpqxZdWe800"
+autoplay = true
+play_volume = 0.5
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
