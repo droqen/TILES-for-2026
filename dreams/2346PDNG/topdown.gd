@@ -4,6 +4,7 @@ extends Node2D
 @onready var player : Node2D = $Player
 var playerdir := 0 # 0 is up, then clockwise i guess
 const DIRS : Array[Vector2i] = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT, ]
+var gameover := false
 
 #func _physics_process(_delta: float) -> void:
 	#var dxy := Pin.get_dpad_tap()
@@ -15,11 +16,16 @@ func control_player_turn(turndir:int) -> void:
 func control_player_try_step(ydir:int) -> bool:
 	var stepdir := DIRS[playerdir] * ydir
 	var pcell := maze.local_to_map(player.position)
-	if maze.get_cell_tid(pcell+stepdir) == 8:
-		player.position = maze.map_to_local(pcell+stepdir)
-		return true
-	else:
-		return false # no move
+	match maze.get_cell_tid(pcell+stepdir):
+		8:
+			player.position = maze.map_to_local(pcell+stepdir)
+			return true
+		99:
+			player.position = maze.map_to_local(pcell+stepdir)
+			gameover = true
+			return true
+		_:
+			return false # no move
 
 const tiles34 = [
 	# 0f
@@ -31,6 +37,15 @@ const tiles34 = [
 	# 3f
 	Vector2i(0,3),Vector2i(1,3),Vector2i(2,3),Vector2i(3,3),
 ]
+
+func get_distance_to_white_player() -> int:
+	var pos:Vector2i = maze.local_to_map(player.position)
+	var facingdir:Vector2i = DIRS[playerdir]
+	for i in range(4):
+		var testpos = pos + i * facingdir
+		if maze.get_cell_tid(testpos) == 99:
+			return i
+	return -1
 
 func get34solidsatplayer() -> Array[Vector2i]:
 	return get34solids(
