@@ -1,0 +1,347 @@
+[gd_scene format=4 uid="uid://dmkkov213nbd5"]
+
+[ext_resource type="Script" uid="uid://dlo33rox2nvpa" path="res://dreams/2347RATS/game.gd" id="1_tab3g"]
+[ext_resource type="TileSet" uid="uid://cgay3qwbthk0b" path="res://dreams/2347RATS/rathouse_tiles.tres" id="1_xtmcn"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_j6kpp"]
+[ext_resource type="Script" uid="uid://bqlfkg1o0e6u6" path="res://dreams/2347RATS/rat.gd" id="3_2iabo"]
+[ext_resource type="Texture2D" uid="uid://dqbvrpaljl64u" path="res://dreams/2347RATS/rathouse.pyxel" id="3_j6kpp"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_sxay1"]
+[ext_resource type="Resource" uid="uid://bcfodvo345y27" path="res://dreams/2347RATS/rathouse_sheet.tres" id="4_2iabo"]
+[ext_resource type="Script" uid="uid://bgkowa3jej6q3" path="res://dreams/2347RATS/universe.gd" id="4_b6or7"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="4_jadp1"]
+[ext_resource type="Script" uid="uid://ddfy7tctdirj8" path="res://dreams/2347RATS/scores.gd" id="4_wqpma"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_tab3g"]
+[ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="7_2iabo"]
+[ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="11_mlrpe"]
+[ext_resource type="Script" uid="uid://c2jjlwo06srqv" path="res://dreams/2347RATS/crate.gd" id="12_jyhb0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tab3g"]
+size = Vector2(9.9, 9.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhb0"]
+size = Vector2(9.9, 9.9)
+
+[node name="2347RATS" type="Node2D" unique_id=299301116]
+texture_filter = 1
+
+[node name="Game" type="Node2D" parent="." unique_id=2092006589]
+script = ExtResource("1_tab3g")
+
+[node name="Maze" type="TileMapLayer" parent="Game" unique_id=348342964]
+tile_map_data = PackedByteArray("AAAeAP//AAAJAAEAAAAdAP//AAAJAAEAAAAcAP//AAAJAAEAAAAbAP//AAAJAAEAAAAaAP//AAAJAAEAAAAZAP//AAAJAAEAAAAYAP//AAAJAAEAAAAXAP//AAAJAAEAAAAWAP//AAAJAAEAAAAVAP//AAAJAAEAAAAUAP//AAAJAAEAAAATAP//AAAJAAEAAAASAP//AAAJAAEAAAARAP//AAAJAAEAAAAQAP//AAAJAAEAAAAPAP//AAAJAAEAAAAOAP//AAAJAAEAAAANAP//AAAJAAEAAAAMAP//AAAJAAEAAAALAP//AAAJAAEAAAAKAP//AAAJAAEAAAAJAP//AAAJAAEAAAAIAP//AAAJAAEAAAAHAP//AAAJAAEAAAAGAP//AAAJAAEAAAAFAP//AAAJAAEAAAAEAP//AAAJAAEAAAADAP//AAAJAAEAAAACAP//AAAJAAEAAAABAP//AAAJAAEAAAAAAP//AAAJAAEAAAD/////AAAJAAEAAAD//wAAAAAJAAEAAAD//wEAAAAJAAEAAAD//wIAAAAJAAEAAAD//wMAAAAJAAEAAAD//wQAAAAJAAEAAAD//wUAAAAJAAEAAAD//wYAAAAJAAEAAAD//wcAAAAJAAEAAAD//wgAAAAJAAEAAAD//wkAAAAJAAkAAAD//woAAAAJAAEAAAAAAAoAAAAJAAEAAAABAAoAAAAJAAEAAAACAAoAAAAJAAEAAAADAAoAAAAJAAEAAAAEAAoAAAAJAAEAAAANAAoAAAAJAAEAAAAOAAoAAAAJAAEAAAAPAAoAAAAJAAEAAAAQAAoAAAAJAAEAAAARAAoAAAAJAAEAAAASAAoAAAAJAAEAAAATAAoAAAAJAAEAAAAUAAoAAAAJAAEAAAAVAAoAAAAJAAEAAAAWAAoAAAAGAAAAAAAXAAoAAAAGAAAAAAAYAAoAAAAGAAAAAAAZAAoAAAAJAAEAAAAaAAoAAAAJAAEAAAAbAAoAAAAJAAEAAAAcAAoAAAAJAAEAAAAdAAoAAAAJAAEAAAAeAAoAAAAJAAEAAAAeAAAAAAAJAAEAAAAeAAEAAAAJAAEAAAAeAAIAAAAJAAEAAAAeAAMAAAAJAAEAAAAeAAQAAAAJAAEAAAAeAAUAAAAJAAEAAAAeAAYAAAAJAAEAAAAeAAcAAAAJAAEAAAAeAAgAAAAJAAEAAAAeAAkAAAAJAAEAAAAAAAkAAAAHAAAAAAD///3/AAAJAAEAAAD///7/AAAJAAEAAAAAAP3/AAAJAAEAAAAAAP7/AAAJAAEAAAABAP3/AAAJAAEAAAABAP7/AAAJAAEAAAACAP3/AAAJAAEAAAACAP7/AAAJAAEAAAADAP3/AAAJAAEAAAADAP7/AAAJAAEAAAAEAP3/AAAJAAEAAAAEAP7/AAAJAAEAAAAFAP3/AAAJAAEAAAAFAP7/AAAJAAEAAAAGAP3/AAAJAAEAAAAGAP7/AAAJAAEAAAAHAP3/AAAJAAEAAAAHAP7/AAAJAAEAAAAIAP3/AAAJAAEAAAAIAP7/AAAJAAEAAAAJAP3/AAAJAAEAAAAJAP7/AAAJAAEAAAAKAP3/AAAJAAEAAAAKAP7/AAAJAAEAAAALAP3/AAAJAAEAAAALAP7/AAAJAAEAAAAMAP3/AAAJAAEAAAAMAP7/AAAJAAEAAAANAP3/AAAJAAEAAAANAP7/AAAJAAEAAAAOAP3/AAAJAAEAAAAOAP7/AAAJAAEAAAAPAP3/AAAJAAEAAAAPAP7/AAAJAAEAAAAQAP3/AAAJAAEAAAAQAP7/AAAJAAEAAAARAP3/AAAJAAEAAAARAP7/AAAJAAEAAAASAP3/AAAJAAEAAAASAP7/AAAJAAEAAAATAP3/AAAJAAEAAAATAP7/AAAJAAEAAAAUAP3/AAAJAAEAAAAUAP7/AAAJAAEAAAAVAP3/AAAJAAEAAAAVAP7/AAAJAAEAAAAWAP3/AAAJAAEAAAAWAP7/AAAJAAEAAAAXAP3/AAAJAAEAAAAXAP7/AAAJAAEAAAAYAP3/AAAJAAEAAAAYAP7/AAAJAAEAAAAZAP3/AAAJAAEAAAAZAP7/AAAJAAEAAAAaAP3/AAAJAAEAAAAaAP7/AAAJAAEAAAAbAP3/AAAJAAEAAAAbAP7/AAAJAAEAAAAcAP3/AAAJAAEAAAAcAP7/AAAJAAEAAAAdAP3/AAAJAAEAAAAdAP7/AAAJAAEAAAAeAP3/AAAJAAEAAAAeAP7/AAAJAAEAAAD//wsAAAAJAAEAAAD//wwAAAAJAAEAAAAAAAsAAAAJAAEAAAAAAAwAAAAJAAEAAAABAAsAAAAJAAEAAAABAAwAAAAJAAEAAAACAAsAAAAJAAEAAAACAAwAAAAJAAEAAAADAAsAAAAJAAEAAAADAAwAAAAJAAEAAAAEAAsAAAAJAAEAAAAEAAwAAAAJAAEAAAAFAAwAAAAJAAEAAAAGAAwAAAAJAAEAAAAHAAwAAAAJAAEAAAAIAAwAAAAJAAEAAAAJAAwAAAAJAAEAAAAKAAwAAAAJAAEAAAALAAwAAAAJAAEAAAAMAAwAAAAJAAEAAAANAAsAAAAJAAEAAAANAAwAAAAJAAEAAAAOAAsAAAAJAAEAAAAOAAwAAAAJAAEAAAAPAAsAAAAJAAEAAAAPAAwAAAAJAAEAAAAQAAsAAAAJAAEAAAAQAAwAAAAJAAEAAAARAAsAAAAJAAEAAAARAAwAAAAJAAEAAAASAAsAAAAJAAEAAAASAAwAAAAJAAEAAAATAAsAAAAJAAEAAAATAAwAAAAJAAEAAAAUAAsAAAAJAAEAAAAUAAwAAAAJAAEAAAAVAAsAAAAJAAEAAAAVAAwAAAAJAAEAAAAWAAsAAAAJAAEAAAAWAAwAAAAJAAEAAAAXAAsAAAAJAAEAAAAXAAwAAAAJAAEAAAAYAAsAAAAJAAEAAAAYAAwAAAAJAAEAAAAZAAsAAAAJAAEAAAAZAAwAAAAJAAEAAAAaAAsAAAAJAAEAAAAaAAwAAAAJAAEAAAAbAAsAAAAJAAEAAAAbAAwAAAAJAAEAAAAcAAsAAAAJAAEAAAAcAAwAAAAJAAEAAAAdAAsAAAAJAAEAAAAdAAwAAAAJAAEAAAAeAAsAAAAJAAEAAAAeAAwAAAAJAAEAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAAAAAAHAAAAAAAJAAAAAAAHAAAAAAAIAAAAAAAHAAAAAAAHAAAAAAAHAAAAAAAGAAAAAAAEAAAAAAAFAAAAAAAEAAAAAAAEAAAAAAAEAAAAAAADAAAAAAAEAAAAAAACAAAAAAAEAAAAAAABAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAEAAAAEAAAAAAAAAAIAAAAEAAAAAAAAAAMAAAAEAAAAAAAAAAQAAAAEAAAAAAAAAAUAAAAEAAAAAAAAAAYAAAAEAAAAAAAAAAcAAAAHAAAAAAAAAAgAAAAHAAAAAAABAAgAAAAHAAAAAAABAAcAAAAHAAAAAAABAAYAAAADAAAAAAABAAUAAAAEAAAAAAABAAQAAAAEAAAAAAABAAMAAAAEAAAAAAABAAIAAAAEAAAAAAABAAEAAAAEAAAAAAACAAEAAAAEAAAAAAACAAIAAAAEAAAAAAACAAMAAAAEAAAAAAACAAQAAAAEAAAAAAACAAUAAAAEAAAAAAACAAYAAAAHAAAAAAACAAcAAAAIAAEAAAACAAgAAAAIAAEAAAACAAkAAAAIAAEAAAABAAkAAAAHAAAAAAADAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAHAAAAAAADAAUAAAAEAAAAAAADAAQAAAAEAAAAAAADAAMAAAAEAAAAAAADAAIAAAAEAAAAAAADAAEAAAAEAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAEAAAAAAAEAAMAAAAEAAAAAAAEAAQAAAAEAAAAAAAEAAUAAAAEAAAAAAAEAAYAAAAHAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAYAAAAHAAAAAAAFAAUAAAAHAAAAAAAFAAQAAAAEAAAAAAAFAAMAAAAEAAAAAAAFAAIAAAAEAAAAAAAFAAEAAAAEAAAAAAAGAAEAAAAEAAAAAAAGAAIAAAAEAAAAAAAGAAMAAAAEAAAAAAAGAAQAAAAEAAAAAAAGAAUAAAAIAAEAAAAGAAYAAAAIAAEAAAAHAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAIAAEAAAAIAAIAAAAIAAEAAAAIAAMAAAAIAAEAAAAIAAQAAAAIAAEAAAAIAAUAAAAIAAEAAAAIAAYAAAAIAAEAAAAJAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAMAAAAAAAAAAAALAAIAAAAAAAAAAAALAAEAAAAEAAAAAAALAAAAAAAEAAAAAAAMAAAAAAAEAAAAAAAMAAEAAAAEAAAAAAAMAAIAAAAIAAEAAAAMAAMAAAAIAAEAAAAMAAQAAAAIAAEAAAAMAAUAAAAIAAEAAAAMAAYAAAAIAAEAAAANAAkAAAACAAAAAAANAAgAAAAAAAAAAAANAAcAAAAAAAAAAAANAAYAAAAAAAAAAAANAAUAAAAAAAAAAAANAAQAAAAAAAAAAAANAAMAAAAAAAAAAAANAAIAAAAAAAAAAAANAAEAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAgAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAHAAAAAAAPAAgAAAAHAAAAAAAPAAcAAAAHAAAAAAAPAAYAAAADAAAAAAAPAAUAAAACAAAAAAAPAAQAAAABAAAAAAAPAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAIAAEAAAAQAAEAAAAIAAEAAAAQAAIAAAAIAAEAAAAQAAMAAAAIAAEAAAAQAAQAAAAIAAEAAAAQAAUAAAACAAAAAAAQAAYAAAAEAAAAAAAQAAcAAAAHAAAAAAAQAAgAAAAHAAAAAAAQAAkAAAAHAAAAAAARAAkAAAAAAAAAAAARAAgAAAAAAAAAAAARAAcAAAAAAAAAAAARAAYAAAAAAAAAAAARAAUAAAAAAAAAAAARAAQAAAAAAAAAAAARAAMAAAAAAAAAAAARAAIAAAAAAAAAAAARAAEAAAAAAAAAAAARAAAAAAAAAAAAAAASAAAAAAAIAAEAAAASAAEAAAAIAAEAAAASAAIAAAAIAAEAAAASAAMAAAAIAAEAAAASAAQAAAAIAAEAAAASAAUAAAAIAAEAAAASAAYAAAAIAAEAAAASAAcAAAAIAAEAAAASAAgAAAAIAAEAAAASAAkAAAAIAAEAAAATAAkAAAAHAAAAAAATAAgAAAACAAAAAAATAAcAAAAAAAAAAAATAAYAAAAAAAAAAAATAAUAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAEAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAUAAEAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAcAAAAAAAAAAAAUAAgAAAAAAAAAAAAUAAkAAAAAAAAAAAAVAAkAAAAHAAAAAAAVAAgAAAAHAAAAAAAVAAcAAAAHAAAAAAAVAAYAAAACAAAAAAAVAAUAAAAAAAAAAAAVAAQAAAAAAAAAAAAVAAMAAAAAAAAAAAAVAAIAAAAEAAAAAAAVAAEAAAADAAAAAAAVAAAAAAAEAAAAAAAWAAAAAAAEAAAAAAAWAAEAAAAEAAAAAAAWAAIAAAAEAAAAAAAWAAMAAAAEAAAAAAAWAAQAAAAAAAAAAAAWAAUAAAAAAAAAAAAWAAYAAAAAAAAAAAAWAAcAAAAAAAAAAAAWAAgAAAAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAIAAEAAAAXAAgAAAAIAAEAAAAXAAcAAAAIAAEAAAAXAAYAAAAIAAEAAAAXAAUAAAAIAAEAAAAXAAQAAAAIAAEAAAAXAAMAAAAEAAAAAAAXAAIAAAAEAAAAAAAXAAEAAAAEAAAAAAAXAAAAAAAEAAAAAAAYAAAAAAAEAAAAAAAYAAEAAAAEAAAAAAAYAAIAAAAEAAAAAAAYAAMAAAAEAAAAAAAYAAQAAAAAAAAAAAAYAAUAAAAAAAAAAAAYAAYAAAAAAAAAAAAYAAcAAAAAAAAAAAAYAAgAAAAAAAAAAAAYAAkAAAAAAAAAAAAZAAkAAAAEAAAAAAAZAAgAAAACAAAAAAAZAAcAAAABAAAAAAAZAAYAAAAAAAAAAAAZAAUAAAAAAAAAAAAZAAQAAAAAAAAAAAAZAAMAAAAAAAAAAAAZAAIAAAAHAAAAAAAZAAEAAAAHAAAAAAAZAAAAAAAHAAAAAAAaAAAAAAAHAAAAAAAaAAEAAAAHAAAAAAAaAAIAAAAHAAAAAAAaAAMAAAAAAAAAAAAaAAQAAAAAAAAAAAAaAAUAAAAAAAAAAAAaAAYAAAAAAAAAAAAaAAcAAAAAAAAAAAAaAAgAAAADAAAAAAAaAAkAAAAEAAAAAAAbAAkAAAAEAAAAAAAbAAgAAAAEAAAAAAAbAAcAAAAAAAAAAAAbAAYAAAAAAAAAAAAbAAUAAAAAAAAAAAAbAAQAAAAAAAAAAAAbAAMAAAAAAAAAAAAbAAIAAAAHAAAAAAAbAAEAAAAHAAAAAAAbAAAAAAAHAAAAAAAcAAAAAAAHAAAAAAAcAAEAAAAHAAAAAAAcAAIAAAAHAAAAAAAcAAMAAAAAAAAAAAAcAAQAAAAAAAAAAAAcAAUAAAACAAAAAAAcAAYAAAACAAAAAAAcAAcAAAADAAAAAAAcAAgAAAAEAAAAAAAcAAkAAAAEAAAAAAAdAAkAAAACAAAAAAAdAAgAAAAEAAAAAAAdAAcAAAADAAAAAAAdAAYAAAADAAAAAAAdAAUAAAACAAAAAAAdAAQAAAABAAAAAAAdAAMAAAAAAAAAAAAdAAIAAAAHAAAAAAAdAAEAAAAHAAAAAAAdAAAAAAAHAAAAAAAGAAcAAAAIAAEAAAAGAAgAAAAIAAEAAAAGAAkAAAADAAAAAAAGAAoAAAAJAAEAAAAGAAsAAAAJAAEAAAAHAAcAAAAAAAAAAAAHAAgAAAACAAAAAAAHAAkAAAAEAAAAAAAHAAoAAAAJAAEAAAAHAAsAAAAJAAEAAAAIAAcAAAAIAAEAAAAIAAgAAAACAAAAAAAIAAkAAAADAAAAAAAIAAoAAAAJAAEAAAAIAAsAAAAJAAEAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAFAAAAAAAJAAoAAAAFAAAAAAAJAAsAAAAGAAAAAAAKAAcAAAAAAAAAAAAKAAgAAAAAAAAAAAAKAAkAAAAFAAAAAAAKAAoAAAAFAAAAAAAKAAsAAAAGAAAAAAALAAcAAAAAAAAAAAALAAgAAAADAAAAAAALAAkAAAAEAAAAAAALAAoAAAAJAAEAAAALAAsAAAAJAAEAAAAMAAcAAAAIAAEAAAAMAAgAAAACAAAAAAAMAAkAAAADAAAAAAAMAAoAAAAJAAEAAAAMAAsAAAAJAAEAAAAFAAcAAAAAAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAoAAAAJAAEAAAAFAAsAAAAJAAEAAAD+//3/AAAJAAEAAAD+//7/AAAJAAEAAAD+////AAAJAAEAAAD+/wAAAAAJAAEAAAD+/wEAAAAJAAEAAAD+/wIAAAAJAAEAAAD+/wMAAAAJAAEAAAD+/wQAAAAJAAEAAAD+/wUAAAAJAAEAAAD+/wYAAAAJAAEAAAD+/wcAAAAJAAEAAAD+/wgAAAAJAAEAAAD+/wkAAAAJAAEAAAD+/woAAAAJAAEAAAD+/wsAAAAJAAEAAAD+/wwAAAAJAAEAAAAfAP3/AAAJAAEAAAAfAP7/AAAJAAEAAAAfAP//AAAJAAEAAAAfAAAAAAAJAAEAAAAfAAEAAAAJAAEAAAAfAAIAAAAJAAEAAAAfAAMAAAAJAAEAAAAfAAQAAAAJAAEAAAAfAAUAAAAJAAEAAAAfAAYAAAAJAAEAAAAfAAcAAAAJAAEAAAAfAAgAAAAJAAEAAAAfAAkAAAAJAAEAAAAfAAoAAAAJAAEAAAAfAAsAAAAJAAEAAAAfAAwAAAAJAAEAAAA=")
+tile_set = ExtResource("1_xtmcn")
+navigation_enabled = false
+script = ExtResource("2_j6kpp")
+
+[node name="Scores" type="Node2D" parent="Game" unique_id=730097742]
+modulate = Color(0.73333335, 0.72156864, 0.69803923, 1)
+script = ExtResource("4_wqpma")
+
+[node name="Label" type="Label" parent="Game/Scores" unique_id=533392558]
+offset_top = -5.0
+offset_right = 55.0
+offset_bottom = 18.0
+text = "SCORE      0"
+label_settings = ExtResource("4_jadp1")
+
+[node name="Label2" type="Label" parent="Game/Scores" unique_id=218159298]
+offset_top = 101.0
+offset_right = 55.0
+offset_bottom = 124.0
+text = "SCORE      0"
+label_settings = ExtResource("4_jadp1")
+
+[node name="Label3" type="Label" parent="Game/Scores" unique_id=631402680]
+offset_left = 240.0
+offset_top = -5.0
+offset_right = 300.0
+offset_bottom = 18.0
+text = "SCORE      0"
+label_settings = ExtResource("4_jadp1")
+
+[node name="Label4" type="Label" parent="Game/Scores" unique_id=129058097]
+offset_left = 276.0
+offset_top = 101.0
+offset_right = 336.0
+offset_bottom = 124.0
+text = "SCORE
+    0"
+label_settings = ExtResource("4_jadp1")
+
+[node name="Label5" type="Label" parent="Game/Scores" unique_id=1912741609]
+offset_left = 121.0
+offset_top = -5.0
+offset_right = 176.0
+offset_bottom = 18.0
+text = "SCORE      0"
+label_settings = ExtResource("4_jadp1")
+
+[node name="Label6" type="Label" parent="Game/Scores" unique_id=97412560]
+offset_left = 121.0
+offset_top = 101.0
+offset_right = 176.0
+offset_bottom = 124.0
+text = "SCORE      0"
+label_settings = ExtResource("4_jadp1")
+
+[node name="Universes" type="Node2D" parent="Game" unique_id=1210394872]
+
+[node name="Universe_Original" type="Node2D" parent="Game/Universes" unique_id=1166446343]
+script = ExtResource("4_b6or7")
+jumping_chance = 0.005
+rat_revive_timer = 20
+dpadchange_chance = 0.02
+dpadzero_chance = 0.2
+teleports_to_random_universe_chance = 0.02
+
+[node name="Rat" type="Node2D" parent="Game/Universes/Universe_Original" unique_id=693981338]
+position = Vector2(31, 95)
+script = ExtResource("3_2iabo")
+
+[node name="spr" type="Sprite2D" parent="Game/Universes/Universe_Original/Rat" unique_id=2038380135]
+texture = ExtResource("3_j6kpp")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_sxay1")
+sheet = ExtResource("4_2iabo")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Game/Universes/Universe_Original/Rat" unique_id=1843938493]
+visible = false
+script = ExtResource("7_2iabo")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/Universes/Universe_Original/Rat/mover" unique_id=1737793208]
+enabled = false
+shape = SubResource("RectangleShape2D_tab3g")
+target_position = Vector2(0, 0)
+
+[node name="Crates" type="Node2D" parent="Game/Universes/Universe_Original" unique_id=705032785]
+
+[node name="Universe_AlwaysJumpAround" type="Node2D" parent="Game/Universes" unique_id=1341012514]
+script = ExtResource("4_b6or7")
+jumping_chance = 0.1
+rat_revive_timer = 50
+dpadchange_chance = 0.05
+dpadzero_chance = 0.01
+teleports_to_random_universe_chance = 0.02
+
+[node name="Rat" type="Node2D" parent="Game/Universes/Universe_AlwaysJumpAround" unique_id=693265392]
+position = Vector2(31, 95)
+script = ExtResource("3_2iabo")
+
+[node name="spr" type="Sprite2D" parent="Game/Universes/Universe_AlwaysJumpAround/Rat" unique_id=579811810]
+texture = ExtResource("3_j6kpp")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_sxay1")
+sheet = ExtResource("4_2iabo")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Game/Universes/Universe_AlwaysJumpAround/Rat" unique_id=1998960325]
+visible = false
+script = ExtResource("7_2iabo")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/Universes/Universe_AlwaysJumpAround/Rat/mover" unique_id=670655652]
+enabled = false
+shape = SubResource("RectangleShape2D_tab3g")
+target_position = Vector2(0, 0)
+
+[node name="Crates" type="Node2D" parent="Game/Universes/Universe_AlwaysJumpAround" unique_id=2121473799]
+
+[node name="Universe_AlwaysRight" type="Node2D" parent="Game/Universes" unique_id=1965919832]
+script = ExtResource("4_b6or7")
+rat_revive_timer = 85
+rat_force_dpadx = 1
+teleports_to_random_universe_chance = 0.02
+
+[node name="Rat" type="Node2D" parent="Game/Universes/Universe_AlwaysRight" unique_id=1794362864]
+position = Vector2(31, 95)
+script = ExtResource("3_2iabo")
+
+[node name="spr" type="Sprite2D" parent="Game/Universes/Universe_AlwaysRight/Rat" unique_id=1891770755]
+texture = ExtResource("3_j6kpp")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_sxay1")
+sheet = ExtResource("4_2iabo")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Game/Universes/Universe_AlwaysRight/Rat" unique_id=230202111]
+visible = false
+script = ExtResource("7_2iabo")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/Universes/Universe_AlwaysRight/Rat/mover" unique_id=177491390]
+enabled = false
+shape = SubResource("RectangleShape2D_tab3g")
+target_position = Vector2(0, 0)
+
+[node name="Crates" type="Node2D" parent="Game/Universes/Universe_AlwaysRight" unique_id=737536464]
+
+[node name="Universe_AlwaysLeft" type="Node2D" parent="Game/Universes" unique_id=827180935]
+script = ExtResource("4_b6or7")
+rat_revive_timer = 100
+rat_force_dpadx = -1
+teleports_to_random_universe_chance = 0.02
+
+[node name="Rat" type="Node2D" parent="Game/Universes/Universe_AlwaysLeft" unique_id=1608483692]
+position = Vector2(31, 95)
+script = ExtResource("3_2iabo")
+
+[node name="spr" type="Sprite2D" parent="Game/Universes/Universe_AlwaysLeft/Rat" unique_id=1061369354]
+texture = ExtResource("3_j6kpp")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_sxay1")
+sheet = ExtResource("4_2iabo")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Game/Universes/Universe_AlwaysLeft/Rat" unique_id=56902768]
+visible = false
+script = ExtResource("7_2iabo")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/Universes/Universe_AlwaysLeft/Rat/mover" unique_id=1670144332]
+enabled = false
+shape = SubResource("RectangleShape2D_tab3g")
+target_position = Vector2(0, 0)
+
+[node name="Crates" type="Node2D" parent="Game/Universes/Universe_AlwaysLeft" unique_id=892000642]
+
+[node name="Universe_RandomMoves" type="Node2D" parent="Game/Universes" unique_id=1299904761]
+script = ExtResource("4_b6or7")
+jumping_chance = 0.01
+rat_revive_timer = 100
+dpadchange_chance = 0.02
+dpadzero_chance = 0.001
+teleports_to_random_universe_chance = 0.02
+
+[node name="Rat" type="Node2D" parent="Game/Universes/Universe_RandomMoves" unique_id=319659490]
+position = Vector2(31, 95)
+script = ExtResource("3_2iabo")
+
+[node name="spr" type="Sprite2D" parent="Game/Universes/Universe_RandomMoves/Rat" unique_id=2116755672]
+texture = ExtResource("3_j6kpp")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_sxay1")
+sheet = ExtResource("4_2iabo")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Game/Universes/Universe_RandomMoves/Rat" unique_id=1841630610]
+visible = false
+script = ExtResource("7_2iabo")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/Universes/Universe_RandomMoves/Rat/mover" unique_id=1049968437]
+enabled = false
+shape = SubResource("RectangleShape2D_tab3g")
+target_position = Vector2(0, 0)
+
+[node name="Crates" type="Node2D" parent="Game/Universes/Universe_RandomMoves" unique_id=1422540300]
+
+[node name="Universe_RatAlwaysFloored" type="Node2D" parent="Game/Universes" unique_id=1202753973]
+script = ExtResource("4_b6or7")
+rat_revive_timer = 5
+rat_always_floored = true
+never_visible = true
+
+[node name="Rat" type="Node2D" parent="Game/Universes/Universe_RatAlwaysFloored" unique_id=2005655957]
+position = Vector2(31, 95)
+script = ExtResource("3_2iabo")
+
+[node name="spr" type="Sprite2D" parent="Game/Universes/Universe_RatAlwaysFloored/Rat" unique_id=1195633778]
+texture = ExtResource("3_j6kpp")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_sxay1")
+sheet = ExtResource("4_2iabo")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Game/Universes/Universe_RatAlwaysFloored/Rat" unique_id=2007045331]
+visible = false
+script = ExtResource("7_2iabo")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/Universes/Universe_RatAlwaysFloored/Rat/mover" unique_id=1703054620]
+enabled = false
+shape = SubResource("RectangleShape2D_tab3g")
+target_position = Vector2(0, 0)
+
+[node name="Crates" type="Node2D" parent="Game/Universes/Universe_RatAlwaysFloored" unique_id=1745143408]
+
+[node name="Universe_RatStillRandomPos" type="Node2D" parent="Game/Universes" unique_id=2024107120]
+script = ExtResource("4_b6or7")
+rat_revive_timer = 5
+tethered_to_original_dist = 0.0
+teleports_to_random_cell_within = 4
+teleport_chance = 0.1
+teleports_to_random_universe_chance = 0.02
+
+[node name="Rat" type="Node2D" parent="Game/Universes/Universe_RatStillRandomPos" unique_id=1919273471]
+position = Vector2(31, 95)
+script = ExtResource("3_2iabo")
+
+[node name="spr" type="Sprite2D" parent="Game/Universes/Universe_RatStillRandomPos/Rat" unique_id=1460905397]
+texture = ExtResource("3_j6kpp")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_sxay1")
+sheet = ExtResource("4_2iabo")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Game/Universes/Universe_RatStillRandomPos/Rat" unique_id=973098864]
+visible = false
+script = ExtResource("7_2iabo")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/Universes/Universe_RatStillRandomPos/Rat/mover" unique_id=2033077113]
+enabled = false
+shape = SubResource("RectangleShape2D_tab3g")
+target_position = Vector2(0, 0)
+
+[node name="Crates" type="Node2D" parent="Game/Universes/Universe_RatStillRandomPos" unique_id=2147229719]
+
+[node name="View" type="ReferenceRect" parent="Game" unique_id=2059453539]
+offset_left = -11.0
+offset_top = -21.0
+offset_right = 311.0
+offset_bottom = 121.0
+script = ExtResource("5_tab3g")
+
+[node name="V" type="Node2D" parent="Game" unique_id=485094718]
+script = ExtResource("11_mlrpe")
+metadata/_custom_type_script = "uid://cmcadvi8j44y0"
+
+[node name="Crate" type="CharacterBody2D" parent="Game/V" unique_id=779528048]
+position = Vector2(-51, -9)
+script = ExtResource("12_jyhb0")
+
+[node name="spr" type="Sprite2D" parent="Game/V/Crate" unique_id=660013071]
+texture = ExtResource("3_j6kpp")
+hframes = 10
+vframes = 10
+frame = 1
+script = ExtResource("3_sxay1")
+sheet = ExtResource("4_2iabo")
+frames = PackedInt32Array(1)
+ani_period = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/V/Crate" unique_id=424585546]
+shape = SubResource("RectangleShape2D_jyhb0")
