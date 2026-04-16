@@ -18,19 +18,12 @@ func _example_callback(a) -> void:
 	print(a)
 
 func _on_files_dropped(files:PackedStringArray) -> void:
-	var delay : float = 1.0
 	var file_order := range(len(files))
 	file_order.shuffle()
 	for i in file_order:
 		var file := files[i]
 		if file.ends_with(".pck"):
-			Dreamer.load_packed_dream(file)
-			await get_tree().create_timer(randf_range(0.5,1.5)*delay).timeout
-			delay *= 0.8
-			#var success = ProjectSettings.load_resource_pack(file)
-			#if success:
-				#print("success! (dreamdropper)")
-				#Dreamer.wake_to(Dreamer.dream_stack[0])
-				#Dreamer.reset()
-			#else:
-				#print("failure! (dreamdropper)")
+			var dream : NavdiDream = Dreamer.dream_packed_dream(file)
+			if dream:
+				print(dream.get_pyxel())
+				return # done :)

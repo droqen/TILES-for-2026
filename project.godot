@@ -14,8 +14,9 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="droqever_v2.1_beta"
-config/version="v2.1_beta"
+config/name="newgame"
+config/description="droqever successor"
+config/version="2.1.0"
 run/main_scene="uid://dgjpyp64ooiss"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)

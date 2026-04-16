@@ -70,7 +70,7 @@ func _physics_process(_delta: float) -> void:
 				if not maze.get_used_cells_by_tids([99]):
 					var pcell = maze.local_to_map(player.position)
 					var holex = 1 if pcell.x > randi_range(3,5) else 8
-					var holey = 1 if pcell.y > randi_range(3,5) else 8
+					var holey = 1 if pcell.y > randi_range(5,9) else 8 # exit easier
 					maze.set_cell_tid(Vector2i(holex, holey), 99)
 	
 		var pcells = [maze.local_to_map(player.position)]
@@ -83,7 +83,7 @@ func _physics_process(_delta: float) -> void:
 		for pcell in pcells:
 			if maze.get_cell_tid(pcell) in [1,2]:
 				maze.set_cell_tid(pcell, 0) # erase.
-		print(pcells)
+		#print(pcells)
 		if (len(pcells) == 1
 		and maze.get_cell_tid(pcells[0]) == 99
 		and taxicab_distance(maze.map_to_local(pcells[0]), player.position + Vector2.UP) <= 2.5

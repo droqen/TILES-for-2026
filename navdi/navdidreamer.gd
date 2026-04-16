@@ -107,7 +107,7 @@ func _add_to_and_own(ch:Node, par:Node) -> void:
 	par.add_child(ch)
 	ch.owner = par.owner if par.owner else par
 
-func load_packed_dream(dream_pck_filepath: String) -> void:
+func dream_packed_dream(dream_pck_filepath: String) -> NavdiDream:
 	#print("*** load packed dream (%s)" % dream_pck_filepath)
 	if dream_pck_filepath.ends_with(".pck"):
 		var dream_broken := (dream_pck_filepath
@@ -129,11 +129,15 @@ func load_packed_dream(dream_pck_filepath: String) -> void:
 			if expected_dream is NavdiDream:
 				dreamfresh(expected_dream)
 				navdilog("lpck", "Dreaming... %s" % extracted_dream_name)
+				return expected_dream
 			else:
 				navdilog("lpck", "Corrupted dream found at %s" % expected_dream_file_path)
+				return null
 		else:
 			navdilog("lpck", "Expected dream not found at %s" % expected_dream_file_path)
+			return null
 			#dream()
+	return null
 
 class HandledNodeSpawn:
 	var n : Node
