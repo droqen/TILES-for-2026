@@ -58,43 +58,45 @@ func _ready() -> void:
 
 func play_sfx(url:String) -> void:
 	if navdilink:
-		navdilink.play_sfx_string(url.split('#',false,1)[1])
+		await navdilink.play_sfx_string(url.split('#',false,1)[1])
 	else:
 		push_warning("sfx unsupported except on navdilink for now. couldn't play sfx %s" % url)
 
 func synth_set_volume(id:int, volume:float) -> void:
-	if navdilink: navdilink.synthSetVolume(id, volume)
+	if navdilink: await navdilink.synthSetVolume(id, volume)
 func synth_set_tempo(id:int, bpm:int) -> void:
-	if navdilink: navdilink.synthSetSongTempo(id, bpm)
+	if navdilink: await navdilink.synthSetSongTempo(id, bpm)
 func synth_create(song_data:String, looping:bool = false) -> int:
 	if navdilink: return (navdilink
 		.synthCreate(song_data, looping))
 	return 0
 func synth_pause(id:int) -> void:
-	if navdilink: navdilink.synthPause(id)
+	if navdilink: await navdilink.synthPause(id)
 func synth_stop(id:int) -> void:
 	# the same as kill except non-permanent
-	if navdilink: navdilink.synthStop(id)
+	if navdilink: await navdilink.synthStop(id)
 func synth_kill(id:int) -> void:
-	# stops, then deletes permanently?
-	if navdilink: navdilink.synthKill(id)
+	# stops, then (at some point) deletes permanently?
+	if navdilink: await navdilink.synthKill(id)
 func synth_play(id:int, volume:float = -1) -> void:
 	if volume>=0: synth_set_volume(id, volume)
 	if navdilink:
 		print("synth_play:#%d" % [id])
-		navdilink.synthPlay(id)
+		await navdilink.synthPlay(id)
 func synth_killall() -> void:
 	# detonate all synths byebye
-	if navdilink: navdilink.synthKillAll()
+	if navdilink: await navdilink.synthKillAll()
 
-func _send_request(url : String, keys : Dictionary = {}) -> void:
-	var err = request(url, HEADERS, HTTPClient.METHOD_POST, JSON.stringify(keys))
-	if err != OK:
-		push_error("NavdiBeeper error %s = %s" % [url, err])
+# unused
 
-func _on_request_completed(
-	result: int,
-	_response_code: int,
-	_headers: PackedStringArray,
-	_body: PackedByteArray) -> void:
-	print(result)
+#func _send_request(url : String, keys : Dictionary = {}) -> void:
+	#var err = request(url, HEADERS, HTTPClient.METHOD_POST, JSON.stringify(keys))
+	#if err != OK:
+		#push_error("NavdiBeeper error %s = %s" % [url, err])
+#
+#func _on_request_completed(
+	#result: int,
+	#_response_code: int,
+	#_headers: PackedStringArray,
+	#_body: PackedByteArray) -> void:
+	#print(result)
