@@ -14,6 +14,7 @@ var tile_src_w : int = 0
 @export var hide_on_play : bool = false
 
 func _ready():
+	physics_quadrant_size = 1
 	if not Engine.is_editor_hint():
 		_require_tidkey()
 		if hide_on_play: hide()
