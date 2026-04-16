@@ -2,8 +2,7 @@ extends Node2D
 
 @onready var vessel : NavdiVessel = $V
 @onready var maze : Maze = $"Maze(bg)"
-
-const PEACE : bool = true
+@export var peace : bool = false
 
 enum {NAME, POS, FRMPRD}
 enum {BS_START, BS_PLAYERCHOOSE, BS_ANIMATING, BS_PLAYERGONE}
@@ -107,7 +106,7 @@ func _ready() -> void:
 		if action_stack[0] == "LEAVE":
 			$player_esc.play()
 			anims.append(BattleAnim.new($SWORDER,null,AE_PLAYERLEAVE))
-		elif not PEACE:
+		elif not peace:
 			for glb in $GLBS.get_children():
 				anims.append(BattleAnim.new(glb, $SWORDER, AE_GLB_ATTACK))
 			anims.shuffle()
