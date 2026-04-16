@@ -107,7 +107,7 @@ func _add_to_and_own(ch:Node, par:Node) -> void:
 	par.add_child(ch)
 	ch.owner = par.owner if par.owner else par
 
-func dream_packed_dream(dream_pck_filepath: String) -> NavdiDream:
+func dream_packed_dream(dream_pck_filepath: String, with_transition : bool = true) -> NavdiDream:
 	#print("*** load packed dream (%s)" % dream_pck_filepath)
 	if dream_pck_filepath.ends_with(".pck"):
 		var dream_broken := (dream_pck_filepath

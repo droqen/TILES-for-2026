@@ -5,7 +5,12 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="progbar_v1/style.css" />
 		<style>
-			html, body, #canvas { margin:0; background: $GODOT_SPLASH_COLOR; }
+			@font-face {
+				font-family: font44mono;
+				src: url(assets/font44mono.ttf);
+			}
+			html, body, #canvas { margin:0; background: $GODOT_SPLASH_COLOR;
+				font-family: "font44mono", monospace; }
 			#canvas { width: 100vw; height: 100vh; }
 		</style>
 	</head>
