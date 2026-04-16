@@ -153,7 +153,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				KEY_DOWN: dy = 1
 				KEY_LEFT, KEY_PAGEUP: dy = -5
 				KEY_RIGHT, KEY_PAGEDOWN: dy = 5
-				KEY_ENTER, KEY_SPACE:
+				KEY_ENTER, KEY_SPACE: 
 					if searchstring:
 						if searchresults and searchcursor >= 0:
 							Dreamer.dream(searchresults[searchcursor].dream)
