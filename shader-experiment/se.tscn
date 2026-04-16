@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://d32k7iru3u0sf"]
+[gd_scene format=3 uid="uid://d32k7iru3u0sf"]
 
-[ext_resource type="Texture2D" uid="uid://bvrb62m5e1pve" path="res://icon.svg" id="1_7serv"]
 [ext_resource type="Shader" uid="uid://b8g32w0ybbbqh" path="res://shader-experiment/sepass-1.gdshader" id="2_kstqu"]
 [ext_resource type="Shader" uid="uid://cvkyl2rsrfb5p" path="res://shader-experiment/sepass-2.gdshader" id="3_kstqu"]
 [ext_resource type="Texture2D" uid="uid://bkaaf6l2tii0h" path="res://dreams/04-starrysky/stars.pyxel" id="4_wov7j"]
@@ -13,32 +12,28 @@ shader_parameter/blur_amount = 5.0
 shader = ExtResource("3_kstqu")
 shader_parameter/blur_amount = 5.0
 
-[node name="Se" type="Node2D"]
+[node name="Se" type="Node2D" unique_id=1080364499]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(111, 109)
-texture = ExtResource("1_7serv")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1884120656]
 layer = 2
 
-[node name="pass-1" type="ColorRect" parent="CanvasLayer"]
+[node name="pass-1" type="ColorRect" parent="CanvasLayer" unique_id=829230876]
 material = SubResource("ShaderMaterial_wov7j")
 offset_left = 19.0
 offset_top = 82.0
 offset_right = 107.0
 offset_bottom = 141.0
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1812890546]
 
-[node name="pass-2" type="ColorRect" parent="CanvasLayer2"]
+[node name="pass-2" type="ColorRect" parent="CanvasLayer2" unique_id=606561161]
 material = SubResource("ShaderMaterial_d73ur")
 offset_left = 17.0
 offset_top = 111.0
 offset_right = 105.0
 offset_bottom = 171.0
 
-[node name="Stars" type="Sprite2D" parent="."]
+[node name="Stars" type="Sprite2D" parent="." unique_id=1167202072]
 texture_filter = 1
 position = Vector2(137, 170)
 scale = Vector2(3, 3)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cx27qi1f5l8t3"]
+[gd_scene format=3 uid="uid://cx27qi1f5l8t3"]
 
 [ext_resource type="Shader" uid="uid://b8gphl77fmc77" path="res://shader-experiment/psx_lit_viewport_independent.tres" id="1_8xjeq"]
 
@@ -56,11 +56,11 @@ shader_parameter/mip_map_far = 60.0
 shader_parameter/mip_map_final_level = 6
 shader_parameter/material_type = Color(0, 0, 0, 0)
 
-[node name="Alex3d" type="Node3D"]
+[node name="Alex3d" type="Node3D" unique_id=1069132548]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1800551242]
 material = SubResource("ShaderMaterial_tcryu")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=103643157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5671387, 0.4219522, -0.84632254)
 material = SubResource("ShaderMaterial_sj2wi")

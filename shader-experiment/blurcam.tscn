@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://c1ovglsecpdrk"]
 
-[ext_resource type="Texture2D" uid="uid://bvrb62m5e1pve" path="res://icon.svg" id="1_ue42q"]
 [ext_resource type="Texture2D" uid="uid://bkaaf6l2tii0h" path="res://dreams/04-starrysky/stars.pyxel" id="1_wlvc2"]
 [ext_resource type="Script" uid="uid://4pnvju1132ns" path="res://shader-experiment/traveller.gd" id="3_rccqv"]
 [ext_resource type="Script" uid="uid://mldx7ig2perd" path="res://shader-experiment/^show_on_ready.gd" id="5_avtof"]
@@ -25,44 +24,33 @@ width = 100
 height = 100
 fill_to = Vector2(1, 1)
 
-[node name="Blurcam" type="Node2D"]
+[node name="Blurcam" type="Node2D" unique_id=1873885091]
 texture_filter = 1
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1556447498]
 offset_right = 100.0
 offset_bottom = 100.0
 color = Color(0, 0, 0, 1)
 
-[node name="Maze" type="TileMapLayer" parent="."]
+[node name="Maze" type="TileMapLayer" parent="." unique_id=21247703]
 tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAAJAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAIAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAgAAAAAAAAAAAAFAAUAAAACAAAAAAAIAAUAAAACAAAAAAAJAAUAAAACAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAABAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAHAAIAAAAAAAAAAAAFAAcAAAACAAAAAAAFAAYAAAACAAAAAAAIAAgAAAACAAAAAAAJAAcAAAACAAAAAAAJAAYAAAACAAAAAAAEAAAAAAACAAAAAAA=")
 tile_set = ExtResource("5_dyli2")
 navigation_enabled = false
 script = ExtResource("6_16vfp")
 metadata/_custom_type_script = "uid://bqd058komyl30"
 
-[node name="Icon" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(5, 32)
-texture = ExtResource("1_ue42q")
-
-[node name="Stars" type="Sprite2D" parent="."]
+[node name="Stars" type="Sprite2D" parent="." unique_id=1645048285]
 visible = false
 texture = ExtResource("1_wlvc2")
 centered = false
 
-[node name="Icon3" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(100.81503, 98.81503)
-scale = Vector2(0.13773492, 0.13773492)
-texture = ExtResource("1_ue42q")
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=642082553]
 anchor_mode = 0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=759339782]
 visible = false
 
-[node name="blur_and_cam_in_one" type="ColorRect" parent="CanvasLayer"]
+[node name="blur_and_cam_in_one" type="ColorRect" parent="CanvasLayer" unique_id=2028168124]
 material = SubResource("ShaderMaterial_ue42q")
 use_parent_material = true
 anchors_preset = 15
@@ -72,10 +60,10 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="^show_on_ready" type="Node" parent="CanvasLayer"]
+[node name="^show_on_ready" type="Node" parent="CanvasLayer" unique_id=1991770902]
 script = ExtResource("5_avtof")
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1735481516]
 visible = false
 modulate = Color(0.3987929, 0.39879292, 0.3987929, 1)
 offset_left = -100.0
@@ -84,16 +72,16 @@ offset_right = 200.0
 offset_bottom = 200.0
 texture = SubResource("GradientTexture2D_avtof")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=34702845]
 visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("GradientTexture2D_avtof")
 
-[node name="traveller" type="Node2D" parent="."]
+[node name="traveller" type="Node2D" parent="." unique_id=911705679]
 script = ExtResource("3_rccqv")
 
-[node name="SheetSprite" type="Sprite2D" parent="traveller"]
+[node name="SheetSprite" type="Sprite2D" parent="traveller" unique_id=1632265816]
 texture = ExtResource("6_o5fo5")
 hframes = 10
 vframes = 10
