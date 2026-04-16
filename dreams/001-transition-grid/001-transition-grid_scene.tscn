@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://chrf0wlm6pubx"]
 
-[ext_resource type="TileSet" uid="uid://blq0cniv5fu1y" path="res://dreams/01-transition-grid/transition_tiles.tres" id="1_a75o6"]
+[ext_resource type="TileSet" uid="uid://blq0cniv5fu1y" path="res://dreams/001-transition-grid/transition_tiles.tres" id="1_a75o6"]
 [ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_72k0y"]
 [ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_svigk"]
-[ext_resource type="Resource" uid="uid://b126owjjrae" path="res://dreams/01-transition-grid/transition_sheet.tres" id="4_2q8b3"]
+[ext_resource type="Resource" uid="uid://b126owjjrae" path="res://dreams/001-transition-grid/transition_sheet.tres" id="4_2q8b3"]
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_rked8"]
 
 [node name="01-transition-grid" type="Node2D" unique_id=44451769]

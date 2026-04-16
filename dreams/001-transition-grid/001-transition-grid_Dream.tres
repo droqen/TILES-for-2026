@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NavdiDream" format=3 uid="uid://c7lyxcstrh7m5"]
 
-[ext_resource type="PackedScene" uid="uid://chrf0wlm6pubx" path="res://dreams/01-transition-grid/01-transition-grid_scene.tscn" id="1_3eq4n"]
+[ext_resource type="PackedScene" uid="uid://chrf0wlm6pubx" path="res://dreams/001-transition-grid/001-transition-grid_scene.tscn" id="1_3eq4n"]
 [ext_resource type="Script" uid="uid://dmknyp6uhnvkf" path="res://navdi/navdidream.gd" id="2_34lrj"]
 
 [resource]

@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://cg67mltsma3rm"
+path="res://.godot/imported/landing.pyxel-5b8eed8b54bbbf7c7506f46d8f7eae95.res"
+
+[deps]
+
+source_file="res://dreams/002-loading-landing/landing.pyxel"
+dest_files=["res://.godot/imported/landing.pyxel-5b8eed8b54bbbf7c7506f46d8f7eae95.res"]
+
+[params]
+

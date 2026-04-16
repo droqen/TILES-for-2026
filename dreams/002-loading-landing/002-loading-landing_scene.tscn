@@ -1,0 +1,39 @@
+[gd_scene format=4 uid="uid://d0fc2ifk6j5mu"]
+
+[ext_resource type="TileSet" uid="uid://ltsuxbcefran" path="res://dreams/002-loading-landing/landing_tiles.tres" id="1_2b1mm"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_fwr10"]
+[ext_resource type="Script" uid="uid://4evfic5p6en1" path="res://dreams/002-loading-landing/throb.gd" id="3_2b1mm"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="4_rlbvf"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_ck21w"]
+
+[node name="002-loading-landing" type="Node2D" unique_id=918642869]
+texture_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1411014733]
+offset_right = 100.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 1)
+
+[node name="Maze" type="TileMapLayer" parent="." unique_id=589006504]
+tile_map_data = PackedByteArray("AAABAAEAAAAEAAAAAAABAAIAAAAEAAAAAAABAAMAAAAEAAAAAAABAAcAAAAEAAAAAAABAAgAAAAEAAAAAAACAAIAAAAEAAAAAAACAAMAAAAEAAAAAAACAAQAAAAEAAAAAAACAAUAAAAEAAAAAAACAAYAAAAEAAAAAAACAAcAAAAEAAAAAAACAAgAAAAEAAAAAAADAAEAAAAEAAAAAAADAAQAAAAEAAAAAAADAAUAAAAEAAAAAAADAAYAAAAEAAAAAAADAAgAAAAEAAAAAAAEAAEAAAAEAAAAAAAEAAMAAAAEAAAAAAAEAAUAAAAEAAAAAAAEAAcAAAAEAAAAAAAEAAgAAAAEAAAAAAAFAAMAAAAEAAAAAAAFAAQAAAAEAAAAAAAFAAcAAAAEAAAAAAAGAAEAAAAEAAAAAAAGAAIAAAAEAAAAAAAGAAMAAAAEAAAAAAAGAAYAAAAEAAAAAAAGAAcAAAAEAAAAAAAGAAgAAAAEAAAAAAAHAAIAAAAEAAAAAAAHAAQAAAAEAAAAAAAHAAcAAAAEAAAAAAAIAAEAAAAEAAAAAAAIAAIAAAAEAAAAAAAIAAMAAAAEAAAAAAAIAAQAAAAEAAAAAAAIAAYAAAAEAAAAAAAIAAcAAAAEAAAAAAAIAAgAAAAEAAAAAAABAAQAAAAEAAAAAAABAAUAAAAEAAAAAAABAAYAAAAEAAAAAAACAAEAAAAEAAAAAAADAAIAAAAEAAAAAAADAAMAAAAEAAAAAAADAAcAAAAEAAAAAAAEAAIAAAAEAAAAAAAEAAQAAAAEAAAAAAAEAAYAAAAEAAAAAAAFAAEAAAAEAAAAAAAFAAIAAAAEAAAAAAAFAAUAAAAEAAAAAAAFAAYAAAAEAAAAAAAFAAgAAAAEAAAAAAAGAAQAAAAEAAAAAAAGAAUAAAAEAAAAAAAHAAEAAAAEAAAAAAAHAAMAAAAEAAAAAAAHAAUAAAAEAAAAAAAHAAYAAAAEAAAAAAAHAAgAAAAEAAAAAAAIAAUAAAAEAAAAAAA=")
+tile_set = ExtResource("1_2b1mm")
+physics_quadrant_size = 1
+navigation_enabled = false
+script = ExtResource("2_fwr10")
+
+[node name="throb" type="Node" parent="Maze" unique_id=1752790966]
+script = ExtResource("3_2b1mm")
+
+[node name="View" type="ReferenceRect" parent="." unique_id=1091112663]
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("5_ck21w")
+
+[node name="Label" type="Label" parent="." unique_id=2099478723]
+offset_left = 10.0
+offset_top = 1.0
+offset_right = 85.0
+offset_bottom = 24.0
+text = "DRAG & DROP YOUR
+.PCK FROM DROQEN"
+label_settings = ExtResource("4_rlbvf")

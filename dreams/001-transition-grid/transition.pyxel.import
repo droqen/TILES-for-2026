@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://1vp4eh01glag"
+path="res://.godot/imported/transition.pyxel-0ef1770df97737d333079a6f18559b4d.res"
+
+[deps]
+
+source_file="res://dreams/001-transition-grid/transition.pyxel"
+dest_files=["res://.godot/imported/transition.pyxel-0ef1770df97737d333079a6f18559b4d.res"]
+
+[params]
+
