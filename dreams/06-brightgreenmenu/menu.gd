@@ -71,7 +71,8 @@ func _ready() -> void:
 	fetch_all_dreams_to_menu()
 	searchstring = Dreamer.r("searchstring", NavdiGenUtil.gen_megahexdate())
 	if searchstring:
-		searchcursor = Dreamer.r("cursor", 0)
+		_lastsearch = searchstring
+		update_search(Dreamer.r("cursor", -1))
 	else:
 		cursor = Dreamer.r("cursor", -1)
 	update_text()
@@ -82,10 +83,10 @@ func _physics_process(_delta: float) -> void:
 	else:
 		update_text()
 
-func update_search() -> void:
+func update_search(align_cursor_to : int = -1) -> void:
 	blinka = -20
 	searchresults.clear()
-	searchcursor = 0
+	searchcursor = 0 if align_cursor_to<0 else align_cursor_to
 	if searchstring:
 		searchresults = menu.filter(func(mi):
 			return mi.get_match_score(searchstring))
@@ -95,9 +96,10 @@ func update_search() -> void:
 		else:
 			# search for nearest in alphabetical order!
 			searchresults = menu.duplicate()
-			for i in len(menu) - 1:
-				if menu[i+1].name < searchstring:
-					searchcursor += 1
+			if align_cursor_to < 0:
+				for i in len(menu) - 1:
+					if menu[i+1].name < searchstring:
+						searchcursor += 1
 	Dreamer.w("searchstring", searchstring)
 	Dreamer.w("cursor", searchcursor if searchstring else cursor)
 
@@ -151,7 +153,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 				KEY_DOWN: dy = 1
 				KEY_LEFT, KEY_PAGEUP: dy = -5
 				KEY_RIGHT, KEY_PAGEDOWN: dy = 5
-				KEY_ENTER:
+				KEY_ENTER, KEY_SPACE:
 					if searchstring:
 						if searchresults and searchcursor >= 0:
 							Dreamer.dream(searchresults[searchcursor].dream)
