@@ -8,7 +8,7 @@ extends Node2D
 @export var dpadchange_chance : float = 0.00
 @export var dpadzero_chance : float = 0.00
 @export var tethered_to_original_dist : float = 50.0
-@export var teleports_to_random_cell_within : int = 0.0
+@export var teleports_to_random_cell_within : int = 0
 @export var teleport_chance : float = 0.0
 @export var teleports_to_random_universe_chance : float = 0.0
 @export var never_visible : bool = false
