@@ -89,8 +89,15 @@ func update_search() -> void:
 	if searchstring:
 		searchresults = menu.filter(func(mi):
 			return mi.get_match_score(searchstring))
-		searchresults.sort_custom(func(a,b):
-			return a.last_match_score>b.last_match_score)
+		if len(searchresults):
+			searchresults.sort_custom(func(a,b):
+				return a.last_match_score>b.last_match_score)
+		else:
+			# search for nearest in alphabetical order!
+			searchresults = menu.duplicate()
+			for i in len(menu) - 1:
+				if menu[i+1].name < searchstring:
+					searchcursor += 1
 	Dreamer.w("searchstring", searchstring)
 	Dreamer.w("cursor", searchcursor if searchstring else cursor)
 
@@ -98,7 +105,10 @@ func update_text() -> void:
 	blinka += 1; if blinka >= BLINK_OFF: blinka = 0
 	text = "%s%s\n" % [searchstring, "|" if blinka < BLINK_ON else ""]
 	if searchstring:
-		text += submenu_string(searchresults,searchcursor,5,true)
+		if len(searchresults) < len(menu):
+			text += submenu_string(searchresults,searchcursor,5,true)
+		else:
+			text += submenu_string(searchresults,searchcursor,5, false)
 	else:
 		text += submenu_string(menu,cursor,5)
 
