@@ -25,5 +25,4 @@ func _on_files_dropped(files:PackedStringArray) -> void:
 		if file.ends_with(".pck"):
 			var dream : NavdiDream = Dreamer.dream_packed_dream(file)
 			if dream:
-				print(dream.get_pyxel())
 				return # done :)

@@ -6,5 +6,5 @@
 
 [node name="Start" type="Node" unique_id=254303123]
 script = ExtResource("1_8blt0")
-editor_dream = ExtResource("2_c8l3o")
-first_dream = ExtResource("2_tfodg")
+editor_dream = ExtResource("2_tfodg")
+first_dream = ExtResource("2_c8l3o")

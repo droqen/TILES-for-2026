@@ -62,6 +62,41 @@ func dream(d:NavdiDream) -> void:
 		dream_depth += 1
 		_goto_current_dream_packed()
 
+func startdreamtransition(d:NavdiDream) -> void:
+	# look at current dream, fuck it up, then go.
+	d.scout()
+	if d._tiles or d._sheet:
+		_recursive_apply_dream_assets(
+			get_tree().current_scene,
+			d._pixel,
+			d._tiles,
+			d._sheet,
+		)
+		var freezetime : float = randf_range(0.1,0.2)
+		if randf () < 0.25: freezetime *= randf_range(2.0,5.0)
+		await get_tree().create_timer(freezetime).timeout
+	if is_inside_tree():
+		dreamfresh(d)
+	else:
+		push_error("ERR - NavdiDreamer after pause is no longer inside the tree")
+
+func _recursive_apply_dream_assets(n:Node,p:Variant,t:TileSet,s:Sheet) -> void:
+	if n is SheetSprite and s:
+		(n as SheetSprite).sheet = s
+		n.process_mode = Node.PROCESS_MODE_ALWAYS
+	elif n is TileMapLayer and t:
+		(n as TileMapLayer).tile_set = t
+	elif n is ColorRect and p is Color:
+		(n as ColorRect).color = (p as Color)
+	else:
+		n.process_mode = Node.PROCESS_MODE_DISABLED
+		if n is CanvasItem:
+			(n as CanvasItem).self_modulate = Color(0,0,0,0)
+			# everything else invisible.
+	
+	for child in n.get_children():
+		_recursive_apply_dream_assets(child,p,t,s)
+
 func dreamfresh(d:NavdiDream) -> void:
 	dream_stack=[d]
 	_memory_stack=[Dictionary()]
@@ -127,7 +162,10 @@ func dream_packed_dream(dream_pck_filepath: String, with_transition : bool = tru
 		var expected_dream = ResourceLoader.load(expected_dream_file_path, "NavdiDream", ResourceLoader.CACHE_MODE_REPLACE_DEEP)
 		if expected_dream:
 			if expected_dream is NavdiDream:
-				dreamfresh(expected_dream)
+				if with_transition:
+					startdreamtransition(expected_dream)
+				else:
+					dreamfresh(expected_dream)
 				navdilog("lpck", "Dreaming... %s" % extracted_dream_name)
 				return expected_dream
 			else:
