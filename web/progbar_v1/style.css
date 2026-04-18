@@ -9,7 +9,7 @@
 	width: 60vmin; height:60vmin; margin-left:-30vmin; margin-top:-30vmin; padding: 1px;
 	left: 50%; top: 50%;
 	background: none; border: none; border-color: rgba(0,0,0,0);
-	filter: blur(0.1vmin);
+	filter: blur(0.2vmin);
 }
 #progress-count {
 	margin-left: 0.1vmin;
@@ -17,7 +17,7 @@
 	margin-top: -5.4vmin;
 	/*margin-top: -6.125vmin;*/ 
 		/*for text aligned one pixel up rather than touching square*/
-	width: 50vw;
+	width: 65vmin;
 	line-height: 4vmin;
 	font-size: 11.95vmin;
 	/*font-family: "font44mono", monospace, sans-serif;*/ 
