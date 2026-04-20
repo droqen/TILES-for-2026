@@ -1,29 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://dylv1runyop2k"]
+[gd_scene format=3 uid="uid://dylv1runyop2k"]
 
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="2_67fp3"]
 [ext_resource type="Texture2D" uid="uid://c0v2j5i2upg3x" path="res://dreams/05-Gallery/00-NoPointZero.pyxel" id="2_fkl8b"]
 [ext_resource type="Texture2D" uid="uid://bpyec25it3ixr" path="res://dreams/05-Gallery/pg09.pyxel" id="3_fkl8b"]
 [ext_resource type="Texture2D" uid="uid://dbgdq02grykd4" path="res://dreams/05-Gallery/pg05.pyxel" id="4_oj6uv"]
+[ext_resource type="Texture2D" uid="uid://bahreu7qlcsqg" path="res://dreams/05-Gallery/gleaming-so-brightly-354K.pyxel" id="5_ygk4q"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="6_bxgg3"]
 
-[node name="Gallery" type="Node2D"]
+[node name="Gallery" type="Node2D" unique_id=1748534863]
 texture_filter = 1
 
-[node name="00NoPointZero" type="Sprite2D" parent="."]
+[node name="00NoPointZero" type="Sprite2D" parent="." unique_id=20924382]
 position = Vector2(155, 133)
 texture = ExtResource("2_fkl8b")
 
-[node name="NavdiViewRect" type="ReferenceRect" parent="."]
-offset_left = 309.0
-offset_top = 86.0
-offset_right = 453.0
-offset_bottom = 228.0
+[node name="NavdiViewRect" type="ReferenceRect" parent="." unique_id=873404347]
+offset_right = 120.0
+offset_bottom = 120.0
 script = ExtResource("2_67fp3")
 metadata/_custom_type_script = "uid://bluc574m7qci"
 
-[node name="Pg09" type="Sprite2D" parent="."]
+[node name="bg\\" type="ColorRect" parent="NavdiViewRect" unique_id=273256413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.87058824, 0.87058824, 0.87058824, 1)
+
+[node name="Pg09" type="Sprite2D" parent="." unique_id=424511711]
 position = Vector2(256, 93)
 texture = ExtResource("3_fkl8b")
 
-[node name="Pg05" type="Sprite2D" parent="."]
+[node name="Pg05" type="Sprite2D" parent="." unique_id=2024022464]
 position = Vector2(378, 157)
 texture = ExtResource("4_oj6uv")
+
+[node name="GleamingSoBrightly354k" type="Sprite2D" parent="." unique_id=657099263]
+position = Vector2(10, 10)
+texture = ExtResource("5_ygk4q")
+centered = false
+
+[node name="Label" type="Label" parent="GleamingSoBrightly354k" unique_id=1645999840]
+visible = false
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 123.0
+text = "354K gleaming so bri"
+label_settings = ExtResource("6_bxgg3")
