@@ -26,3 +26,7 @@ func _on_files_dropped(files:PackedStringArray) -> void:
 			var dream : NavdiDream = Dreamer.dream_packed_dream(file)
 			if dream:
 				return # done :)
+		elif file.contains(".droq"):
+			var dream : NavdiDream = Dreamer.dream_packed_dream(file)
+			if dream:
+				return # done :)

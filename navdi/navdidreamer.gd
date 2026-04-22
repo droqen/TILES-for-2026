@@ -144,14 +144,19 @@ func _add_to_and_own(ch:Node, par:Node) -> void:
 
 func dream_packed_dream(dream_pck_filepath: String, with_transition : bool = true) -> NavdiDream:
 	#print("*** load packed dream (%s)" % dream_pck_filepath)
+	var extracted_dream_name : String = ''
 	if dream_pck_filepath.ends_with(".pck"):
 		var dream_broken := (dream_pck_filepath
 			.rsplit("/",false,1)[-1]
 			.split('.',false)
 		)
-		var extracted_dream_name : String = dream_broken[-1]
+		extracted_dream_name = dream_broken[-1]
 		if len(dream_broken) > 1 and dream_broken[-1] == "pck":
 			extracted_dream_name = dream_broken[-2]
+	elif dream_pck_filepath.contains(".droq"):
+		extracted_dream_name = dream_pck_filepath.rsplit(".droq",true,1)[-1]
+	
+	if extracted_dream_name:
 		#print("*** about to load resource pack..")
 		var _success = ProjectSettings.load_resource_pack(dream_pck_filepath, true)
 		#print("*** load resource pack success? ",_success)

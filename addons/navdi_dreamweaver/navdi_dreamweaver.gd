@@ -127,7 +127,10 @@ func _on_dream_selected_to_bundle(dreampath:String) -> void:
 		var dreamname := dir.rsplit("/",false,1)[-1]
 		print("Selected dream `%s`" % dreamname)
 		var packer := PCKPacker.new()
-		var pckpath := "res://dreambundles/%s.pck" % dreamname
+		# new pck file path name
+		var pckpath := "res://dreambundles/newgame.droq%s" % dreamname
+		# orig pck file path name
+		#var pckpath := "res://dreambundles/%s.pck" % dreamname
 		packer.pck_start(pckpath)
 		for file in DirAccess.get_files_at(dir):
 			repack_resource(packer, dir.path_join(file))
