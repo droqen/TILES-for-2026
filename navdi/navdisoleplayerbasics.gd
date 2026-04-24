@@ -16,9 +16,9 @@ var faceleft : bool :
 var facedir : int :
 	get    : return -1 if faceleft else 1
 	set(v) : if v : faceleft = v < 0
-@onready var bufs : Bufs = Bufs.Make(self).setup_bufons([FLORBUF,4,JUMPBUF,4,TURNBUF,4,LANDBUF,4,])
+@onready var bufs : Bufs = Bufs.Make(self).setup_bufons([FLORBUF,4,JUMPBUF,4,TURNBUF,4,LANDBUF,4,NOLANDBUF,2,])
 
-enum { FLORBUF=7102837, JUMPBUF=7339837, TURNBUF=7325837, LANDBUF=1450837, }
+enum { FLORBUF=7102837, JUMPBUF=7339837, TURNBUF=7325837, LANDBUF=1450837, NOLANDBUF=501450837 }
 
 func setup_basic_child_nodes(
 	SheetSpriteNodePath : String = "spr",
@@ -33,6 +33,7 @@ func setup_basic_child_nodes(
 func _ready() -> void:
 	super._ready()
 	setup_basic_child_nodes()
+	bufs.on(NOLANDBUF) # just don't apply it on the first couple frames
 
 func tow_vx(
 	dir:int,
@@ -60,7 +61,7 @@ func is_on_floor() -> bool:
 		if cast_to_floor < 1:
 			position.y += cast_to_floor
 			on_floor = true
-			if not bufs.has(FLORBUF): bufs.on(LANDBUF)
+			if not bufs.has(FLORBUF) and not bufs.has(NOLANDBUF): bufs.on(LANDBUF)
 			bufs.on(FLORBUF)
 	return on_floor
 

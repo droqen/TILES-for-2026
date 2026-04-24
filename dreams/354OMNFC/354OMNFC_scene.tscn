@@ -1,0 +1,101 @@
+[gd_scene format=4 uid="uid://b0kawkscfbhxf"]
+
+[ext_resource type="Script" uid="uid://8mw5sgr50p8b" path="res://dreams/354OMNFC/stage.gd" id="1_3r8ol"]
+[ext_resource type="TileSet" uid="uid://bd81bubh8oniu" path="res://dreams/354OMNFC/ylwfacility_tiles.tres" id="1_8q1ji"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_lwn3a"]
+[ext_resource type="Script" uid="uid://dcv2veb4xwnbx" path="res://dreams/354OMNFC/chipsoul.gd" id="3_a1y8v"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_kovjs"]
+[ext_resource type="Texture2D" uid="uid://co0krsvsm60xv" path="res://dreams/354OMNFC/ylwfacility.pyxel" id="3_lwn3a"]
+[ext_resource type="Resource" uid="uid://bjbkopvwmephn" path="res://dreams/354OMNFC/ylwfacility_sheet.tres" id="4_a1y8v"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_uuswt"]
+[ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="7_fqqxi"]
+[ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="7_uuswt"]
+[ext_resource type="Script" uid="uid://ccsk4y38optuq" path="res://dreams/354OMNFC/player_pew.gd" id="9_fqqxi"]
+[ext_resource type="Script" uid="uid://bj1ojyq5dphgn" path="res://navdi/navdisheetregionsprite.gd" id="11_y48fe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuswt"]
+size = Vector2(7.9, 7.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y48fe"]
+size = Vector2(1.9, 1.9)
+
+[node name="354OMNFC" type="Node2D" unique_id=1925074093]
+texture_filter = 1
+
+[node name="Game" type="Node2D" parent="." unique_id=848404224]
+
+[node name="Stage" type="Node2D" parent="Game" unique_id=1948665562]
+script = ExtResource("1_3r8ol")
+
+[node name="Maze" type="TileMapLayer" parent="Game/Stage" unique_id=323625714]
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAYAAAACAAAAAAAAAAgAAAACAAAAAAAAAAkAAAACAAAAAAABAAEAAAAEAAAAAAABAAMAAAAEAAAAAAABAAQAAAADAAAAAAABAAUAAAADAAAAAAABAAYAAAADAAAAAAABAAgAAAABAAAAAAACAAAAAAAEAAAAAAACAAEAAAAEAAAAAAACAAIAAAADAAAAAAACAAMAAAAEAAAAAAACAAUAAAADAAAAAAACAAYAAAADAAAAAAACAAcAAAAEAAAAAAACAAgAAAABAAAAAAACAAkAAAACAAAAAAADAAAAAAAEAAAAAAADAAIAAAADAAAAAAADAAMAAAADAAAAAAADAAUAAAAEAAAAAAADAAcAAAAEAAAAAAADAAgAAAABAAAAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAEAAAAAAAEAAMAAAAEAAAAAAAEAAQAAAAEAAAAAAAEAAUAAAADAAAAAAAEAAYAAAADAAAAAAAEAAkAAAACAAAAAAAFAAIAAAADAAAAAAAFAAMAAAADAAAAAAAFAAQAAAADAAAAAAAFAAgAAAABAAAAAAAFAAkAAAACAAAAAAAGAAAAAAADAAAAAAAGAAEAAAADAAAAAAAGAAIAAAADAAAAAAAGAAMAAAADAAAAAAAGAAQAAAAEAAAAAAAGAAUAAAAEAAAAAAAGAAYAAAAEAAAAAAAGAAgAAAABAAAAAAAGAAkAAAACAAAAAAAHAAAAAAAEAAAAAAAHAAEAAAAEAAAAAAAHAAIAAAADAAAAAAAHAAYAAAADAAAAAAAHAAgAAAAEAAAAAAAHAAkAAAACAAAAAAAIAAAAAAAEAAAAAAAIAAMAAAADAAAAAAAIAAQAAAAEAAAAAAAIAAUAAAADAAAAAAAIAAcAAAADAAAAAAAIAAkAAAACAAAAAAAJAAMAAAADAAAAAAAJAAQAAAADAAAAAAAJAAYAAAADAAAAAAAJAAcAAAAEAAAAAAAJAAgAAAAEAAAAAAAJAAkAAAACAAAAAAD/////AAACAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAACAP//AAACAAAAAAADAP//AAACAAAAAAAEAP//AAACAAAAAAAFAP//AAACAAAAAAAGAP//AAACAAAAAAAHAP//AAACAAAAAAAIAP//AAACAAAAAAAJAP//AAACAAAAAAAKAP//AAACAAAAAAAKAAAAAAACAAAAAAAKAAEAAAACAAAAAAAKAAIAAAACAAAAAAAKAAMAAAACAAAAAAAKAAQAAAACAAAAAAAKAAUAAAACAAAAAAAKAAYAAAACAAAAAAAKAAcAAAACAAAAAAAKAAgAAAACAAAAAAAKAAkAAAACAAAAAAAKAAoAAAACAAAAAAAJAAoAAAACAAAAAAAIAAoAAAACAAAAAAAHAAoAAAACAAAAAAAGAAoAAAACAAAAAAAFAAoAAAACAAAAAAAEAAoAAAACAAAAAAADAAoAAAACAAAAAAACAAoAAAACAAAAAAABAAoAAAACAAAAAAAAAAoAAAACAAAAAAD//woAAAACAAAAAAD//wkAAAACAAAAAAD//wgAAAACAAAAAAD//wcAAAACAAAAAAD//wYAAAACAAAAAAD//wUAAAACAAAAAAD//wQAAAACAAAAAAD//wMAAAACAAAAAAD//wIAAAACAAAAAAD//wEAAAACAAAAAAD//wAAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAcAAAACAAAAAAABAAAAAAADAAAAAAABAAIAAAADAAAAAAABAAcAAAABAAAAAAABAAkAAAACAAAAAAACAAQAAAAEAAAAAAADAAEAAAADAAAAAAADAAQAAAAEAAAAAAADAAYAAAADAAAAAAADAAkAAAACAAAAAAAEAAcAAAADAAAAAAAEAAgAAAABAAAAAAAFAAAAAAAEAAAAAAAFAAEAAAAEAAAAAAAFAAUAAAAEAAAAAAAFAAYAAAADAAAAAAAFAAcAAAADAAAAAAAGAAcAAAADAAAAAAAHAAMAAAADAAAAAAAHAAQAAAAEAAAAAAAHAAUAAAADAAAAAAAHAAcAAAADAAAAAAAIAAEAAAAEAAAAAAAIAAIAAAAEAAAAAAAIAAYAAAADAAAAAAAIAAgAAAADAAAAAAAJAAAAAAAEAAAAAAAJAAEAAAAEAAAAAAAJAAIAAAAEAAAAAAAJAAUAAAADAAAAAAA=")
+tile_set = ExtResource("1_8q1ji")
+physics_quadrant_size = 1
+navigation_enabled = false
+script = ExtResource("2_lwn3a")
+
+[node name="PlayerPews" type="Node2D" parent="Game/Stage" unique_id=789654729]
+
+[node name="chipsoul" type="Node2D" parent="Game/Stage" unique_id=1771381983]
+position = Vector2(15, 65)
+script = ExtResource("3_a1y8v")
+
+[node name="spr" type="Sprite2D" parent="Game/Stage/chipsoul" unique_id=99461611]
+texture = ExtResource("3_lwn3a")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_kovjs")
+sheet = ExtResource("4_a1y8v")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="Game/Stage/chipsoul" unique_id=220359132]
+position = Vector2(0, 1)
+script = ExtResource("7_fqqxi")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/Stage/chipsoul/mover" unique_id=1335340625]
+enabled = false
+shape = SubResource("RectangleShape2D_uuswt")
+target_position = Vector2(0, 0)
+
+[node name="V" type="Node2D" parent="Game" unique_id=230584128]
+script = ExtResource("7_uuswt")
+metadata/_custom_type_script = "uid://cmcadvi8j44y0"
+
+[node name="PlayerPew" type="Node2D" parent="Game/V" unique_id=49478273]
+script = ExtResource("9_fqqxi")
+
+[node name="spr" type="Sprite2D" parent="Game/V/PlayerPew" unique_id=1447644402]
+texture = ExtResource("3_lwn3a")
+region_enabled = true
+region_rect = Rect2(60, 13, 10, 4)
+script = ExtResource("11_y48fe")
+subregion = Rect2i(0, 3, 10, 4)
+sheet = ExtResource("4_a1y8v")
+frames = PackedInt32Array(16)
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="mover" type="Node2D" parent="Game/V/PlayerPew" unique_id=168856616]
+script = ExtResource("7_fqqxi")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="Game/V/PlayerPew/mover" unique_id=243278410]
+enabled = false
+shape = SubResource("RectangleShape2D_y48fe")
+target_position = Vector2(0, 0)
+
+[node name="hitter" type="Area2D" parent="Game/V/PlayerPew/mover" unique_id=1959946038]
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/V/PlayerPew/mover/hitter" unique_id=681099395]
+shape = SubResource("RectangleShape2D_y48fe")
+
+[node name="View" type="ReferenceRect" parent="Game" unique_id=904935821]
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 105.0
+offset_bottom = 105.0
+script = ExtResource("5_uuswt")

@@ -8,6 +8,7 @@ class_name SheetSprite
 @export var ani_period : int = 8
 @export var ani_index : int = 0
 var ani_subindex : int = 0
+var frame_offset : int = 0
 
 func _try_change(newframes : PackedInt32Array = [], newperiod : int = -1) -> bool:
 	var changed : bool = false
@@ -78,4 +79,4 @@ func _physics_process(_delta: float) -> void:
 			ani_subindex -= ani_period
 			ani_index += 1
 		ani_index = posmod(ani_index, len(frames))
-		frame = frames[ani_index]
+		frame = frames[ani_index] + frame_offset

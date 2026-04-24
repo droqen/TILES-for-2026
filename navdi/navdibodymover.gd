@@ -1,3 +1,5 @@
+@tool
+
 extends Node2D
 class_name NavdiBodyMover
 
@@ -5,6 +7,20 @@ class_name NavdiBodyMover
 var subpixel_position : Vector2 = Vector2.ZERO
 
 #enum { HORIZONTAL, VERTICAL, } # axes already default godot consts!
+
+func _enter_tree() -> void:
+	if Engine.is_editor_hint() and get_child_count() < 1:
+		var shape := RectangleShape2D.new()
+		shape.size = Vector2(7.9, 7.9)
+		var shapecast := ShapeCast2D.new()
+		shapecast.name = 'solidcast'
+		shapecast.enabled = false
+		shapecast.target_position = Vector2(0,0)
+		shapecast.shape = shape
+		await get_tree().process_frame
+		if is_inside_tree():
+			add_child(shapecast)
+			shapecast.owner = owner if owner else self
 
 func cast_best_snap_dir(body : Node2D, caster : ShapeCast2D, axis, movement_amount : float) -> int:
 	var scoreStay = cast_fraction(body,caster,axis,movement_amount,0)

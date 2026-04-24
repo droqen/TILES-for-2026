@@ -28,6 +28,8 @@ func get_action_hit() -> bool: return Input.is_action_just_pressed("action")
 func get_action_held() -> bool: return Input.is_action_pressed("action")
 func get_jump_hit() -> bool: return Input.is_action_just_pressed("jump")
 func get_jump_held() -> bool: return Input.is_action_pressed("jump")
+func get_offhand_hit() -> bool: return Input.is_action_just_pressed("offhand")
+func get_offhand_held() -> bool: return Input.is_action_pressed("offhand")
 func get_plant_hit() -> bool: return Input.is_action_just_pressed("plant")
 func get_plant_held() -> bool: return Input.is_action_pressed("plant")
 func get_cancel_hit() -> bool: return Input.is_action_just_pressed("cancel")
@@ -41,11 +43,21 @@ func setup_defaults():
 	setup_action_button(DIR_D,  [KEY_DOWN, KEY_S], [JOY_BUTTON_DPAD_DOWN], [JOY_AXIS_LEFT_Y], [1])
 	setup_action_button(DIR_R, [KEY_RIGHT, KEY_D], [JOY_BUTTON_DPAD_RIGHT], [JOY_AXIS_LEFT_X], [1])
 	
-	setup_action_button("jump", [KEY_UP, KEY_W, KEY_Z, KEY_SPACE, KEY_ENTER],
+	setup_action_button("jump",
+		[	KEY_Z, KEY_C, KEY_SPACE, KEY_ENTER,
+			KEY_UP, KEY_W, ], # jump incl UP
 		[JOY_BUTTON_A], [JOY_AXIS_LEFT_Y], [-1])
-	setup_action_button("plant", [KEY_DOWN, KEY_S, KEY_X],
+	setup_action_button("action",
+		[	KEY_Z, KEY_C, KEY_SPACE, KEY_ENTER, ],
+		[JOY_BUTTON_A])
+	setup_action_button("plant",
+		[	KEY_X, KEY_V, KEY_SHIFT, KEY_TAB,
+			KEY_DOWN, KEY_S, ], # plant incl DOWN
 		[JOY_BUTTON_B], [JOY_AXIS_LEFT_Y], [1])
-	setup_action_button("action", [KEY_Z, KEY_X, KEY_SPACE, KEY_ENTER], [JOY_BUTTON_A, JOY_BUTTON_B])
+	setup_action_button("offhand",
+		[	KEY_X, KEY_V, KEY_SHIFT, KEY_TAB, ],
+		[JOY_BUTTON_B])
+	
 	setup_action_button("cancel", [KEY_ESCAPE, KEY_BACKSPACE], [JOY_BUTTON_BACK, JOY_BUTTON_START])
 	
 func setup_action_button(action_name : String, keycodes : Array[Key], joybuttonz : Array[JoyButton], joyaxez : Array[JoyAxis] = [], joyaxisdirections : Array[int] = []):
