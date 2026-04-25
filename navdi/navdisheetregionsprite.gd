@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 			ani_subindex -= ani_period
 			ani_index += 1
 		ani_index = posmod(ani_index, len(frames))
-		var f : int = frames[ani_index] + frame_offset
+		var f : int = frames[ani_index]
 		@warning_ignore("integer_division")
 		var fc := Vector2i(
 			f % sheet.hframes,

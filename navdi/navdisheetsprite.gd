@@ -25,11 +25,16 @@ func _try_change(newframes : PackedInt32Array = [], newperiod : int = -1) -> boo
 	return changed
 
 func setup(newframes : PackedInt32Array = [], newperiod : int = -1):
+	if frame_offset: for i in len(newframes): newframes[i] += frame_offset
 	_try_change(newframes, newperiod)
 	return self
 
 func setup_forcechangeindex(newframes : PackedInt32Array = [], newperiod : int = -1,
 	change_frame_to_ani_index_dict : Dictionary = {}):
+	if frame_offset:
+		for i in len(newframes): newframes[i] += frame_offset
+		for k in change_frame_to_ani_index_dict:
+			change_frame_to_ani_index_dict[k+frame_offset] = change_frame_to_ani_index_dict[k]+frame_offset
 	var next_ani : int = change_frame_to_ani_index_dict.get(frame, -1)
 	if next_ani >= 0:
 		pass
@@ -48,6 +53,9 @@ func setup_forcechangeindex(newframes : PackedInt32Array = [], newperiod : int =
 
 func setup_trywaitformatch(newframes : PackedInt32Array = [], newperiod : int = -1,
 	frames_to_match : PackedInt32Array = []):
+	if frame_offset:
+		for i in len(newframes): newframes[i] += frame_offset
+		for i in len(frames_to_match): frames_to_match[i] += frame_offset
 	if !frames_to_match: frames_to_match = [newframes[0]]
 	if frame in frames_to_match:
 		_try_change(newframes, newperiod)
@@ -79,4 +87,4 @@ func _physics_process(_delta: float) -> void:
 			ani_subindex -= ani_period
 			ani_index += 1
 		ani_index = posmod(ani_index, len(frames))
-		frame = frames[ani_index] + frame_offset
+		frame = frames[ani_index]

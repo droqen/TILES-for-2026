@@ -34,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 				if vy < 0: vy *= 0.5
 				stage.shoot(self, Vector2(0,vaim))
 		tow_vx(dpad.x, 1.0, 0.05 if onflor else 0.04)
-		tow_gravity(1.0, 0.02, Pin.get_jump_held(), 0.04)
+		tow_gravity(1.0, 0.018, Pin.get_jump_held(), 0.055)
 		#mover.try_slip_move(self, solidcast, HORIZONTAL)
 		apply_velocities()
 	
