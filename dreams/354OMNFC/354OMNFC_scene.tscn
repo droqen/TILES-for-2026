@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dcv2veb4xwnbx" path="res://dreams/354OMNFC/chipsoul.gd" id="3_a1y8v"]
 [ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_kovjs"]
 [ext_resource type="Texture2D" uid="uid://co0krsvsm60xv" path="res://dreams/354OMNFC/ylwfacility.pyxel" id="3_lwn3a"]
+[ext_resource type="Script" uid="uid://bomytwqvkh7e2" path="res://dreams/354OMNFC/foes.gd" id="4_2bxit"]
 [ext_resource type="Resource" uid="uid://bjbkopvwmephn" path="res://dreams/354OMNFC/ylwfacility_sheet.tres" id="4_a1y8v"]
 [ext_resource type="Script" uid="uid://dhskpufikd2na" path="res://dreams/354OMNFC/golpit.gd" id="4_qtnks"]
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_uuswt"]
@@ -13,6 +14,7 @@
 [ext_resource type="Script" uid="uid://cmcadvi8j44y0" path="res://navdi/navdivessel.gd" id="7_uuswt"]
 [ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="9_0k145"]
 [ext_resource type="Script" uid="uid://ccsk4y38optuq" path="res://dreams/354OMNFC/player_pew.gd" id="9_fqqxi"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="11_a81mp"]
 [ext_resource type="Script" uid="uid://bj1ojyq5dphgn" path="res://navdi/navdisheetregionsprite.gd" id="11_y48fe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uuswt"]
@@ -42,6 +44,56 @@ texture_filter = 1
 script = ExtResource("1_3r8ol")
 player = NodePath("chipsoul")
 
+[node name="pew1" type="Node" parent="Game/Stage" unique_id=444656217]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o535T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u08f10r9q011d06x670W7E0T7v4u20f51562jb0s22nb2l3q0x20p41402d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bUp1amtsA86cuww"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="spwn0" type="Node" parent="Game/Stage" unique_id=1888714541]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t43a7g00j00r1i0o334T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u07f51562jb0s22nb2l3qxx20p414013b0d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1u04f0q113b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4p1wFE-xVTpEYxIutSpswi9BYJfdqCLSKie_"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="spwn1" type="Node" parent="Game/Stage" unique_id=930625757]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t43a7g00j00r1i0o334T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u07f51562jb0s22nb2l3qxx20p414013b0d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1u04f0q113b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4p1yFE-xVTpEYxIutSpswi9BYJfdrAXc1g17dw"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="spwn2" type="Node" parent="Game/Stage" unique_id=1589051959]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t43a7g00j00r1i0o334T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u07f51562jb0s22nb2l3qxx20p414013b0d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1u04f0q113b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4p1xFE-xVTpEYxIutSpswi9BYJfdribKxdIte"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="spwn3" type="Node" parent="Game/Stage" unique_id=2019594798]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t43a7g00j00r1i0o334T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u07f51562jb0s22nb2l3qxx20p414013b0d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1u04f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4p1yFE-xVTpEYxIutSpswi9BYJfdrF5TyVU7zh"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="ouch0" type="Node" parent="Game/Stage" unique_id=1152452290]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o433T5v1u05f0qEx10w4241d03H__RyjsIisArsJJh0E1b6T8v1u08f10r9q011d06x670W7E0T7v4u07f51562jb0s22nb2l3qwx20p414022d02H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bUp1hKtu2494uwHd6Gx3PI"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="ouch1" type="Node" parent="Game/Stage" unique_id=762989471]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o433T5v1u05f0qEx10w4241d03H__RyjsIisArsJJh0E1b6T8v1u08f10r9q011d06x670W7E0T7v4u07f51562jb0s22nb2l3qwx20p414022d02H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bUp1hKtsBhGhW2IQq2AfeM"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="ouch2" type="Node" parent="Game/Stage" unique_id=940026086]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o433T5v1u05f0qEx10w4241d03H__RyjsIisArsJJh0E1b6T8v1u08f10r9q011d06x670W7E0T7v4u07f51562jb0s22nb2l3qwx20p414022d02H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bUp1hKts8w3h7EaPhI1zPI"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="ouch3" type="Node" parent="Game/Stage" unique_id=1225791904]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o433T5v1u05f0qEx10w4241d03H__RyjsIisArsJJh0E1b6T8v1u08f10r9q011d06x670W7E0T7v4u07f51562jb0s22nb2l3qwx20p414022d02H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bUp1iKts8w4h7EaPhEygYX0"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="ouch4" type="Node" parent="Game/Stage" unique_id=1515326040]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o433T5v1u05f0qEx10w4241d03H__RyjsIisArsJJh0E1b6T8v1u08f10r9q011d06x670W7E0T7v4u07f51562jb0s22nb2l3qwx20p414022d02H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bUp1iKtszj8J7EaPhEE0YX0"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
 [node name="Maze" type="TileMapLayer" parent="Game/Stage" unique_id=323625714]
 tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAYAAAABAAAAAAAAAAgAAAACAAAAAAAAAAkAAAACAAAAAAABAAEAAAAEAAAAAAABAAMAAAAEAAAAAAABAAQAAAADAAAAAAABAAUAAAADAAAAAAABAAYAAAADAAAAAAABAAgAAAACAAAAAAACAAAAAAAEAAAAAAACAAEAAAAEAAAAAAACAAIAAAADAAAAAAACAAMAAAAEAAAAAAACAAUAAAADAAAAAAACAAYAAAADAAAAAAACAAcAAAAEAAAAAAACAAgAAAACAAAAAAACAAkAAAACAAAAAAADAAAAAAAEAAAAAAADAAIAAAADAAAAAAADAAMAAAABAAAAAAADAAUAAAAEAAAAAAADAAcAAAAEAAAAAAADAAgAAAACAAAAAAAEAAAAAAAEAAAAAAAEAAEAAAAEAAAAAAAEAAIAAAAEAAAAAAAEAAMAAAAEAAAAAAAEAAQAAAABAAAAAAAEAAUAAAADAAAAAAAEAAYAAAADAAAAAAAEAAkAAAACAAAAAAAFAAIAAAADAAAAAAAFAAMAAAADAAAAAAAFAAQAAAADAAAAAAAFAAgAAAABAAAAAAAFAAkAAAACAAAAAAAGAAAAAAADAAAAAAAGAAEAAAADAAAAAAAGAAIAAAADAAAAAAAGAAMAAAADAAAAAAAGAAQAAAAEAAAAAAAGAAUAAAAEAAAAAAAGAAYAAAAEAAAAAAAGAAgAAAABAAAAAAAGAAkAAAACAAAAAAAHAAAAAAAEAAAAAAAHAAEAAAAEAAAAAAAHAAIAAAADAAAAAAAHAAYAAAADAAAAAAAHAAgAAAACAAAAAAAHAAkAAAACAAAAAAAIAAAAAAAEAAAAAAAIAAMAAAADAAAAAAAIAAQAAAAEAAAAAAAIAAUAAAADAAAAAAAIAAcAAAADAAAAAAAIAAkAAAACAAAAAAAJAAMAAAADAAAAAAAJAAQAAAADAAAAAAAJAAYAAAADAAAAAAAJAAcAAAAEAAAAAAAJAAgAAAACAAAAAAAJAAkAAAACAAAAAAD/////AAACAAAAAAAAAP//AAACAAAAAAABAP//AAACAAAAAAACAP//AAACAAAAAAADAP//AAACAAAAAAAEAP//AAACAAAAAAAFAP//AAACAAAAAAAGAP//AAACAAAAAAAHAP//AAACAAAAAAAIAP//AAACAAAAAAAJAP//AAACAAAAAAAKAP//AAACAAAAAAAKAAAAAAAEAAAAAAAKAAEAAAAEAAAAAAAKAAIAAAABAAAAAAAKAAMAAAAEAAAAAAAKAAQAAAADAAAAAAAKAAUAAAAEAAAAAAAKAAYAAAADAAAAAAAKAAcAAAAEAAAAAAAKAAgAAAACAAAAAAAKAAkAAAACAAAAAAD//wkAAAACAAAAAAD//wgAAAACAAAAAAD//wcAAAACAAAAAAD//wYAAAACAAAAAAD//wUAAAACAAAAAAD//wQAAAACAAAAAAD//wMAAAACAAAAAAD//wIAAAACAAAAAAD//wEAAAACAAAAAAD//wAAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAcAAAABAAAAAAABAAAAAAADAAAAAAABAAIAAAADAAAAAAABAAcAAAABAAAAAAABAAkAAAACAAAAAAACAAQAAAAEAAAAAAADAAEAAAADAAAAAAADAAQAAAABAAAAAAADAAYAAAADAAAAAAADAAkAAAACAAAAAAAEAAcAAAADAAAAAAAEAAgAAAACAAAAAAAFAAAAAAAEAAAAAAAFAAEAAAAEAAAAAAAFAAUAAAAEAAAAAAAFAAYAAAADAAAAAAAFAAcAAAADAAAAAAAGAAcAAAABAAAAAAAHAAMAAAADAAAAAAAHAAQAAAAEAAAAAAAHAAUAAAADAAAAAAAHAAcAAAADAAAAAAAIAAEAAAAEAAAAAAAIAAIAAAAEAAAAAAAIAAYAAAADAAAAAAAIAAgAAAACAAAAAAAJAAAAAAAEAAAAAAAJAAEAAAAEAAAAAAAJAAIAAAAEAAAAAAAJAAUAAAADAAAAAAALAAAAAAADAAAAAAALAAEAAAABAAAAAAALAAIAAAABAAAAAAALAAMAAAAEAAAAAAALAAQAAAADAAAAAAALAAUAAAAEAAAAAAALAAYAAAABAAAAAAALAAcAAAADAAAAAAALAAgAAAACAAAAAAAMAAAAAAAEAAAAAAAMAAEAAAADAAAAAAAMAAIAAAADAAAAAAAMAAMAAAADAAAAAAAMAAQAAAAEAAAAAAAMAAUAAAABAAAAAAAMAAYAAAABAAAAAAAMAAcAAAADAAAAAAAMAAgAAAACAAAAAAANAAAAAAACAAAAAAANAAEAAAACAAAAAAANAAIAAAACAAAAAAANAAMAAAACAAAAAAANAAQAAAACAAAAAAANAAUAAAACAAAAAAANAAYAAAACAAAAAAANAAcAAAAJAAkAAAANAAgAAAACAAAAAAALAAkAAAACAAAAAAAMAAkAAAACAAAAAAANAAkAAAACAAAAAAAOAAkAAAACAAAAAAAOAAgAAAACAAAAAAAOAAcAAAACAAAAAAAOAAYAAAACAAAAAAAOAAUAAAACAAAAAAAOAAQAAAACAAAAAAAOAAMAAAACAAAAAAAOAAIAAAACAAAAAAAOAAEAAAACAAAAAAAOAAAAAAACAAAAAAAOAP//AAACAAAAAAANAP//AAACAAAAAAAMAP//AAACAAAAAAALAP//AAACAAAAAAA=")
 tile_set = ExtResource("1_8q1ji")
@@ -49,7 +101,23 @@ physics_quadrant_size = 1
 navigation_enabled = false
 script = ExtResource("2_lwn3a")
 
+[node name="ColorRect" type="ColorRect" parent="Game/Stage" unique_id=16165693]
+offset_left = 90.0
+offset_top = 85.0
+offset_right = 140.0
+offset_bottom = 90.0
+color = Color(0.38039216, 0.3254902, 0.28627452, 1)
+
+[node name="Label" type="Label" parent="Game/Stage/ColorRect" unique_id=1514319870]
+modulate = Color(0.9019608, 0.9490196, 0.26666668, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SCORE    0"
+label_settings = ExtResource("9_0k145")
+
 [node name="Foes" type="Node2D" parent="Game/Stage" unique_id=920413592]
+script = ExtResource("4_2bxit")
 
 [node name="PlayerPews" type="Node2D" parent="Game/Stage" unique_id=789654729]
 
@@ -84,20 +152,50 @@ collision_mask = 16
 [node name="rect" type="CollisionShape2D" parent="Game/Stage/chipsoul/hitbox" unique_id=100005703]
 shape = SubResource("RectangleShape2D_7uh4u")
 
-[node name="ColorRect" type="ColorRect" parent="Game/Stage" unique_id=16165693]
-offset_left = 90.0
-offset_top = 85.0
-offset_right = 140.0
-offset_bottom = 90.0
-color = Color(0.38039216, 0.3254902, 0.28627452, 1)
+[node name="bgm01" type="Node" parent="Game/Stage" unique_id=1647665808]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l01e05t3ua7g06j07r1i0o332T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T1v1u3df0qwx10p511d08AcFbBfQ269cP969bE2bi7iT1v1ucaf0q0x10r71d23A1F0B9Q2030Pef20E3b96287gT4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bkh8zg00000000000000p21qIR_ipdvxcSnXqqfVPnYUChFILPcTv2arx5dvVoPhWx2bK2O0JMKZjunW1dv_sTE-wEIIT7WrgpHY1dCRY5xwf00000"
+autoplay = true
+play_volume = 0.0
+looping = true
+tempo = 205
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 
-[node name="Label" type="Label" parent="Game/Stage/ColorRect" unique_id=1514319870]
-modulate = Color(0.9019608, 0.9490196, 0.26666668, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "SCORE    0"
-label_settings = ExtResource("9_0k145")
+[node name="bgm23" type="Node" parent="Game/Stage" unique_id=1179439729]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l01e05t3ua7g06j07r1i0o332T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T1v1ucaf0q0x10r71d23A1F0B9Q2030Pef20E3b96287gT4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bkh8zg14yd0000000000p22FIR_ipdvxcSnXqqfVPnYUChFILPcTv2arx5dvVoPhWx2bK2O0JMKZjunW1dv_sTE-wEIIT7WrgpHY1dCRY5xwf5CzOiOqf1FFOGOGqIjTbFFjnYQleKFU09B_5E5jhZMdRWqDXp8SDFZfITnkmrFZf2rFYfJL7cP4CrLPl0000"
+autoplay = true
+play_volume = 0.0
+looping = true
+tempo = 205
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bgm45" type="Node" parent="Game/Stage" unique_id=245637864]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l01e05t3ua7g06j07r1i0o335T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u20f51562jb0s22nb2l3q0x20p41402d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b00000000004i8Q00000p25bIR_ipdvxcSnXqqfVPnYUChFILPcTv2arx5dvVoPhWx2bK2O0JMKZjunW1dv_sTE-wEIIT7WrgpHY1dCRY5xwf5CzOiOqf1FFOGOGqIjTbFFjnYQleKFU09B_5E5jhZMdRWqDXp8SDFZfITnkmrFZf2rFYfJL7cP4CrLPl0IOV9pcLx7BlB4ulmlqbBqkQa2O88K12QyVCpp7B9o2hY_C0MwKnunmb22OoJgICbDty0Klh7j97B4t8IwbN5gDnR0zM7s4g8YDs4g8Zrhq1o0zwE0zwG2e1F5F5Wy45M8FwhsGY28YGxqp5Ji5FAmChqp5PrHrbQRfM00"
+autoplay = true
+play_volume = 0.0
+looping = true
+tempo = 205
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="damage1" type="Node" parent="Game/Stage" unique_id=498294771]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o335T5v1u05f0qEF10w42351d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u20f51562jb0s22nb2l3q0x20p41402d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bwp21cITE-iHrd7ABAQu3jjBlBkRoDKnjiCLVEIOV9pcLx7BlB4ulmlqbBqkQa2O88K12QyVCpp7B9o2hw"
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="damage2" type="Node" parent="Game/Stage" unique_id=2083915982]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o335T5v1u05f0qEF10w42351d03H__RyjsIisArsJJh0E1b6T8v1u08f10r9qw9252d02x670W7E117T7v1u20f51562jb0s22nb2l3q0x20p41402d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bgp1VITE-iHrCZ7MhNdCn9b9BY8YGIEzOGOHhsHiCxgmh15M8mAncPb8YFb0ic"
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="damage3" type="Node" parent="Game/Stage" unique_id=2031797245]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t3ua7g00j00r1i0o335T5v1u05f0qEF10w42351d03H__RyjsIisArsJJh0E1b6T8v1u08f10r9qw9252d02x670W7E0T7v1u07f51562jb0s22nb2l3qwF20h4140252d08H_SRJ5JIBxAAAAkh8IcE4c01c16c1618T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b8p1lITE-iHrCZ7MhNdPuzU2Bg"
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 
 [node name="V" type="Node2D" parent="Game" unique_id=230584128]
 script = ExtResource("7_uuswt")
@@ -140,7 +238,7 @@ collision_mask = 16
 shape = SubResource("RectangleShape2D_qtnks")
 
 [node name="golpit" type="Node2D" parent="Game/V" unique_id=445276863]
-position = Vector2(35, 25)
+position = Vector2(135, 75)
 script = ExtResource("4_qtnks")
 
 [node name="spr" type="Sprite2D" parent="Game/V/golpit" unique_id=1782379501]
