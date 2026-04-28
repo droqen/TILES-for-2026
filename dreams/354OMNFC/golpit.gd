@@ -1,6 +1,8 @@
 extends EnemyParent
 const EnemyParent = preload("res://dreams/354OMNFC/enemy_parent.gd")
 
+signal exited99
+
 var vel : Vector2
 var supervel : Vector2
 
@@ -53,6 +55,7 @@ func _physics_process(_delta: float) -> void:
 			vel = lerp(vel * 0.98, to_exit.limit_length(1.0), 0.02)
 			if to_exit.length() < 1 and vel.length() < 0.5:
 				queue_free()
+				exited99.emit()
 			#vel *= 0.98
 		position += vel
 

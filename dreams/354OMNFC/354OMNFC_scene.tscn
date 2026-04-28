@@ -54,6 +54,24 @@ script = ExtResource("11_a81mp")
 url = "https://www.beepbox.co/#9n31sbk0l00e00t43a7g00j00r1i0o334T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u07f51562jb0s22nb2l3qxx20p414013b0d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1u04f0q113b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4p1wFE-xVTpEYxIutSpswi9BYJfdqCLSKie_"
 metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 
+[node name="goodbye0" type="Node" parent="Game/Stage" unique_id=1881653722]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n12s0k0l00e00t2ma7g00j00r1i0o4T1v1uecf12ldq00d4aAcF8B8Q0001PffffE17aT2v1u02f0q116d0d04w1E0T2v1u02f0q11000d04w1E0bUp1ekkv0YXIt81l3Pk"
+play_volume = 0.9
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="goodbye1" type="Node" parent="Game/Stage" unique_id=232747536]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j00r1i0o4T1v1uecf12ldq00d4aAcF8B8Q0001PffffE17aT2v1u02f0q11690d04w1E0bgp17kQs5feM"
+play_volume = 0.6
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="goodbye2" type="Node" parent="Game/Stage" unique_id=1199241740]
+script = ExtResource("11_a81mp")
+url = "https://www.beepbox.co/#9n11s0k0l00e00t2ma7g00j00r1i0o4T1v1uecf12ldq00d4aAcF8B8Q0001PffffE17aT2v1u02f0q11690d04w1E0bgp18mqCZ2uqw"
+play_volume = 0.6
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
 [node name="spwn1" type="Node" parent="Game/Stage" unique_id=930625757]
 script = ExtResource("11_a81mp")
 url = "https://www.beepbox.co/#9n31sbk0l00e00t43a7g00j00r1i0o334T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u07f51562jb0s22nb2l3qxx20p414013b0d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1u04f0q113b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b4p1yFE-xVTpEYxIutSpswi9BYJfdrAXc1g17dw"
@@ -155,7 +173,6 @@ shape = SubResource("RectangleShape2D_7uh4u")
 [node name="bgm01" type="Node" parent="Game/Stage" unique_id=1647665808]
 script = ExtResource("11_a81mp")
 url = "https://www.beepbox.co/#9n31sbk0l01e05t3ua7g06j07r1i0o332T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T1v1u3df0qwx10p511d08AcFbBfQ269cP969bE2bi7iT1v1ucaf0q0x10r71d23A1F0B9Q2030Pef20E3b96287gT4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bkh8zg00000000000000p21qIR_ipdvxcSnXqqfVPnYUChFILPcTv2arx5dvVoPhWx2bK2O0JMKZjunW1dv_sTE-wEIIT7WrgpHY1dCRY5xwf00000"
-autoplay = true
 play_volume = 0.0
 looping = true
 tempo = 205
@@ -164,7 +181,6 @@ metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 [node name="bgm23" type="Node" parent="Game/Stage" unique_id=1179439729]
 script = ExtResource("11_a81mp")
 url = "https://www.beepbox.co/#9n31sbk0l01e05t3ua7g06j07r1i0o332T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T1v1ucaf0q0x10r71d23A1F0B9Q2030Pef20E3b96287gT4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0bkh8zg14yd0000000000p22FIR_ipdvxcSnXqqfVPnYUChFILPcTv2arx5dvVoPhWx2bK2O0JMKZjunW1dv_sTE-wEIIT7WrgpHY1dCRY5xwf5CzOiOqf1FFOGOGqIjTbFFjnYQleKFU09B_5E5jhZMdRWqDXp8SDFZfITnkmrFZf2rFYfJL7cP4CrLPl0000"
-autoplay = true
 play_volume = 0.0
 looping = true
 tempo = 205
@@ -173,7 +189,6 @@ metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
 [node name="bgm45" type="Node" parent="Game/Stage" unique_id=245637864]
 script = ExtResource("11_a81mp")
 url = "https://www.beepbox.co/#9n31sbk0l01e05t3ua7g06j07r1i0o335T5v1u05f0qEx10w4141d03H__RyjsIisArsJJh0E1b6T8v1u1af10r9q012d02x670W7E0T7v1u20f51562jb0s22nb2l3q0x20p41402d08H_SRJ5JIBxAAAAkh8IcE3c01c16c16T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b00000000004i8Q00000p25bIR_ipdvxcSnXqqfVPnYUChFILPcTv2arx5dvVoPhWx2bK2O0JMKZjunW1dv_sTE-wEIIT7WrgpHY1dCRY5xwf5CzOiOqf1FFOGOGqIjTbFFjnYQleKFU09B_5E5jhZMdRWqDXp8SDFZfITnkmrFZf2rFYfJL7cP4CrLPl0IOV9pcLx7BlB4ulmlqbBqkQa2O88K12QyVCpp7B9o2hY_C0MwKnunmb22OoJgICbDty0Klh7j97B4t8IwbN5gDnR0zM7s4g8YDs4g8Zrhq1o0zwE0zwG2e1F5F5Wy45M8FwhsGY28YGxqp5Ji5FAmChqp5PrHrbQRfM00"
-autoplay = true
 play_volume = 0.0
 looping = true
 tempo = 205
