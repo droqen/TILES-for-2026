@@ -59,7 +59,8 @@ func is_on_floor() -> bool:
 	if vy >= 0:
 		var cast_to_floor := mover.cast_fraction(self, solidcast, VERTICAL, 1)
 		if cast_to_floor < 1:
-			position.y += cast_to_floor
+			if cast_to_floor >= .25:
+				position.y += cast_to_floor
 			on_floor = true
 			if not bufs.has(FLORBUF) and not bufs.has(NOLANDBUF): bufs.on(LANDBUF)
 			bufs.on(FLORBUF)
