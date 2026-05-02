@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dbgdq02grykd4" path="res://dreams/05-Gallery/pg05.pyxel" id="4_oj6uv"]
 [ext_resource type="Texture2D" uid="uid://bahreu7qlcsqg" path="res://dreams/05-Gallery/gleaming-so-brightly-354K.pyxel" id="5_ygk4q"]
 [ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="6_bxgg3"]
+[ext_resource type="Texture2D" uid="uid://d3tw5utuoo6sr" path="res://dreams/05-Gallery/learning.png" id="7_qs1c7"]
+[ext_resource type="Texture2D" uid="uid://chr5h5jecap0u" path="res://dreams/05-Gallery/learning 2.png" id="8_i0eb7"]
 
 [node name="Gallery" type="Node2D" unique_id=1748534863]
 texture_filter = 1
@@ -14,20 +16,20 @@ texture_filter = 1
 position = Vector2(155, 133)
 texture = ExtResource("2_fkl8b")
 
-[node name="NavdiViewRect" type="ReferenceRect" parent="." unique_id=873404347]
-offset_right = 120.0
-offset_bottom = 120.0
-script = ExtResource("2_67fp3")
-metadata/_custom_type_script = "uid://bluc574m7qci"
-
-[node name="bg\\" type="ColorRect" parent="NavdiViewRect" unique_id=273256413]
-layout_mode = 1
+[node name="bg\\" type="ColorRect" parent="." unique_id=273256413]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.87058824, 0.87058824, 0.87058824, 1)
+
+[node name="NavdiViewRect" type="ReferenceRect" parent="." unique_id=873404347]
+offset_top = 64.0
+offset_right = 1512.0
+offset_bottom = 278.0
+script = ExtResource("2_67fp3")
+metadata/_custom_type_script = "uid://bluc574m7qci"
 
 [node name="Pg09" type="Sprite2D" parent="." unique_id=424511711]
 position = Vector2(256, 93)
@@ -49,3 +51,25 @@ offset_right = 100.0
 offset_bottom = 123.0
 text = "354K gleaming so bri"
 label_settings = ExtResource("6_bxgg3")
+
+[node name="Learning" type="Sprite2D" parent="." unique_id=1028406620]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_qs1c7")
+centered = false
+
+[node name="Learning2" type="Sprite2D" parent="." unique_id=783061485]
+texture = ExtResource("8_i0eb7")
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1580493168]
+visible = false
+offset_right = 382.0
+offset_bottom = 6.0
+color = Color(1, 1, 1, 0.78431374)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=390573681]
+visible = false
+offset_top = 133.0
+offset_right = 795.0
+offset_bottom = 145.0
+color = Color(1, 1, 1, 0.78431374)
