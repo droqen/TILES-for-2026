@@ -31,7 +31,10 @@ func empty_parent(parent:Node) -> void:
 			parent.remove_child(child)
 
 func loadroom(traveldir : Vector2i = Vector2i.ZERO) -> void:
-	var roomsizei : Vector2i = Vector2i(int(v.vessel_room_size.x/10),int(v.vessel_room_size.y/10))
+	var roomsizei : Vector2i = Vector2i(
+		int(v.vessel_room_size.x * 0.1),
+		int(v.vessel_room_size.y * 0.1),
+	)
 	for p in [$pbullets,$foes,$roomxs]:empty_parent(p)
 	maze.copy_from(v.get_maze(), Rect2i(roomcoord * roomsizei, roomsizei))
 	initmaze(traveldir) # spawns enemies and regenerates `astar`
@@ -119,8 +122,18 @@ func spawn_foe(cell:Vector2i) -> void:
 	.setup(self, maze, maze.map_to_local(cell))
 	)
 
+func make_noise(pos:Vector2,r:float) -> void:
+	var rr : float = r*r
+	for foe in $foes.get_children():
+		if not foe.awake:
+			if pos.distance_squared_to(foe.position) < rr:
+				foe.awaken()
+
 func _ready() -> void:
 	hide()
+	$amoureux.made_noise.connect(func(offset, radius):
+		make_noise($amoureux.position + offset, 10)
+	)
 	await get_tree().process_frame
 	roomcoord = starting_roomcoord
 	loadroom()

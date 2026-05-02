@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 			$sprgear.setup_trywaitformatch([20,21,22], 20)
 			$sprbody.setup_trywaitformatch([20,21], 31)
 			if awakening_timer == 0:
-				stage.awaken_all_foes()
+				stage.make_noise(position, randf_range(20,30))
 		else:
 			awake = true
 			if bufs.has(OUCHBUF):
@@ -94,8 +94,8 @@ func awaken() -> void:
 			shifting_timer = 1
 			awakening_timer = 10
 		else:
-			shifting_timer = randi_range(10,40)
+			shifting_timer = 1#randi_range(10,40)
 			awakening_timer = randi_range(30,50)
-			if randf () < 0.1: shifting_timer += randi_range(10,200)
+			#if randf () < 0.1: shifting_timer += randi_range(10,200)
 			if randf () < 0.02: awakening_timer += randi_range(10,200)
 		#stage.awaken_all_foes()
