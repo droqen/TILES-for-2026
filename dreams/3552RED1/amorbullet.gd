@@ -25,8 +25,8 @@ func _physics_process(_delta: float) -> void:
 		for area in $hurtbox.get_overlapping_areas():
 			var target = area.get_parent()
 			if target.has_method("try_hitby"): # check if it's hittable
-				if target.try_hitby(self):
-					try_strike()
+				if try_strike():
+					target.try_hitby(self)
 		if hit_wall and not struck: try_strike()
 		# get outside world
 	

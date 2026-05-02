@@ -21,14 +21,15 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var dpad := Pin.get_dpad()
-	var jumpheld := Pin.get_action_held()
+	var jumpheld := Pin.get_jump_held()
 	var onflor := is_on_floor()
 	if jetpacking and not jumpheld: jetpacking = false
-	if Pin.get_action_hit():
+	if Pin.get_jump_hit():
 		bufs.on(JUMPBUF)
 		if not bufs.has(FLORBUF):
 			jetpacking = true
 			if vy > 0: vy *= 0.5
+	if vy > 0 and jumpheld: jetpacking = true
 	if Pin.get_offhand_hit(): bufs.on(SHOTHITBUF)
 	tow_vx(dpad.x,
 		0.5 if onflor else 0.7,
@@ -57,4 +58,5 @@ func _physics_process(_delta: float) -> void:
 		bufs.on(SHOTFLASHBUF)
 		bufs.on(SHOTCOOLDOWNBUF)
 		stage.spawn_pbullets(self)
+		vx -= facedir * 0.1
 	
