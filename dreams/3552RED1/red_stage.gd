@@ -10,6 +10,9 @@ var room_alert : int = 0
 @onready var room_bounds : Rect2 = Rect2(Vector2(0,0), v.vessel_room_size)
 @onready var game_bounds : Rect2i = $"../View".get_rect() as Rect2i
 
+const EMPTY_TIDS : Array[int] = [0,8,9]
+const SOLID_TIDS : Array[int] = [1,2]
+
 func empty_parent(parent:Node) -> void:
 	for child in parent.get_children():
 		child.queue_free()
@@ -21,6 +24,8 @@ func loadroom() -> void:
 	maze.copy_from(v.get_maze(), Rect2i(roomcoord * roomsizei, roomsizei))
 	initmaze() # spawns enemies and regenerates `astar`
 
+const INIT_DONT_SPAWN_WITHIN_DISTSQ_OF_PLAYER : float = 20*20
+
 func initmaze() -> void:
 	astar = AStarGrid2D.new()
 	var roomregion = Rect2i(Vector2i(0,0), Vector2i(v.vessel_room_size * 0.1))
@@ -30,12 +35,14 @@ func initmaze() -> void:
 	astar.fill_solid_region(roomregion, true)
 	#astar.region = NavdiGenUtil.shrink_rect2i(astar.region,-1)
 	#astar.update()
-	for cell in maze.get_used_cells():
-		if maze.get_cell_tid(cell) in [0]: # empty
-			astar.set_point_solid(cell, false)
-			# floor below?
-			if maze.get_cell_tid(cell+Vector2i(0,1)) in [1,2]:
+	for cell in maze.get_used_cells_by_tids(EMPTY_TIDS):
+		astar.set_point_solid(cell, false)
+		# floor below?
+		if maze.get_cell_tid(cell+Vector2i(0,1)) in [1,2]:
+			var foepos = maze.map_to_local(cell)
+			if foepos.distance_squared_to(get_player().position) > INIT_DONT_SPAWN_WITHIN_DISTSQ_OF_PLAYER:
 				if randf() < 0.25:
+					print(cell, " in ", roomregion.size)
 					spawn_foe(cell)
 	astar.update()
 	
