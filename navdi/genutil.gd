@@ -52,6 +52,8 @@ static func gen_az() -> String:
 static func gen_simpletarot() -> String:
 	return TAROT[randi()%len(TAROT)]
 static func gen_oobdir(pos:Vector2,rect:Rect2i,margin:float=0.0) -> Vector2i:
+	# returns a - sign value if out of bounds in a - direction (up, left)
+	# returns a + sign value if out of bounds in a + direction (right, down)
 	var x0:int = rect.position.x
 	var x1:int = x0 + rect.size.x
 	var y0:int = rect.position.y
