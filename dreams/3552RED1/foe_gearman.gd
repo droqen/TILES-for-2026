@@ -7,10 +7,14 @@ var shifting_timer : int = 0
 
 func setup(_stage,_maze:Maze,_pos:Vector2):
 	super.setup(_stage,_maze,_pos)
-	self.blockade_weight = 1.5
-	self.hp = 200
-	$sprbody.setup([[20,21][randi()%2]],0)
-	$sprgear.setup([[20,21,22][randi()%3]],0)
+	if awake: # re-adding
+		awakening_timer = 0
+		shifting_timer = 0
+	if not awake: # first timer setup
+		self.blockade_weight = 1.5
+		self.hp = 200
+		$sprbody.setup([[20,21][randi()%2]],0)
+		$sprgear.setup([[20,21,22][randi()%3]],0)
 	return self
 
 func _ready() -> void:
