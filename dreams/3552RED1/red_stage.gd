@@ -42,7 +42,6 @@ func initmaze() -> void:
 			var foepos = maze.map_to_local(cell)
 			if foepos.distance_squared_to(get_player().position) > INIT_DONT_SPAWN_WITHIN_DISTSQ_OF_PLAYER:
 				if randf() < 0.25:
-					print(cell, " in ", roomregion.size)
 					spawn_foe(cell)
 	astar.update()
 	
