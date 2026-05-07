@@ -9,7 +9,9 @@ func _physics_process(_delta: float) -> void:
 	var wasflor := bufs.has(FLORBUF)
 	var prevy := vy
 	var onflor := is_on_floor()
-	if onflor and not wasflor and prevy < 0.3: bufs.clr(LANDBUF)
+	if onflor and not wasflor:
+		print("landed @ ",position)
+		if prevy < 0.3: bufs.clr(LANDBUF)
 	if wasflor and not onflor: vy = -0.07
 	var plant := onflor and Pin.get_plant_held()
 	var ffall := not onflor and dpad.y > 0

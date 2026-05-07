@@ -3,7 +3,7 @@ extends Node2D
 const roomsize_tiles : Vector2i = Vector2i(25,13)
 const roomsize_pixels : Vector2i = roomsize_tiles * 10
 const roomrect_pixels : Rect2i = Rect2i(Vector2i(0,0), roomsize_pixels)
-var room_coords : Vector2i = Vector2i(-1,0)
+var room_coords : Vector2i = Vector2i(0,0)
 
 func loadroom() -> void:
 	#print("copy", Rect2i(room_coords * roomsize_tiles, roomsize_tiles))
@@ -20,6 +20,8 @@ func _physics_process(_delta: float) -> void:
 	var traveldir : Vector2i = (NavdiGenUtil
 		.gen_oobdir($stage/lion.position, roomrect_pixels, -1))
 	if traveldir:
-		$stage/lion.position -= Vector2((roomsize_pixels - Vector2i(4,4)) * traveldir)
 		room_coords += traveldir
+		print("travel",traveldir)
+		$stage/lion.position -= Vector2((roomsize_pixels - Vector2i(4,4)) * traveldir)
 		loadroom()
+		$stage/Maze.update_internals() # SO IMPORTANT.

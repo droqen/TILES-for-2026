@@ -119,6 +119,7 @@ paste_blanks : bool = true) -> void:
 				source_maze.is_cell_flipped_h(c),
 				source_maze.is_cell_flipped_v(c),
 				source_maze.is_cell_transposed(c))
+	update_internals() # important. do this right away just in case.
 
 func magic_wand(start : Vector2i, verifier : Callable) -> Array[Vector2i]:
 	var cells : Array[Vector2i] = [start]
