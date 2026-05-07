@@ -54,6 +54,7 @@ static func gen_simpletarot() -> String:
 static func gen_oobdir(pos:Vector2,rect:Rect2i,margin:float=0.0) -> Vector2i:
 	# returns a - sign value if out of bounds in a - direction (up, left)
 	# returns a + sign value if out of bounds in a + direction (right, down)
+	# margin>0 shrinks the rect, making oobdir *more sensitive*
 	var x0:int = rect.position.x
 	var x1:int = x0 + rect.size.x
 	var y0:int = rect.position.y
