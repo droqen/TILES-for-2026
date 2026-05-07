@@ -43,4 +43,4 @@ func _physics_process(_delta: float) -> void:
 		spr.setup_trywaitformatch([10],0)
 	
 	if bufs.try_eat([JUMPBUF,FLORBUF]):
-		vy = -1.0
+		vy = -1.02
