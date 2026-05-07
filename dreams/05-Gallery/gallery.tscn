@@ -2,12 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="2_67fp3"]
 [ext_resource type="Texture2D" uid="uid://c0v2j5i2upg3x" path="res://dreams/05-Gallery/00-NoPointZero.pyxel" id="2_fkl8b"]
+[ext_resource type="Texture2D" uid="uid://ch00tpvl47ax7" path="res://dreams/05-Gallery/droqen.pyxel" id="2_qs1c7"]
 [ext_resource type="Texture2D" uid="uid://bpyec25it3ixr" path="res://dreams/05-Gallery/pg09.pyxel" id="3_fkl8b"]
 [ext_resource type="Texture2D" uid="uid://dbgdq02grykd4" path="res://dreams/05-Gallery/pg05.pyxel" id="4_oj6uv"]
 [ext_resource type="Texture2D" uid="uid://bahreu7qlcsqg" path="res://dreams/05-Gallery/gleaming-so-brightly-354K.pyxel" id="5_ygk4q"]
 [ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="6_bxgg3"]
-[ext_resource type="Texture2D" uid="uid://d3tw5utuoo6sr" path="res://dreams/05-Gallery/learning.png" id="7_qs1c7"]
-[ext_resource type="Texture2D" uid="uid://chr5h5jecap0u" path="res://dreams/05-Gallery/learning 2.png" id="8_i0eb7"]
 
 [node name="Gallery" type="Node2D" unique_id=1748534863]
 texture_filter = 1
@@ -24,10 +23,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.87058824, 0.87058824, 0.87058824, 1)
 
+[node name="Droqen" type="Sprite2D" parent="." unique_id=853305742]
+texture_filter = 1
+position = Vector2(90, 226)
+texture = ExtResource("2_qs1c7")
+centered = false
+region_enabled = true
+region_rect = Rect2(41, 74, 19, 6)
+
 [node name="NavdiViewRect" type="ReferenceRect" parent="." unique_id=873404347]
-offset_top = 64.0
-offset_right = 1512.0
-offset_bottom = 278.0
+offset_left = 90.0
+offset_top = 226.0
+offset_right = 109.0
+offset_bottom = 232.0
 script = ExtResource("2_67fp3")
 metadata/_custom_type_script = "uid://bluc574m7qci"
 
@@ -51,15 +59,6 @@ offset_right = 100.0
 offset_bottom = 123.0
 text = "354K gleaming so bri"
 label_settings = ExtResource("6_bxgg3")
-
-[node name="Learning" type="Sprite2D" parent="." unique_id=1028406620]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_qs1c7")
-centered = false
-
-[node name="Learning2" type="Sprite2D" parent="." unique_id=783061485]
-texture = ExtResource("8_i0eb7")
-centered = false
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1580493168]
 visible = false
