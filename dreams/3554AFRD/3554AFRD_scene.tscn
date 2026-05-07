@@ -1,0 +1,52 @@
+[gd_scene format=4 uid="uid://b51jmx1n30abw"]
+
+[ext_resource type="TileSet" uid="uid://b4kxd131rbaf0" path="res://dreams/3554AFRD/blue_tiles.tres" id="1_egegx"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_6xc38"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_1i0my"]
+[ext_resource type="Script" uid="uid://cnvihd4qj23uj" path="res://dreams/3554AFRD/plird.gd" id="3_6w7a7"]
+[ext_resource type="Texture2D" uid="uid://cn0tc22g5hyjo" path="res://dreams/3554AFRD/blue.pyxel" id="3_6xc38"]
+[ext_resource type="Resource" uid="uid://8gij642isflr" path="res://dreams/3554AFRD/blue_sheet.tres" id="4_6w7a7"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_8dsae"]
+[ext_resource type="Script" uid="uid://tt1ag5ksilr0" path="res://navdi/navdibodymover.gd" id="7_8dsae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3f2kt"]
+size = Vector2(7.9, 7.9)
+
+[node name="3554AFRD" type="Node2D" unique_id=1055686794]
+texture_filter = 1
+
+[node name="Maze" type="TileMapLayer" parent="." unique_id=2023006790]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAACAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAACAAAAAAABAAIAAAAAAAAAAAABAAQAAAACAAAAAAABAAUAAAABAAAAAAABAAcAAAAAAAAAAAABAAgAAAABAAAAAAABAAkAAAABAAAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAACAAUAAAACAAAAAAACAAYAAAAAAAAAAAACAAcAAAAFAAAAAAACAAgAAAACAAAAAAACAAkAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAABAAAAAAADAAIAAAACAAAAAAADAAMAAAABAAAAAAADAAUAAAACAAAAAAADAAYAAAAFAAAAAAADAAcAAAAFAAAAAAAEAAEAAAACAAAAAAAEAAUAAAACAAAAAAAEAAYAAAACAAAAAAAEAAcAAAAFAAAAAAAEAAgAAAACAAAAAAAFAAIAAAABAAAAAAAFAAMAAAACAAAAAAAFAAQAAAAAAAAAAAAFAAUAAAACAAAAAAAFAAYAAAABAAAAAAAFAAcAAAAFAAAAAAAFAAgAAAAAAAAAAAAFAAkAAAABAAAAAAAGAAAAAAACAAAAAAAGAAIAAAACAAAAAAAGAAMAAAABAAAAAAAGAAYAAAACAAAAAAAGAAgAAAACAAAAAAAGAAkAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAABAAAAAAAHAAMAAAABAAAAAAAHAAUAAAACAAAAAAAIAAAAAAACAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAABAAAAAAAIAAMAAAACAAAAAAAIAAQAAAABAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAACAAAAAAAIAAcAAAABAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAACAAAAAAAJAAEAAAACAAAAAAAJAAIAAAABAAAAAAAJAAQAAAABAAAAAAAJAAUAAAACAAAAAAAJAAcAAAAAAAAAAAAJAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAUAAAACAAAAAAAAAAYAAAABAAAAAAABAAAAAAAAAAAAAAABAAEAAAACAAAAAAABAAMAAAAAAAAAAAABAAYAAAACAAAAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAADAAgAAAAFAAAAAAADAAkAAAAFAAAAAAAEAAAAAAABAAAAAAAEAAIAAAACAAAAAAAEAAMAAAABAAAAAAAEAAQAAAACAAAAAAAEAAkAAAAAAAAAAAAFAAAAAAABAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAABAAAAAAAGAAQAAAACAAAAAAAGAAUAAAABAAAAAAAGAAcAAAAFAAAAAAAHAAIAAAAAAAAAAAAHAAQAAAACAAAAAAAHAAYAAAAAAAAAAAAHAAcAAAACAAAAAAAHAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAJAAAAAAAAAAAAAAAJAAMAAAACAAAAAAAJAAYAAAAAAAAAAAAJAAkAAAABAAAAAAA=")
+tile_set = ExtResource("1_egegx")
+physics_quadrant_size = 1
+navigation_enabled = false
+script = ExtResource("2_6xc38")
+
+[node name="plird" type="Node2D" parent="." unique_id=761148994]
+position = Vector2(37, 56)
+script = ExtResource("3_6w7a7")
+metadata/_custom_type_script = "uid://crerl807nynkw"
+
+[node name="spr" type="Sprite2D" parent="plird" unique_id=565371702]
+texture = ExtResource("3_6xc38")
+hframes = 10
+vframes = 10
+frame = 10
+script = ExtResource("3_1i0my")
+sheet = ExtResource("4_6w7a7")
+frames = PackedInt32Array(10, 11)
+ani_period = 10
+
+[node name="mover" type="Node2D" parent="plird" unique_id=811976553]
+script = ExtResource("7_8dsae")
+metadata/_custom_type_script = "uid://tt1ag5ksilr0"
+
+[node name="solidcast" type="ShapeCast2D" parent="plird/mover" unique_id=1333747670]
+enabled = false
+shape = SubResource("RectangleShape2D_3f2kt")
+target_position = Vector2(0, 0)
+
+[node name="View" type="ReferenceRect" parent="." unique_id=255839672]
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("5_8dsae")
