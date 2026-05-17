@@ -32,10 +32,10 @@ region_enabled = true
 region_rect = Rect2(41, 74, 19, 6)
 
 [node name="NavdiViewRect" type="ReferenceRect" parent="." unique_id=873404347]
-offset_left = 90.0
-offset_top = 226.0
-offset_right = 109.0
-offset_bottom = 232.0
+offset_left = 146.0
+offset_top = 125.0
+offset_right = 162.0
+offset_bottom = 141.0
 script = ExtResource("2_67fp3")
 metadata/_custom_type_script = "uid://bluc574m7qci"
 
