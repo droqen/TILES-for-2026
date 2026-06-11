@@ -1,0 +1,14 @@
+[remap]
+
+importer="pyxel.unzipped"
+type="PortableCompressedTexture2D"
+uid="uid://d0p738l6kbm1j"
+path="res://.godot/imported/cave-palette.pyxel-214c4bdf35626ad61faac698b91b83b2.res"
+
+[deps]
+
+source_file="res://dreams/355ECAVE/cave-palette.pyxel"
+dest_files=["res://.godot/imported/cave-palette.pyxel-214c4bdf35626ad61faac698b91b83b2.res"]
+
+[params]
+
