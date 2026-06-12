@@ -1,0 +1,174 @@
+[gd_scene format=4 uid="uid://bpj1jqot6kted"]
+
+[ext_resource type="Script" uid="uid://bnmjfmens5exp" path="res://dreams/356CMANI/356cmani_scene.gd" id="1_53xm3"]
+[ext_resource type="TileSet" uid="uid://7pegtio02w7r" path="res://dreams/356CMANI/puddle_tiles.tres" id="1_pdl74"]
+[ext_resource type="Script" uid="uid://bqd058komyl30" path="res://navdi/maze.gd" id="2_pt16v"]
+[ext_resource type="Script" uid="uid://csklkbb5b7jmw" path="res://dreams/356CMANI/player.gd" id="3_03j03"]
+[ext_resource type="Texture2D" uid="uid://1tpgdaul3j5g" path="res://dreams/356CMANI/puddle.pyxel" id="3_3syxm"]
+[ext_resource type="Script" uid="uid://di2t14yakk4ot" path="res://navdi/navdisheetsprite.gd" id="3_y26qe"]
+[ext_resource type="Script" uid="uid://bluc574m7qci" path="res://navdi/navdiviewrect.gd" id="5_03j03"]
+[ext_resource type="Script" uid="uid://b4lr78cex54un" path="res://dreams/356CMANI/^blinking.gd" id="5_pdl74"]
+[ext_resource type="Resource" uid="uid://cxuiv2ju2lejj" path="res://dreams/356CMANI/puddle_sheet_tiny.tres" id="6_03j03"]
+[ext_resource type="LabelSettings" uid="uid://binod60l8i2ni" path="res://fonts/label44mono.tres" id="7_03j03"]
+[ext_resource type="Script" uid="uid://b24ikpjqx8lqn" path="res://navdi/navdibeep.gd" id="10_xfvqm"]
+
+[node name="356CMANI" type="Node2D" unique_id=1831759160]
+texture_filter = 1
+script = ExtResource("1_53xm3")
+
+[node name="Maze" type="TileMapLayer" parent="." unique_id=1646089489]
+tile_map_data = PackedByteArray("AAAJAAkAAAAJAAkAAAAIAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAEAAkAAAAAAAEAAAADAAkAAAAAAAEAAAACAAkAAAAAAAEAAAABAAkAAAAAAAEAAAAAAAkAAAAAAAEAAAAJAAEAAAAAAAEAAAAIAAEAAAAAAAEAAAAHAAEAAAAAAAEAAAAGAAEAAAAAAAEAAAAFAAEAAAAAAAEAAAAEAAEAAAAAAAEAAAABAAEAAAAAAAEAAAAAAAEAAAACAAEAAAACAAEAAAAAAAEAAAADAAEAAAAAAAEAAAAAAAMAAAABAAEAAAABAAMAAAABAAEAAAAFAAMAAAABAAEAAAAGAAMAAAABAAEAAAAHAAMAAAABAAEAAAAEAAMAAAABAAEAAAADAAMAAAABAAEAAAAIAAMAAAABAAEAAAAJAAMAAAABAAEAAAAJAAYAAAAAAAEAAAAJAAcAAAABAAEAAAAIAAcAAAABAAEAAAAHAAcAAAABAAEAAAAGAAcAAAABAAEAAAAFAAcAAAABAAEAAAAEAAcAAAABAAEAAAADAAcAAAABAAEAAAACAAcAAAABAAEAAAABAAcAAAABAAEAAAAAAAYAAAAAAAEAAAAEAAYAAAAAAAEAAAAFAAYAAAAAAAEAAAAGAAYAAAAAAAEAAAAHAAYAAAAAAAEAAAAIAAYAAAAAAAEAAAADAAYAAAAAAAEAAAACAAYAAAAAAAEAAAABAAYAAAAAAAEAAAAAAAcAAAABAAEAAAACAAMAAAABAAEAAAA=")
+tile_set = ExtResource("1_pdl74")
+physics_quadrant_size = 1
+navigation_enabled = false
+script = ExtResource("2_pt16v")
+
+[node name="bgm_noise" type="Node" parent="." unique_id=1319457571]
+script = ExtResource("10_xfvqm")
+url = "https://www.beepbox.co/#9n11sbk0l00e06t2ca7g06j04r1i0o4T0v1u00f0q0x10r71d23w2h0E3b9080gT2v1u02f20c42m7qwo2093d03w4E0b0001aslp1K1mdv-rnaZvw9Rdj_dm9R7HPKidEImKHarViE-bR7OIXDKo"
+autoplay = true
+play_volume = 0.0
+looping = true
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bgm_deathrattle" type="Node" parent="." unique_id=1873212694]
+script = ExtResource("10_xfvqm")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t43a7g00j00r1i0o2T0v1u00f0q0w10v3d69w2h0E6b60101030403T2v1u15f10w4qw02d03w0E0bMp1xFBOdhhhhhhhhhhhhhhhhhhhhhhhhhhgnw"
+
+[node name="player" type="Node2D" parent="." unique_id=1056842549]
+position = Vector2(0, 10)
+script = ExtResource("3_03j03")
+
+[node name="sprites" type="Node2D" parent="player" unique_id=386397743]
+
+[node name="SheetSprite" type="Sprite2D" parent="player/sprites" unique_id=582767025]
+texture = ExtResource("3_3syxm")
+centered = false
+hframes = 20
+vframes = 20
+frame = 21
+script = ExtResource("3_y26qe")
+sheet = ExtResource("6_03j03")
+frames = PackedInt32Array(21)
+ani_period = 10
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="SheetSprite2" type="Sprite2D" parent="player/sprites" unique_id=1409981087]
+position = Vector2(-100, 25)
+texture = ExtResource("3_3syxm")
+centered = false
+hframes = 20
+vframes = 20
+script = ExtResource("3_y26qe")
+sheet = ExtResource("6_03j03")
+frames = PackedInt32Array(0, 1, 2, 1)
+ani_period = 10
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="SheetSprite3" type="Sprite2D" parent="player/sprites" unique_id=1056061929]
+position = Vector2(-200, 50)
+texture = ExtResource("3_3syxm")
+centered = false
+hframes = 20
+vframes = 20
+script = ExtResource("3_y26qe")
+sheet = ExtResource("6_03j03")
+frames = PackedInt32Array(0, 1, 2, 1)
+ani_period = 10
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="SheetSprite4" type="Sprite2D" parent="player/sprites" unique_id=538696426]
+position = Vector2(-300, 65)
+texture = ExtResource("3_3syxm")
+centered = false
+hframes = 20
+vframes = 20
+script = ExtResource("3_y26qe")
+sheet = ExtResource("6_03j03")
+frames = PackedInt32Array(0, 1, 2, 1)
+ani_period = 10
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="SheetSprite5" type="Sprite2D" parent="player/sprites" unique_id=787392597]
+position = Vector2(-400, 80)
+texture = ExtResource("3_3syxm")
+centered = false
+hframes = 20
+vframes = 20
+script = ExtResource("3_y26qe")
+sheet = ExtResource("6_03j03")
+frames = PackedInt32Array(0, 1, 2, 1)
+ani_period = 10
+metadata/_custom_type_script = "uid://di2t14yakk4ot"
+
+[node name="bgm_notes" type="Node" parent="player" unique_id=1076441420]
+script = ExtResource("10_xfvqm")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t1Da7g00j00r1i0o2T0v1u00f0q0w10v3d69w2h0E6b60101030403T2v1u15f10w4qw02d03w0E0bMp1DFEZsCnahsD2An9OxsDa5NAMB5Os9hsDa5NyMy50"
+autoplay = true
+play_volume = 0.0
+looping = true
+tempo = 103
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="chomp" type="Node" parent="player" unique_id=76612077]
+script = ExtResource("10_xfvqm")
+url = "https://www.beepbox.co/#9n31sbk0l00e00t4Ia7g00j07r1i0o532T0v2u00f10k8q0jb701d43w3h0E109T1v1u3bf0q8x10n521d08AcF8B4Q047cPa744E2b776T1v1u94f10n7q8121d23A9F5B5Q290dPa883E176T3v1ufaf0qwx10t511d08SjPrrW9V800ah0a0E1b7b4h0p1nFUZayec7MYL0001jGM0fgg0"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="bonk" type="Node" parent="player" unique_id=141612310]
+script = ExtResource("10_xfvqm")
+url = "https://www.beepbox.co/#9n12sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10k8q0j9401d43w3h0E109T3v1ufaf0qwx10t511d08SjPrrW9V800ah0a0E1b7T2v1u15f10w4qw02d03w0E0bop1kFR44hW3jq8wf7qpi5NVS"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
+
+[node name="View" type="ReferenceRect" parent="." unique_id=2025801140]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 101.0
+offset_bottom = 101.0
+script = ExtResource("5_03j03")
+
+[node name="Label" type="Label" parent="." unique_id=298668084]
+offset_right = 105.0
+offset_bottom = 23.0
+text = "follow your own (and
+only your own) rules
+
+make work that is as
+inaccessible as nec-
+cessary, but no more
+(and no less either)
+
+(immediately realize
+errors you made like
+\"neccessary\" -- love
+all mistakes deeply)
+
+gibberish, such as a
+seopol analory bears
+
+if it's important do
+it one hundred times
+
+oh and kill gamepl"
+label_settings = ExtResource("7_03j03")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1206740215]
+offset_left = 60.0
+offset_right = 100.0
+offset_bottom = 5.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1564228327]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SCORE: 0"
+label_settings = ExtResource("7_03j03")
+
+[node name="^blinking" type="Node" parent="ColorRect" unique_id=1702994581]
+script = ExtResource("5_pdl74")
+
+[node name="bksp" type="Node" parent="." unique_id=1889347484]
+script = ExtResource("10_xfvqm")
+url = "https://www.beepbox.co/#9n11sbk0l00e00t4Ia7g00j00r1i0o5T0v1u00f10k8q0j9401d43w3h0E109T2v3u02f20w42j5qw02d03w0E0bgp1eFR44hW3jaMA3PI"
+metadata/_custom_type_script = "uid://b24ikpjqx8lqn"
